@@ -1539,7 +1539,7 @@ string PatternUnlock(int N, int [] hits)
 #endregion
 
 /*-------------------------------------------------------------------------------------------------------------------------------------------------*/
-//Задача №7 "Конкурент Google"
+//Задача №7 "Конкурент Google" было 5 или 6 попыток. успешно - 08.03.2021
 
 /* Условие задачи
  Ваш стартап получил миллионные инвестиции на создание нового поискового движка.
@@ -2464,12 +2464,243 @@ int [] WordSearch(int len, string s, string subs)
 //    }
 //}
 #endregion
-#region Попытка №5 без вывода 4-я отправка
+#region Попытка №5 без вывода 4-я отправка, 5-я отправка - успешно.
+//namespace Level1Space
+//{
+//    public class Level1
+//    {
+//        public static int[] WordSearch(int len, string s, string subs)
+//        {
+//            char[] s1 = s.ToCharArray();
+//            string[,] s3 = new string[s.Length, s.Length];
+//            int k = 0;
+//            int i, j;
+//            int vertical = 0;
+//            int horizontal = 0;
+//            for (i = 0; i < s.Length; i++)
+//            {
+//                bool twelve = false;
+//                for (j = 0; j < len; j++)
+//                {
+//                    if (k < s.Length)
+//                    {
+//                        if (s1[k].ToString() == " ")
+//                            twelve = true;
+//                        if (((j == 0) && (s1[k].ToString() == " ")) || ((s1[k].ToString() == " ") && (s1[k + 1].ToString() == " ")))
+//                        {
+//                            if (k == s.Length - 1)
+//                            {
+//                                k++;
+//                                if (horizontal < j)
+//                                    horizontal = j;
+//                                break;
+//                            }
+//                            else
+//                            {
+//                                k++;
+//                                s3[i, j] = s1[k].ToString();
+//                                k++;
+//                            }
+//                        }
+//                        else
+//                        {
+//                            s3[i, j] = s1[k].ToString();
+//                            if (k < s.Length)
+//                                k++;
+//                        }
+//                        if ((k == s.Length) || (s.Length <= 1))
+//                        {
+//                            if (horizontal < j)
+//                                horizontal = j;
+//                            break;
+//                        }
+//                    }
+//                }
+//                if ((k == s.Length) || (s.Length <= 1))
+//                {
+//                    if (vertical < i)
+//                        vertical = i;
+//                    break;
+//                }
+//                else
+//                    if ((s[k].ToString() != " ") && (s[k - 1].ToString() != " "))
+//                {
+//                    int z = k;
+//                    for (int d = j - 1; d >= 0; d--)
+//                    {
+//                        if (s3[i, d].ToString() == " ")
+//                        {
+//                            break;
+//                        }
+//                        else if ((d == 0) && (s3[i, d].ToString() != " "))
+//                            k = z;
+//                        else
+//                        {
+//                            if (twelve == true)
+//                                s3[i, d] = "";
+//                            k--;
+//                        }
+//                    }
+//                }
+//            }
+//            //for (int d = 0; d < s.Length; d++)
+//            //{
+//            //    for (int b = 0; b < horizontal+1; b++)
+//            //    {
+//            //         Console.Write(s3[d, b] + " ");
+//            //    }
+//            //    Console.WriteLine();
+//            //}
+//            //Console.WriteLine();
+//            string[] s4 = new string[s.Length];
+//            bool w = false;
+//            int a, g;
+//            for (a = 0; a < s.Length; a++)
+//            {
+//                if (len >= s.Length)
+//                    len = horizontal + 1;
+//                for (g = 0; g < len; g++)
+//                {
+//                    if (s3[a, g] != null)
+//                    {
+//                        s4[a] += s3[a, g];
+//                    }
+//                    else
+//                    {
+//                        if (g != 0)
+//                            a++;
+//                        w = true;
+//                        Array.Resize(ref s4, a);
+//                        break;
+//                    }
+//                }
+//                if (w == true)
+//                {
+//                    break;
+//                }
+//            }
+//            //for (int d = 0; d < a; d++)
+//            //{
+//            //    Console.Write(s4[d] + " ");
+//            //}
+//            //Console.WriteLine();
+//            int[] result = new int[a];
+//            for (int c = 0; c < a; c++)
+//            {
+//                string values = s4[c].ToString();
+//                string subs3 = subs.Substring(0, 1);
+//                if (values.Contains(subs))
+//                {
+//                    for (int m = 0; m < a; m++)
+//                    {
+//                        if (m == 0)
+//                        {
+//                            if ((m + subs.Length) >= a)
+//                            {
+//                                if (s3[c, m] == subs3)
+//                                {
+//                                    result[c] = 1;
+//                                    break;
+//                                }
+//                            }
+//                            else if ((m + subs.Length) < a)
+//                            {
+//                                if ((s3[c, m] == subs3) && ((s3[c, m + subs.Length] == " ") || s3[c, m + subs.Length] == null))
+//                                {
+//                                    result[c] = 1;
+//                                    break;
+//                                }
+//                            }
+//                        }
+//                        else if (m != 0)
+//                        {
+//                            if ((s3[c, m] == subs3) && (s3[c, m - 1] == " ") && ((s3[c, m + subs.Length] == " ") || s3[c, m + subs.Length] == null))
+//                            {
+//                                result[c] = 1;
+//                                break;
+//                            }
+//                        }
+//                        else
+//                            result[c] = 0;
+//                    }
+//                }
+//                else
+//                    result[c] = 0;
+//            }
+//            return result;
+//        }
+
+//        /// <summary> Test2 - нулевая ширина </summary>
+
+//        public static void Main()
+//        {
+//            //string s = "12345";
+//            //string subs = "99";
+//            //int len = 3;
+//            string s = "12345";
+//            string subs = "123";
+//            int len = 3;
+//            int[] findword;
+//            findword = Level1.WordSearch(len, s, subs);
+
+//            for (int i = 0; i < findword.Length; i++)
+//            {
+//                Console.Write(findword[i] + " ");
+//            }
+//            Console.ReadKey();
+//        }
+//    }
+//}
+#endregion
+
+/*-------------------------------------------------------------------------------------------------------------------------------------------------*/
+//Задача №8 "Искусственный интеллект для Оксаны" начало 09.03.2021. 7 дней - хотя бы одно решение - 14 дней последнее.
+/* Условие задачи
+  Оксана работает бухгалтером и каждый день выгружает из компьютера сводку за прошедшие сутки, которая содержит все приходы и расходы организации и итог. В сводке записаны только целые числа, и точно известно, что самое последнее число есть сумма всех предыдущих чисел.
+
+Например, варианты сводок:
+100 -50 10 -25 90 -35 90
+5 -25 10 -35 -45
+
+Эти сводки Оксана красиво оформляет в отчёте так:
++100 - 50 + 10 - 25 + 90 - 35 = +90
+
+или так:
++5 - 25 + 10 - 35 = -45
+
+Но однажды, придя на работу, Оксана обнаружила, что компьютер заразился вирусом и принялся из вредности путать числа в сводке. Например, вместо
+5 -25 10 -35 -45 
+
+он выдаёт явно ошибочное
+10 -25 -45 -35 5
+
+!
+Оксана попросила программиста Олега, специализирующегося на искусственном интеллекте, помочь ей срочно подготовить правильные отчёты. Помогите Оксане -- напишите алгоритм, который будет находить в сводке число, равное сумме всех остальных чисел.
+
+Функция
+int SumOfThe(int N, int [] data)
+
+получает параметром N длину всей сводки (N >= 2), и далее в массиве длиной N хранится сама сводка (целые числа).
+Возвращает функция целое число из сводки, которое равно сумме всех остальных чисел. 
+ */
+u#region 
+/* Алгоритм
+ * тест должен генерировать последовательность целых чисел где всегда будет число равное сумме всех остальных чисел: генерировать числа равные сумме преддыдущей, потом перемешивать и передавать в функцию
+ * найти число равное сумме всех остальныхъ
+ * 1. сформировать двумерный массив N,0
+ * 2. поиск подстроки subs в строке s
+ * 3. заполнить двумерный массив N,0
+ * 4. сформировать одномерный массив целых чисел 1 0
+ * 5. учесть ситуацию когда N=1 или полученная сумма равна 1 или целому числу
+ * 6 return 
+ */
+ #endregion
+#region
 namespace Level1Space
 {
-    public class Level1
+    public static class Level1
     {
-        public static int[] WordSearch(int len, string s, string subs)
+        public static int SumOfThe(int N, int[] data)
         {
             char[] s1 = s.ToCharArray();
             string[,] s3 = new string[s.Length, s.Length];
@@ -2529,18 +2760,19 @@ namespace Level1Space
                                 s3[i, d] = "";
                             k--;
                         }
+                        // Console.Write(s3[i, d] + " ");
                     }
                 }
             }
-            //for (int d = 0; d < s.Length; d++)
-            //{
-            //    for (int b = 0; b < len; b++)
-            //    {
-            //       // Console.Write(s3[d, b] + " ");
-            //    }
-            //    Console.WriteLine();
-            //}
-            //Console.WriteLine();
+            for (int d = 0; d < s.Length; d++)
+            {
+                for (int b = 0; b < len; b++)
+                {
+                    Console.Write(s3[d, b] + " ");
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
             string[] s4 = new string[s.Length];
             bool w = false;
             int a, g;
@@ -2557,20 +2789,21 @@ namespace Level1Space
                         if (g != 0)
                             a++;
                         w = true;
-                        Array.Resize(ref s4, a);
+                        Array.Resize(ref s4, a); //для массива 12345678 со словом 1234 ----   a+1 -> a
                         break;
                     }
                 }
                 if (w == true)
                 {
+                    //a++; //для массива 12345678 со словом 1234 ----   a+1 -> a
                     break;
                 }
             }
-            //for (int d = 0; d < a; d++)
-            //{
-            //    Console.Write(s4[d] + " ");
-            //}
-            //Console.WriteLine();
+            for (int d = 0; d < a; d++)
+            {
+                Console.Write(s4[d] + " ");
+            }
+            Console.WriteLine();
             int[] result = new int[a];
             for (int c = 0; c < a; c++)
             {
@@ -2616,19 +2849,16 @@ namespace Level1Space
             }
             return result;
         }
-
-        /// <summary> Test2 - нулевая ширина </summary>
-    
-        public static void Main()
+        static void Main()
         {
             //string s = "123 456 7899 99";
             //string subs = "99";
             //int len = 2;
-            string s = "1) строк разбивается на набор строк через выравнивание по заданной ширине.";
+            string s = "1) строкsdfgsdfgа разбивается на набор строsdfgsdfgdsк через выравнивание по заданной ширине.";
             string subs = "строк";
             int len = 12;
             int[] findword;
-            findword = Level1.WordSearch(len, s, subs);
+            findword = WordSearch(len, s, subs);
             for (int i = 0; i < findword.Length; i++)
             {
                 Console.Write(findword[i] + " ");
