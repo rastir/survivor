@@ -2882,53 +2882,375 @@ int SumOfThe(int N, int [] data)
  * 5. учесть ситуацию когда N=1 или полученная сумма равна 1 или целому числу
  * 6 return 
  */
- #endregion
+#endregion
 #region
+//namespace Level1Space
+//{
+//    public static class Level1
+//    {
+//        public static int SumOfThe(int N, int[] data)
+//        {
+//            int result = 0;
+//            int sum = 0;
+//            //char[] s1 = s.ToCharArray();
+//            //string[,] s3 = new string[s.Length, s.Length];
+//            for (int i = 0; i < data.Length; i++)
+//            {
+//                sum = 0;
+//                for (int j = 0; j < data.Length; j++)
+//                {
+//                    if (i == j)
+//                        continue;
+//                    else
+//                        sum += data[j];
+//                }
+//                if (data[i] == sum)
+//                {
+//                    result = sum;
+//                    break;
+//                }
+//            }
+//            return result;
+//        }
+
+//        /// <summary> Test2 - нулевая ширина </summary>
+
+//        public static void Main()
+//        {
+//            //string s = "123 456 7899 99";
+//            //string subs = "99";
+//            //int len = 2;
+//            string s = "1) строк разбивается на набор строк через выравнивание по заданной ширине.";
+//            string subs = "строк";
+//            int len = 12;
+//            int[] findword;
+//            findword = Level1.WordSearch(len, s, subs);
+//            for (int i = 0; i < findword.Length; i++)
+//            {
+//                Console.Write(findword[i] + " ");
+//            }
+//            Console.ReadKey();
+//        }
+//    }
+//}
+#endregion
+
+/*-------------------------------------------------------------------------------------------------------------------------------------------------*/
+//Задача №9 "Миссия невыполнима: Красный портфель"
+/*Условие задачи
+ * 
+Итан Хант с невероятным трудом пробирается в секретное хранилище данных Синдиката, в подводный бункер под электростанцией. На добытой им флешке хранятся детали банковских счетов верхушки Синдиката на сумму несколько миллиардов долларов, однако она закрыта "красным портфелем" -- очень сложной технологией шифрования.
+Ваша миссия: реализовать алгоритм шифрования "Красного портфеля", который не под силу даже специалистам MI-6.
+На вход программы подаётся строка текста, состоящая из строчных букв и пробелов. Из строки удаляются все пробелы и определяется её длина N.
+На основании N вычисляется размер матрицы, в которую будет упакован исходный текст: из N извлекается квадратный корень, и его нижняя граница берётся как число строк матрицы, а верхняя граница -- как число столбцов. Если их произведение меньше N, увеличивайте количество строк.
+
+Например, есть строка текста
+
+отдай мою кроличью лапку
+
+Она преобразуется в
+
+отдаймоюкроличьюлапку
+
+Длина этой строки -- 21, квадратный корень -- 4.58.
+21 элемент в матрицу размером 4x5 элементов не упаковывается, значит, берём матрицу 5x5:
+
+отдай
+моюкр
+оличь
+юлапк
+у
+
+И наконец выдаём зашифрованный результат, выдавая символы по столбцам сверху вниз и слева направо, и разделяя столбцы пробелами:
+
+омоюу толл дюиа акчп йрьк
+
+Напишите код, зашифровывающий текстовое сообщение, и декодировщик, расшифровывающий его.
+
+Функция
+
+string TheRabbitsFoot(string s, bool encode)
+
+получает исходную строку s и либо зашифровывает её (encode = true), либо расшифровывает (encode = false), только конечно без исходных пробелов. 
+*/
+#region Попытка №2 с выводом
+//namespace Level1Space 
+//{
+//    public static class Level1
+//    {
+//        public static string TheRabbitsFoot(string s, bool encode)
+//        {
+//            if (encode == true)
+//            {
+//                //убираем пробелы
+//                s = s.Replace(" ", string.Empty);
+//                Console.Write(s);
+//                Console.WriteLine();
+//                //вычислить длину строки
+//                double root = Math.Sqrt(s.Length);
+//                int down = (int)Math.Floor(root);
+//                int up = (int)Math.Ceiling(root);
+//                if (down * up < s.Length)
+//                    down++;
+//                //char[] s1 = s.ToCharArray();
+//                string[,] matrix = new string[up, down];
+//                //упаковывваем в матрицу
+//                int k = 0;
+//                for (int i = 0; i < up; i++)
+//                {
+//                    for (int j = 0; j < down; j++)
+//                    {
+//                        if (k < s.Length)
+//                        {
+//                            matrix[i, j] = s[k].ToString();
+//                            k++;
+//                            Console.Write(matrix[i, j]);
+//                        }
+//                        else
+//                            break;
+//                    }
+//                    Console.WriteLine();
+//                }
+//                //преобразуем матрицу в одномерный массив
+//                //объявить одномерный массив
+//                int p = down * up;
+//                string[] massiv = new string[p];
+//                k = 0;
+//                string result="";
+//                for (int i = 0; i < up; i++)
+//                {
+//                    for (int j = 0; j < down; j++)
+//                    {
+//                        if (k < p)
+//                        {
+//                            //massiv[k] = matrix[j, i];
+//                            result += matrix[j, i];
+//                            Console.Write(massiv[k]);
+//                            k++;
+//                        }
+//                        else
+//                            break;
+//                    }
+//                    result += " ";
+//                    Console.Write("  ");
+//                }
+//                Console.WriteLine();
+//                //string result = massiv.ToString();
+//                //string str = string.Join(" ", massiv);
+//                //for (int i = 0; i < p; i++)
+//                //{
+//                //    massiv[i] = massiv[i].ToString();
+//                //}
+//                //Console.Write("  ");
+//                return result;
+//            }
+//            else
+//            {
+//                //6. убрать пробелы
+//                //5. вычислить длину строки
+//                //4. вычислдить квадратный корень от длины строки
+//                //3. вычислить нижнюю границу и верхнюю границу округлив 
+//                //2. упаковать в матрицу N*M
+//                //1. одномерный массив по столбцам сверху вниз
+//                string s1 = s.Replace(" ", string.Empty);
+
+//                //вычислить длину строки
+//                double root = Math.Sqrt(s1.Length);
+//                int down = (int)Math.Floor(root);
+//                int up = (int)Math.Ceiling(root);
+//                if (down * up < s1.Length)
+//                    down++;
+//                //string[] massiv;
+//               // massiv = s.Split(" ");
+
+//                string[,] matrix = new string[up, down];
+//                int k = 0;
+//                char[] array = s.ToCharArray();
+//                for (int i = 0; i < s.Length; i++)
+//                {
+//                    Console.Write(array[i]);
+//                }
+//                Console.WriteLine();
+//                //string[] array1 = massiv[k].ToCharArray();
+
+//                //преобразуем в двумерный массив
+//                for (int i = 0; i < up; i++)
+//                {
+//                    for (int j = 0; j < down; j++)
+//                    {
+//                        if (k < down * up) //&& (massiv[k] != " "))
+//                        {
+//                            //char[] array = massiv[k].ToCharArray();
+//                            matrix[i,j] = array[k].ToString();
+//                            if (matrix[i, j] != " ") 
+//                                Console.Write(matrix[i, j]);
+//                            if ((array[k].ToString() == " ") && (j == down-1))
+//                                break;
+//                            else if (array[k].ToString() == " ")
+//                            {
+//                                k++;
+//                                matrix[i, j] = array[k].ToString();
+//                                Console.Write(matrix[i, j]);
+//                            }
+//                            k++;
+
+//                        }
+//                        else
+//                            break;
+//                    }
+//                    Console.WriteLine();
+//                }
+
+//                k = 0;
+//                //string[] s2 = new string[down*up];
+//                //переводим в одномерный массив
+//                string result = "";
+//                for (int i = 0; i < up; i++)
+//                {
+//                    for (int j = 0; j < down; j++)
+//                    {
+//                        if (k < s.Length)
+//                        {
+//                            result += matrix[j, i];
+//                            k++;
+//                            //Console.Write(result);
+//                        }
+//                        else
+//                            break;
+//                    }
+//                }
+//                Console.WriteLine(result);
+//                return result;
+
+//            }
+//        }
+
+//        /// <summary> Test2 - нулевая ширина </summary>
+
+//        public static void Main()
+//        {
+//            //string s = "отдай мою кроличью лапку";
+//            //bool encode = true;
+
+//            string s = "омоюу толл дюиа акчп йрьк";
+//            bool encode = false;
+//            string result = TheRabbitsFoot (s,encode);
+//            Console.WriteLine(result);
+//            Console.ReadKey();
+//        }
+//    }
+//}
+#endregion
+#region Попытка №2 без вывода
 namespace Level1Space
 {
     public static class Level1
     {
-        public static int SumOfThe(int N, int[] data)
+        public static string TheRabbitsFoot(string s, bool encode)
         {
-            int result = 0;
-            int sum = 0;
-            //char[] s1 = s.ToCharArray();
-            //string[,] s3 = new string[s.Length, s.Length];
-            for (int i = 0; i < data.Length; i++)
+            if (encode == true)
             {
-                sum = 0;
-                for (int j = 0; j < data.Length; j++)
+                s = s.Replace(" ", string.Empty);
+                double root = Math.Sqrt(s.Length);
+                int down = (int)Math.Floor(root);
+                int up = (int)Math.Ceiling(root);
+                if (down * up < s.Length)
+                    down++;
+                string[,] matrix = new string[up, down];
+                int k = 0;
+                for (int i = 0; i < up; i++)
                 {
-                    if (i == j)
-                        continue;
-                    else
-                        sum += data[j];
+                    for (int j = 0; j < down; j++)
+                    {
+                        if (k < s.Length)
+                        {
+                            matrix[i, j] = s[k].ToString();
+                            k++;
+                            Console.Write(matrix[i, j]);
+                        }
+                        else
+                            break;
+                    }
+                    Console.WriteLine();
                 }
-                if (data[i] == sum)
+                int p = down * up;
+                k = 0;
+                string result = "";
+                for (int i = 0; i < down; i++)
                 {
-                    result = sum;
-                    break;
+                    for (int j = 0; j < up; j++)
+                    {
+                        if (k < p)
+                        {
+                            result += matrix[j, i];
+                            k++;
+                        }
+                        else
+                            break;
+                    }
+                    result += " ";
                 }
+                return result;
             }
-            return result;
+            else
+            {
+                string s1 = s.Replace(" ", string.Empty);
+                double root = Math.Sqrt(s1.Length);
+                int down = (int)Math.Floor(root);
+                int up = (int)Math.Ceiling(root);
+                if (down * up < s1.Length)
+                    down++;
+                string[,] matrix = new string[up, down];
+                int k = 0;
+                s = s.Trim();
+                char[] array = s.ToCharArray();
+                for (int i = 0; i < up; i++)
+                {
+                    for (int j = 0; j < down; j++)
+                    {
+                        if (k < down * up) 
+                        {
+                            matrix[i, j] = array[k].ToString();
+                            if ((array[k].ToString() == " ") && (j == down - 1))
+                                break;
+                            else if (array[k].ToString() == " ")
+                            {
+                                k++;
+                                matrix[i, j] = array[k].ToString();
+                            }
+                            k++;
+                        }
+                        else
+                            break;
+                    }
+                }
+                k = 0;
+                string result = "";
+                for (int i = 0; i < down; i++)
+                {
+                    for (int j = 0; j < up; j++)
+                    {
+                        if (k < s.Length)
+                        {
+                            result += matrix[j, i];
+                            k++;
+                        }
+                        else
+                            break;
+                    }
+                }
+                return result;
+            }
         }
-
-        /// <summary> Test2 - нулевая ширина </summary>
-    
         public static void Main()
         {
-            //string s = "123 456 7899 99";
-            //string subs = "99";
-            //int len = 2;
-            string s = "1) строк разбивается на набор строк через выравнивание по заданной ширине.";
-            string subs = "строк";
-            int len = 12;
-            int[] findword;
-            findword = Level1.WordSearch(len, s, subs);
-            for (int i = 0; i < findword.Length; i++)
-            {
-                Console.Write(findword[i] + " ");
-            }
+            //string s = "отдай мою кроличью лапку";
+            //bool encode = true;
+
+            string s = "омоюу толл дюиа акчп йрьк";
+            bool encode = false;
+            string result = TheRabbitsFoot(s, encode);
+            Console.WriteLine(result);
             Console.ReadKey();
         }
     }
