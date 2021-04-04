@@ -1,6 +1,5 @@
 ﻿using System;
-//using Test_Level1;
-
+using System.Collections.Generic;
 
 //namespace Level1Space
 //{
@@ -3142,114 +3141,460 @@ string TheRabbitsFoot(string s, bool encode)
 //}
 #endregion
 #region Попытка №2 без вывода
+//namespace Level1Space
+//{
+//    public static class Level1
+//    {
+//        public static string TheRabbitsFoot(string s, bool encode)
+//        {
+//            if (encode == true)
+//            {
+//                s = s.Replace(" ", string.Empty);
+//                double root = Math.Sqrt(s.Length);
+//                int down = (int)Math.Floor(root);
+//                int up = (int)Math.Ceiling(root);
+//                if (down * up < s.Length)
+//                    down++;
+//                string[,] matrix = new string[up, down];
+//                int k = 0;
+//                for (int i = 0; i < up; i++)
+//                {
+//                    for (int j = 0; j < down; j++)
+//                    {
+//                        if (k < s.Length)
+//                        {
+//                            matrix[i, j] = s[k].ToString();
+//                            k++;
+//                            Console.Write(matrix[i, j]);
+//                        }
+//                        else
+//                            break;
+//                    }
+//                    Console.WriteLine();
+//                }
+//                int p = down * up;
+//                k = 0;
+//                string result = "";
+//                for (int i = 0; i < down; i++)
+//                {
+//                    for (int j = 0; j < up; j++)
+//                    {
+//                        if (k < p)
+//                        {
+//                            result += matrix[j, i];
+//                            k++;
+//                        }
+//                        else
+//                            break;
+//                    }
+//                    result += " ";
+//                }
+//                result = result.Trim();
+//                return result;
+//            }
+//            else
+//            {
+//                string s1 = s.Replace(" ", string.Empty);
+//                double root = Math.Sqrt(s1.Length);
+//                int down = (int)Math.Floor(root);
+//                int up = (int)Math.Ceiling(root);
+//                if (down * up < s1.Length)
+//                    down++;
+//                string[,] matrix = new string[up, down];
+//                int k = 0;
+//                s = s.Trim();
+//                char[] array = s.ToCharArray();
+//                for (int i = 0; i < up; i++)
+//                {
+//                    for (int j = 0; j < down; j++)
+//                    {
+//                        if (k < down * up) 
+//                        {
+//                            matrix[i, j] = array[k].ToString();
+//                            if ((array[k].ToString() == " ") && (j == down - 1))
+//                                break;
+//                            else if (array[k].ToString() == " ")
+//                            {
+//                                k++;
+//                                matrix[i, j] = array[k].ToString();
+//                            }
+//                            k++;
+//                        }
+//                        else
+//                            break;
+//                    }
+//                }
+//                k = 0;
+//                string result = "";
+//                for (int i = 0; i < down; i++)
+//                {
+//                    for (int j = 0; j < up; j++)
+//                    {
+//                        if (k < s.Length)
+//                        {
+//                            result += matrix[j, i];
+//                            k++;
+//                        }
+//                        else
+//                            break;
+//                    }
+//                }
+//                result = result.Trim();
+//                return result;
+//            }
+//        }
+//        public static void Main()
+//        {
+//            //string s = "отдай мою кроличью лапку";
+//            //bool encode = true;
+
+//            string s = " омоюу толл дюиа акчп йрьк ";
+//            bool encode = false;
+//            string result = TheRabbitsFoot(s, encode);
+//            Console.WriteLine(result);
+//            Console.ReadKey();
+//        }
+//    }
+//}
+#endregion
+
+/*-------------------------------------------------------------------------------------------------------------------------------------------------*/
+//Задача №10 "Экономим тонер"
+/*Условие задачи
+ * 
+ Ваш босс очень экономный человек. Он намерен ввести в организации очень строгие требования по расходованию тонера в принтерах. Для этого он хочет выявить сотрудников, которые пишут тексты, требующие повышенного расхода тонера.
+Ваша задача -- написать драйвер, который перехватывает текст, отсылаемый на принтер, и скрытно записывает в базу количество тонера, требуемого для его печати.
+Каждый символ требует свой объём тонера. Пробел, очевидно, вообще не расходует ресурсы, а вот например амперсанд @ подразумевает расход аж 32 условных единиц тонера. В документации к принтеру имеется таблица раскладки символов ASCII и соответствующего им объёма тонера. Используйте её, чтобы оценить расход тонера на печатаемый текст. . 
+
+пробел) 0   !   9        "   6        #  24        $  29        %  22
+&  24        '   3        (  12        )  12        *  17        +  13
+,   7        -   7        .   4        /  10        0  22        1  19
+2  22        3  23        4  21        5  27        6  26        7  16
+8  23        9  26        :   8        ;  11        <  10        =  14
+>  10        ?  15        @  32        A  24        B  29        C  20
+D  26        E  26        F  20        G  25        H  25        I  18
+J  18        K  21        L  16        M  28        N  25        O  26
+P  23        Q  31        R  28        S  25        T  16        U  23
+V  19        W  26        X  18        Y  14        Z  22        [  18
+\  10        ]  18        ^   7        _   8        `   3        a  23
+b  25        c  17        d  25        e  23        f  18        g  30
+h  21        i  15        j  20        k  21        l  16        m  22
+n  18        o  20        p  25        q  25        r  13        s  21
+t  17        u  17        v  13        w  19        x  13        y  24
+z  19        {  18        |  12        }  18        ~   9    
+
+--------------------
+ Функция
+
+int PrintingCosts(string Line)
+
+получает на вход строку Line. На выходе формируется расход тонера по этой строке, который получается как сумма расходов тонера по всем символам строки. Если встречается символ, не учитываемый таблицей из документации, используйте значение 23. 
+*/
+#region Попытка №1 с выводом
+//namespace Level1Space
+//{
+//    public static class Level1
+//    {
+//        public static int PrintingCosts(string Line)
+//        {
+//            Dictionary<char, int> symbol = new Dictionary<char, int>(95);
+
+//            symbol.Add(' ', 0);
+//            symbol.Add('!', 9);
+//            symbol.Add('"', 6);
+//            symbol.Add('#', 24);
+//            symbol.Add('$', 29);
+//            symbol.Add('%', 22);
+//            symbol.Add('&', 24);
+//            symbol.Add('\'', 3);
+//            symbol.Add('(', 12);
+//            symbol.Add(')', 12);
+//            symbol.Add('*', 17);
+//            symbol.Add('+', 13);
+//            symbol.Add(',', 7);
+//            symbol.Add('-', 7);
+//            symbol.Add('.', 4);
+//            symbol.Add('/', 10);
+//            symbol.Add('0', 22);
+//            symbol.Add('1', 19);
+//            symbol.Add('2', 22);
+//            symbol.Add('3', 23);
+//            symbol.Add('4', 21);
+//            symbol.Add('5', 27);
+//            symbol.Add('6', 26);
+//            symbol.Add('7', 16);
+//            symbol.Add('8', 23);
+//            symbol.Add('9', 26);
+//            symbol.Add(':', 8);
+//            symbol.Add(';', 11);
+//            symbol.Add('<', 10);
+//            symbol.Add('=', 24);
+//            symbol.Add('>', 10);
+//            symbol.Add('?', 15);
+//            symbol.Add('@', 32);
+//            symbol.Add('A', 24);
+//            symbol.Add('B', 29);
+//            symbol.Add('C', 20);
+//            symbol.Add('D', 26);
+//            symbol.Add('E', 26);
+//            symbol.Add('F', 20);
+//            symbol.Add('G', 25);
+//            symbol.Add('H', 25);
+//            symbol.Add('I', 18);
+//            symbol.Add('J', 18);
+//            symbol.Add('K', 21);
+//            symbol.Add('L', 16);
+//            symbol.Add('M', 28);
+//            symbol.Add('N', 25);
+//            symbol.Add('O', 26);
+//            symbol.Add('P', 23);
+//            symbol.Add('Q', 31);
+//            symbol.Add('R', 28);
+//            symbol.Add('S', 25);
+//            symbol.Add('T', 16);
+//            symbol.Add('U', 23);
+//            symbol.Add('V', 19);
+//            symbol.Add('W', 26);
+//            symbol.Add('X', 18);
+//            symbol.Add('Y', 14);
+//            symbol.Add('Z', 22);
+//            symbol.Add('[', 18);
+//            symbol.Add('\\', 10);
+//            symbol.Add(']', 18);
+//            symbol.Add('^', 7);
+//            symbol.Add('_', 8);
+//            symbol.Add('`', 3);
+//            symbol.Add('a', 23);
+//            symbol.Add('b', 25);
+//            symbol.Add('c', 17);
+//            symbol.Add('d', 25);
+//            symbol.Add('e', 23);
+//            symbol.Add('f', 18);
+//            symbol.Add('g', 30);
+//            symbol.Add('h', 21);
+//            symbol.Add('i', 15);
+//            symbol.Add('j', 20);
+//            symbol.Add('k', 21);
+//            symbol.Add('l', 16);
+//            symbol.Add('m', 22);
+//            symbol.Add('n', 18);
+//            symbol.Add('o', 20);
+//            symbol.Add('p', 25);
+//            symbol.Add('q', 25);
+//            symbol.Add('r', 13);
+//            symbol.Add('s', 21);
+//            symbol.Add('t', 17);
+//            symbol.Add('u', 17);
+//            symbol.Add('v', 13);
+//            symbol.Add('w', 19);
+//            symbol.Add('x', 13);
+//            symbol.Add('y', 24);
+//            symbol.Add('z', 19);
+//            symbol.Add('{', 18);
+//            symbol.Add('|', 12);
+//            symbol.Add('}', 18);
+//            symbol.Add('~', 9);
+
+//            /*
+//             * 1. создать коллекцию V
+//             * 2. перевести строку в одномерный массив символов
+//             * 3. перебрать циклом for по порядку по индексам с проверкой содержания и подсчета
+//             */
+
+//            char[] massiv = Line.ToCharArray();
+//            int summ = 0;
+
+//            for (int i = 0; i < massiv.Length; i++)
+//            {
+//                if (symbol.ContainsKey(massiv[i]))
+//                    summ += symbol[massiv[i]];
+//                else
+//                    summ += 23;
+//            }
+//            //foreach (var c in symbol.Keys)
+//            //{
+//            //    if (!symbol.ContainsKey(c))
+//            //    {
+//            //        symbol.Add(c, 0);
+//            //    }
+//            //    symbol[c]++;
+//            //}
+
+//            //Dictionary<char, int> countDictionary = new Dictionary<char, int>();
+
+//            //foreach (var c in input.ToLower())
+//            //{
+//            //    if (!symbol.ContainsKey(c))
+//            //    {
+//            //        symbol.Add(c, 0);
+//            //    }
+
+//            //    symbol[c]++;
+//            //}
+
+//            //Dictionary<TKey, TValue> лучше всего подходит здесь, вы можете сделать это в нескольких строках следующим образом:
+
+//            //Dictionary<Char, int> alphabets = new Dictionary<Char, int>();
+
+//            //for (int i = 0; i < input.Length; i++)
+//            //{
+//            //    char character = input[i];
+//            //    if (Char.IsLetter(character)) // this is important user can enter numbers as well
+//            //    {
+//            //        if (alphabets.ContainsKey(character)) // if letter already in increment count
+//            //            alphabets[character] = alphabets[character] + 1;
+//            //        else
+//            //            alphabets.Add(character, 1); // else add in dictionary 
+//            //    }
+//            //}
+
+
+//            //if (Line.Length == 0)
+//            //    return 0;
+//            //else
+//            //{
+//            //    string[] count = text.Split(new char[] { ' ', '\n', '\r', ',' }, StringSplitOptions.RemoveEmptyEntries);
+//            //    int a = count.Count(); // либо count.Length
+//            //}
+//            return summ;
+//        }
+
+//        public static void Main()
+//        {
+
+//            string Line = " )*^#@EBQM";
+//            int result = PrintingCosts(Line);
+//            Console.WriteLine(result);
+//            Console.ReadKey();
+//        }
+//    }
+//}
+#endregion
+#region Попытка №1 без вывода - успешно 04.04.2021
 namespace Level1Space
 {
     public static class Level1
     {
-        public static string TheRabbitsFoot(string s, bool encode)
+        public static int PrintingCosts(string Line)
         {
-            if (encode == true)
+            Dictionary<char, int> symbol = new Dictionary<char, int>(95)
             {
-                s = s.Replace(" ", string.Empty);
-                double root = Math.Sqrt(s.Length);
-                int down = (int)Math.Floor(root);
-                int up = (int)Math.Ceiling(root);
-                if (down * up < s.Length)
-                    down++;
-                string[,] matrix = new string[up, down];
-                int k = 0;
-                for (int i = 0; i < up; i++)
-                {
-                    for (int j = 0; j < down; j++)
-                    {
-                        if (k < s.Length)
-                        {
-                            matrix[i, j] = s[k].ToString();
-                            k++;
-                            Console.Write(matrix[i, j]);
-                        }
-                        else
-                            break;
-                    }
-                    Console.WriteLine();
-                }
-                int p = down * up;
-                k = 0;
-                string result = "";
-                for (int i = 0; i < down; i++)
-                {
-                    for (int j = 0; j < up; j++)
-                    {
-                        if (k < p)
-                        {
-                            result += matrix[j, i];
-                            k++;
-                        }
-                        else
-                            break;
-                    }
-                    result += " ";
-                }
-                return result;
-            }
-            else
+                { ' ', 0 },
+                { '!', 9 },
+                { '"', 6 },
+                { '#', 24 },
+                { '$', 29 },
+                { '%', 22 },
+                { '&', 24 },
+                { '\'', 3 },
+                { '(', 12 },
+                { ')', 12 },
+                { '*', 17 },
+                { '+', 13 },
+                { ',', 7 },
+                { '-', 7 },
+                { '.', 4 },
+                { '/', 10 },
+                { '0', 22 },
+                { '1', 19 },
+                { '2', 22 },
+                { '3', 23 },
+                { '4', 21 },
+                { '5', 27 },
+                { '6', 26 },
+                { '7', 16 },
+                { '8', 23 },
+                { '9', 26 },
+                { ':', 8 },
+                { ';', 11 },
+                { '<', 10 },
+                { '=', 24 },
+                { '>', 10 },
+                { '?', 15 },
+                { '@', 32 },
+                { 'A', 24 },
+                { 'B', 29 },
+                { 'C', 20 },
+                { 'D', 26 },
+                { 'E', 26 },
+                { 'F', 20 },
+                { 'G', 25 },
+                { 'H', 25 },
+                { 'I', 18 },
+                { 'J', 18 },
+                { 'K', 21 },
+                { 'L', 16 },
+                { 'M', 28 },
+                { 'N', 25 },
+                { 'O', 26 },
+                { 'P', 23 },
+                { 'Q', 31 },
+                { 'R', 28 },
+                { 'S', 25 },
+                { 'T', 16 },
+                { 'U', 23 },
+                { 'V', 19 },
+                { 'W', 26 },
+                { 'X', 18 },
+                { 'Y', 14 },
+                { 'Z', 22 },
+                { '[', 18 },
+                { '\\', 10 },
+                { ']', 18 },
+                { '^', 7 },
+                { '_', 8 },
+                { '`', 3 },
+                { 'a', 23 },
+                { 'b', 25 },
+                { 'c', 17 },
+                { 'd', 25 },
+                { 'e', 23 },
+                { 'f', 18 },
+                { 'g', 30 },
+                { 'h', 21 },
+                { 'i', 15 },
+                { 'j', 20 },
+                { 'k', 21 },
+                { 'l', 16 },
+                { 'm', 22 },
+                { 'n', 18 },
+                { 'o', 20 },
+                { 'p', 25 },
+                { 'q', 25 },
+                { 'r', 13 },
+                { 's', 21 },
+                { 't', 17 },
+                { 'u', 17 },
+                { 'v', 13 },
+                { 'w', 19 },
+                { 'x', 13 },
+                { 'y', 24 },
+                { 'z', 19 },
+                { '{', 18 },
+                { '|', 12 },
+                { '}', 18 },
+                { '~', 9 }
+            };
+
+            char[] massiv = Line.ToCharArray();
+            int summ = 0;
+
+            for (int i = 0; i < massiv.Length; i++)
             {
-                string s1 = s.Replace(" ", string.Empty);
-                double root = Math.Sqrt(s1.Length);
-                int down = (int)Math.Floor(root);
-                int up = (int)Math.Ceiling(root);
-                if (down * up < s1.Length)
-                    down++;
-                string[,] matrix = new string[up, down];
-                int k = 0;
-                s = s.Trim();
-                char[] array = s.ToCharArray();
-                for (int i = 0; i < up; i++)
-                {
-                    for (int j = 0; j < down; j++)
-                    {
-                        if (k < down * up) 
-                        {
-                            matrix[i, j] = array[k].ToString();
-                            if ((array[k].ToString() == " ") && (j == down - 1))
-                                break;
-                            else if (array[k].ToString() == " ")
-                            {
-                                k++;
-                                matrix[i, j] = array[k].ToString();
-                            }
-                            k++;
-                        }
-                        else
-                            break;
-                    }
-                }
-                k = 0;
-                string result = "";
-                for (int i = 0; i < down; i++)
-                {
-                    for (int j = 0; j < up; j++)
-                    {
-                        if (k < s.Length)
-                        {
-                            result += matrix[j, i];
-                            k++;
-                        }
-                        else
-                            break;
-                    }
-                }
-                return result;
+                if (symbol.ContainsKey(massiv[i]))
+                    summ += symbol[massiv[i]];
+                else
+                    summ += 23;
             }
+            return summ;
         }
+
         public static void Main()
         {
-            //string s = "отдай мою кроличью лапку";
-            //bool encode = true;
 
-            string s = "омоюу толл дюиа акчп йрьк";
-            bool encode = false;
-            string result = TheRabbitsFoot(s, encode);
+            string Line = " )*^\\ \\\\ \"\"' ' \" ";
+            Console.WriteLine("исходная строка: "+Line);
+            int result = PrintingCosts(Line);
             Console.WriteLine(result);
             Console.ReadKey();
         }
