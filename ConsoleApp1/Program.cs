@@ -3634,69 +3634,42 @@ namespace Level1Space
     {
         public static string BigMinus(string s1, string s2)
         {
-            
-            /*
-             * 1. создать коллекцию V
-             * 2. перевести строку в одномерный массив символов
-             * 3. перебрать циклом for по порядку по индексам с проверкой содержания и подсчета
-             */
-
-            char[] massiv = Line.ToCharArray();
-            int summ = 0;
-
-            for (int i = 0; i < massiv.Length; i++)
+            if (s1.Length >= s2.Length)
             {
-                if (symbol.ContainsKey(massiv[i]))
-                    summ += symbol[massiv[i]];
-                else
-                    summ += 23;
+                int[] minus = new int[s1.Length];
+                for (int k = s1.Length - 1; k >= 0; k--)
+                {
+                    int i;
+                    for (i = s2.Length - 1; i >= 0; i--)
+                    {
+                        minus[k] = Math.Abs(Convert.ToInt32(s1[k]) - Convert.ToInt32(s2[i]));
+                        k--;
+                    }
+                    if (i == 0 && k >= 0)
+                        minus[k] = Convert.ToInt32(s1[k]);
+                }
+                string result = minus.ToString();
+                result = result.TrimStart('0');
+                return result;
             }
-            //foreach (var c in symbol.Keys)
-            //{
-            //    if (!symbol.ContainsKey(c))
-            //    {
-            //        symbol.Add(c, 0);
-            //    }
-            //    symbol[c]++;
-            //}
-
-            //Dictionary<char, int> countDictionary = new Dictionary<char, int>();
-
-            //foreach (var c in input.ToLower())
-            //{
-            //    if (!symbol.ContainsKey(c))
-            //    {
-            //        symbol.Add(c, 0);
-            //    }
-
-            //    symbol[c]++;
-            //}
-
-            //Dictionary<TKey, TValue> лучше всего подходит здесь, вы можете сделать это в нескольких строках следующим образом:
-
-            //Dictionary<Char, int> alphabets = new Dictionary<Char, int>();
-
-            //for (int i = 0; i < input.Length; i++)
-            //{
-            //    char character = input[i];
-            //    if (Char.IsLetter(character)) // this is important user can enter numbers as well
-            //    {
-            //        if (alphabets.ContainsKey(character)) // if letter already in increment count
-            //            alphabets[character] = alphabets[character] + 1;
-            //        else
-            //            alphabets.Add(character, 1); // else add in dictionary 
-            //    }
-            //}
-
-
-            //if (Line.Length == 0)
-            //    return 0;
-            //else
-            //{
-            //    string[] count = text.Split(new char[] { ' ', '\n', '\r', ',' }, StringSplitOptions.RemoveEmptyEntries);
-            //    int a = count.Count(); // либо count.Length
-            //}
-            return summ;
+            else
+            {
+                int[] minus = new int[s1.Length];
+                for (int k = s2.Length - 1; k >= 0; k--)
+                {
+                    int i;
+                    for (i = s1.Length - 1; i >= 0; i--)
+                    {
+                        minus[k] = Math.Abs(Convert.ToInt32(s2[k]) - Convert.ToInt32(s1[i]));
+                        k--;
+                    }
+                    if (i == 0 && k >= 0)
+                        minus[k] = Convert.ToInt32(s2[k]);
+                }
+                string result = minus.ToString();
+                result = result.TrimStart('0');
+                return result;
+            }            
         }
 
         public static void Main()
