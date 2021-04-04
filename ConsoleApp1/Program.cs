@@ -3634,37 +3634,49 @@ namespace Level1Space
     {
         public static string BigMinus(string s1, string s2)
         {
-            if (s1.Length >= s2.Length)
+            char[] s11 = s1.ToCharArray();
+            char[] s22 = s2.ToCharArray();
+            if (s11.Length >= s22.Length)
             {
-                int[] minus = new int[s1.Length];
-                for (int k = s1.Length - 1; k >= 0; k--)
+                int[] minus = new int[s11.Length];
+                int i=0;
+                for (int k = s11.Length - 1; k >= 0; k--)
                 {
-                    int i;
-                    for (i = s2.Length - 1; i >= 0; i--)
+                    if (i != -1)
                     {
-                        minus[k] = Math.Abs(Convert.ToInt32(s1[k]) - Convert.ToInt32(s2[i]));
-                        k--;
+                        for (i = s22.Length - 1; i >= 0; i--)
+                        {
+                            //minus[k] = int.TryParse(s11[k], out minus[k]);
+                            minus[k] = Math.Abs(Convert.ToInt32(s1[k].ToString()) - Convert.ToInt32(s2[i].ToString()));
+                            k--;
+                            Console.Write(minus[k] + " ");
+                        }
                     }
-                    if (i == 0 && k >= 0)
-                        minus[k] = Convert.ToInt32(s1[k]);
+                    if (i == -1 && k >= 0)
+                    {
+                        minus[k] = Convert.ToInt32(s11[k].ToString());
+                        Console.Write(minus[k] + " ");
+                    }
                 }
-                string result = minus.ToString();
+                string result = string.Join("", minus);//minus.ToString();
+                Console.WriteLine(result);
                 result = result.TrimStart('0');
+                Console.WriteLine(result);
                 return result;
             }
             else
             {
-                int[] minus = new int[s1.Length];
-                for (int k = s2.Length - 1; k >= 0; k--)
+                int[] minus = new int[s11.Length];
+                for (int k = s22.Length - 1; k >= 0; k--)
                 {
                     int i;
-                    for (i = s1.Length - 1; i >= 0; i--)
+                    for (i = s11.Length - 1; i >= 0; i--)
                     {
-                        minus[k] = Math.Abs(Convert.ToInt32(s2[k]) - Convert.ToInt32(s1[i]));
+                        minus[k] = Math.Abs(Convert.ToInt32(s22[k]) - Convert.ToInt32(s11[i]));
                         k--;
                     }
                     if (i == 0 && k >= 0)
-                        minus[k] = Convert.ToInt32(s2[k]);
+                        minus[k] = Convert.ToInt32(s22[k]);
                 }
                 string result = minus.ToString();
                 result = result.TrimStart('0');
@@ -3675,7 +3687,9 @@ namespace Level1Space
         public static void Main()
         {
             string s1 = "1234567891";
-            string s2 = "1";
+            string s2 = "543216540";
+            Console.WriteLine("Исходная строка s1 " + s1);
+            Console.WriteLine("Исходная строка s2 " + s2);
             string result = BigMinus(s1,s2);
             Console.WriteLine(result);
             Console.ReadKey();
