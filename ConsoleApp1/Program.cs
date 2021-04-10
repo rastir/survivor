@@ -3636,6 +3636,7 @@ namespace Level1Space
         {
             char[] s11 = s1.ToCharArray();
             char[] s22 = s2.ToCharArray();
+            bool Equal = false;
             if (s11.Length >= s22.Length)
             {
                 int[] minus = new int[s11.Length];
@@ -3646,23 +3647,35 @@ namespace Level1Space
                     {
                         for (i = s22.Length - 1; i >= 0; i--)
                         {
-                            //minus[k] = int.TryParse(s11[k], out minus[k]);
-                            minus[k] = Math.Abs(Convert.ToInt32(s1[k].ToString()) - Convert.ToInt32(s2[i].ToString()));
-                            k--;
-                            Console.Write(minus[k] + " ");
+                            if (Convert.ToInt32(s11[k]) != Convert.ToInt32(s22[i]))
+                                Equal = true;
+                            if (Convert.ToInt32(s11[k]) >= Convert.ToInt32(s22[i]))
+                            {
+                                minus[k] = Math.Abs(Convert.ToInt32(s11[k].ToString()) - Convert.ToInt32(s22[i].ToString()));
+                                k--;
+                            }
+                            else
+                            {
+                                s11[k - 1] = Convert.ToChar(s11[k - 1] - 1);
+                                s11[k] = Convert.ToChar(s11[k] + 10);
+                                minus[k] = Math.Abs(Convert.ToInt32(s11[k]) - Convert.ToInt32(s22[i]));
+                                k--;
+                            }
                         }
                     }
                     if (i == -1 && k >= 0)
                     {
                         minus[k] = Convert.ToInt32(s11[k].ToString());
-                        Console.Write(minus[k] + " ");
                     }
                 }
-                string result = string.Join("", minus);//minus.ToString();
-                Console.WriteLine(result);
-                result = result.TrimStart('0');
-                Console.WriteLine(result);
-                return result;
+                if (Equal == false)
+                    return "0";
+                else
+                {
+                    string result = string.Join("", minus);
+                    result = result.TrimStart('0');
+                    return result;
+                }
             }
             else
             {
@@ -3672,15 +3685,32 @@ namespace Level1Space
                     int i;
                     for (i = s11.Length - 1; i >= 0; i--)
                     {
-                        minus[k] = Math.Abs(Convert.ToInt32(s22[k]) - Convert.ToInt32(s11[i]));
-                        k--;
+                        if (Convert.ToInt32(s11[k]) != Convert.ToInt32(s22[i]))
+                            Equal = true;
+                        if (Convert.ToInt32(s22[k]) >= Convert.ToInt32(s11[i]))
+                        {
+                            minus[k] = Math.Abs(Convert.ToInt32(s22[k]) - Convert.ToInt32(s11[i]));
+                            k--;
+                        }
+                        else
+                        {
+                            s22[k - 1] = Convert.ToChar(s22[k - 1] - 1);
+                            s22[k] = Convert.ToChar(s22[k] + 10);
+                            minus[k] = Math.Abs(Convert.ToInt32(s22[k]) - Convert.ToInt32(s11[i]));
+                            k--;
+                        }
                     }
                     if (i == 0 && k >= 0)
                         minus[k] = Convert.ToInt32(s22[k]);
                 }
-                string result = minus.ToString();
-                result = result.TrimStart('0');
-                return result;
+                if (Equal == false)
+                    return "0";
+                else
+                {
+                    string result = minus.ToString();
+                    result = result.TrimStart('0');
+                    return result;
+                }
             }            
         }
 
