@@ -457,6 +457,330 @@ namespace Test_Level1
                 Console.WriteLine("TEST 4 PASSED");
             }
         }
-
+        [TestMethod]
+        [TestCategory("tests")]
+        /// <summary> Test5 - 1 </summary>
+        public void Test5()
+        {
+            try
+            {
+                string result = Level1.BigMinus("1234567891", "1");
+                Console.WriteLine("Результат " + result);
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST 5 ERROR");
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST 5 ERROR");
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
+                Console.WriteLine();
+                Console.WriteLine("Входные данные " + "1) 1234567891 " + " 2) 1");
+                Console.WriteLine("TEST 5 PASSED");
+            }
+        }
+        [TestMethod]
+        [TestCategory("tests")]
+        /// <summary> Test5 - 1 </summary>
+        public void Test6()
+        {
+            try
+            {
+                string result = Level1.BigMinus("0", "1");
+                Console.WriteLine("Результат " + result);
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST 6 ERROR");
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST 6 ERROR");
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
+                Console.WriteLine();
+                Console.WriteLine("Входные данные " + "1) 0 " + " 2) 1");
+                Console.WriteLine("TEST 6 PASSED");
+            }
+        }
+        [TestMethod]
+        [TestCategory("tests")]
+        /// <summary> Test7 - 1 </summary>
+        public void Test7()
+        {
+            try
+            {
+                string result = Level1.BigMinus("1234567890", "321");
+                Console.WriteLine("Результат " + result);
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST 7 ERROR");
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST 7 ERROR");
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
+                Console.WriteLine();
+                Console.WriteLine("Входные данные " + "1) 1234567890 " + " 2) 321");
+                Console.WriteLine("TEST 7 PASSED");
+            }
+        }
+        [TestMethod]
+        [TestCategory("tests")]
+        /// <summary> Test8 - 1 </summary>
+        public void Test8()
+        {
+            try
+            {
+                string result = Level1.BigMinus("1", "321");
+                Console.WriteLine("Результат " + result);
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST 8 ERROR");
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST 8 ERROR");
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
+                Console.WriteLine();
+                Console.WriteLine("Входные данные " + "1) 1 " + " 2) 321");
+                Console.WriteLine("TEST 8 PASSED");
+            }
+        }
+        [TestMethod]
+        [TestCategory("tests")]
+        /// <summary> Test9 - 1 </summary>
+        public void Test9()
+        {
+            try
+            {
+                string result = Level1.BigMinus("321", "1");
+                Console.WriteLine("Результат " + result);
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST 9 ERROR");
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST 9 ERROR");
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
+                Console.WriteLine();
+                Console.WriteLine("Входные данные " + "1) 321 " + " 2) 1");
+                Console.WriteLine("TEST 9 PASSED");
+            }
+        }
+        [TestMethod]
+        [TestCategory("tests")]
+        /// <summary> Test10 - 1 </summary>
+        public void Test10()
+        {
+            try
+            {
+                string result = Level1.BigMinus("0", "11");
+                Console.WriteLine("Результат " + result);
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST 10 ERROR");
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST 10 ERROR");
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
+                Console.WriteLine();
+                Console.WriteLine("Входные данные " + "1) 0 " + " 2) 11");
+                Console.WriteLine("TEST 10 PASSED");
+            }
+        }
+        [TestMethod]
+        [TestCategory("tests")]
+        /// <summary> Test11 - 1 </summary>
+        public void Test11()
+        {
+            try
+            {
+                string result = Level1.BigMinus("1", "32111");
+                Console.WriteLine("Результат " + result);
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST 11 ERROR");
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST 11 ERROR");
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
+                Console.WriteLine();
+                Console.WriteLine("Входные данные " + "1) 1 " + " 2) 32111");
+                Console.WriteLine("TEST 11 PASSED");
+            }
+        }
+        [TestMethod]
+        [TestCategory("tests")]
+        /// <summary> Test11 - 1 </summary>
+        public void Test12()
+        {
+            try
+            {
+                string result = Level1.BigMinus("112", "32111");
+                Console.WriteLine("Результат " + result);
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST 12 ERROR");
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST 12 ERROR");
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
+                Console.WriteLine();
+                Console.WriteLine("Входные данные " + "1) 112 " + " 2) 32111");
+                Console.WriteLine("TEST 12 PASSED");
+            }
+        }
+        [TestMethod]
+        [TestCategory("tests")]
+        /// <summary> Test13 - 1 </summary>
+        public void Test13()
+        {
+            try
+            {
+                string result = Level1.BigMinus("101011001", "10000000001");
+                Console.WriteLine("Результат " + result);
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST 13 ERROR");
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST 13 ERROR");
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
+                Console.WriteLine();
+                Console.WriteLine("Входные данные " + "1) 101011001 " + " 2) 10000000001");
+                Console.WriteLine("TEST 13 PASSED");
+            }
+        }
+        [TestMethod]
+        [TestCategory("tests")]
+        /// <summary> Test14 - 1 </summary>
+        public void Test14()
+        {
+            try
+            {
+                string result = Level1.BigMinus("10000000001", "101011001");
+                Console.WriteLine("Результат " + result);
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST 14 ERROR");
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST 14 ERROR");
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
+                Console.WriteLine();
+                Console.WriteLine("Входные данные " + "1) 10000000001 " + " 2) 101011001");
+                Console.WriteLine("TEST 14 PASSED");
+            }
+        }
+        [TestMethod]
+        [TestCategory("tests")]
+        /// <summary> Test15 - 1 </summary>
+        public void Test15()
+        {
+            try
+            {
+                string result = Level1.BigMinus("10001", "101");
+                Console.WriteLine("Результат " + result);
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST 15 ERROR");
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST 15 ERROR");
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
+                Console.WriteLine();
+                Console.WriteLine("Входные данные " + "1) 10001 " + " 2) 101");
+                Console.WriteLine("TEST 15 PASSED");
+            }
+        }
+        //  
+        [TestMethod]
+        [TestCategory("tests")]
+        /// <summary> Test16 - 1 </summary>
+        public void Test16()
+        {
+            try
+            {
+                string result = Level1.BigMinus("1100019", "789011");
+                Console.WriteLine("Результат " + result);
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST 16 ERROR");
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST 16 ERROR");
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
+                Console.WriteLine();
+                Console.WriteLine("Входные данные " + "1) 1100019 " + " 2) 789011");
+                Console.WriteLine("TEST 16 PASSED");
+            }
+        }
     }
 }
