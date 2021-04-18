@@ -3628,200 +3628,298 @@ BigMinus("1234567891", "1") = "1234567890"
 BigMinus("1", "321") = "320" 
 */
 #region Попытка №1 с выводом
+//namespace Level1Space
+//{
+//    public static class Level1
+//    {
+//        public static string BigMinus(string s1, string s2)
+//        {
+//            char[] s11 = s1.ToCharArray();
+//            char[] s22 = s2.ToCharArray();
+//            int equal = 0; //1- первое число больше, 2- равны, 3 - второе число больше
+//            bool minusedinica = false;
+//            if (s11.Length == s22.Length)
+//            {
+//                for (int k = 0; k < s11.Length; k++)
+//                {
+//                    for (int i = 0; i < s22.Length; i++)
+//                    {
+//                        if (Convert.ToInt32(s11[k]) > Convert.ToInt32(s22[i]))
+//                        {
+//                            equal = 1;
+//                            break;
+//                        }
+//                        else if (Convert.ToInt32(s11[k]) < Convert.ToInt32(s22[i]))
+//                        {
+//                            equal = 3;
+//                            break;
+//                        }
+//                        else if (Convert.ToInt32(s11[k]) == Convert.ToInt32(s22[i]))
+//                        {
+//                            if (k == s11.Length - 1)
+//                                equal = 2;
+//                            else
+//                                k++;
+//                        }
+//                    }
+//                    if (equal != 0)
+//                        break;
+//                }
+//            }
+//            else if (s11.Length > s22.Length)
+//                equal = 1;
+//            else if (s11.Length < s22.Length)
+//                equal = 3;
+//            if (equal == 2)
+//                return "0";
+//            else if (equal == 1)
+//            {
+//                int[] minus = new int[s11.Length];
+//                int i = 0;
+//                for (int k = s11.Length - 1; k >= 0; k--)
+//                {
+//                    if (i != -1)
+//                    {
+//                        for (i = s22.Length - 1; i >= 0; i--)
+//                        {
+//                            if (Convert.ToInt32(s11[k].ToString()) >= Convert.ToInt32(s22[i].ToString()))
+//                            {
+//                                if (minusedinica == true) 
+//                                {
+//                                    if (Convert.ToInt32(s11[k - 1].ToString()) > 0)
+//                                    {
+//                                        s11[k - 1] = Convert.ToChar(s11[k - 1] - 1);
+//                                        minusedinica = false;
+//                                    }
+//                                    else
+//                                    {
+//                                        s11[k - 1] = Convert.ToChar("9");
+//                                        minusedinica = true;
+//                                    }
+//                                }
+//                                minus[k] = Math.Abs(Convert.ToInt32(s11[k]) - Convert.ToInt32(s22[i]));
+//                                if (k > 0)
+//                                    k--;
+//                                else
+//                                    break;
+//                            }
+//                            else
+//                            {
+//                                if (Convert.ToInt32(s11[k - 1].ToString()) > 0)
+//                                {
+//                                    s11[k - 1] = Convert.ToChar(s11[k - 1] - 1);
+//                                    if (Convert.ToInt32(s11[k - 1].ToString()) == 0)
+//                                        minusedinica = true;
+//                                    else
+//                                        minusedinica = false;
+//                                }
+//                                else
+//                                {
+//                                    s11[k - 1] = Convert.ToChar("9");
+//                                    minusedinica = true;
+//                                }
+//                                s11[k] = Convert.ToChar(s11[k] + 10);
+//                                minus[k] = Math.Abs(Convert.ToInt32(s11[k]) - Convert.ToInt32(s22[i]));
+//                                k--;
+//                            }
+//                        }
+//                    }
+//                    if (i == -1 && k >= 0)
+//                    {
+//                        if (minusedinica == true && k > 0)
+//                        {
+//                            if (Convert.ToInt32(s11[k - 1].ToString()) > 0)
+//                            {
+//                                s11[k - 1] = Convert.ToChar(s11[k - 1] - 1);
+//                                minusedinica = false;
+//                            }
+//                        }
+//                        minus[k] = Convert.ToInt32(s11[k].ToString());
+//                    }
+//                }
+//                string result = string.Join("", minus);
+//                result = result.TrimStart('0');
+//                return result;
+//            }
+//            else if (equal == 3)
+//            {
+//                int[] minus = new int[s22.Length];
+//                int i = 0;
+//                for (int k = s22.Length - 1; k >= 0; k--)
+//                {
+//                    if (i >= 0)
+//                    {
+//                        for (i = s11.Length - 1; i >= 0; i--)
+//                        {
+//                            if (Convert.ToInt32(s22[k].ToString()) >= Convert.ToInt32(s11[i].ToString()))
+//                            {
+//                                if (minusedinica == true)
+//                                {
+//                                    if (Convert.ToInt32(s22[k - 1].ToString()) > 0)
+//                                    {
+//                                        s22[k - 1] = Convert.ToChar(s22[k - 1] - 1);
+//                                        minusedinica = false;
+//                                    }
+//                                    else
+//                                    {
+//                                        s22[k - 1] = Convert.ToChar("9");
+//                                        minusedinica = true;
+//                                    }
+//                                }
+//                                minus[k] = Math.Abs(Convert.ToInt32(s22[k]) - Convert.ToInt32(s11[i]));
+//                                if (k > 0)
+//                                    k--;
+//                                else
+//                                    break;
+//                            }
+//                            else
+//                            {
+//                                if (Convert.ToInt32(s22[k-1].ToString()) > 0)
+//                                {
+//                                    s22[k - 1] = Convert.ToChar(s22[k - 1] - 1);
+//                                    if (Convert.ToInt32(s22[k - 1].ToString()) == 0)
+//                                        minusedinica = true;
+//                                    else
+//                                        minusedinica = false;
+//                                }
+//                                else
+//                                {
+//                                    s22[k - 1] = Convert.ToChar("9");
+//                                    minusedinica = true;
+//                                }
+//                                s22[k] = Convert.ToChar(s22[k] + 10);
+//                                minus[k] = Math.Abs(Convert.ToInt32(s22[k]) - Convert.ToInt32(s11[i]));
+//                                k--;
+//                            }
+//                        }
+//                    }
+//                    if (i == -1 && k >= 0)
+//                    {
+//                        if (minusedinica == true && k > 0)
+//                        {
+//                            if (Convert.ToInt32(s22[k - 1].ToString()) > 0)
+//                            {
+//                                s22[k - 1] = Convert.ToChar(s22[k - 1] - 1);
+//                                minusedinica = false;
+//                            }
+//                        }
+//                        minus[k] = Convert.ToInt32(s22[k].ToString());
+//                    }
+//                }
+//                string result = string.Join("", minus);
+//                result = result.TrimStart('0');
+//                return result;
+//            }
+//            else
+//                return "0";
+//        }
+
+//        public static void Main()
+//        {
+//            string s1 = "10000000001";
+//            string s2 = "101011001";
+//            Console.WriteLine("Исходная строка s1 " + s1);
+//            Console.WriteLine("Исходная строка s2 " + s2);
+//            string result = BigMinus(s1,s2);
+//            Console.WriteLine(result);
+//            Console.ReadKey();
+//        }
+//    }
+//}
+#endregion
+
+/*-------------------------------------------------------------------------------------------------------------------------------------------------*/
+//Задача №12 "146%"
+/*Условие задачи
+ * 
+  Поступил крупный заказ на автоматизацию процесса подсчёта результатов выборов.
+
+В систему поступает количество голосов, отданных за каждого из кандидатов. Она должна обработать их и определить один из трёх вариантов результата:
+- победитель, набравший больше всех голосов и при этом более 50% голосов;
+- победитель, набравший больше всех голосов и при этом менее или ровно 50% голосов;
+- перевыборы (выявлено несколько победителей с одинаковым количеством голосов).
+Например, список голосов, отданных за пятерых кандидатов, первый случай:
+60, 10, 10, 15, 5. Победил первый кандидат с результатом 60%.
+Cписок голосов, отданных за трёх кандидатов, второй случай:
+10, 15, 10. Победил второй кандидат с результатом 42.85%.
+Перевыборы, четыре кандидата: 111, 111, 110, 110
+Точность результата округляется до трёх знаков после запятой.
+
+Функция
+string MassVote(int N, int [] Votes)
+получает на вход количество кандидатов N >= 1 и массив, содержащий N голосов, отданных за соответствующих кандидатов.
+На выходе формируется строка в одном из трёх форматов:
+1) "majority winner K" если имеется победитель с номером K (начиная с 1), набравший более 50% голосов. Для случая 60, 10, 10, 15, 5 строка примет вид
+majority winner 1
+2) "minority winner K" если имеется победитель с номером K (начиная с 1), набравший менее 50% голосов. Для случая 10, 15, 10 строка примет вид
+minority winner 2
+3) "no winner" если победителя не выявлено. 
+*/
+/*Алгоритм
+ * 1. Ищем максимальное значение
+ * 2. Посчитать кол-во элементов равных максимальному, если более 1 то "no winner"
+ * 2. Ищем одинаковые значения, если они есть приостаналиваем цикл и возвращаем "no winner"
+ * 2. Если нет одинаковых значений, то находим максимальный по значению элемент и рассчитываем его процент от общего кол-ва полученных голосов
+ * если процент более 50% выводим "majority winner k" где к - номер элемента в массиве, иначе "majority winner k"
+ * процент округляем до трех знаков после запятой
+ */
+#region Попытка №1 с выводом
 namespace Level1Space
 {
     public static class Level1
     {
-        public static string BigMinus(string s1, string s2)
+        public static string MassVote(int N, int[] Votes)
         {
-            char[] s11 = s1.ToCharArray();
-            char[] s22 = s2.ToCharArray();
-            int equal = 0; //1- первое число больше, 2- равны, 3 - второе число больше
-            bool minusedinica = false;
-            if (s11.Length == s22.Length)
+            int max = Votes[0];
+            int x=0;
+            for (int i = 0; i < Votes.Length; i++)
             {
-                for (int k = 0; k < s11.Length; k++)
+                if (Votes[i] > max)
                 {
-                    for (int i = 0; i < s22.Length; i++)
-                    {
-                        if (Convert.ToInt32(s11[k]) > Convert.ToInt32(s22[i]))
-                        {
-                            equal = 1;
-                            break;
-                        }
-                        else if (Convert.ToInt32(s11[k]) < Convert.ToInt32(s22[i]))
-                        {
-                            equal = 3;
-                            break;
-                        }
-                        else if (Convert.ToInt32(s11[k]) == Convert.ToInt32(s22[i]))
-                        {
-                            if (k == s11.Length - 1)
-                                equal = 2;
-                            else
-                                k++;
-                        }
-                    }
-                    if (equal != 0)
-                        break;
+                    max = Votes[i];
+                    x = i;
                 }
             }
-            else if (s11.Length > s22.Length)
-                equal = 1;
-            else if (s11.Length < s22.Length)
-                equal = 3;
-            if (equal == 2)
-                return "0";
-            else if (equal == 1)
+            x++;
+            int k = 0;
+            for (int i = 0; i < Votes.Length; i++)
             {
-                int[] minus = new int[s11.Length];
-                int i = 0;
-                for (int k = s11.Length - 1; k >= 0; k--)
-                {
-                    if (i != -1)
-                    {
-                        for (i = s22.Length - 1; i >= 0; i--)
-                        {
-                            if (Convert.ToInt32(s11[k].ToString()) >= Convert.ToInt32(s22[i].ToString()))
-                            {
-                                if (minusedinica == true) 
-                                {
-                                    if (Convert.ToInt32(s11[k - 1].ToString()) > 0)
-                                    {
-                                        s11[k - 1] = Convert.ToChar(s11[k - 1] - 1);
-                                        minusedinica = false;
-                                    }
-                                    else
-                                    {
-                                        s11[k - 1] = Convert.ToChar("9");
-                                        minusedinica = true;
-                                    }
-                                }
-                                minus[k] = Math.Abs(Convert.ToInt32(s11[k]) - Convert.ToInt32(s22[i]));
-                                if (k > 0)
-                                    k--;
-                                else
-                                    break;
-                            }
-                            else
-                            {
-                                if (Convert.ToInt32(s11[k - 1].ToString()) > 0)
-                                {
-                                    s11[k - 1] = Convert.ToChar(s11[k - 1] - 1);
-                                    if (Convert.ToInt32(s11[k - 1].ToString()) == 0)
-                                        minusedinica = true;
-                                    else
-                                        minusedinica = false;
-                                }
-                                else
-                                {
-                                    s11[k - 1] = Convert.ToChar("9");
-                                    minusedinica = true;
-                                }
-                                s11[k] = Convert.ToChar(s11[k] + 10);
-                                minus[k] = Math.Abs(Convert.ToInt32(s11[k]) - Convert.ToInt32(s22[i]));
-                                k--;
-                            }
-                        }
-                    }
-                    if (i == -1 && k >= 0)
-                    {
-                        if (minusedinica == true && k > 0)
-                        {
-                            if (Convert.ToInt32(s11[k - 1].ToString()) > 0)
-                            {
-                                s11[k - 1] = Convert.ToChar(s11[k - 1] - 1);
-                                minusedinica = false;
-                            }
-                        }
-                        minus[k] = Convert.ToInt32(s11[k].ToString());
-                    }
-                }
-                string result = string.Join("", minus);
-                result = result.TrimStart('0');
-                return result;
+                if (Votes[i] == max)
+                    k++;  
             }
-            else if (equal == 3)
-            {
-                int[] minus = new int[s22.Length];
-                int i = 0;
-                for (int k = s22.Length - 1; k >= 0; k--)
-                {
-                    if (i >= 0)
-                    {
-                        for (i = s11.Length - 1; i >= 0; i--)
-                        {
-                            if (Convert.ToInt32(s22[k].ToString()) >= Convert.ToInt32(s11[i].ToString()))
-                            {
-                                if (minusedinica == true)
-                                {
-                                    if (Convert.ToInt32(s22[k - 1].ToString()) > 0)
-                                    {
-                                        s22[k - 1] = Convert.ToChar(s22[k - 1] - 1);
-                                        minusedinica = false;
-                                    }
-                                    else
-                                    {
-                                        s22[k - 1] = Convert.ToChar("9");
-                                        minusedinica = true;
-                                    }
-                                }
-                                minus[k] = Math.Abs(Convert.ToInt32(s22[k]) - Convert.ToInt32(s11[i]));
-                                if (k > 0)
-                                    k--;
-                                else
-                                    break;
-                            }
-                            else
-                            {
-                                if (Convert.ToInt32(s22[k-1].ToString()) > 0)
-                                {
-                                    s22[k - 1] = Convert.ToChar(s22[k - 1] - 1);
-                                    if (Convert.ToInt32(s22[k - 1].ToString()) == 0)
-                                        minusedinica = true;
-                                    else
-                                        minusedinica = false;
-                                }
-                                else
-                                {
-                                    s22[k - 1] = Convert.ToChar("9");
-                                    minusedinica = true;
-                                }
-                                s22[k] = Convert.ToChar(s22[k] + 10);
-                                minus[k] = Math.Abs(Convert.ToInt32(s22[k]) - Convert.ToInt32(s11[i]));
-                                k--;
-                            }
-                        }
-                    }
-                    if (i == -1 && k >= 0)
-                    {
-                        if (minusedinica == true && k > 0)
-                        {
-                            if (Convert.ToInt32(s22[k - 1].ToString()) > 0)
-                            {
-                                s22[k - 1] = Convert.ToChar(s22[k - 1] - 1);
-                                minusedinica = false;
-                            }
-                        }
-                        minus[k] = Convert.ToInt32(s22[k].ToString());
-                    }
-                }
-                string result = string.Join("", minus);
-                result = result.TrimStart('0');
-                return result;
-            }
+            if (k > 1)
+                return "no winner";
             else
-                return "0";
+            {
+                int summ = 0;
+                for (int i=0; i < Votes.Length; i++)
+                {
+                    summ += Votes[i];
+                }
+                double summ3 = Convert.ToDouble(summ);
+                double max2 = Convert.ToDouble(max);
+                double summ2;
+                summ2 = (double)(100 * max2 / summ3);
+                summ2 = Math.Round(summ2, 3);
+                if (summ2 > 50)
+                    return $"majority winner {x}";
+                else
+                    return $"minority winner {x}";
+            }
         }
 
         public static void Main()
         {
-            string s1 = "10000000001";
-            string s2 = "101011001";
-            Console.WriteLine("Исходная строка s1 " + s1);
-            Console.WriteLine("Исходная строка s2 " + s2);
-            string result = BigMinus(s1,s2);
-            Console.WriteLine(result);
+            int N = 2;
+            int[] Votes = { 100,99 };
+            Console.WriteLine("Кол-во кандидатов " + N);
+            Console.WriteLine("Исходный массив ");
+            for (int i=0; i < Votes.Length; i++)
+            {
+                Console.Write(" " + Votes[i]);
+            }
+            Console.WriteLine();
+            Console.WriteLine("Результат- "+MassVote(N,Votes));
             Console.ReadKey();
         }
     }
