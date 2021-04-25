@@ -4033,54 +4033,292 @@ int [] UFO(int N, int [] data, bool octal)
 //    }
 //}
 #endregion
-#region Попытка №2 без вывода
+#region Попытка №2 без вывода успешно 25.04.2021
+//namespace Level1Space
+//{
+//    public static class Level1
+//    {
+//        public static int[] UFO(int N, int[] data, bool octal)
+//        {
+//            int notation;
+//            if (octal == true)
+//                notation = 8;
+//            else
+//                notation = 16;
+//            string[] stringData = new string[N];
+//            int counter = 0;
+//            int[] result = new int[N];
+
+//            for (int i = 0; i < N; i++)
+//            {
+//                stringData[counter] = data[i].ToString();
+//                char[] charArray = stringData[counter].ToCharArray();
+//                int k = 0;
+
+//                for (int j = charArray.Length - 1; j > -1; j--)
+//                {
+//                    int numeral = int.Parse(charArray[j].ToString());
+//                    result[i] += (int)(numeral * Math.Pow(notation, k));
+//                    k++;
+//                }
+//            }
+//            return result;
+//        }
+
+//        public static void Main()
+//        {
+//            int N = 1;
+//            int[] data = { 214747 };
+//            bool octal = false; //16
+//            Console.WriteLine("Длина траффика " + N);
+//            Console.WriteLine("Исходный массив ");
+//            for (int i = 0; i < data.Length; i++)
+//            {
+//                Console.Write(" " + data[i]);
+//            }
+//            Console.WriteLine();
+//            for (int i = 0; i < N; i++)
+//            {
+//                Console.WriteLine("Результат{0}- " + UFO(N, data, octal)[i] + " ", i + 1);
+//            }
+//            Console.ReadKey();
+//        }
+//    }
+//}
+#endregion
+
+/*-------------------------------------------------------------------------------------------------------------------------------------------------*/
+//Задача №14 "Оптимизация беспилотного трафика"
+/*Условие задачи
+ * 
+ Яндекс выпускает на улицы тысячи беспилотных автомобилей, и теперь появляется отличная возможность оптимизации трафика на дорогах. Прежде всего требуется точно оценить время прибытия машины в место назначения.
+На дороге автомобиль постоянно встречает светофоры, которые горят либо зелёным, либо красным. Время горения зелёного и красного света задаётся в секундах. Цикл переключения цветов повторяется бесконечно и начинается с красного цвета.
+Так как скорость автомобиля известна, положения светофоров на дороге определяются временем, которое требуется, чтобы доехать до этого светофора из начала дороги при условии, что все предыдущие светофоры горят зелёным.
+Каждый светофор также характеризуется временем горения красного и зелёного цвета.
+Задача -- определить, за какое время автомобиль доберётся до конца дороги.
+Например, имеется дорога длиной 10 единиц времени. Первый светофор расположен на отметке 3 единицы времени и характеризуется циклом 5 красный 5 зелёный. Второй светофор расположен на отметке 5, и время показа красного и зелёного для него 2 и 2.
+Автомобиль стартует, через 3 единицы добирается до первого светофора, на котором горит красный. Он горит 5 единиц, то есть движение начинается с 5-го момента.
+Через две единицы автомобиль добирается до второго светофора -- это абсолютный момент 7. В этот момент на светофоре горит зелёный, и автомобиль проезжает его без остановки. От второго светофора до конца дороги остаётся ещё 5 моментов, таким образом суммарное время автомобиля в пути равно 12 (7 + 5).
+
+Функция
+
+int Unmanned(int L, int N, int [][3] track)
+
+получает на вход длину L дороги, количество светофоров на ней N, и описание самой дороги, где каждый элемент состоит из трёх значений: момент времени относительно начала дороги (когда в него прибудет автомобиль по свободной дороге), время показа красного света и время показа зелёного цвета.
+Для примера выше параметры функции Unmanned() будут такими: 10, 2, [ [3,5,5], [5,2,2] ]
+Функция возвращает реальное время, требуемое для преодоления дороги. 
+ */
+/* АЛгоритм
+1. Сортируем массивы внутри большого массива, т.к. в задаче не сказано про порядок перечисления массивов внутри большого массива. При этом нам надо расположить светофоры в правильном порядке
+2. 
+ */
+#region Попытка №1 с выводом
+//namespace Level1Space
+//{
+//    public static class Level1
+//    {
+//        public static int Unmanned(int L, int N, int [][] track)
+//        {
+//            //int tp = 0;
+//            int tabs = 0;
+//            int ts = 0;
+//            bool trafficLight = false; //false - красный (был зеленый) светофор, true -зеленый (был красный) светофор
+
+//            ///< summary > сортировка массива массивов < /summary >
+//            int[] temp = new int[3];
+//            for (int m = 0; m < track.Length-1; m++)
+//            {
+//                if (track[m][0] > track[m + 1][0])
+//                {
+//                    Array.Copy(track[m],temp,3);
+//                    //temp[m] = track[m][3];
+//                    Array.Copy(track[m + 1], track[m], 3);
+//                    Array.Copy(temp, track[m + 1], 3);
+//                }
+//            }
+
+//            ///< summary > печатаем для проверки < /summary >
+//            for (int m = 0; m < track.Length; m++)
+//            {
+//                Console.WriteLine("Массив №{0} ", m + 1);
+
+//                for (int i = 0; i < track[m].Length; i++)
+//                    Console.Write("\t\t " + track[m][i]);
+//                Console.WriteLine();
+//            }
+//            Console.WriteLine();
+
+//            ///< summary > идем по массивам внутри большого массива < /summary >
+//            for (int m = 0; m < track.Length; m++)
+//            {
+//                //tp += track[m][0] - tabs;
+//                tabs = tabs + (track[m][0] - tabs) + ts;
+//                ts = 0;
+//                int summa = 0; 
+
+//                ///<summary> вычисляем красный или зеленый </summary>
+//                while (summa < tabs) 
+//                {
+//                    summa += track[m][1];
+//                    trafficLight = true;
+//                    if (summa >= tabs)
+//                        break;
+//                    else
+//                    {
+//                        summa += track[m][2];
+//                        trafficLight = false;
+//                    }
+//                    if (summa >= tabs)
+//                        break;
+//                }
+
+//                if (trafficLight == true)//светофор был красный считаем время остановки
+//                {
+//                    ts += summa - tabs; //считаем время остановки
+//                    if (m + 1 == track.Length) //если светофор последний
+//                    {
+//                        tabs += (L - tabs) + ts; //считаем время с остановкой
+//                    }
+//                }
+//                else if (trafficLight == false) //светофор был зеленый переходим к следующему
+//                {
+//                    //tp += summa - tabs;
+//                    if (m + 1 == track.Length) //если светофор последний
+//                    {
+//                        tabs += L - track[m][0]; //прибавляем разницу между длиной дороги и последним светофором
+//                    }
+//                }
+//                //else if (trafficLight == false) //светофор был зеленый переходим к следующему
+//            }
+//            if (tabs < L)
+//                tabs += L - tabs;
+//            //tabs += ts;
+//            //result = tp + ts;
+//            return tabs;
+//        }
+
+//        public static void Main()
+//        {
+//            int L = 10;
+//            int N = 1;
+//            int[][] track = new int[1][];
+//            //track[0] = new[] {3,5,5};
+//            track[0] = new[] {5,2,2};
+//            Console.WriteLine("О "+track[0]);
+//            Console.WriteLine("Длина дороги {0}; Кол-во светофоров {1} ",L,N);
+//            Console.WriteLine("ОПисание дороги ");
+//            for (int m = 0; m < track.Length; m++)
+//            {
+//                Console.WriteLine("Массив №{0} ",m+1);
+
+//                for (int i = 0; i < track[m].Length; i++)
+//                    Console.Write("\t\t " + track[m][i]);
+//                Console.WriteLine();
+//            }
+//            Console.WriteLine();
+//            Console.WriteLine("Результат- " + Unmanned(L,N,track));
+//            Console.ReadKey();
+//        }
+//    }
+//}
+#endregion
+#region Попытка №2 без вывода - ошибка Тест закончился ошибкой:
+//Unmanned(10, 2, [[11, 5, 5],[15, 2, 2]]) = 10, попытка №3 26.04.2021
 namespace Level1Space
 {
     public static class Level1
     {
-        public static int[] UFO(int N, int[] data, bool octal)
+        public static int Unmanned(int L, int N, int[][] track)
         {
-            int notation;
-            if (octal == true)
-                notation = 8;
-            else
-                notation = 16;
-            string[] stringData = new string[N];
-            int counter = 0;
-            int[] result = new int[N];
+            int tabs = 0; //абсолютное время 
+            int ts = 0; //время стоянки
+            bool trafficLight = false; //- красный/зеленый светофор на пути
+            bool trafficLightOutside = true; //дорога без светофоров
 
-            for (int i = 0; i < N; i++)
+            int[] temp = new int[3];
+
+            if (track[0][0] <= L)
+                trafficLightOutside = false;
+
+            for (int m = 0; m < track.Length - 1; m++)
             {
-                stringData[counter] = data[i].ToString();
-                char[] charArray = stringData[counter].ToCharArray();
-                int k = 0;
-
-                for (int j = charArray.Length - 1; j > -1; j--)
+                if (track[m][0] > track[m + 1][0])
                 {
-                    int numeral = int.Parse(charArray[j].ToString());
-                    result[i] += (int)(numeral * Math.Pow(notation, k));
-                    k++;
+                    Array.Copy(track[m], temp, 3);
+                    Array.Copy(track[m + 1], track[m], 3);
+                    Array.Copy(temp, track[m + 1], 3);
                 }
+                if (track[m][0] <= L)
+                    trafficLightOutside = false;
             }
-            return result;
+
+            if (trafficLightOutside == false)
+            {
+                for (int m = 0; m < track.Length; m++)
+                {
+                    tabs = tabs + (track[m][0] - tabs) + ts;
+                    ts = 0;
+                    int summa = 0;
+
+                    while (summa < tabs)
+                    {
+                        summa += track[m][1];
+                        trafficLight = true;
+                        if (summa >= tabs)
+                            break;
+                        else
+                        {
+                            summa += track[m][2];
+                            trafficLight = false;
+                        }
+                        if (summa >= tabs)
+                            break;
+                    }
+
+                    if (trafficLight == true)
+                    {
+                        ts += summa - tabs;
+                        if (m + 1 == track.Length)
+                        {
+                            tabs += (L - tabs) + ts;
+                        }
+                    }
+                    else if (trafficLight == false)
+                    {
+                        if (m + 1 == track.Length)
+                        {
+                            tabs += L - track[m][0];
+                        }
+                    }
+                }
+                if (tabs < L)
+                    tabs += L - tabs;
+                return tabs;
+            }
+            else
+                return L;
         }
 
         public static void Main()
         {
+            int L = 10;
             int N = 1;
-            int[] data = { 214747 };
-            bool octal = false; //16
-            Console.WriteLine("Длина траффика " + N);
-            Console.WriteLine("Исходный массив ");
-            for (int i = 0; i < data.Length; i++)
+            int[][] track = new int[1][];
+            track[0] = new[] {3,5,5};
+            //track[0] = new[] { 5, 2, 2 };
+            Console.WriteLine("О " + track[0]);
+            Console.WriteLine("Длина дороги {0}; Кол-во светофоров {1} ", L, N);
+            Console.WriteLine("ОПисание дороги ");
+            for (int m = 0; m < track.Length; m++)
             {
-                Console.Write(" " + data[i]);
+                Console.WriteLine("Массив №{0} ", m + 1);
+
+                for (int i = 0; i < track[m].Length; i++)
+                    Console.Write("\t\t " + track[m][i]);
+                Console.WriteLine();
             }
             Console.WriteLine();
-            for (int i = 0; i < N; i++)
-            {
-                Console.WriteLine("Результат{0}- " + UFO(N, data, octal)[i] + " ", i + 1);
-            }
+            Console.WriteLine("Результат- " + Unmanned(L, N, track));
             Console.ReadKey();
         }
     }

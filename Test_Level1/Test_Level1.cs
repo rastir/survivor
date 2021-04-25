@@ -993,229 +993,532 @@ namespace Test_Level1
     ///Тесты для задания №13 "Сигналы НЛО"
     /// </summary>
     #region
+    //public class Test_Level1
+    //{
+    //    [TestMethod]
+    //    [TestCategory("tests")]
+    //    public void Test1()
+    //    {
+    //        try
+    //        {
+    //            int N = 2;
+    //            int[] data = { 1234, 1777 };
+    //            bool octal = true; //8
+
+    //            for (int i = 0; i < N; i++)
+    //            {
+    //                Console.WriteLine("Результат{0}- " + Level1.UFO(N, data, octal)[i] + " ", i + 1);
+    //            }                
+    //        }
+    //        catch (IndexOutOfRangeException e)
+    //        {
+    //            Console.WriteLine(e.Message + "TEST 1 ERROR");
+    //            throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+    //        }
+    //        catch (NullReferenceException e)
+    //        {
+    //            Console.WriteLine(e.Message + "TEST 1 ERROR");
+    //            throw new ArgumentNullException("parameter is null.", e);
+    //        }
+    //        finally
+    //        {
+    //            int N = 2;
+    //            int[] data = { 1234, 1777 };
+    //            bool octal = true; //8
+    //            Console.WriteLine("Система: {0}" + "--" + "Длина траффика " + N + "---------" + "Исходный массив ",octal);
+    //            for (int i = 0; i < data.Length; i++)
+    //            {
+    //                Console.Write(" " + data[i]);
+    //            }
+    //            Console.WriteLine();
+    //            Console.WriteLine("TEST 1 PASSED");
+    //        }
+    //    }
+    //    [TestMethod]
+    //    [TestCategory("tests")]
+    //    public void Test2()
+    //    {
+    //        try
+    //        {
+    //            int N = 2;
+    //            int[] data = { 1234, 1777 };
+    //            bool octal = false; //16
+
+    //            for (int i = 0; i < N; i++)
+    //            {
+    //                Console.WriteLine("Результат{0}- " + Level1.UFO(N, data, octal)[i] + " ", i + 1);
+    //            }
+    //        }
+    //        catch (IndexOutOfRangeException e)
+    //        {
+    //            Console.WriteLine(e.Message + "TEST 2 ERROR");
+    //            throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+    //        }
+    //        catch (NullReferenceException e)
+    //        {
+    //            Console.WriteLine(e.Message + "TEST 2 ERROR");
+    //            throw new ArgumentNullException("parameter is null.", e);
+    //        }
+    //        finally
+    //        {
+    //            int N = 2;
+    //            int[] data = { 1234, 1777 };
+    //            bool octal = false; //166
+    //            Console.WriteLine("Система: {0}"+"--"+"Длина траффика " + N+ "---------"+"Исходный массив ",octal);
+    //            for (int i = 0; i < data.Length; i++)
+    //            {
+    //                Console.Write(" " + data[i]);
+    //            }
+    //            Console.WriteLine();
+    //            Console.WriteLine("TEST 2 PASSED");
+    //        }
+    //    }
+    //    [TestMethod]
+    //    [TestCategory("tests")]
+    //    public void Test3()
+    //    {
+    //        int N = 1;
+    //        int[] data = { 1234 };
+    //        bool octal = true; //8
+    //        try
+    //        {
+    //            for (int i = 0; i < N; i++)
+    //            {
+    //                Console.WriteLine("Результат{0}- " + Level1.UFO(N, data, octal)[i] + " ", i + 1);
+    //            }
+    //        }
+    //        catch (IndexOutOfRangeException e)
+    //        {
+    //            Console.WriteLine(e.Message + "TEST 3 ERROR");
+    //            throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+    //        }
+    //        catch (NullReferenceException e)
+    //        {
+    //            Console.WriteLine(e.Message + "TEST 3 ERROR");
+    //            throw new ArgumentNullException("parameter is null.", e);
+    //        }
+    //        finally
+    //        {
+    //            Console.WriteLine("Система: {0}" + "--" + "Длина траффика " + N + "---------" + "Исходный массив ", octal);
+    //            for (int i = 0; i < data.Length; i++)
+    //            {
+    //                Console.Write(" " + data[i]);
+    //            }
+    //            Console.WriteLine();
+    //            Console.WriteLine("TEST 3 PASSED");
+    //        }
+    //    }
+    //    [TestMethod]
+    //    [TestCategory("tests")]
+    //    public void Test4()
+    //    {
+    //        int k = 4;//номер теста
+    //        int N = 1;
+    //        int[] data = { 1234 };
+    //        bool octal = false; //16
+    //        try
+    //        {
+    //            for (int i = 0; i < N; i++)
+    //            {
+    //                Console.WriteLine("Результат{0}- " + Level1.UFO(N, data, octal)[i] + " ", i + 1);
+    //            }
+    //        }
+    //        catch (IndexOutOfRangeException e)
+    //        {
+    //            Console.WriteLine(e.Message + "TEST {0} ERROR",k);
+    //            throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+    //        }
+    //        catch (NullReferenceException e)
+    //        {
+    //            Console.WriteLine(e.Message + "TEST {0} ERROR",k);
+    //            throw new ArgumentNullException("parameter is null.", e);
+    //        }
+    //        finally
+    //        {
+    //            Console.WriteLine("Система: {0}" + "--" + "Длина траффика " + N + "---------" + "Исходный массив ", octal);
+    //            for (int i = 0; i < data.Length; i++)
+    //            {
+    //                Console.Write(" " + data[i]);
+    //            }
+    //            Console.WriteLine();
+    //            Console.WriteLine("TEST {0} PASSED",k);
+    //        }
+    //    }
+    //    [TestMethod]
+    //    [TestCategory("tests")]
+    //    public void Test5()
+    //    {
+    //        int k = 5;//номер теста
+    //        int N = 1;
+    //        int[] data = { 2147473647 };
+    //        bool octal = true; //8
+    //        try
+    //        {
+    //            for (int i = 0; i < N; i++)
+    //            {
+    //                Console.WriteLine("Результат{0}- " + Level1.UFO(N, data, octal)[i] + " ", i + 1);
+    //            }
+    //        }
+    //        catch (IndexOutOfRangeException e)
+    //        {
+    //            Console.WriteLine(e.Message + "TEST {0} ERROR", k);
+    //            throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+    //        }
+    //        catch (NullReferenceException e)
+    //        {
+    //            Console.WriteLine(e.Message + "TEST {0} ERROR", k);
+    //            throw new ArgumentNullException("parameter is null.", e);
+    //        }
+    //        finally
+    //        {
+    //            Console.WriteLine("Система: {0}" + "--" + "Длина траффика " + N + "---------" + "Исходный массив ", octal);
+    //            for (int i = 0; i < data.Length; i++)
+    //            {
+    //                Console.Write(" " + data[i]);
+    //            }
+    //            Console.WriteLine();
+    //            Console.WriteLine("TEST {0} PASSED", k);
+    //        }
+    //    }
+    //    [TestMethod]
+    //    [TestCategory("tests")]
+    //    public void Test6()
+    //    {
+    //        int k = 6;//номер теста
+    //        int N = 1;
+    //        int[] data = { 2147473647 };
+    //        bool octal = false; //16
+    //        try
+    //        {
+    //            for (int i = 0; i < N; i++)
+    //            {
+    //                Console.WriteLine("Результат{0}- " + Level1.UFO(N, data, octal)[i] + " ", i + 1);
+    //            }
+    //        }
+    //        catch (IndexOutOfRangeException e)
+    //        {
+    //            Console.WriteLine(e.Message + "TEST {0} ERROR", k);
+    //            throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+    //        }
+    //        catch (NullReferenceException e)
+    //        {
+    //            Console.WriteLine(e.Message + "TEST {0} ERROR", k);
+    //            throw new ArgumentNullException("parameter is null.", e);
+    //        }
+    //        finally
+    //        {
+    //            Console.WriteLine("Система: {0}" + "--" + "Длина траффика " + N + "---------" + "Исходный массив ", octal);
+    //            for (int i = 0; i < data.Length; i++)
+    //            {
+    //                Console.Write(" " + data[i]);
+    //            }
+    //            Console.WriteLine();
+    //            Console.WriteLine("TEST {0} PASSED", k);
+    //        }
+    //    }
+    #endregion
+    //}
+    //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    ///<summary> 
+    ///Тесты для задания №14 "Оптимизация беспилотного трафика"
+    /// </summary>
+    #region
     public class Test_Level1
     {
         [TestMethod]
         [TestCategory("tests")]
         public void Test1()
         {
+            int number = 1;
+
+            int L = 10;
+            int N = 2;
+            int[][] track = new int[2][];
+            track[1] = new[] { 3, 5, 5 };
+            track[0] = new[] { 5, 2, 2 };
+
             try
             {
-                int N = 2;
-                int[] data = { 1234, 1777 };
-                bool octal = true; //8
-
-                for (int i = 0; i < N; i++)
+                Console.WriteLine("Длина дороги {0}; Кол-во светофоров {1} ", L, N);
+                Console.WriteLine("ОПисание дороги ");
+                for (int m = 0; m < track.Length; m++)
                 {
-                    Console.WriteLine("Результат{0}- " + Level1.UFO(N, data, octal)[i] + " ", i + 1);
-                }                
+                    Console.WriteLine("Массив №{0} ", m + 1);
+
+                    for (int i = 0; i < track[m].Length; i++)
+                        Console.Write("\t\t " + track[m][i]);
+                    Console.WriteLine();
+                }
+                Console.WriteLine();
             }
             catch (IndexOutOfRangeException e)
             {
-                Console.WriteLine(e.Message + "TEST 1 ERROR");
+                Console.WriteLine(e.Message + "TEST {0} ERROR",number);
                 throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
             }
             catch (NullReferenceException e)
             {
-                Console.WriteLine(e.Message + "TEST 1 ERROR");
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
                 throw new ArgumentNullException("parameter is null.", e);
             }
             finally
             {
-                int N = 2;
-                int[] data = { 1234, 1777 };
-                bool octal = true; //8
-                Console.WriteLine("Система: {0}" + "--" + "Длина траффика " + N + "---------" + "Исходный массив ",octal);
-                for (int i = 0; i < data.Length; i++)
-                {
-                    Console.Write(" " + data[i]);
-                }
-                Console.WriteLine();
-                Console.WriteLine("TEST 1 PASSED");
+                Console.WriteLine("Результат- " + Level1.Unmanned(L, N, track));
+                Console.WriteLine("TEST {0} PASSED", number);
             }
         }
         [TestMethod]
         [TestCategory("tests")]
         public void Test2()
         {
+            int number = 2;
+
+            int L = 10;
+            int N = 1;
+            int[][] track = new int[1][];
+            track[0] = new[] { 3, 5, 5 };
+            //track[0] = new[] { 5, 2, 2 };
+
             try
             {
-                int N = 2;
-                int[] data = { 1234, 1777 };
-                bool octal = false; //16
-
-                for (int i = 0; i < N; i++)
+                Console.WriteLine("Длина дороги {0}; Кол-во светофоров {1} ", L, N);
+                Console.WriteLine("ОПисание дороги ");
+                for (int m = 0; m < track.Length; m++)
                 {
-                    Console.WriteLine("Результат{0}- " + Level1.UFO(N, data, octal)[i] + " ", i + 1);
+                    Console.WriteLine("Массив №{0} ", m + 1);
+
+                    for (int i = 0; i < track[m].Length; i++)
+                        Console.Write("\t\t " + track[m][i]);
+                    Console.WriteLine();
                 }
+                Console.WriteLine();
             }
             catch (IndexOutOfRangeException e)
             {
-                Console.WriteLine(e.Message + "TEST 2 ERROR");
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
                 throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
             }
             catch (NullReferenceException e)
             {
-                Console.WriteLine(e.Message + "TEST 2 ERROR");
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
                 throw new ArgumentNullException("parameter is null.", e);
             }
             finally
             {
-                int N = 2;
-                int[] data = { 1234, 1777 };
-                bool octal = false; //166
-                Console.WriteLine("Система: {0}"+"--"+"Длина траффика " + N+ "---------"+"Исходный массив ",octal);
-                for (int i = 0; i < data.Length; i++)
-                {
-                    Console.Write(" " + data[i]);
-                }
-                Console.WriteLine();
-                Console.WriteLine("TEST 2 PASSED");
+                Console.WriteLine("Результат- " + Level1.Unmanned(L, N, track));
+                Console.WriteLine("TEST {0} PASSED", number);
             }
         }
         [TestMethod]
         [TestCategory("tests")]
         public void Test3()
         {
+            int number = 3;
+
+            int L = 10;
             int N = 1;
-            int[] data = { 1234 };
-            bool octal = true; //8
+            int[][] track = new int[1][];
+            //track[0] = new[] { 3, 5, 5 };
+            track[0] = new[] { 5, 2, 2 };
+
             try
             {
-                for (int i = 0; i < N; i++)
+                Console.WriteLine("Длина дороги {0}; Кол-во светофоров {1} ", L, N);
+                Console.WriteLine("ОПисание дороги ");
+                for (int m = 0; m < track.Length; m++)
                 {
-                    Console.WriteLine("Результат{0}- " + Level1.UFO(N, data, octal)[i] + " ", i + 1);
+                    Console.WriteLine("Массив №{0} ", m + 1);
+
+                    for (int i = 0; i < track[m].Length; i++)
+                        Console.Write("\t\t " + track[m][i]);
+                    Console.WriteLine();
                 }
+                Console.WriteLine();
             }
             catch (IndexOutOfRangeException e)
             {
-                Console.WriteLine(e.Message + "TEST 3 ERROR");
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
                 throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
             }
             catch (NullReferenceException e)
             {
-                Console.WriteLine(e.Message + "TEST 3 ERROR");
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
                 throw new ArgumentNullException("parameter is null.", e);
             }
             finally
             {
-                Console.WriteLine("Система: {0}" + "--" + "Длина траффика " + N + "---------" + "Исходный массив ", octal);
-                for (int i = 0; i < data.Length; i++)
-                {
-                    Console.Write(" " + data[i]);
-                }
-                Console.WriteLine();
-                Console.WriteLine("TEST 3 PASSED");
+                Console.WriteLine("Результат- " + Level1.Unmanned(L, N, track));
+                Console.WriteLine("TEST {0} PASSED", number);
             }
         }
         [TestMethod]
         [TestCategory("tests")]
         public void Test4()
         {
-            int k = 4;//номер теста
-            int N = 1;
-            int[] data = { 1234 };
-            bool octal = false; //16
+            int number = 4;
+
+            int L = 10;
+            int N = 2;
+            int[][] track = new int[2][];
+            track[0] = new[] { 11, 5, 5 };
+            track[1] = new[] { 15, 2, 2 };
+
             try
             {
-                for (int i = 0; i < N; i++)
+                Console.WriteLine("Длина дороги {0}; Кол-во светофоров {1} ", L, N);
+                Console.WriteLine("ОПисание дороги ");
+                for (int m = 0; m < track.Length; m++)
                 {
-                    Console.WriteLine("Результат{0}- " + Level1.UFO(N, data, octal)[i] + " ", i + 1);
+                    Console.WriteLine("Массив №{0} ", m + 1);
+
+                    for (int i = 0; i < track[m].Length; i++)
+                        Console.Write("\t\t " + track[m][i]);
+                    Console.WriteLine();
                 }
+                Console.WriteLine();
             }
             catch (IndexOutOfRangeException e)
             {
-                Console.WriteLine(e.Message + "TEST {0} ERROR",k);
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
                 throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
             }
             catch (NullReferenceException e)
             {
-                Console.WriteLine(e.Message + "TEST {0} ERROR",k);
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
                 throw new ArgumentNullException("parameter is null.", e);
             }
             finally
             {
-                Console.WriteLine("Система: {0}" + "--" + "Длина траффика " + N + "---------" + "Исходный массив ", octal);
-                for (int i = 0; i < data.Length; i++)
-                {
-                    Console.Write(" " + data[i]);
-                }
-                Console.WriteLine();
-                Console.WriteLine("TEST {0} PASSED",k);
+                Console.WriteLine("Результат- " + Level1.Unmanned(L, N, track));
+                Console.WriteLine("TEST {0} PASSED", number);
             }
         }
         [TestMethod]
         [TestCategory("tests")]
         public void Test5()
         {
-            int k = 5;//номер теста
-            int N = 1;
-            int[] data = { 2147473647 };
-            bool octal = true; //8
+            int number = 5;
+
+            int L = 10;
+            int N = 2;
+            int[][] track = new int[2][];
+            track[0] = new[] { 10, 5, 5 };
+            track[1] = new[] { 15, 2, 2 };
+
             try
             {
-                for (int i = 0; i < N; i++)
+                Console.WriteLine("Длина дороги {0}; Кол-во светофоров {1} ", L, N);
+                Console.WriteLine("ОПисание дороги ");
+                for (int m = 0; m < track.Length; m++)
                 {
-                    Console.WriteLine("Результат{0}- " + Level1.UFO(N, data, octal)[i] + " ", i + 1);
+                    Console.WriteLine("Массив №{0} ", m + 1);
+
+                    for (int i = 0; i < track[m].Length; i++)
+                        Console.Write("\t\t " + track[m][i]);
+                    Console.WriteLine();
                 }
+                Console.WriteLine();
             }
             catch (IndexOutOfRangeException e)
             {
-                Console.WriteLine(e.Message + "TEST {0} ERROR", k);
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
                 throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
             }
             catch (NullReferenceException e)
             {
-                Console.WriteLine(e.Message + "TEST {0} ERROR", k);
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
                 throw new ArgumentNullException("parameter is null.", e);
             }
             finally
             {
-                Console.WriteLine("Система: {0}" + "--" + "Длина траффика " + N + "---------" + "Исходный массив ", octal);
-                for (int i = 0; i < data.Length; i++)
-                {
-                    Console.Write(" " + data[i]);
-                }
-                Console.WriteLine();
-                Console.WriteLine("TEST {0} PASSED", k);
+                Console.WriteLine("Результат- " + Level1.Unmanned(L, N, track));
+                Console.WriteLine("TEST {0} PASSED", number);
             }
         }
         [TestMethod]
         [TestCategory("tests")]
         public void Test6()
         {
-            int k = 6;//номер теста
-            int N = 1;
-            int[] data = { 2147473647 };
-            bool octal = false; //16
+            int number = 6;
+
+            int L = 10;
+            int N = 2;
+            int[][] track = new int[2][];
+            track[0] = new[] { 9, 5, 5 };
+            track[1] = new[] { 14, 2, 2 };
+
             try
             {
-                for (int i = 0; i < N; i++)
+                Console.WriteLine("Длина дороги {0}; Кол-во светофоров {1} ", L, N);
+                Console.WriteLine("ОПисание дороги ");
+                for (int m = 0; m < track.Length; m++)
                 {
-                    Console.WriteLine("Результат{0}- " + Level1.UFO(N, data, octal)[i] + " ", i + 1);
+                    Console.WriteLine("Массив №{0} ", m + 1);
+
+                    for (int i = 0; i < track[m].Length; i++)
+                        Console.Write("\t\t " + track[m][i]);
+                    Console.WriteLine();
                 }
+                Console.WriteLine();
             }
             catch (IndexOutOfRangeException e)
             {
-                Console.WriteLine(e.Message + "TEST {0} ERROR", k);
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
                 throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
             }
             catch (NullReferenceException e)
             {
-                Console.WriteLine(e.Message + "TEST {0} ERROR", k);
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
                 throw new ArgumentNullException("parameter is null.", e);
             }
             finally
             {
-                Console.WriteLine("Система: {0}" + "--" + "Длина траффика " + N + "---------" + "Исходный массив ", octal);
-                for (int i = 0; i < data.Length; i++)
-                {
-                    Console.Write(" " + data[i]);
-                }
-                Console.WriteLine();
-                Console.WriteLine("TEST {0} PASSED", k);
+                Console.WriteLine("Результат- " + Level1.Unmanned(L, N, track));
+                Console.WriteLine("TEST {0} PASSED", number);
             }
         }
-        #endregion
+        [TestMethod]
+        [TestCategory("tests")]
+        public void Test7()
+        {
+            int number = 7;
+
+            int L = 10;
+            int N = 2;
+            int[][] track = new int[2][];
+            track[0] = new[] { 9, 4, 3 };
+            track[1] = new[] { 14, 2, 2 };
+
+            try
+            {
+                Console.WriteLine("Длина дороги {0}; Кол-во светофоров {1} ", L, N);
+                Console.WriteLine("ОПисание дороги ");
+                for (int m = 0; m < track.Length; m++)
+                {
+                    Console.WriteLine("Массив №{0} ", m + 1);
+
+                    for (int i = 0; i < track[m].Length; i++)
+                        Console.Write("\t\t " + track[m][i]);
+                    Console.WriteLine();
+                }
+                Console.WriteLine();
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
+                Console.WriteLine("Результат- " + Level1.Unmanned(L, N, track));
+                Console.WriteLine("TEST {0} PASSED", number);
+            }
+        }
     }
+        #endregion
 }
