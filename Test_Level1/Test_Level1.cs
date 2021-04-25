@@ -789,6 +789,210 @@ namespace Test_Level1
     ///<summary> 
     ///Тесты для задания №12 "146%"
     /// </summary>
+    #region
+    //public class Test_Level1
+    //{
+    //    [TestMethod]
+    //    [TestCategory("tests")]
+    //    public void Test1()
+    //    {
+    //        try
+    //        {
+    //            int N = 5;
+    //            int[] Votes = { 60, 10, 10, 15, 5 };
+    //            string result = Level1.MassVote(N, Votes);
+    //            Console.WriteLine("Результат " + result);
+    //        }
+    //        catch (IndexOutOfRangeException e)
+    //        {
+    //            Console.WriteLine(e.Message + "TEST 1 ERROR");
+    //            throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+    //        }
+    //        catch (NullReferenceException e)
+    //        {
+    //            Console.WriteLine(e.Message + "TEST 1 ERROR");
+    //            throw new ArgumentNullException("parameter is null.", e);
+    //        }
+    //        finally
+    //        {
+    //            Console.WriteLine("Входные данные " + "5 " + " { 60, 10, 10, 15, 5 } ");
+    //            Console.WriteLine("TEST 1 PASSED");
+    //        }
+    //    }
+    //    [TestMethod]
+    //    [TestCategory("tests")]
+    //    /// <summary> Test3 - 1 </summary>
+    //    public void Test2()
+    //    {
+    //        try
+    //        {
+    //            int N = 1;
+    //            int[] Votes = { 1 };
+    //            string result = Level1.MassVote(N, Votes);
+    //            Console.WriteLine("Результат " + result);
+    //        }
+    //        catch (IndexOutOfRangeException e)
+    //        {
+    //            Console.WriteLine(e.Message + "TEST 2 ERROR");
+    //            throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+    //        }
+    //        catch (NullReferenceException e)
+    //        {
+    //            Console.WriteLine(e.Message + "TEST 2 ERROR");
+    //            throw new ArgumentNullException("parameter is null.", e);
+    //        }
+    //        finally
+    //        {
+    //            Console.WriteLine("Входные данные " + "1 " + " { 1 } ");
+    //            Console.WriteLine("TEST 2 PASSED");
+    //        }
+    //    }
+    //    [TestMethod]
+    //    [TestCategory("tests")]
+    //    /// <summary> Test3 - 1 </summary>
+    //    public void Test3()
+    //    {
+    //        try
+    //        {
+    //            int N = 3;
+    //            int[] Votes = { 60, 60, 60 };
+    //            string result = Level1.MassVote(N, Votes);
+    //            Console.WriteLine("Результат " + result);
+    //        }
+    //        catch (IndexOutOfRangeException e)
+    //        {
+    //            Console.WriteLine(e.Message + "TEST 3 ERROR");
+    //            throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+    //        }
+    //        catch (NullReferenceException e)
+    //        {
+    //            Console.WriteLine(e.Message + "TEST 3 ERROR");
+    //            throw new ArgumentNullException("parameter is null.", e);
+    //        }
+    //        finally
+    //        {
+    //            Console.WriteLine("Входные данные " + "3 " + " { 60, 60, 60 } ");
+    //            Console.WriteLine("TEST 3 PASSED");
+    //        }
+    //    }
+    //    [TestMethod]
+    //    [TestCategory("tests")]
+    //    /// <summary> Test3 - 1 </summary>
+    //    public void Test4()
+    //    {
+    //        try
+    //        {
+    //            int N = 5;
+    //            int[] Votes = { 1, 2, 111, 111, 110 };
+    //            string result = Level1.MassVote(N, Votes);
+    //            Console.WriteLine("Результат " + result);
+    //        }
+    //        catch (IndexOutOfRangeException e)
+    //        {
+    //            Console.WriteLine(e.Message + "TEST 4 ERROR");
+    //            throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+    //        }
+    //        catch (NullReferenceException e)
+    //        {
+    //            Console.WriteLine(e.Message + "TEST 4 ERROR");
+    //            throw new ArgumentNullException("parameter is null.", e);
+    //        }
+    //        finally
+    //        {
+    //            Console.WriteLine("Входные данные " + "5 " + " { 1,2,111,111,110 } ");
+    //            Console.WriteLine("TEST 4 PASSED");
+    //        }
+    //    }
+    //    [TestMethod]
+    //    [TestCategory("tests")]
+    //    /// <summary> Test5 - 1 </summary>
+    //    public void Test5()
+    //    {
+    //        try
+    //        {
+    //            int N = 2;
+    //            int[] Votes = { 1,1 };
+    //            string result = Level1.MassVote(N, Votes);
+    //            Console.WriteLine("Результат " + result);
+    //        }
+    //        catch (IndexOutOfRangeException e)
+    //        {
+    //            Console.WriteLine(e.Message + "TEST 5 ERROR");
+    //            throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+    //        }
+    //        catch (NullReferenceException e)
+    //        {
+    //            Console.WriteLine(e.Message + "TEST 5 ERROR");
+    //            throw new ArgumentNullException("parameter is null.", e);
+    //        }
+    //        finally
+    //        {
+    //            Console.WriteLine("Входные данные " + "2 " + " { 1,1 } ");
+    //            Console.WriteLine("TEST 5 PASSED");
+    //        }
+    //    }
+    //    [TestMethod]
+    //    [TestCategory("tests")]
+    //    /// <summary> Test5 - 1 </summary>
+    //    public void Test6()
+    //    {
+    //        try
+    //        {
+    //            int N = 3;
+    //            int[] Votes = { 10,15,10 };
+    //            string result = Level1.MassVote(N, Votes);
+    //            Console.WriteLine("Результат " + result);
+    //        }
+    //        catch (IndexOutOfRangeException e)
+    //        {
+    //            Console.WriteLine(e.Message + "TEST 6 ERROR");
+    //            throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+    //        }
+    //        catch (NullReferenceException e)
+    //        {
+    //            Console.WriteLine(e.Message + "TEST 6 ERROR");
+    //            throw new ArgumentNullException("parameter is null.", e);
+    //        }
+    //        finally
+    //        {
+    //            Console.WriteLine("Входные данные " + "5 " + " { 10,15,10 } ");
+    //            Console.WriteLine("TEST 6 PASSED");
+    //        }
+    //    }
+    //    [TestMethod]
+    //    [TestCategory("tests")]
+    //    /// <summary> Test5 - 1 </summary>
+    //    public void Test7()
+    //    {
+    //        try
+    //        {
+    //            int N = 4;
+    //            int[] Votes = { 111, 111, 110,110 };
+    //            string result = Level1.MassVote(N, Votes);
+    //            Console.WriteLine("Результат " + result);
+    //        }
+    //        catch (IndexOutOfRangeException e)
+    //        {
+    //            Console.WriteLine(e.Message + "TEST 7 ERROR");
+    //            throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+    //        }
+    //        catch (NullReferenceException e)
+    //        {
+    //            Console.WriteLine(e.Message + "TEST 7 ERROR");
+    //            throw new ArgumentNullException("parameter is null.", e);
+    //        }
+    //        finally
+    //        {
+    //            Console.WriteLine("Входные данные " + "4 " + " { 111, 111, 110,110 } ");
+    //            Console.WriteLine("TEST 7 PASSED");
+    //        }
+    //    }
+    #endregion
+    //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    ///<summary> 
+    ///Тесты для задания №13 "Сигналы НЛО"
+    /// </summary>
+    #region
     public class Test_Level1
     {
         [TestMethod]
@@ -797,10 +1001,14 @@ namespace Test_Level1
         {
             try
             {
-                int N = 5;
-                int[] Votes = { 60, 10, 10, 15, 5 };
-                string result = Level1.MassVote(N, Votes);
-                Console.WriteLine("Результат " + result);
+                int N = 2;
+                int[] data = { 1234, 1777 };
+                bool octal = true; //8
+
+                for (int i = 0; i < N; i++)
+                {
+                    Console.WriteLine("Результат{0}- " + Level1.UFO(N, data, octal)[i] + " ", i + 1);
+                }                
             }
             catch (IndexOutOfRangeException e)
             {
@@ -814,21 +1022,32 @@ namespace Test_Level1
             }
             finally
             {
-                Console.WriteLine("Входные данные " + "5 " + " { 60, 10, 10, 15, 5 } ");
+                int N = 2;
+                int[] data = { 1234, 1777 };
+                bool octal = true; //8
+                Console.WriteLine("Система: {0}" + "--" + "Длина траффика " + N + "---------" + "Исходный массив ",octal);
+                for (int i = 0; i < data.Length; i++)
+                {
+                    Console.Write(" " + data[i]);
+                }
+                Console.WriteLine();
                 Console.WriteLine("TEST 1 PASSED");
             }
         }
         [TestMethod]
         [TestCategory("tests")]
-        /// <summary> Test3 - 1 </summary>
         public void Test2()
         {
             try
             {
-                int N = 1;
-                int[] Votes = { 1 };
-                string result = Level1.MassVote(N, Votes);
-                Console.WriteLine("Результат " + result);
+                int N = 2;
+                int[] data = { 1234, 1777 };
+                bool octal = false; //16
+
+                for (int i = 0; i < N; i++)
+                {
+                    Console.WriteLine("Результат{0}- " + Level1.UFO(N, data, octal)[i] + " ", i + 1);
+                }
             }
             catch (IndexOutOfRangeException e)
             {
@@ -842,21 +1061,31 @@ namespace Test_Level1
             }
             finally
             {
-                Console.WriteLine("Входные данные " + "1 " + " { 1 } ");
+                int N = 2;
+                int[] data = { 1234, 1777 };
+                bool octal = false; //166
+                Console.WriteLine("Система: {0}"+"--"+"Длина траффика " + N+ "---------"+"Исходный массив ",octal);
+                for (int i = 0; i < data.Length; i++)
+                {
+                    Console.Write(" " + data[i]);
+                }
+                Console.WriteLine();
                 Console.WriteLine("TEST 2 PASSED");
             }
         }
         [TestMethod]
         [TestCategory("tests")]
-        /// <summary> Test3 - 1 </summary>
         public void Test3()
         {
+            int N = 1;
+            int[] data = { 1234 };
+            bool octal = true; //8
             try
             {
-                int N = 3;
-                int[] Votes = { 60, 60, 60 };
-                string result = Level1.MassVote(N, Votes);
-                Console.WriteLine("Результат " + result);
+                for (int i = 0; i < N; i++)
+                {
+                    Console.WriteLine("Результат{0}- " + Level1.UFO(N, data, octal)[i] + " ", i + 1);
+                }
             }
             catch (IndexOutOfRangeException e)
             {
@@ -870,121 +1099,123 @@ namespace Test_Level1
             }
             finally
             {
-                Console.WriteLine("Входные данные " + "3 " + " { 60, 60, 60 } ");
+                Console.WriteLine("Система: {0}" + "--" + "Длина траффика " + N + "---------" + "Исходный массив ", octal);
+                for (int i = 0; i < data.Length; i++)
+                {
+                    Console.Write(" " + data[i]);
+                }
+                Console.WriteLine();
                 Console.WriteLine("TEST 3 PASSED");
             }
         }
         [TestMethod]
         [TestCategory("tests")]
-        /// <summary> Test3 - 1 </summary>
         public void Test4()
         {
+            int k = 4;//номер теста
+            int N = 1;
+            int[] data = { 1234 };
+            bool octal = false; //16
             try
             {
-                int N = 5;
-                int[] Votes = { 1, 2, 111, 111, 110 };
-                string result = Level1.MassVote(N, Votes);
-                Console.WriteLine("Результат " + result);
+                for (int i = 0; i < N; i++)
+                {
+                    Console.WriteLine("Результат{0}- " + Level1.UFO(N, data, octal)[i] + " ", i + 1);
+                }
             }
             catch (IndexOutOfRangeException e)
             {
-                Console.WriteLine(e.Message + "TEST 4 ERROR");
+                Console.WriteLine(e.Message + "TEST {0} ERROR",k);
                 throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
             }
             catch (NullReferenceException e)
             {
-                Console.WriteLine(e.Message + "TEST 4 ERROR");
+                Console.WriteLine(e.Message + "TEST {0} ERROR",k);
                 throw new ArgumentNullException("parameter is null.", e);
             }
             finally
             {
-                Console.WriteLine("Входные данные " + "5 " + " { 1,2,111,111,110 } ");
-                Console.WriteLine("TEST 4 PASSED");
+                Console.WriteLine("Система: {0}" + "--" + "Длина траффика " + N + "---------" + "Исходный массив ", octal);
+                for (int i = 0; i < data.Length; i++)
+                {
+                    Console.Write(" " + data[i]);
+                }
+                Console.WriteLine();
+                Console.WriteLine("TEST {0} PASSED",k);
             }
         }
         [TestMethod]
         [TestCategory("tests")]
-        /// <summary> Test5 - 1 </summary>
         public void Test5()
         {
+            int k = 5;//номер теста
+            int N = 1;
+            int[] data = { 2147473647 };
+            bool octal = true; //8
             try
             {
-                int N = 2;
-                int[] Votes = { 1,1 };
-                string result = Level1.MassVote(N, Votes);
-                Console.WriteLine("Результат " + result);
+                for (int i = 0; i < N; i++)
+                {
+                    Console.WriteLine("Результат{0}- " + Level1.UFO(N, data, octal)[i] + " ", i + 1);
+                }
             }
             catch (IndexOutOfRangeException e)
             {
-                Console.WriteLine(e.Message + "TEST 5 ERROR");
+                Console.WriteLine(e.Message + "TEST {0} ERROR", k);
                 throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
             }
             catch (NullReferenceException e)
             {
-                Console.WriteLine(e.Message + "TEST 5 ERROR");
+                Console.WriteLine(e.Message + "TEST {0} ERROR", k);
                 throw new ArgumentNullException("parameter is null.", e);
             }
             finally
             {
-                Console.WriteLine("Входные данные " + "2 " + " { 1,1 } ");
-                Console.WriteLine("TEST 5 PASSED");
+                Console.WriteLine("Система: {0}" + "--" + "Длина траффика " + N + "---------" + "Исходный массив ", octal);
+                for (int i = 0; i < data.Length; i++)
+                {
+                    Console.Write(" " + data[i]);
+                }
+                Console.WriteLine();
+                Console.WriteLine("TEST {0} PASSED", k);
             }
         }
         [TestMethod]
         [TestCategory("tests")]
-        /// <summary> Test5 - 1 </summary>
         public void Test6()
         {
+            int k = 6;//номер теста
+            int N = 1;
+            int[] data = { 2147473647 };
+            bool octal = false; //16
             try
             {
-                int N = 3;
-                int[] Votes = { 10,15,10 };
-                string result = Level1.MassVote(N, Votes);
-                Console.WriteLine("Результат " + result);
+                for (int i = 0; i < N; i++)
+                {
+                    Console.WriteLine("Результат{0}- " + Level1.UFO(N, data, octal)[i] + " ", i + 1);
+                }
             }
             catch (IndexOutOfRangeException e)
             {
-                Console.WriteLine(e.Message + "TEST 6 ERROR");
+                Console.WriteLine(e.Message + "TEST {0} ERROR", k);
                 throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
             }
             catch (NullReferenceException e)
             {
-                Console.WriteLine(e.Message + "TEST 6 ERROR");
+                Console.WriteLine(e.Message + "TEST {0} ERROR", k);
                 throw new ArgumentNullException("parameter is null.", e);
             }
             finally
             {
-                Console.WriteLine("Входные данные " + "5 " + " { 10,15,10 } ");
-                Console.WriteLine("TEST 6 PASSED");
+                Console.WriteLine("Система: {0}" + "--" + "Длина траффика " + N + "---------" + "Исходный массив ", octal);
+                for (int i = 0; i < data.Length; i++)
+                {
+                    Console.Write(" " + data[i]);
+                }
+                Console.WriteLine();
+                Console.WriteLine("TEST {0} PASSED", k);
             }
         }
-        [TestMethod]
-        [TestCategory("tests")]
-        /// <summary> Test5 - 1 </summary>
-        public void Test7()
-        {
-            try
-            {
-                int N = 4;
-                int[] Votes = { 111, 111, 110,110 };
-                string result = Level1.MassVote(N, Votes);
-                Console.WriteLine("Результат " + result);
-            }
-            catch (IndexOutOfRangeException e)
-            {
-                Console.WriteLine(e.Message + "TEST 7 ERROR");
-                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
-            }
-            catch (NullReferenceException e)
-            {
-                Console.WriteLine(e.Message + "TEST 7 ERROR");
-                throw new ArgumentNullException("parameter is null.", e);
-            }
-            finally
-            {
-                Console.WriteLine("Входные данные " + "4 " + " { 111, 111, 110,110 } ");
-                Console.WriteLine("TEST 7 PASSED");
-            }
-        }
+        #endregion
     }
 }

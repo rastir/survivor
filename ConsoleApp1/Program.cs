@@ -3863,63 +3863,224 @@ minority winner 2
  * если процент более 50% выводим "majority winner k" где к - номер элемента в массиве, иначе "majority winner k"
  * процент округляем до трех знаков после запятой
  */
+//#region Попытка №1 с выводом
+//namespace Level1Space
+//{
+//    public static class Level1
+//    {
+//        public static string MassVote(int N, int[] Votes)
+//        {
+//            int max = Votes[0];
+//            int x=0;
+//            for (int i = 0; i < Votes.Length; i++)
+//            {
+//                if (Votes[i] > max)
+//                {
+//                    max = Votes[i];
+//                    x = i;
+//                }
+//            }
+//            x++;
+//            int k = 0;
+//            for (int i = 0; i < Votes.Length; i++)
+//            {
+//                if (Votes[i] == max)
+//                    k++;  
+//            }
+//            if (k > 1)
+//                return "no winner";
+//            else
+//            {
+//                int summ = 0;
+//                for (int i=0; i < Votes.Length; i++)
+//                {
+//                    summ += Votes[i];
+//                }
+//                double summ3 = Convert.ToDouble(summ);
+//                double max2 = Convert.ToDouble(max);
+//                double summ2;
+//                summ2 = (double)(100 * max2 / summ3);
+//                summ2 = Math.Round(summ2, 3);
+//                if (summ2 > 50)
+//                    return $"majority winner {x}";
+//                else
+//                    return $"minority winner {x}";
+//            }
+//        }
+
+//        public static void Main()
+//        {
+//            int N = 2;
+//            int[] Votes = { 100,99 };
+//            Console.WriteLine("Кол-во кандидатов " + N);
+//            Console.WriteLine("Исходный массив ");
+//            for (int i=0; i < Votes.Length; i++)
+//            {
+//                Console.Write(" " + Votes[i]);
+//            }
+//            Console.WriteLine();
+//            Console.WriteLine("Результат- "+MassVote(N,Votes));
+//            Console.ReadKey();
+//        }
+//    }
+//}
+//#endregion
+
+/*-------------------------------------------------------------------------------------------------------------------------------------------------*/
+//Задача №13 "Сигналы НЛО"
+/*Условие задачи
+ * 
+Британские учёные перехватили трафик переговоров двух НЛО, шпионящих за Землёй. Как выяснилось, сигналы первой НЛО передаются в восьмеричной системе счисления, а сигналы второй НЛО передаются в шестнадцатеричной системе счисления.
+Для быстрой расшифровки их переговоры надо представить в более привычной землянам десятичной системе счисления. Срочно требуется конвертор для разных систем счисления.
+
+Функция
+
+int [] UFO(int N, int [] data, bool octal)
+
+получает на вход длину N цифровой записи трафика, сам трафик (последовательность положительных чисел) в массиве data, и флажок octal, который задаёт систему счисления входных данных: восьмеричная если octal = true, и шестнадцатеричная в противном случае.
+Если числа подаются в восьмеричной системе счисления, гарантируется, что в них не будет цифр 8 и 9.
+
+Функция возвращает массив длины N, содержащий исходные числа, преобразованные в десятичную систему счисления.
+
+Например, если на вход подаётся массив из двух чисел 1234,1777 с флажком octal = false, то результат будет 4660,6007.
+А если флажок для данного массива будет true, то результат будет 668,1023. 
+ */
+
+/* АЛгоритм
+Научиться переводить число из одной системы счисления в другую очень просто.
+Любое число может быть легко переведено в десятичную систему по следующему алгоритму:
+Каждая цифра числа должна быть умножена на основание системы счисления этого 
+числа возведенное в степень равное позиции текущей цифры в числе справа налево, причём счёт начинается с 0.
+----
+1. создаем  dictionary для шестнадцатеричной системы A,B,C,D,E,F
+2. перевернем число чтобы не мудрить и не делать в цикле отдельный счетчик
+3. вычисляем результат
+ */
 #region Попытка №1 с выводом
+//namespace Level1Space
+//{
+//    public static class Level1
+//    {
+//        public static int[] UFO(int N, int[] data, bool octal)
+//        {
+//            #region //для шестнадцатеричной системы если будут символы
+//            //Dictionary<char, int> symbol = new Dictionary<char, int>(95) //для шестнадцатеричной системы
+//            //{
+//            //    { 'A', 11 },
+//            //    { 'B', 12 },
+//            //    { 'C', 13 },
+//            //    { 'D', 14 },
+//            //    { 'E', 15 },
+//            //    { 'F', 16 },
+//            //    { 'a', 11 },
+//            //    { 'b', 12 },
+//            //    { 'c', 13 },
+//            //    { 'd', 14 },
+//            //    { 'e', 15 },
+//            //    { 'f', 16 },
+//            //};
+//            #endregion
+//            int notation;
+//            if (octal == true) //восьмеричная
+//                notation = 8;
+//            else
+//                notation = 16;
+
+//            string[] stringData = new string[N];
+//            int counter = 0;
+//            int[] result = new int[N];
+
+//            for (int i = 0; i < N; i++)
+//            {
+//                stringData[counter] = data[i].ToString();
+//                char[] charArray = stringData[counter].ToCharArray(); // 1-е число перевели в символьный одномерный массив
+//                int k = 0;
+
+//                //for (int x = 0; x < charArray.Length; x++)
+//                //{
+//                //    Console.Write(charArray[x]+" ");
+//                //}
+//                //Console.WriteLine();
+
+//                for (int j = charArray.Length-1; j > -1; j--)
+//                {
+//                    int numeral = int.Parse(charArray[j].ToString());
+//                    result[i] += (int)(numeral* Math.Pow(notation, k));
+//                    k++;
+//                }
+//            }
+//            return result;
+//        }
+
+//        public static void Main()
+//        {
+//            int N = 2;
+//            int[] data = { 1234, 1777 };
+//            bool octal = true; //8
+//            Console.WriteLine("Длина траффика " + N);
+//            Console.WriteLine("Исходный массив ");
+//            for (int i = 0; i < data.Length; i++)
+//            {
+//                Console.Write(" " + data[i]);
+//            }
+//            Console.WriteLine();
+//            for (int i = 0; i < N; i++)
+//            {
+//                Console.WriteLine("Результат{0}- " + UFO(N, data, octal)[i]+" ",i+1);
+//            }
+//            Console.ReadKey();
+//        }
+//    }
+//}
+#endregion
+#region Попытка №2 без вывода
 namespace Level1Space
 {
     public static class Level1
     {
-        public static string MassVote(int N, int[] Votes)
+        public static int[] UFO(int N, int[] data, bool octal)
         {
-            int max = Votes[0];
-            int x=0;
-            for (int i = 0; i < Votes.Length; i++)
-            {
-                if (Votes[i] > max)
-                {
-                    max = Votes[i];
-                    x = i;
-                }
-            }
-            x++;
-            int k = 0;
-            for (int i = 0; i < Votes.Length; i++)
-            {
-                if (Votes[i] == max)
-                    k++;  
-            }
-            if (k > 1)
-                return "no winner";
+            int notation;
+            if (octal == true)
+                notation = 8;
             else
+                notation = 16;
+            string[] stringData = new string[N];
+            int counter = 0;
+            int[] result = new int[N];
+
+            for (int i = 0; i < N; i++)
             {
-                int summ = 0;
-                for (int i=0; i < Votes.Length; i++)
+                stringData[counter] = data[i].ToString();
+                char[] charArray = stringData[counter].ToCharArray();
+                int k = 0;
+
+                for (int j = charArray.Length - 1; j > -1; j--)
                 {
-                    summ += Votes[i];
+                    int numeral = int.Parse(charArray[j].ToString());
+                    result[i] += (int)(numeral * Math.Pow(notation, k));
+                    k++;
                 }
-                double summ3 = Convert.ToDouble(summ);
-                double max2 = Convert.ToDouble(max);
-                double summ2;
-                summ2 = (double)(100 * max2 / summ3);
-                summ2 = Math.Round(summ2, 3);
-                if (summ2 > 50)
-                    return $"majority winner {x}";
-                else
-                    return $"minority winner {x}";
             }
+            return result;
         }
 
         public static void Main()
         {
-            int N = 2;
-            int[] Votes = { 100,99 };
-            Console.WriteLine("Кол-во кандидатов " + N);
+            int N = 1;
+            int[] data = { 214747 };
+            bool octal = false; //16
+            Console.WriteLine("Длина траффика " + N);
             Console.WriteLine("Исходный массив ");
-            for (int i=0; i < Votes.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                Console.Write(" " + Votes[i]);
+                Console.Write(" " + data[i]);
             }
             Console.WriteLine();
-            Console.WriteLine("Результат- "+MassVote(N,Votes));
+            for (int i = 0; i < N; i++)
+            {
+                Console.WriteLine("Результат{0}- " + UFO(N, data, octal)[i] + " ", i + 1);
+            }
             Console.ReadKey();
         }
     }
