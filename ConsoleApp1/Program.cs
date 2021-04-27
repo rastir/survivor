@@ -4224,14 +4224,118 @@ int Unmanned(int L, int N, int [][3] track)
 #endregion
 #region Попытка №2 без вывода - ошибка Тест закончился ошибкой:
 //Unmanned(10, 2, [[11, 5, 5],[15, 2, 2]]) = 10, попытка №3 26.04.2021
+//namespace Level1Space
+//{
+//    public static class Level1
+//    {
+//        public static int Unmanned(int L, int N, int[][] track)
+//        {
+//            int tabs = 0; //абсолютное время 
+//            int ts = 0; //время стоянки
+//            bool trafficLight = false; //- красный/зеленый светофор на пути
+//            bool trafficLightOutside = true; //дорога без светофоров
+
+//            int[] temp = new int[3];
+
+//            if (track[0][0] <= L)
+//                trafficLightOutside = false;
+
+//            for (int m = 0; m < track.Length - 1; m++)
+//            {
+//                if (track[m][0] > track[m + 1][0])
+//                {
+//                    Array.Copy(track[m], temp, 3);
+//                    Array.Copy(track[m + 1], track[m], 3);
+//                    Array.Copy(temp, track[m + 1], 3);
+//                }
+//                if (track[m][0] <= L)
+//                    trafficLightOutside = false;
+//            }
+
+//            if (trafficLightOutside == false)
+//            {
+//                for (int m = 0; m < track.Length; m++)
+//                {
+//                    tabs = tabs + (track[m][0] - tabs) + ts;
+//                    ts = 0;
+//                    int summa = 0;
+
+//                    while (summa < tabs)
+//                    {
+//                        summa += track[m][1];
+//                        trafficLight = true;
+//                        if (summa >= tabs)
+//                            break;
+//                        else
+//                        {
+//                            summa += track[m][2];
+//                            trafficLight = false;
+//                        }
+//                        if (summa >= tabs)
+//                            break;
+//                    }
+
+//                    if (trafficLight == true)
+//                    {
+//                        ts += summa - tabs;
+//                        if (m + 1 == track.Length)
+//                        {
+//                            tabs += (L - tabs) + ts;
+//                        }
+//                    }
+//                    else if (trafficLight == false)
+//                    {
+//                        if (m + 1 == track.Length)
+//                        {
+//                            tabs += L - track[m][0];
+//                        }
+//                    }
+//                }
+//                if (tabs < L)
+//                    tabs += L - tabs;
+//                return tabs;
+//            }
+//            else
+//                return L;
+//        }
+
+//        public static void Main()
+//        {
+//            int L = 10;
+//            int N = 1;
+//            int[][] track = new int[1][];
+//            track[0] = new[] {3,5,5};
+//            //track[0] = new[] { 5, 2, 2 };
+//            Console.WriteLine("О " + track[0]);
+//            Console.WriteLine("Длина дороги {0}; Кол-во светофоров {1} ", L, N);
+//            Console.WriteLine("ОПисание дороги ");
+//            for (int m = 0; m < track.Length; m++)
+//            {
+//                Console.WriteLine("Массив №{0} ", m + 1);
+
+//                for (int i = 0; i < track[m].Length; i++)
+//                    Console.Write("\t\t " + track[m][i]);
+//                Console.WriteLine();
+//            }
+//            Console.WriteLine();
+//            Console.WriteLine("Результат- " + Unmanned(L, N, track));
+//            Console.ReadKey();
+//        }
+//    }
+//}
+#endregion
+
+#region Попытка №3 без вывода - ошибка 1471$
+//Тест закончился ошибкой:
+//Unmanned(10, 2, [[3, 6, 2],[6, 2, 2]]) = 14 26.04.2021
 namespace Level1Space
 {
     public static class Level1
     {
         public static int Unmanned(int L, int N, int[][] track)
         {
-            int tabs = 0; //абсолютное время 
-            int ts = 0; //время стоянки
+            int ts = 0; //время остановки
+            int tp = 0; //время поездки
             bool trafficLight = false; //- красный/зеленый светофор на пути
             bool trafficLightOutside = true; //дорога без светофоров
 
@@ -4256,44 +4360,51 @@ namespace Level1Space
             {
                 for (int m = 0; m < track.Length; m++)
                 {
-                    tabs = tabs + (track[m][0] - tabs) + ts;
-                    ts = 0;
+                    if (track[m][0] > L) //дорога кончилась а светофоры есть
+                        break;
+                    int differenceLight = 0; //расстояние между текущим светофором и предыдущим
+                    if (m > 0) //если это не первый светофор считаем расстояние между текущим светофором и предыдущим
+                        differenceLight = track[m][0] - track[m - 1][0];
+                    tp +=track[m][0] - tp + differenceLight; //едем до светофора
                     int summa = 0;
 
-                    while (summa < tabs)
+                    while (summa < tp) //красный или зеленый светофор на пути и где он  (summa)
                     {
                         summa += track[m][1];
                         trafficLight = true;
-                        if (summa >= tabs)
+                        if (summa >= tp)
                             break;
                         else
                         {
                             summa += track[m][2];
                             trafficLight = false;
                         }
-                        if (summa >= tabs)
+                        if (summa >= tp)
                             break;
                     }
 
-                    if (trafficLight == true)
+                    if (trafficLight == true) //если светофор красный считаем время остановки
                     {
-                        ts += summa - tabs;
-                        if (m + 1 == track.Length)
+                        ts += summa - tp;
+                        tp += summa - tp;
+                        //tp += differenceLight;
+                        if (m + 1 == track.Length) //если это последний светофор
                         {
-                            tabs += (L - tabs) + ts;
+                            tp += (L - tp); //считаем абсолютное время
                         }
                     }
-                    else if (trafficLight == false)
+                    else if (trafficLight == false) //если светофор зеленый 
                     {
                         if (m + 1 == track.Length)
                         {
-                            tabs += L - track[m][0];
+                            tp += L - tp;
                         }
                     }
                 }
-                if (tabs < L)
-                    tabs += L - tabs;
-                return tabs;
+                if (tp < L)
+                    tp += L - tp;
+                tp += ts;
+                return tp;
             }
             else
                 return L;
@@ -4302,10 +4413,10 @@ namespace Level1Space
         public static void Main()
         {
             int L = 10;
-            int N = 1;
-            int[][] track = new int[1][];
-            track[0] = new[] {3,5,5};
-            //track[0] = new[] { 5, 2, 2 };
+            int N = 2;
+            int[][] track = new int[2][];
+            track[0] = new[] { 9, 4, 3 };
+            track[1] = new[] { 14, 2, 2 };
             Console.WriteLine("О " + track[0]);
             Console.WriteLine("Длина дороги {0}; Кол-во светофоров {1} ", L, N);
             Console.WriteLine("ОПисание дороги ");
