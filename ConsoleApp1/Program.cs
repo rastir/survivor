@@ -4665,8 +4665,6 @@ namespace Level1Space
     {
         public static bool TankRush(int H1, int W1, string S1, int H2, int W2, string S2)
         {
-            //int[,] Array1 = new int[H1, W1];
-            //int[,] Array2 = new int[H2, W2];
             char[] text1 = S1.ToCharArray();
             char[] text2 = S2.ToCharArray();
             int result = 0;
@@ -4728,7 +4726,7 @@ namespace Level1Space
                 if (a > H1 * W1 + (H1 - 1))
                     break;
             }
-            #endregion
+
             if (result == H2 * W2)
                 return true;
             else
@@ -4750,3 +4748,4 @@ namespace Level1Space
         }
     }
 }
+#endregion
