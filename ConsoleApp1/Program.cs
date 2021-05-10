@@ -4325,113 +4325,428 @@ int Unmanned(int L, int N, int [][3] track)
 //}
 #endregion
 
-#region Попытка №3 без вывода - ошибка 1471$
+
+/*-------------------------------------------------------------------------------------------------------------------------------------------------*/
+//Задача №14 "Оптимизация беспилотного трафика"
+/*Условие задачи
+ * 
+ Яндекс выпускает на улицы тысячи беспилотных автомобилей, и теперь появляется отличная возможность оптимизации трафика на дорогах. Прежде всего требуется точно оценить время прибытия машины в место назначения.
+На дороге автомобиль постоянно встречает светофоры, которые горят либо зелёным, либо красным. Время горения зелёного и красного света задаётся в секундах. Цикл переключения цветов повторяется бесконечно и начинается с красного цвета.
+Так как скорость автомобиля известна, положения светофоров на дороге определяются временем, которое требуется, чтобы доехать до этого светофора из начала дороги при условии, что все предыдущие светофоры горят зелёным.
+Каждый светофор также характеризуется временем горения красного и зелёного цвета.
+Задача -- определить, за какое время автомобиль доберётся до конца дороги.
+Например, имеется дорога длиной 10 единиц времени. Первый светофор расположен на отметке 3 единицы времени и характеризуется циклом 5 красный 5 зелёный. Второй светофор расположен на отметке 5, и время показа красного и зелёного для него 2 и 2.
+Автомобиль стартует, через 3 единицы добирается до первого светофора, на котором горит красный. Он горит 5 единиц, то есть движение начинается с 5-го момента.
+Через две единицы автомобиль добирается до второго светофора -- это абсолютный момент 7. В этот момент на светофоре горит зелёный, и автомобиль проезжает его без остановки. От второго светофора до конца дороги остаётся ещё 5 моментов, таким образом суммарное время автомобиля в пути равно 12 (7 + 5).
+
+Функция
+
+int Unmanned(int L, int N, int [][3] track)
+
+получает на вход длину L дороги, количество светофоров на ней N, и описание самой дороги, где каждый элемент состоит из трёх значений: момент времени относительно начала дороги (когда в него прибудет автомобиль по свободной дороге), время показа красного света и время показа зелёного цвета.
+Для примера выше параметры функции Unmanned() будут такими: 10, 2, [ [3,5,5], [5,2,2] ]
+Функция возвращает реальное время, требуемое для преодоления дороги. 
+ */
+/* АЛгоритм
+1. Сортируем массивы внутри большого массива, т.к. в задаче не сказано про порядок перечисления массивов внутри большого массива. При этом нам надо расположить светофоры в правильном порядке
+2. 
+ */
+#region Попытка №3 без вывода - ошибка 1471$ - пройдено успешно Золота: 1721$
 //Тест закончился ошибкой:
 //Unmanned(10, 2, [[3, 6, 2],[6, 2, 2]]) = 14 26.04.2021
+//namespace Level1Space
+//{
+//    public static class Level1
+//    {
+//        public static int Unmanned(int L, int N, int[][] track)
+//        {
+//            int ts = 0; //время остановки
+//            int tp = 0; //время поездки
+//            bool trafficLight = false; //- красный/зеленый светофор на пути
+//            bool trafficLightOutside = true; //дорога без светофоров
+
+//            int[] temp = new int[3];
+
+//            if (track[0][0] <= L)
+//                trafficLightOutside = false;
+
+//            for (int m = 0; m < track.Length - 1; m++)
+//            {
+//                if (track[m][0] > track[m + 1][0])
+//                {
+//                    Array.Copy(track[m], temp, 3);
+//                    Array.Copy(track[m + 1], track[m], 3);
+//                    Array.Copy(temp, track[m + 1], 3);
+//                }
+//                if (track[m][0] <= L)
+//                    trafficLightOutside = false;
+//            }
+
+//            if (trafficLightOutside == false)
+//            {
+//                for (int m = 0; m < track.Length; m++)
+//                {
+//                    if (track[m][0] > L) //дорога кончилась а светофоры есть
+//                        break;
+//                    int differenceLight = 0; //расстояние между текущим светофором и предыдущим
+//                    if (m > 0) //если это не первый светофор считаем расстояние между текущим светофором и предыдущим
+//                        differenceLight = track[m][0] - track[m - 1][0];
+//                    tp +=track[m][0] - tp + differenceLight; //едем до светофора
+//                    int summa = 0;
+
+//                    while (summa < tp) //красный или зеленый светофор на пути и где он  (summa)
+//                    {
+//                        summa += track[m][1];
+//                        trafficLight = true;
+//                        if (summa >= tp)
+//                            break;
+//                        else
+//                        {
+//                            summa += track[m][2];
+//                            trafficLight = false;
+//                        }
+//                        if (summa >= tp)
+//                            break;
+//                    }
+
+//                    if (trafficLight == true) //если светофор красный считаем время остановки
+//                    {
+//                        ts += summa - tp;
+//                        tp += summa - tp;
+//                        //tp += differenceLight;
+//                        if (m + 1 == track.Length) //если это последний светофор
+//                        {
+//                            tp += (L - tp); //считаем абсолютное время
+//                        }
+//                    }
+//                    else if (trafficLight == false) //если светофор зеленый 
+//                    {
+//                        if (m + 1 == track.Length)
+//                        {
+//                            tp += L - tp;
+//                        }
+//                    }
+//                }
+//                if (tp < L)
+//                    tp += L - tp;
+//                tp += ts;
+//                return tp;
+//            }
+//            else
+//                return L;
+//        }
+
+//        public static void Main()
+//        {
+//            int L = 10;
+//            int N = 2;
+//            int[][] track = new int[2][];
+//            track[0] = new[] { 9, 4, 3 };
+//            track[1] = new[] { 14, 2, 2 };
+//            Console.WriteLine("О " + track[0]);
+//            Console.WriteLine("Длина дороги {0}; Кол-во светофоров {1} ", L, N);
+//            Console.WriteLine("ОПисание дороги ");
+//            for (int m = 0; m < track.Length; m++)
+//            {
+//                Console.WriteLine("Массив №{0} ", m + 1);
+
+//                for (int i = 0; i < track[m].Length; i++)
+//                    Console.Write("\t\t " + track[m][i]);
+//                Console.WriteLine();
+//            }
+//            Console.WriteLine();
+//            Console.WriteLine("Результат- " + Unmanned(L, N, track));
+//            Console.ReadKey();
+//        }
+//    }
+//}
+#endregion
+
+/*-------------------------------------------------------------------------------------------------------------------------------------------------*/
+//Задача №15 "Танковый раш"
+/*Условие задачи
+ * 
+Разведчики выяснили, что неведомый клан готовит внезапный массивный прорыв премиум-танков. У нашей арты будет возможность произвести только один залп. Ваша задача: выявить местонахождение группировки танков на карте.
+На входе два массива (карта и группировка танков), каждый описывается одинаково: количество строк, количество столбцов и набор строк, разделённых пробелом. Каждый символ строки описывает один элемент карты.
+Например, дана карта:
+
+1234
+2345
+0987
+Этот массив размером 3*4 будет представлен на вводе так:
+3 4 1234 2345 0987
+Второй массив представляется аналогично первому.
+
+Задача: проверить, входит ли второй массив в первый (в двумерном виде).
+Например, второй массив может быть таким:
+34
+98
+или
+2 2 34 98
+Он входит в состав первого массива.
+
+Функция
+bool TankRush(int H1, int W1, string S1, int H2, intW2, string S2) 
+
+первыми тремя параметрами получает исходную карту, а следующими тремя -- карту, которая ищется в исходной.
+TankRush возвращает true, если вторая карта содержится в первой.  
+ */
+/* АЛгоритм
+1. разобрать строки и создать массивы
+2. определить наличие второго массива в первом
+ */
+#region Попытка №1 без вывода Золота: 1721$
+//namespace Level1Space
+//{
+//    public static class Level1
+//    {
+//        public static bool TankRush(int H1, int W1, string S1, int H2, int W2, string S2)
+//        {
+//            //определяем размерность массива
+//            int[,] Array1 = new int [H1, W1];
+//            int[,] Array2 = new int[H2, W2];
+//            char[] text1 = S1.ToCharArray();
+//            char[] text2 = S2.ToCharArray();
+//            int k = 0;
+//            int result = 0;
+
+//            //#region переводим в массив
+//            //for (int i = 0; i < H1; i++) 
+//            //{
+//            //    for (int j = 0; j < W1; j++) 
+//            //    {
+//            //        if (j == 0 && i != 0)
+//            //            k++;
+//            //        if (S1[k].ToString() != " ") 
+//            //        {
+//            //            Array1[i, j] = Convert.ToInt32(S1[k].ToString());
+//            //            if (k < S1.Length)
+//            //                k++;
+//            //        }
+//            //        else
+//            //        {
+//            //            k++;
+//            //            break;
+//            //        }
+//            //    }
+//            //}
+
+//            //k = 0;
+//            //for (int i = 0; i < H2; i++)
+//            //{
+//            //    for (int j = 0; j < W2; j++)
+//            //    {
+//            //        if (j == 0 && i != 0)
+//            //            k++;
+//            //        if (S2[k].ToString() != " ")
+//            //        {
+//            //            Array2[i, j] = Convert.ToInt32(S2[k].ToString());
+//            //            if (k < S2.Length)
+//            //                k++;
+//            //        }
+//            //        else
+//            //        {
+//            //            k++;
+//            //            break;
+//            //        }
+//            //    }
+//            //}
+//            //#endregion
+
+//            //#region печатаем
+//            //Console.WriteLine("Массив 1:");
+//            //for (int i = 0; i < H1; i++)
+//            //{
+//            //    for (int j = 0; j < W1; j++)
+//            //    {
+//            //        Console.Write(Array1[i, j]);
+//            //    }
+//            //    Console.WriteLine();
+//            //}
+//            //Console.WriteLine("Массив 2:");
+//            //for (int i = 0; i < H2; i++)
+//            //{
+//            //    for (int j = 0; j < W2; j++)
+//            //    {
+//            //        Console.Write(Array2[i, j]);
+//            //    }
+//            //    Console.WriteLine();
+//            //}
+//            //#endregion
+
+//            #region ищем
+
+//            int x = 0;
+//            int y = 0;
+//            k = 0;
+//            int a = 0;
+//            int b = 0;
+
+//            while (result < H2*W2)
+//             {
+//                if (text2[b] == text1[a] && text2[b].ToString() != " ")
+//                {
+//                    result++;
+//                    if (y == 0)
+//                        k = a; //если первый символ в строке то запоминаем позицию первого символа
+//                    if (y < W2)
+//                        y++;
+//                    if (y == W2)
+//                    {
+//                        a = k + W1 + 1;//
+//                        b++;
+//                        y = 0;
+//                    }
+//                    else
+//                    {
+//                        a++;
+//                        b++;
+//                    }
+//                }
+//                else 
+//                {
+//                    if ((text1[a].ToString() != " ") && (text2[b].ToString() != " "))
+//                    {
+//                        if (y == W2)// && text1[a+1].ToString() == " ")
+//                        {
+//                            result = 0;
+//                            y = 0;
+//                            for (int n = a; n > 0; n--) 
+//                            {
+//                                if (text1[n].ToString() == " ") 
+//                                {
+//                                    a = n + 1;
+//                                    break;
+//                                }
+//                            }
+//                            b = 0;
+//                        }
+//                        else
+//                        {
+//                            a++;
+//                        }
+//                    }
+//                    if (text1[a].ToString() == " ")
+//                        a++;
+//                    if (text2[b].ToString() == " ")
+//                        b++;
+//                }
+//                if (a > H1 * W1 + (H1 - 1))
+//                    break;
+//            }
+//            #endregion
+//            if (result == H2 * W2)
+//                return true;
+//            else
+//                return false;
+//        }
+
+//        public static void Main()
+//        {
+//            int H1 = 3;
+//            int W1 = 4;
+//            string S1 = "1234 2345 0987";
+//            int H2 = 2;
+//            int W2 = 2;
+//            string S2 = "34 98";
+//            Console.WriteLine("Карта1 " + S1);
+//            Console.WriteLine("Карта2 " + S2);
+//            Console.WriteLine("Результат- " + TankRush(H1,W1,S1,H2,W2,S2));
+//            Console.ReadKey();
+//        }
+//    }
+//}
+#endregion
+
+#region
 namespace Level1Space
 {
     public static class Level1
     {
-        public static int Unmanned(int L, int N, int[][] track)
+        public static bool TankRush(int H1, int W1, string S1, int H2, int W2, string S2)
         {
-            int ts = 0; //время остановки
-            int tp = 0; //время поездки
-            bool trafficLight = false; //- красный/зеленый светофор на пути
-            bool trafficLightOutside = true; //дорога без светофоров
+            int[,] Array1 = new int[H1, W1];
+            int[,] Array2 = new int[H2, W2];
+            char[] text1 = S1.ToCharArray();
+            char[] text2 = S2.ToCharArray();
+            int result = 0;
 
-            int[] temp = new int[3];
+            int y = 0;
+            int k = 0;
+            int a = 0;
+            int b = 0;
 
-            if (track[0][0] <= L)
-                trafficLightOutside = false;
-
-            for (int m = 0; m < track.Length - 1; m++)
+            while (result < H2 * W2)
             {
-                if (track[m][0] > track[m + 1][0])
+                if (text2[b] == text1[a] && text2[b].ToString() != " ")
                 {
-                    Array.Copy(track[m], temp, 3);
-                    Array.Copy(track[m + 1], track[m], 3);
-                    Array.Copy(temp, track[m + 1], 3);
-                }
-                if (track[m][0] <= L)
-                    trafficLightOutside = false;
-            }
-
-            if (trafficLightOutside == false)
-            {
-                for (int m = 0; m < track.Length; m++)
-                {
-                    if (track[m][0] > L) //дорога кончилась а светофоры есть
-                        break;
-                    int differenceLight = 0; //расстояние между текущим светофором и предыдущим
-                    if (m > 0) //если это не первый светофор считаем расстояние между текущим светофором и предыдущим
-                        differenceLight = track[m][0] - track[m - 1][0];
-                    tp +=track[m][0] - tp + differenceLight; //едем до светофора
-                    int summa = 0;
-
-                    while (summa < tp) //красный или зеленый светофор на пути и где он  (summa)
+                    result++;
+                    if (y == 0)
+                        k = a; 
+                    if (y < W2)
+                        y++;
+                    if (y == W2)
                     {
-                        summa += track[m][1];
-                        trafficLight = true;
-                        if (summa >= tp)
-                            break;
+                        a = k + W1 + 1;
+                        b++;
+                        y = 0;
+                    }
+                    else
+                    {
+                        a++;
+                        b++;
+                    }
+                }
+                else
+                {
+                    if ((text1[a].ToString() != " ") && (text2[b].ToString() != " "))
+                    {
+                        if (y == W2)
+                        {
+                            result = 0;
+                            y = 0;
+                            for (int n = a; n > 0; n--)
+                            {
+                                if (text1[n].ToString() == " ")
+                                {
+                                    a = n + 1;
+                                    break;
+                                }
+                            }
+                            b = 0;
+                        }
                         else
                         {
-                            summa += track[m][2];
-                            trafficLight = false;
-                        }
-                        if (summa >= tp)
-                            break;
-                    }
-
-                    if (trafficLight == true) //если светофор красный считаем время остановки
-                    {
-                        ts += summa - tp;
-                        tp += summa - tp;
-                        //tp += differenceLight;
-                        if (m + 1 == track.Length) //если это последний светофор
-                        {
-                            tp += (L - tp); //считаем абсолютное время
+                            a++;
                         }
                     }
-                    else if (trafficLight == false) //если светофор зеленый 
-                    {
-                        if (m + 1 == track.Length)
-                        {
-                            tp += L - tp;
-                        }
-                    }
+                    if (text1[a].ToString() == " ")
+                        a++;
+                    if (text2[b].ToString() == " ")
+                        b++;
                 }
-                if (tp < L)
-                    tp += L - tp;
-                tp += ts;
-                return tp;
+                if (a > H1 * W1 + (H1 - 1))
+                    break;
             }
+            #endregion
+            if (result == H2 * W2)
+                return true;
             else
-                return L;
+                return false;
         }
 
         public static void Main()
         {
-            int L = 10;
-            int N = 2;
-            int[][] track = new int[2][];
-            track[0] = new[] { 9, 4, 3 };
-            track[1] = new[] { 14, 2, 2 };
-            Console.WriteLine("О " + track[0]);
-            Console.WriteLine("Длина дороги {0}; Кол-во светофоров {1} ", L, N);
-            Console.WriteLine("ОПисание дороги ");
-            for (int m = 0; m < track.Length; m++)
-            {
-                Console.WriteLine("Массив №{0} ", m + 1);
-
-                for (int i = 0; i < track[m].Length; i++)
-                    Console.Write("\t\t " + track[m][i]);
-                Console.WriteLine();
-            }
-            Console.WriteLine();
-            Console.WriteLine("Результат- " + Unmanned(L, N, track));
+            int H1 = 1;
+            int W1 = 1;
+            string S1 = "0";
+            int H2 = 1;
+            int W2 = 1;
+            string S2 = "0";
+            Console.WriteLine("Карта1 " + S1);
+            Console.WriteLine("Карта2 " + S2);
+            Console.WriteLine("Результат- " + TankRush(H1, W1, S1, H2, W2, S2));
             Console.ReadKey();
         }
     }
 }
-#endregion
