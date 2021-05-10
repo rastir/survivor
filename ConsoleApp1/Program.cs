@@ -4665,8 +4665,8 @@ namespace Level1Space
     {
         public static bool TankRush(int H1, int W1, string S1, int H2, int W2, string S2)
         {
-            int[,] Array1 = new int[H1, W1];
-            int[,] Array2 = new int[H2, W2];
+            //int[,] Array1 = new int[H1, W1];
+            //int[,] Array2 = new int[H2, W2];
             char[] text1 = S1.ToCharArray();
             char[] text2 = S2.ToCharArray();
             int result = 0;
@@ -4737,12 +4737,12 @@ namespace Level1Space
 
         public static void Main()
         {
-            int H1 = 1;
-            int W1 = 1;
-            string S1 = "0";
-            int H2 = 1;
-            int W2 = 1;
-            string S2 = "0";
+            int H1 = 3;
+            int W1 = 4;
+            string S1 = "3 4 1234 2345 0987";
+            int H2 = 2;
+            int W2 = 2;
+            string S2 = "2 2 34 98";
             Console.WriteLine("Карта1 " + S1);
             Console.WriteLine("Карта2 " + S2);
             Console.WriteLine("Результат- " + TankRush(H1, W1, S1, H2, W2, S2));
