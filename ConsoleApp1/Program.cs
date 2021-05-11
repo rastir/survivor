@@ -4673,8 +4673,9 @@ namespace Level1Space
             int k = 0;
             int a = 0;
             int b = 0;
+            bool secondstring = false;
 
-            while (result < H2 * W2)
+            while (result < H2 * W2 && a < S1.Length)
             {
                 if (text2[b] == text1[a] && text2[b].ToString() != " ")
                 {
@@ -4688,6 +4689,7 @@ namespace Level1Space
                         a = k + W1 + 1;
                         b++;
                         y = 0;
+                        secondstring = true;
                     }
                     else
                     {
@@ -4699,7 +4701,7 @@ namespace Level1Space
                 {
                     if ((text1[a].ToString() != " ") && (text2[b].ToString() != " "))
                     {
-                        if (y == W2)
+                        if ((y == W2) || (result > 0 && secondstring == true))
                         {
                             result = 0;
                             y = 0;
@@ -4711,6 +4713,7 @@ namespace Level1Space
                                     break;
                                 }
                             }
+                            secondstring = false;
                             b = 0;
                         }
                         else
@@ -4718,10 +4721,16 @@ namespace Level1Space
                             a++;
                         }
                     }
-                    if (text1[a].ToString() == " ")
-                        a++;
-                    if (text2[b].ToString() == " ")
-                        b++;
+                    if (a < S1.Length) 
+                    {
+                        if (text1[a].ToString() == " ")
+                            a++;
+                    }
+                    if (b < S2.Length)
+                    {
+                        if (text2[b].ToString() == " ")
+                            b++;
+                    }
                 }
                 if (a > H1 * W1 + (H1 - 1))
                     break;
@@ -4736,11 +4745,11 @@ namespace Level1Space
         public static void Main()
         {
             int H1 = 3;
-            int W1 = 4;
-            string S1 = "3 4 1234 2345 0987";
+            int W1 = 3;
+            string S1 = "321 694 798";
             int H2 = 2;
             int W2 = 2;
-            string S2 = "2 2 34 98";
+            string S2 = "69 98";
             Console.WriteLine("Карта1 " + S1);
             Console.WriteLine("Карта2 " + S2);
             Console.WriteLine("Результат- " + TankRush(H1, W1, S1, H2, W2, S2));
