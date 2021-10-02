@@ -4349,6 +4349,7 @@ int Unmanned(int L, int N, int [][3] track)
  */
 /* АЛгоритм
 1. Сортируем массивы внутри большого массива, т.к. в задаче не сказано про порядок перечисления массивов внутри большого массива. При этом нам надо расположить светофоры в правильном порядке
+1. Сортируем массивы внутри большого массива, т.к. в задаче не сказано про порядок перечисления массивов внутри большого массива. При этом нам надо расположить светофоры в правильном порядке
 2. 
  */
 #region Попытка №3 без вывода - ошибка 1471$ - пройдено успешно Золота: 1721$
@@ -4658,6 +4659,552 @@ TankRush возвращает true, если вторая карта содер�
 //}
 #endregion
 
+#region забанили 16.05.2021
+//namespace Level1Space
+//{
+//    public static class Level1
+//    {
+//        public static bool TankRush(int H1, int W1, string S1, int H2, int W2, string S2)
+//        {
+//            char[] text1 = S1.ToCharArray();
+//            char[] text2 = S2.ToCharArray();
+//            int result = 0;
+
+//            //определяем размерность массива
+//            string[,] Array1 = new string[H1, W1];
+//            string[,] Array2 = new string[H2, W2];
+//            int k = 0;
+
+//            int y = 0;
+//            int a = 0;
+//            int b = 0;
+//            bool secondstring = false; //вторая строка
+//            int firsttruelastvalueplusone = 0; //первый индекс в строке
+//            bool lastindex = false;
+
+//            #region переводим в массив
+//            for (int i = 0; i < H1; i++)
+//            {
+//                for (int j = 0; j < W1; j++)
+//                {
+//                    if (j == 0 && i != 0)
+//                        k++;
+//                    if (text1[k].ToString() != " ")
+//                    {
+//                        Array1[i, j] = text1[k].ToString();
+//                        if (k < S1.Length)
+//                            k++;
+//                    }
+//                    else
+//                    {
+//                        k++;
+//                        break;
+//                    }
+//                }
+//            }
+
+//            k = 0;
+//            for (int i = 0; i < H2; i++)
+//            {
+//                for (int j = 0; j < W2; j++)
+//                {
+//                    if (j == 0 && i != 0)
+//                        k++;
+//                    if (text2[k].ToString() != " ")
+//                    {
+//                        Array2[i, j] = text2[k].ToString();
+//                        if (k < S2.Length)
+//                            k++;
+//                    }
+//                    else
+//                    {
+//                        k++;
+//                        break;
+//                    }
+//                }
+//            }
+//            #endregion
+
+//            #region печатаем
+//            Console.WriteLine("Массив 1:");
+//            for (int i = 0; i < H1; i++)
+//            {
+//                for (int j = 0; j < W1; j++)
+//                {
+//                    Console.Write(Array1[i, j]);
+//                }
+//                Console.WriteLine();
+//            }
+//            Console.WriteLine("Массив 2:");
+//            for (int i = 0; i < H2; i++)
+//            {
+//                for (int j = 0; j < W2; j++)
+//                {
+//                    Console.Write(Array2[i, j]);
+//                }
+//                Console.WriteLine();
+//            }
+//            #endregion
+
+
+//            while (result < H2 * W2 && a < S1.Length)
+//            {
+//                if (text2[b] == text1[a] && text2[b].ToString() != " ")
+//                {
+//                    if (y == 0) //если первый символ в строке то фиксируем 
+//                        k = a;
+//                    if (y < W2) //если не дошли до последнего символа наращиваем счетчик строки
+//                        y++;
+//                    if (y == W2) //если нашлись все числа в строке то перемещаемся на следующую строку
+//                    {
+//                        if (a == W1 - 1) //если нашелся последний символ фиксируем
+//                            lastindex = true;
+//                        if (y == W2 && a < W1 - 1) //если нашлись все значения в строке и найденное значение не последний символ в строке фиксируем индекс
+//                            firsttruelastvalueplusone = a;
+//                        a = k + W1 + 1; //перемещаемся
+//                        b++; //поисковый символ перемещаем на следующий символ
+//                        y = 0; //строку сбрасываем
+//                        secondstring = true; //не первая строка тру
+//                    }
+//                    else //если не нашлись не все числа в строке то идем дальше
+//                    {
+//                        a++;
+//                        b++;
+//                    }
+//                    result++;
+//                }
+//                else
+//                {
+//                    if ((text1[a].ToString() != " ") && (text2[b].ToString() != " "))
+//                    {
+//                        if (result > 0 && secondstring == true) //если следующая строка и не нашлось пары
+//                        {
+//                            if (firsttruelastvalueplusone > 0 && firsttruelastvalueplusone < text1.Length && lastindex == false) //если найденные символы в предыдущей строке не последние то переходим на следующий символ после найденных
+//                            {
+//                                a = firsttruelastvalueplusone;
+//                                b = 0;
+//                                y = 0;
+//                                secondstring = false;
+//                                result = 0;
+//                            }
+//                            else //если последние то переходим к следующей строке первого массива
+//                            {
+//                                a++;
+//                            }
+//                        }
+//                        else if (y == W2) //если строка полностью найдена переходим к следующей
+//                        {
+//                            result = 0;
+//                            y = 0;
+//                            for (int n = a; n > 0; n--)
+//                            {
+//                                if (text1[n].ToString() == " ")
+//                                {
+//                                    a = n + 1;
+//                                    break;
+//                                }
+//                            }
+//                            secondstring = false;
+//                            b = 0;
+//                        }
+//                        else
+//                        {
+//                            a++;
+//                        }
+//                    }
+//                    if (a < S1.Length)
+//                    {
+//                        if (text1[a].ToString() == " ")
+//                            a++;
+//                    }
+//                    if (b < S2.Length)
+//                    {
+//                        if (text2[b].ToString() == " ")
+//                            b++;
+//                    }
+//                }
+//                if (a > H1 * W1 + (H1 - 1))
+//                    break;
+//            }
+
+//            if (result == H2 * W2)
+//                return true;
+//            else
+//                return false;
+//        }
+
+//        public static void Main()
+//        {
+//            int H1 = 3;
+//            int W1 = 3;
+//            string S1 = "321 694 798";
+//            int H2 = 2;
+//            int W2 = 2;
+//            string S2 = "69 98";
+//            Console.WriteLine("Карта1 " + S1);
+//            Console.WriteLine("Карта2 " + S2);
+//            Console.WriteLine("Результат- " + TankRush(H1, W1, S1, H2, W2, S2));
+//            Console.ReadKey();
+//        }
+//    }
+//}
+#endregion
+
+#region Попытка №11 без вывода Золота: 1721$
+//namespace Level1Space
+//{
+//    public static class Level1
+//    {
+//        public static bool TankRush(int H1, int W1, string S1, int H2, int W2, string S2)
+//        {
+//            char[] text1 = S1.ToCharArray();
+//            char[] text2 = S2.ToCharArray();
+//            int result = 0;
+
+//            int y = 0;
+//            int k = 0;
+//            int a = 0;
+//            int b = 0;
+//            bool secondstring = false;
+
+//            while (result < H2 * W2 && a < S1.Length)
+//            {
+//                if (text2[b] == text1[a] && text2[b].ToString() != " ")
+//                {
+//                    result++;
+//                    if (y == 0)
+//                        k = a;
+//                    if (y < W2)
+//                        y++;
+//                    if (y == W2)
+//                    {
+//                        a = k + W1 + 1;
+//                        b++;
+//                        y = 0;
+//                        secondstring = true;
+//                    }
+//                    else
+//                    {
+//                        a++;
+//                        b++;
+//                    }
+//                }
+//                else
+//                {
+//                    if ((text1[a].ToString() != " ") && (text2[b].ToString() != " "))
+//                    {
+//                        if ((y == W2) || (result > 0 && secondstring == true))
+//                        {
+//                            result = 0;
+//                            y = 0;
+//                            for (int n = a; n > 0; n--)
+//                            {
+//                                if (text1[n].ToString() == " ")
+//                                {
+//                                    a = n + 1;
+//                                    break;
+//                                }
+//                            }
+//                            secondstring = false;
+//                            b = 0;
+//                        }
+//                        else
+//                        {
+//                            a++;
+//                        }
+//                    }
+//                    if (a < S1.Length)
+//                    {
+//                        if (text1[a].ToString() == " ")
+//                            a++;
+//                    }
+//                    if (b < S2.Length)
+//                    {
+//                        if (text2[b].ToString() == " ")
+//                            b++;
+//                    }
+//                }
+//                if (a > H1 * W1 + (H1 - 1))
+//                    break;
+//            }
+
+//            if (result == H2 * W2)
+//                return true;
+//            else
+//                return false;
+//        }
+
+//public static void Main()
+//{
+//    int H1 = 4;
+//    int W1 = 4;
+//    string S1 = "1234 2345 0987 0000";
+//    int H2 = 3;
+//    int W2 = 2;
+//    string S2 = "34 45 09";
+//    Console.WriteLine("Карта1 " + S1);
+//    Console.WriteLine("Карта2 " + S2);
+//    Console.WriteLine("Результат- " + TankRush(H1, W1, S1, H2, W2, S2));
+//    Console.ReadKey();
+//}
+
+
+#endregion
+
+/// <summary>
+////следующий код использую в шаблоне для переноса строки когда из боди 88 приходит строка без переноса но с разделителем ;
+/// </summary>
+#region 
+//namespace Level1Space
+//{
+//    public static class Level123
+//    {
+//        public static string Insert_LF_n(string s)
+//        {
+//            //char[] c = new char[s.Length + s.Length];
+
+//            //int i = 0;
+//            //string j = ";";
+
+//            //foreach (char ch in s)
+//            //{
+//            //    c[i++] = ch;
+
+//            //    if (ch.ToString() == ";")
+//            //    {
+//            //        c[i++] = '\n';
+//            //    }
+//            //}
+
+//            //// если последний символ - "перевод строки" - удаляем.
+//            //if (c[i - 1] == '\n')
+//            //    i--;
+
+//            //return new string(c, 0, i);
+//            char[] c = new char[s.Length]; //пустой массив с длиной входящей строки
+//            int i;
+
+//            for (i = 0; i < s.Length; i++)
+//            {
+//                char[] a = s.ToCharArray(); //строку в массив символов
+//                char ch = a[i];
+//                c[i++] = ch;
+
+//                if ((ch.ToString() == ";") &&  (i++ <s.Length))
+//                {
+//                    c[i++] = (char)('\r' + '\n');
+//                    //c[i++] = '\n';
+//                }
+//            }
+//            // если последний символ - "перевод строки" - удаляем.
+//            //if ((i > 1) && (c[i - 1] == '\n'))
+//              //  i--;
+
+//            return new string(c, 0, i);
+//        }
+
+
+
+//        static void Main(string[] args)
+//        {
+//            string s = "kjabdjlirujl;qkmrghwiureh;alksngk;jhdriughjksndv.ma'pjkrdoigkdfjnvsdlkjfp'iowjoeijrlkdjflk;";
+
+//            Console.WriteLine(s);
+//            Console.Write('\n' + Insert_LF_n(s));
+
+//            Console.ReadKey();
+//        }
+//    }
+//}
+#endregion
+
+#region Попытка №12 ЗАБАНЕН восстанавливаемся
+//Задача №15 "Танковый раш"
+//*Условие задачи
+/* 
+Разведчики выяснили, что неведомый клан готовит внезапный массивный прорыв премиум-танков. У нашей арты будет возможность произвести только один залп. Ваша задача: выявить местонахождение группировки танков на карте.
+На входе два массива (карта и группировка танков), каждый описывается одинаково: количество строк, количество столбцов и набор строк, разделённых пробелом. Каждый символ строки описывает один элемент карты.
+Например, дана карта:
+1234
+2345
+0987
+Этот массив размером 3*4 будет представлен на вводе так:
+3 4 1234 2345 0987
+Второй массив представляется аналогично первому.
+Задача: проверить, входит ли второй массив в первый (в двумерном виде).
+Например, второй массив может быть таким:
+34
+98
+или
+2 2 34 98
+Он входит в состав первого массива.
+
+Функция
+bool TankRush(int H1, int W1, string S1, int H2, intW2, string S2) 
+
+первыми тремя параметрами получает исходную карту, а следующими тремя -- карту, которая ищется в исходной.
+TankRush возвращает true, если вторая карта содержится в первой.
+*/
+#endregion
+
+#region без комментариев и печати
+//namespace Level1Space
+//{
+//    public static class Level1
+//    {
+//        public static bool TankRush(int H1, int W1, string S1, int H2, int W2, string S2)
+//        {
+//            if ((H2 <= H1) && (W2 <= W1))
+//            {
+//                //переводим строку в одномернный массив
+//                char[] Array1 = S1.ToCharArray();
+//                char[] Array2 = S2.ToCharArray();
+
+//                Console.WriteLine();
+//                #region печатаем
+//                Console.WriteLine("Массив 1:");
+//                for (int i1 = 0; i1 < S1.Length; i1++)
+//                {
+//                    Console.Write(Array1[i1]);
+//                }
+//                Console.WriteLine();
+//                Console.WriteLine("Массив 2:");
+//                for (int j1 = 0; j1 < S2.Length; j1++)
+//                {
+//                    Console.Write(Array2[j1]);
+//                }
+//                Console.WriteLine();
+//                #endregion
+
+//                //first iteration
+//                int IndexFirst1;
+
+//                int IndexOf1 = 0;
+//                int IndexOf2 = 0;
+//                int IndexOfEnd1 = W1;
+//                int IndexOfEnd2 = W2;
+//                bool bryak = false; //признак прерывания всего
+//                bool contains2 = false;
+//                int difference = 0;
+
+//                int ArrayRange2 = 0;
+//                int ArrayRange1 = 0;
+//                bool dontgrowI = true;
+//                int i = 0, j = 0;
+
+//                while (i < H1) //H1 кол-во рангов главного массива в котором ищем
+//                {
+//                    while (j < H2) //H1 кол-во рангов второго массива который используем для поиска
+//                    {
+//                        if ((i != 0) && (dontgrowI == true))
+//                        {
+//                            dontgrowI = true;
+//                            IndexOf1 += W1 + 1; //начальный индекс 1-го массива
+//                            IndexOfEnd1 = IndexOf1 + W1; //конечный индекс 1-го массива
+//                        }
+//                        if (j != 0)
+//                        {
+//                            IndexOf2 += W2 + 1; //начальный индекс  2-го массива
+//                            IndexOfEnd2 = IndexOf2 + W2; //конечный индекс 2-го массива
+//                        }
+
+//                        Console.WriteLine();
+//                        string number1 = "";
+//                        for (int x = IndexOf1 + difference; x < IndexOfEnd1; x++) //переводим все числа данного ранга первого массива в строку
+//                        {
+//                            number1 += Array1[x].ToString();
+//                        }
+//                        Console.WriteLine(number1);
+
+//                        string number2 = "";
+//                        for (int y = IndexOf2; y < IndexOfEnd2; y++) //переводим все числа данного ранга второго массива в строку
+//                        {
+//                            number2 += Array2[y].ToString();
+//                        }
+//                        Console.WriteLine(number2);
+//                        Console.WriteLine();
+
+//                        if (number1.Contains(number2)) //если i-й ранг первого массива содержит ранг второго массива 
+//                        {
+//                            if ((i > 0) && (Array1[IndexOf1 + difference] != Array2[IndexOf2]) && (ArrayRange2 != 0) && (ArrayRange1 == H1 - 1)) //&& (ArrayRange1 == 0)) //не первый ранг и первый символ от вычисленного индекса не совпадает с первым символом ранга второго массива бряк
+//                            {
+//                                bryak = true;
+//                                break;
+//                            }
+//                            i++;
+//                            j++;
+//                            dontgrowI = true;
+
+//                            if (ArrayRange2 == H2 - 1) //если совпал последний ранг второго массива
+//                            {
+//                                contains2 = true;
+//                                break;
+//                            }
+
+//                            if (ArrayRange1 == H1 - 1) //&& (ArrayRange2 == 0)) || (ArrayRange1 == H1 - 1) && (ArrayRange2 == 0) //совпал последний ранг первого массива с первым рангом второго массива
+//                            {
+//                                bryak = true;
+//                                break;
+//                            }
+
+//                            ArrayRange1++;
+//                            ArrayRange2++;
+
+//                            for (int b = IndexOf1; b < IndexOfEnd1; b++) //то вычисляем индек совпадения первого числа в первом массиве
+//                            {
+//                                if (Array2[IndexOf2] == Array1[b])
+//                                {
+//                                    IndexFirst1 = b;
+//                                    if (ArrayRange2 == 1)//(i == 1)
+//                                        difference = IndexFirst1 - IndexOf1;
+//                                    break;
+//                                }
+//                            }
+//                        }
+//                        else
+//                        {
+//                            if (ArrayRange1 == H1 - 1) //&& (ArrayRange2 == H2 - 1))
+//                            {
+//                                bryak = true;
+//                                break;
+//                            }
+//                            IndexOf2 = 0;
+//                            if (ArrayRange2 == 0)
+//                            {
+//                                dontgrowI = true;
+//                                i++;
+//                                ArrayRange1++;
+//                            }
+//                            j = 0;
+
+//                            if (ArrayRange2 != 0)
+//                            {
+//                                contains2 = false;
+//                                difference = 0;
+//                                IndexOfEnd2 = W2;
+//                                ArrayRange2 = 0;
+//                                if (ArrayRange1 < H1 - 1)
+//                                    dontgrowI = false;
+//                                else
+//                                    dontgrowI = true;
+//                                //ArrayRange1++;
+//                            }
+//                        }
+//                    }
+//                    if ((contains2 == true) || (bryak == true))
+//                        break;
+//                }
+//                if ((contains2 == true) && (bryak != true))
+//                    return true;
+//                else
+//                    return false;
+//            }
+//            else
+//                return false;
+//        }
+
+#endregion
+
 #region
 namespace Level1Space
 {
@@ -4665,91 +5212,146 @@ namespace Level1Space
     {
         public static bool TankRush(int H1, int W1, string S1, int H2, int W2, string S2)
         {
-            char[] text1 = S1.ToCharArray();
-            char[] text2 = S2.ToCharArray();
-            int result = 0;
-
-            int y = 0;
-            int k = 0;
-            int a = 0;
-            int b = 0;
-            bool secondstring = false;
-
-            while (result < H2 * W2 && a < S1.Length)
+            if ((H2 <= H1) && (W2 <= W1))
             {
-                if (text2[b] == text1[a] && text2[b].ToString() != " ")
+                char[] Array1 = S1.ToCharArray();
+                char[] Array2 = S2.ToCharArray();
+
+                int IndexFirst1;
+
+                int IndexOf1 = 0;
+                int IndexOf2 = 0;
+
+                int IndexOfEnd1 = W1;
+                int IndexOfEnd2 = W2;
+
+                int ArrayRange2 = 0;
+                int ArrayRange1 = 0;
+
+                bool bryak = false;
+                bool contains2 = false;
+                int difference = 0;
+
+                bool dontgrowI = true;
+                int i = 0, j = 0;
+
+                while (i < H1)
                 {
-                    result++;
-                    if (y == 0)
-                        k = a; 
-                    if (y < W2)
-                        y++;
-                    if (y == W2)
+                    while (j < H2)
                     {
-                        a = k + W1 + 1;
-                        b++;
-                        y = 0;
-                        secondstring = true;
-                    }
-                    else
-                    {
-                        a++;
-                        b++;
-                    }
-                }
-                else
-                {
-                    if ((text1[a].ToString() != " ") && (text2[b].ToString() != " "))
-                    {
-                        if ((y == W2) || (result > 0 && secondstring == true))
+                        if ((i != 0) && (dontgrowI == true))
                         {
-                            result = 0;
-                            y = 0;
-                            for (int n = a; n > 0; n--)
+                            dontgrowI = true;
+                            IndexOf1 += W1 + 1;
+                            IndexOfEnd1 = IndexOf1 + W1;
+                        }
+                        if (j != 0)
+                        {
+                            IndexOf2 += W2 + 1;
+                            IndexOfEnd2 = IndexOf2 + W2;
+                        }
+
+                        string number1 = "";
+                        for (int x = IndexOf1 + difference; x < IndexOfEnd1; x++)
+                        {
+                            number1 += Array1[x].ToString();
+                        }
+
+                        string number2 = "";
+                        for (int y = IndexOf2; y < IndexOfEnd2; y++)
+                        {
+                            number2 += Array2[y].ToString();
+                        }
+
+                        if (number1.Contains(number2))
+                        {
+                            if ((i > 0) && (Array1[IndexOf1 + difference] != Array2[IndexOf2]) && (ArrayRange2 != 0) && (ArrayRange1 == H1 - 1))
                             {
-                                if (text1[n].ToString() == " ")
+                                bryak = true;
+                                break;
+                            }
+                            i++;
+                            j++;
+                            dontgrowI = true;
+
+                            if (ArrayRange2 == H2 - 1)
+                            {
+                                contains2 = true;
+                                break;
+                            }
+
+                            if (ArrayRange1 == H1 - 1)
+                            {
+                                bryak = true;
+                                break;
+                            }
+
+                            ArrayRange1++;
+                            ArrayRange2++;
+
+                            for (int b = IndexOf1; b < IndexOfEnd1; b++)
+                            {
+                                if (Array2[IndexOf2] == Array1[b])
                                 {
-                                    a = n + 1;
+                                    IndexFirst1 = b;
+                                    if (ArrayRange2 == 1)
+                                        difference = IndexFirst1 - IndexOf1;
                                     break;
                                 }
                             }
-                            secondstring = false;
-                            b = 0;
                         }
                         else
                         {
-                            a++;
+                            if (ArrayRange1 == H1 - 1)
+                            {
+                                bryak = true;
+                                break;
+                            }
+                            IndexOf2 = 0;
+                            if (ArrayRange2 == 0)
+                            {
+                                dontgrowI = true;
+                                i++;
+                                ArrayRange1++;
+                            }
+                            j = 0;
+
+                            if (ArrayRange2 != 0)
+                            {
+                                contains2 = false;
+                                difference = 0;
+                                IndexOfEnd2 = W2;
+                                ArrayRange2 = 0;
+                                if (ArrayRange1 < H1 - 1)
+                                    dontgrowI = false;
+                                else
+                                    dontgrowI = true;
+                            }
                         }
                     }
-                    if (a < S1.Length) 
-                    {
-                        if (text1[a].ToString() == " ")
-                            a++;
-                    }
-                    if (b < S2.Length)
-                    {
-                        if (text2[b].ToString() == " ")
-                            b++;
-                    }
+                    if ((contains2 == true) || (bryak == true))
+                        break;
                 }
-                if (a > H1 * W1 + (H1 - 1))
-                    break;
+                if ((contains2 == true) && (bryak != true))
+                    return true;
+                else
+                    return false;
             }
-
-            if (result == H2 * W2)
-                return true;
             else
                 return false;
         }
-
+        #endregion
+        #region
         public static void Main()
         {
             int H1 = 3;
-            int W1 = 3;
-            string S1 = "321 694 798";
+            int W1 = 6;
+            string S1 = "341234 000345 000987";
             int H2 = 2;
-            int W2 = 2;
-            string S2 = "69 98";
+            int W2 = 3;
+            string S2 = "000 000";
+
+
             Console.WriteLine("Карта1 " + S1);
             Console.WriteLine("Карта2 " + S2);
             Console.WriteLine("Результат- " + TankRush(H1, W1, S1, H2, W2, S2));

@@ -1620,10 +1620,11 @@ namespace Test_Level1
 
             int H1 = 3;
             int W1 = 4;
-            string S1 = "1234 2345 0987";
+            string S1 = "1234 2345 0987";//\n
             int H2 = 2;
             int W2 = 2;
             string S2 = "34 98";
+
 
             try
             {
@@ -1643,7 +1644,8 @@ namespace Test_Level1
             }
             finally
             {
-                Console.WriteLine("Результат- " + Level1.TankRush(H1, W1, S1, H2, W2, S2));
+                Console.WriteLine("Результат функции- " + Level1.TankRush(H1, W1, S1, H2, W2, S2));
+                Console.WriteLine("Реальный результат - "+"входит");
                 Console.WriteLine("TEST {0} PASSED", number);
             }
         }
@@ -1679,6 +1681,7 @@ namespace Test_Level1
             finally
             {
                 Console.WriteLine("Результат- " + Level1.TankRush(H1, W1, S1, H2, W2, S2));
+                Console.WriteLine("Реальный результат - " + "входит");
                 Console.WriteLine("TEST {0} PASSED", number);
             }
         }
@@ -1714,6 +1717,7 @@ namespace Test_Level1
             finally
             {
                 Console.WriteLine("Результат- " + Level1.TankRush(H1, W1, S1, H2, W2, S2));
+                Console.WriteLine("Реальный результат - " + "НЕ входит");
                 Console.WriteLine("TEST {0} PASSED", number);
             }
         }
@@ -1749,6 +1753,7 @@ namespace Test_Level1
             finally
             {
                 Console.WriteLine("Результат- " + Level1.TankRush(H1, W1, S1, H2, W2, S2));
+                Console.WriteLine("Реальный результат - " + "входит");
                 Console.WriteLine("TEST {0} PASSED", number);
             }
         }
@@ -1784,6 +1789,7 @@ namespace Test_Level1
             finally
             {
                 Console.WriteLine("Результат- " + Level1.TankRush(H1, W1, S1, H2, W2, S2));
+                Console.WriteLine("Реальный результат - " + "входит");
                 Console.WriteLine("TEST {0} PASSED", number);
             }
         }
@@ -1819,6 +1825,7 @@ namespace Test_Level1
             finally
             {
                 Console.WriteLine("Результат- " + Level1.TankRush(H1, W1, S1, H2, W2, S2));
+                Console.WriteLine("Реальный результат - " + "НЕ входит");
                 Console.WriteLine("TEST {0} PASSED", number);
             }
         }
@@ -1854,6 +1861,7 @@ namespace Test_Level1
             finally
             {
                 Console.WriteLine("Результат- " + Level1.TankRush(H1, W1, S1, H2, W2, S2));
+                Console.WriteLine("Реальный результат - " + "входит");
                 Console.WriteLine("TEST {0} PASSED", number);
             }
         }
@@ -1889,6 +1897,7 @@ namespace Test_Level1
             finally
             {
                 Console.WriteLine("Результат- " + Level1.TankRush(H1, W1, S1, H2, W2, S2));
+                Console.WriteLine("Реальный результат - " + "НЕ входит");
                 Console.WriteLine("TEST {0} PASSED", number);
             }
         }
@@ -1898,11 +1907,11 @@ namespace Test_Level1
         {
             int number = 9;
 
-            int H1 = 0;
-            int W1 = 0;
+            int H1 = 3;
+            int W1 = 1;
             string S1 = "0 0 0";
-            int H2 = 0;
-            int W2 = 0;
+            int H2 = 3;
+            int W2 = 1;
             string S2 = "0 0 0";
 
             try
@@ -1924,6 +1933,7 @@ namespace Test_Level1
             finally
             {
                 Console.WriteLine("Результат- " + Level1.TankRush(H1, W1, S1, H2, W2, S2));
+                Console.WriteLine("Реальный результат - " + "входит");
                 Console.WriteLine("TEST {0} PASSED", number);
             }
         }
@@ -1959,6 +1969,7 @@ namespace Test_Level1
             finally
             {
                 Console.WriteLine("Результат- " + Level1.TankRush(H1, W1, S1, H2, W2, S2));
+                Console.WriteLine("Реальный результат - " + "входит");
                 Console.WriteLine("TEST {0} PASSED", number);
             }
         }
@@ -1994,6 +2005,7 @@ namespace Test_Level1
             finally
             {
                 Console.WriteLine("Результат- " + Level1.TankRush(H1, W1, S1, H2, W2, S2));
+                Console.WriteLine("Реальный результат - " + "НЕ входит");
                 Console.WriteLine("TEST {0} PASSED", number);
             }
         }
@@ -2029,6 +2041,7 @@ namespace Test_Level1
             finally
             {
                 Console.WriteLine("Результат- " + Level1.TankRush(H1, W1, S1, H2, W2, S2));
+                Console.WriteLine("Реальный результат - " + "НЕ входит");
                 Console.WriteLine("TEST {0} PASSED", number);
             }
         }
@@ -2064,6 +2077,7 @@ namespace Test_Level1
             finally
             {
                 Console.WriteLine("Результат- " + Level1.TankRush(H1, W1, S1, H2, W2, S2));
+                Console.WriteLine("Реальный результат - " + "НЕ входит");
                 Console.WriteLine("TEST {0} PASSED", number);
             }
         }
@@ -2099,6 +2113,151 @@ namespace Test_Level1
             finally
             {
                 Console.WriteLine("Результат- " + Level1.TankRush(H1, W1, S1, H2, W2, S2));
+                Console.WriteLine("Реальный результат - " + "входит");
+                Console.WriteLine("TEST {0} PASSED", number);
+            }
+        }
+        [TestMethod]
+        [TestCategory("tests")]
+        public void Test15()
+        {
+            int number = 15;
+
+            int H1 = 4;
+            int W1 = 6;
+            string S1 = "029402 560202 029694 780288";
+            int H2 = 2;
+            int W2 = 2;
+            string S2 = "02 94";
+
+            try
+            {
+                Console.WriteLine("Карта {0} {1}: {2}", H1, W1, S1);
+                Console.WriteLine("Группировка танков {0} {1}: {2}", H2, W2, S2);
+                Console.WriteLine();
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
+                Console.WriteLine("Результат- " + Level1.TankRush(H1, W1, S1, H2, W2, S2));
+                Console.WriteLine("Реальный результат - " + "входит");
+                Console.WriteLine("TEST {0} PASSED", number);
+            }
+        }
+        [TestMethod]
+        [TestCategory("tests")]
+        public void Test16()
+        {
+            int number = 16;
+
+            int H1 = 3;
+            int W1 = 4;
+            string S1 = "0000 0000 0000";
+            int H2 = 2;
+            int W2 = 2;
+            string S2 = "00 01";
+
+            try
+            {
+                Console.WriteLine("Карта {0} {1}: {2}", H1, W1, S1);
+                Console.WriteLine("Группировка танков {0} {1}: {2}", H2, W2, S2);
+                Console.WriteLine();
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
+                Console.WriteLine("Результат- " + Level1.TankRush(H1, W1, S1, H2, W2, S2));
+                Console.WriteLine("Реальный результат - " + "НЕ входит");
+                Console.WriteLine("TEST {0} PASSED", number);
+            }
+        }
+        [TestMethod]
+        [TestCategory("tests")]
+        public void Test17()
+        {
+            int number = 17;
+
+            int H1 = 3;
+            int W1 = 4;
+            string S1 = "1234 2345 0987";
+            int H2 = 4;
+            int W2 = 5;
+            string S2 = "34111 98111 11111 11111";
+
+            try
+            {
+                Console.WriteLine("Карта {0} {1}: {2}", H1, W1, S1);
+                Console.WriteLine("Группировка танков {0} {1}: {2}", H2, W2, S2);
+                Console.WriteLine();
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
+                Console.WriteLine("Результат- " + Level1.TankRush(H1, W1, S1, H2, W2, S2));
+                Console.WriteLine("Реальный результат - " + "НЕ входит");
+                Console.WriteLine("TEST {0} PASSED", number);
+            }
+        }
+        [TestMethod]
+        [TestCategory("tests")]
+        public void Test18()
+        {
+            int number = 18;
+
+            int H1 = 3;
+            int W1 = 6;
+            string S1 = "341234 000345 000987";
+            int H2 = 2;
+            int W2 = 3;
+            string S2 = "000 000";
+
+            try
+            {
+                Console.WriteLine("Карта {0} {1}: {2}", H1, W1, S1);
+                Console.WriteLine("Группировка танков {0} {1}: {2}", H2, W2, S2);
+                Console.WriteLine();
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
+                Console.WriteLine("Результат- " + Level1.TankRush(H1, W1, S1, H2, W2, S2));
+                Console.WriteLine("Реальный результат - " + "входит");
                 Console.WriteLine("TEST {0} PASSED", number);
             }
         }
