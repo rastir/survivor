@@ -5206,155 +5206,294 @@ TankRush возвращает true, если вторая карта содер�
 #endregion
 
 #region
+//namespace Level1Space
+//{
+//    public static class Level1
+//    {
+//        public static bool TankRush(int H1, int W1, string S1, int H2, int W2, string S2)
+//        {
+//            if ((H2 <= H1) && (W2 <= W1))
+//            {
+//                char[] Array1 = S1.ToCharArray();
+//                char[] Array2 = S2.ToCharArray();
+
+//                int IndexFirst1;
+
+//                int IndexOf1 = 0;
+//                int IndexOf2 = 0;
+
+//                int IndexOfEnd1 = W1;
+//                int IndexOfEnd2 = W2;
+
+//                int ArrayRange2 = 0;
+//                int ArrayRange1 = 0;
+
+//                bool bryak = false;
+//                bool contains2 = false;
+//                int difference = 0;
+
+//                bool dontgrowI = true;
+//                int i = 0, j = 0;
+
+//                while (i < H1)
+//                {
+//                    while (j < H2)
+//                    {
+//                        if ((i != 0) && (dontgrowI == true))
+//                        {
+//                            dontgrowI = true;
+//                            IndexOf1 += W1 + 1;
+//                            IndexOfEnd1 = IndexOf1 + W1;
+//                        }
+//                        if (j != 0)
+//                        {
+//                            IndexOf2 += W2 + 1;
+//                            IndexOfEnd2 = IndexOf2 + W2;
+//                        }
+
+//                        string number1 = "";
+//                        for (int x = IndexOf1 + difference; x < IndexOfEnd1; x++)
+//                        {
+//                            number1 += Array1[x].ToString();
+//                        }
+
+//                        string number2 = "";
+//                        for (int y = IndexOf2; y < IndexOfEnd2; y++)
+//                        {
+//                            number2 += Array2[y].ToString();
+//                        }
+
+//                        if (number1.Contains(number2))
+//                        {
+//                            if ((i > 0) && (Array1[IndexOf1 + difference] != Array2[IndexOf2]) && (ArrayRange2 != 0) && (ArrayRange1 == H1 - 1))
+//                            {
+//                                bryak = true;
+//                                break;
+//                            }
+//                            i++;
+//                            j++;
+//                            dontgrowI = true;
+
+//                            if (ArrayRange2 == H2 - 1)
+//                            {
+//                                contains2 = true;
+//                                break;
+//                            }
+
+//                            if (ArrayRange1 == H1 - 1)
+//                            {
+//                                bryak = true;
+//                                break;
+//                            }
+
+//                            ArrayRange1++;
+//                            ArrayRange2++;
+
+//                            for (int b = IndexOf1; b < IndexOfEnd1; b++)
+//                            {
+//                                if (Array2[IndexOf2] == Array1[b])
+//                                {
+//                                    IndexFirst1 = b;
+//                                    if (ArrayRange2 == 1)
+//                                        difference = IndexFirst1 - IndexOf1;
+//                                    break;
+//                                }
+//                            }
+//                        }
+//                        else
+//                        {
+//                            if (ArrayRange1 == H1 - 1)
+//                            {
+//                                bryak = true;
+//                                break;
+//                            }
+//                            IndexOf2 = 0;
+//                            if (ArrayRange2 == 0)
+//                            {
+//                                dontgrowI = true;
+//                                i++;
+//                                ArrayRange1++;
+//                            }
+//                            j = 0;
+
+//                            if (ArrayRange2 != 0)
+//                            {
+//                                contains2 = false;
+//                                difference = 0;
+//                                IndexOfEnd2 = W2;
+//                                ArrayRange2 = 0;
+//                                if (ArrayRange1 < H1 - 1)
+//                                    dontgrowI = false;
+//                                else
+//                                    dontgrowI = true;
+//                            }
+//                        }
+//                    }
+//                    if ((contains2 == true) || (bryak == true))
+//                        break;
+//                }
+//                if ((contains2 == true) && (bryak != true))
+//                    return true;
+//                else
+//                    return false;
+//            }
+//            else
+//                return false;
+//        }
+#endregion
+#region
+//public static void Main()
+//{
+//    int H1 = 3;
+//    int W1 = 6;
+//    string S1 = "341234 000345 000987";
+//    int H2 = 2;
+//    int W2 = 3;
+//    string S2 = "000 000";
+
+
+//    Console.WriteLine("Карта1 " + S1);
+//    Console.WriteLine("Карта2 " + S2);
+//    Console.WriteLine("Результат- " + TankRush(H1, W1, S1, H2, W2, S2));
+//    Console.ReadKey();
+//}
+//}
+//}
+#endregion
+
+
+/*-------------------------------------------------------------------------------------------------------------------------------------------------*/
+//Задача №16 "Шопоголики"
+/*Условие задачи
+ * 
+Шопоголики
+
+Оксана -- шопоголик. Она постоянно выискивает магазины, где предлагаются различные скидки, и совершает на них опустошающие набеги.
+Недавно Оксана нашла отличный маркет, где предлагается соблазнительный сервис: если покупаются три предмета, то третий (самый дешёвый) можно получить бесплатно. Например, купив три предмета за 400, 300 и 250 долларов, Оксана заплатит всего 700 долларов, так как третий, самый дешёвый, получит бесплатно.
+Если за один раз покупается больше трёх предметов, то количество бесплатных покупок равно общему числу предметов, делённому нацело на три. Например, при покупке 7 и 8 предметов, два предмета из них (самые дешёвые) Оксана получает бесплатно.
+Однако если разбивать такие "длинные" приобретения на более короткие, можно получить ощутимо большую выгоду.
+Например, Оксана купила разом семь предметов: 400, 350, 300, 250, 200, 150 и 100 долларов, из которых два самых дешёвых (150 и 100) достаются бесплатно.Однако если бы она сперва купила три предмета 400, 350 и 300, потом три 250, 200 и 150, и потом последний за 100, то бесплатными для неё стали бы товары по 300 и 150 долларов.
+Разработайте для Оксаны стратегию получения максимальной скидки, когда известен весь перечень товаров (цены на них следуют в случайном порядке).
+
+Функция
+int MaximumDiscount(int N, int[] price)
+получает на вход количество предметов N и список их цен. Возвращает она максимально возможную величину скидки. 
+*/
+
+///
+#region
+//namespace Level1Space
+//{
+//    public static class Level1
+//    {
+//        public static int MaximumDiscount(int N, int[] Price)
+//        {
+//            if (Price.Length != N)
+//            {
+//                return 0;
+//            }
+//            else
+//            {
+//                //Основной цикл (количество повторений равно количеству элементов массива)
+//                for (int i = 0; i < Price.Length; i++)
+//                {
+//                    //Вложенный цикл (количество повторений, равно количеству элементов массива минус 1 и минус количество выполненных повторений основного цикла)
+//                    for (int j = 0; j < Price.Length - 1 - i; j++)
+//                    {
+//                        //Если элемент массива с индексом j больше следующего за ним элемента
+//                        if (Price[j] < Price[j + 1])
+//                        {
+//                            //Меняем местами элемент массива с индексом j и следующий за ним
+//                            Swap(ref Price[j], ref Price[j + 1]);
+//                        }
+//                    }
+//                }
+//                for (int i = 0; i < Price.Length; i++)
+//                {
+//                    //Вывод значения текущего элемента и пробел после него
+//                    Console.Write(Price[i] + " ");
+//                }
+//                int summ = 0; ;
+//                for (int i = 0; i < Price.Length; i++)
+//                {
+//                    if ((i + 1) % 3 == 0)
+//                    {
+//                        summ += Price[i];
+//                    }
+//                }
+//                return summ;
+//            }
+//        }
+//        //Вспомогательный метод, "меняет местами" два элемента
+//        public static void Swap(ref int aFirstArg, ref int aSecondArg)
+//        {
+//            //Временная (вспомогательная) переменная, хранит значение первого элемента
+//            int tmpParam = aFirstArg;
+
+//            //Первый аргумент получил значение второго
+//            aFirstArg = aSecondArg;
+
+//            //Второй аргумент, получил сохраненное ранее значение первого
+//            aSecondArg = tmpParam;
+//        }
+
+//        //Главный метод программы 
+//        static void Main(string[] args)
+//        {
+//            int N = 11;
+//            //Некий массив целых чисел, который нужно отсортировать 
+//            int[] Price = new int[] { 1, 1000, 0, 33, 400, 350, 300, 250, 200, 150, 100 };
+
+//            Console.WriteLine("Результат- " + MaximumDiscount(N, Price));
+//            Console.ReadKey();
+//        }
+//    }
+//}
+#endregion
+#region без вывода
 namespace Level1Space
 {
     public static class Level1
     {
-        public static bool TankRush(int H1, int W1, string S1, int H2, int W2, string S2)
+        public static int MaximumDiscount(int N, int[] Price)
         {
-            if ((H2 <= H1) && (W2 <= W1))
+            if (Price.Length != N)
             {
-                char[] Array1 = S1.ToCharArray();
-                char[] Array2 = S2.ToCharArray();
-
-                int IndexFirst1;
-
-                int IndexOf1 = 0;
-                int IndexOf2 = 0;
-
-                int IndexOfEnd1 = W1;
-                int IndexOfEnd2 = W2;
-
-                int ArrayRange2 = 0;
-                int ArrayRange1 = 0;
-
-                bool bryak = false;
-                bool contains2 = false;
-                int difference = 0;
-
-                bool dontgrowI = true;
-                int i = 0, j = 0;
-
-                while (i < H1)
-                {
-                    while (j < H2)
-                    {
-                        if ((i != 0) && (dontgrowI == true))
-                        {
-                            dontgrowI = true;
-                            IndexOf1 += W1 + 1;
-                            IndexOfEnd1 = IndexOf1 + W1;
-                        }
-                        if (j != 0)
-                        {
-                            IndexOf2 += W2 + 1;
-                            IndexOfEnd2 = IndexOf2 + W2;
-                        }
-
-                        string number1 = "";
-                        for (int x = IndexOf1 + difference; x < IndexOfEnd1; x++)
-                        {
-                            number1 += Array1[x].ToString();
-                        }
-
-                        string number2 = "";
-                        for (int y = IndexOf2; y < IndexOfEnd2; y++)
-                        {
-                            number2 += Array2[y].ToString();
-                        }
-
-                        if (number1.Contains(number2))
-                        {
-                            if ((i > 0) && (Array1[IndexOf1 + difference] != Array2[IndexOf2]) && (ArrayRange2 != 0) && (ArrayRange1 == H1 - 1))
-                            {
-                                bryak = true;
-                                break;
-                            }
-                            i++;
-                            j++;
-                            dontgrowI = true;
-
-                            if (ArrayRange2 == H2 - 1)
-                            {
-                                contains2 = true;
-                                break;
-                            }
-
-                            if (ArrayRange1 == H1 - 1)
-                            {
-                                bryak = true;
-                                break;
-                            }
-
-                            ArrayRange1++;
-                            ArrayRange2++;
-
-                            for (int b = IndexOf1; b < IndexOfEnd1; b++)
-                            {
-                                if (Array2[IndexOf2] == Array1[b])
-                                {
-                                    IndexFirst1 = b;
-                                    if (ArrayRange2 == 1)
-                                        difference = IndexFirst1 - IndexOf1;
-                                    break;
-                                }
-                            }
-                        }
-                        else
-                        {
-                            if (ArrayRange1 == H1 - 1)
-                            {
-                                bryak = true;
-                                break;
-                            }
-                            IndexOf2 = 0;
-                            if (ArrayRange2 == 0)
-                            {
-                                dontgrowI = true;
-                                i++;
-                                ArrayRange1++;
-                            }
-                            j = 0;
-
-                            if (ArrayRange2 != 0)
-                            {
-                                contains2 = false;
-                                difference = 0;
-                                IndexOfEnd2 = W2;
-                                ArrayRange2 = 0;
-                                if (ArrayRange1 < H1 - 1)
-                                    dontgrowI = false;
-                                else
-                                    dontgrowI = true;
-                            }
-                        }
-                    }
-                    if ((contains2 == true) || (bryak == true))
-                        break;
-                }
-                if ((contains2 == true) && (bryak != true))
-                    return true;
-                else
-                    return false;
+                return 0;
             }
             else
-                return false;
+            {
+                for (int i = 0; i < Price.Length; i++)
+                {                    
+                    for (int j = 0; j < Price.Length - 1 - i; j++)
+                    {
+                        if (Price[j] < Price[j + 1])
+                        {
+                            int tmpParam = Price[j];
+                            Price[j] = Price[j + 1];
+                            Price[j + 1] = tmpParam;
+                        }
+                    }
+                }
+                int summ = 0;
+                for (int i = 0; i < Price.Length; i++)
+                {
+                    if ((i + 1) % 3 == 0)
+                    {
+                        summ += Price[i];
+                    }
+                }
+                return summ;
+            }
         }
-        #endregion
-        #region
-        public static void Main()
+        
+        static void Main(string[] args)
         {
-            int H1 = 3;
-            int W1 = 6;
-            string S1 = "341234 000345 000987";
-            int H2 = 2;
-            int W2 = 3;
-            string S2 = "000 000";
+            int N = 11;
+            //Некий массив целых чисел, который нужно отсортировать 
+            int[] Price = new int[] { 1, 1000, 0, 33, 400, 350, 300, 250, 200, 150, 100 };
 
-
-            Console.WriteLine("Карта1 " + S1);
-            Console.WriteLine("Карта2 " + S2);
-            Console.WriteLine("Результат- " + TankRush(H1, W1, S1, H2, W2, S2));
+            Console.WriteLine("Результат- " + MaximumDiscount(N, Price));
             Console.ReadKey();
         }
     }
