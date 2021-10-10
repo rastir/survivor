@@ -5624,9 +5624,9 @@ namespace Level1Space
 
                     for (int i = 1; i < line.Length; i++)
                     {
-                        template += line[i].ToString();
                         if (line[i].ToString() == "*")
                             break;
+                        template += line[i].ToString();
                     }
 
                     int count1 = 0;
@@ -5641,7 +5641,7 @@ namespace Level1Space
                         return false;
                     else
                     {
-                        decimal b = line.Length+1;
+                        decimal b = line.Length - 1;
                         decimal c = template.Length;
                         decimal a = b / c;
                         if  (int.TryParse(a.ToString(), out _))
