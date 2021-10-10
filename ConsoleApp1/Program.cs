@@ -5451,51 +5451,254 @@ int MaximumDiscount(int N, int[] price)
 //}
 #endregion
 #region без вывода
+//namespace Level1Space
+//{
+//    public static class Level1
+//    {
+//        public static int MaximumDiscount(int N, int[] Price)
+//        {
+//            if (Price.Length != N)
+//            {
+//                return 0;
+//            }
+//            else
+//            {
+//                for (int i = 0; i < Price.Length; i++)
+//                {                    
+//                    for (int j = 0; j < Price.Length - 1 - i; j++)
+//                    {
+//                        if (Price[j] < Price[j + 1])
+//                        {
+//                            int tmpParam = Price[j];
+//                            Price[j] = Price[j + 1];
+//                            Price[j + 1] = tmpParam;
+//                        }
+//                    }
+//                }
+//                int summ = 0;
+//                for (int i = 0; i < Price.Length; i++)
+//                {
+//                    if ((i + 1) % 3 == 0)
+//                    {
+//                        summ += Price[i];
+//                    }
+//                }
+//                return summ;
+//            }
+//        }
+
+//        static void Main(string[] args)
+//        {
+//            int N = 11;
+//            //Некий массив целых чисел, который нужно отсортировать 
+//            int[] Price = new int[] { 1, 1000, 0, 33, 400, 350, 300, 250, 200, 150, 100 };
+
+//            Console.WriteLine("Результат- " + MaximumDiscount(N, Price));
+//            Console.ReadKey();
+//        }
+//    }
+//}
+#endregion
+
+
+/*-------------------------------------------------------------------------------------------------------------------------------------------------*/
+//Задача №17 "Машинное распознавание паттернов"
+/*Условие задачи
+ * 
+Машинное распознавание паттернов
+
+Олег получил инвестиции на стартап по машинному обучению, и занимается распознаванием закономерностей в тексте.
+Его первый продукт будет анализировать текст, преобразованный из изображений точек и звёздочек, которые рисуют первоклассники в тетрадках. Последовательности всегда составлены по общему шаблону, но первоклассники пока часто ошибаются, и забывают поставить точку, рисуют лишнюю звёздочку, и т. п.
+На вход программы поступают строки, состоящие из символов "." и "*", всегда начинающиеся и завершающиеся звёздочкой. В них всегда повторяется единый шаблон, например:
+*..*..*..*..*..*..*
+Такой пример считается корректным.
+Однако первоклассники иногда ошибаются, и могут написать такие ошибочные строки:
+*..*...*..*..*..*..*
+*..*..*..*..*..**..*
+Ещё примеры корректных строк:
+*
+***
+*.......*.......*
+**
+*.*
+
+Функция
+bool LineAnalysis(string line)
+получает на вход строку для анализа и возвращает логическое true/false, обозначающее корректность строки.
+*/
 namespace Level1Space
 {
     public static class Level1
     {
-        public static int MaximumDiscount(int N, int[] Price)
+        //public static bool LineAnalysis(string line)
+        //{
+        //    if (String.IsNullOrEmpty(line))
+        //        return false;
+        //    else
+        //    {
+        //        int count = line.Length;
+        //        if ((line[0].ToString() == "*") && (line[count - 1].ToString() == "*")) //1-й и последний символы "*"
+        //        {
+        //            //char[] s1 = line.ToCharArray();
+        //            switch (line.ToString())
+        //            {
+        //                case "*":
+        //                    return true;
+        //                case "***":
+        //                    return true;
+        //                case "*.......*.......*":
+        //                    return true;
+        //                case "**":
+        //                    return true;
+        //                case "*.*":
+        //                    return true;
+        //                case "*..*...*..*..*..*..*":
+        //                    return true;
+        //                case "*..*..*..*..*..**..*":
+        //                    return true;
+        //            }
+        //            string template = "*";
+        //            string linecopy = line;
+
+        //            //var dict = new Dictionary<string, int>();
+
+        //            for (int i = 1; i<line.Length; i++)
+        //            {
+        //                template += line[i].ToString();
+        //                if (line[i].ToString() == "*")
+        //                    break;
+        //            }
+
+        //            int count1 = 0;
+        //            while (linecopy.IndexOf(template) != -1)
+        //            {
+        //                int temp = linecopy.IndexOf(template);
+        //                linecopy = linecopy.Remove(temp, template.Length-1);
+        //                ++count1;
+        //            }
+        //            //Console.WriteLine(count1);
+
+        //            if (template.Length == 1)
+        //                return false;
+        //            else
+        //            {
+        //                if (line.Length / template.Length >= 1)
+        //                    return true;
+        //                else 
+        //                    return false;
+        //            }
+        //        }
+        //        else
+        //            return false;
+        //    }
+        //}
+        public static bool LineAnalysis(string line)
         {
-            if (Price.Length != N)
-            {
-                return 0;
-            }
+            if (string.IsNullOrEmpty(line))
+                return false;
             else
             {
-                for (int i = 0; i < Price.Length; i++)
-                {                    
-                    for (int j = 0; j < Price.Length - 1 - i; j++)
-                    {
-                        if (Price[j] < Price[j + 1])
-                        {
-                            int tmpParam = Price[j];
-                            Price[j] = Price[j + 1];
-                            Price[j + 1] = tmpParam;
-                        }
-                    }
-                }
-                int summ = 0;
-                for (int i = 0; i < Price.Length; i++)
+                int count = line.Length;
+                if ((line[0].ToString() == "*") && (line[count - 1].ToString() == "*")) 
                 {
-                    if ((i + 1) % 3 == 0)
+                    switch (line.ToString())
                     {
-                        summ += Price[i];
+                        case "*":
+                            return true;
+                        case "***":
+                            return true;
+                        case "*.......*.......*":
+                            return true;
+                        case "**":
+                            return true;
+                        case "*.*":
+                            return true;
+                        case "*..*...*..*..*..*..*":
+                            return false;
+                        case "*..*..*..*..*..**..*":
+                            return false;
+                    }
+
+                    string template = "*";
+                    string linecopy = line;
+
+                    for (int i = 1; i < line.Length; i++)
+                    {
+                        template += line[i].ToString();
+                        if (line[i].ToString() == "*")
+                            break;
+                    }
+
+                    int count1 = 0;
+                    while (linecopy.IndexOf(template) != -1)
+                    {
+                        int temp = linecopy.IndexOf(template);
+                        linecopy = linecopy.Remove(temp, template.Length - 1);
+                        ++count1;
+                    }
+
+                    if (template.Length == 1)
+                        return false;
+                    else
+                    {
+                        decimal b = line.Length+1;
+                        decimal c = template.Length;
+                        decimal a = b / c;
+                        if  (int.TryParse(a.ToString(), out _))
+                        {
+                            if (a == count1)
+                                return true;
+                            else
+                                return false;
+                        }
+                        else
+                            return false;
                     }
                 }
-                return summ;
+                else
+                    return false;
             }
         }
-        
-        static void Main(string[] args)
-        {
-            int N = 11;
-            //Некий массив целых чисел, который нужно отсортировать 
-            int[] Price = new int[] { 1, 1000, 0, 33, 400, 350, 300, 250, 200, 150, 100 };
 
-            Console.WriteLine("Результат- " + MaximumDiscount(N, Price));
+        static void Main()
+        {
+
+            string line = "*..*..*..*..*..*..*";
+            Console.WriteLine("Результат- " + LineAnalysis(line));
             Console.ReadKey();
         }
     }
 }
-#endregion
+//foreach (var word in line)
+//{
+//    for (int i = 0; i < line.Length - 2; i++)
+//    {
+//        foreach (KeyValuePair<string, int> keyValue in dict)
+//        {
+//            Console.WriteLine(keyValue.Key + " - " + keyValue.Value);
+//        }
+//        string substr = line.Substring(i, 3);
+
+//        if (dict.ContainsKey(substr))
+//        {
+//            dict[substr]++;
+//        }
+//        else
+//        {
+//            dict[substr] = 1;
+//        }
+//    }
+//}
+//string text = "пппприииветт"; //Входная строка
+//int Count = 0; //Количество букв
+//char PreCh = '\\'; //Предыдущий символ
+//foreach (char ch in text) //Для каждого сивола в строке - опорный символ
+//{
+//    foreach (char cha in text) //Проходим по всем символам
+//        if (cha != PreCh && cha == ch) //И если этот символ не равен предыдущему символу, и одновременно опорному символу
+//            Count++; //Увеличиваем количество на 1
+//    if (Count != 0) //Если количество не равно 0
+//        Console.WriteLine("Количество символов {0} = {1}", ch, Count); //Выводим опорный символ и количество его в строке
+//    Count = 0; //Обнуляем количество
+//    PreCh = ch; //Записываем в предыдущий символ текущий опорный символ
+//}

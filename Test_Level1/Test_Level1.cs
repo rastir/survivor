@@ -743,6 +743,200 @@ namespace Test_Level1
     ///Тесты для задания №16 "Шопоголики"
     /// </summary>
     #region
+    //public class Test_Level1
+    //{
+    //    [TestMethod]
+    //    [TestCategory("tests")]
+    //    public void Test1()
+    //    {
+    //        int number = 1;
+
+    //        int N = 7;
+    //        int[] Price = { 400, 350, 300, 250, 200, 150, 100 };
+
+    //        try
+    //        {
+    //            Console.WriteLine("Кол-во {0}, массив: {1}");
+    //            Console.WriteLine();
+    //        }
+    //        catch (IndexOutOfRangeException e)
+    //        {
+    //            Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+    //            throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+    //        }
+    //        catch (NullReferenceException e)
+    //        {
+    //            Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+    //            throw new ArgumentNullException("parameter is null.", e);
+    //        }
+    //        finally
+    //        {
+    //            Console.WriteLine("Результат функции- " + Level1.MaximumDiscount(N, Price));
+    //            Console.WriteLine("Реальный результат - " + "450");
+    //            Console.WriteLine("TEST {0} PASSED", number);
+    //        }
+    //    }
+    //    [TestMethod]
+    //    [TestCategory("tests")]
+    //    public void Test2()
+    //    {
+    //        int number = 2;
+
+    //        int N = 11;
+    //        int[] Price = { 1, 1000, 0, 33, 400, 350, 300, 250, 200, 150, 100 };
+
+    //        try
+    //        {
+    //            Console.WriteLine("Кол-во {0}, массив: {1}");
+    //            Console.WriteLine();
+    //        }
+    //        catch (IndexOutOfRangeException e)
+    //        {
+    //            Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+    //            throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+    //        }
+    //        catch (NullReferenceException e)
+    //        {
+    //            Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+    //            throw new ArgumentNullException("parameter is null.", e);
+    //        }
+    //        finally
+    //        {
+    //            Console.WriteLine("Результат функции- " + Level1.MaximumDiscount(N, Price));
+    //            Console.WriteLine("Реальный результат - " + "583");
+    //            Console.WriteLine("TEST {0} PASSED", number);
+    //        }
+    //    }
+    //    [TestMethod]
+    //    [TestCategory("tests")]
+    //    public void Test3()
+    //    {
+    //        int number = 3;
+
+    //        int N = 15;
+    //        int[] Price = { 1, 1, 1, 1000, 0, 33, 400, 350, 300, 250, 200, 150, 100, 0, 0 };
+
+    //        try
+    //        {
+    //            Console.WriteLine("Кол-во {0}, массив: {1}");
+    //            Console.WriteLine();
+    //        }
+    //        catch (IndexOutOfRangeException e)
+    //        {
+    //            Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+    //            throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+    //        }
+    //        catch (NullReferenceException e)
+    //        {
+    //            Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+    //            throw new ArgumentNullException("parameter is null.", e);
+    //        }
+    //        finally
+    //        {
+    //            Console.WriteLine("Результат функции- " + Level1.MaximumDiscount(N, Price));
+    //            Console.WriteLine("Реальный результат - " + "584");
+    //            Console.WriteLine("TEST {0} PASSED", number);
+    //        }
+    //    }
+    //    [TestMethod]
+    //    [TestCategory("tests")]
+    //    public void Test4()
+    //    {
+    //        int number = 4;
+
+    //        int N = 13;
+    //        int[] Price = { 1, 1, 1, 1000, 0, 33, 400, 350, 300, 250, 200, 150, 100 };
+
+    //        try
+    //        {
+    //            Console.WriteLine("Кол-во {0}, массив: {1}");
+    //            Console.WriteLine();
+    //        }
+    //        catch (IndexOutOfRangeException e)
+    //        {
+    //            Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+    //            throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+    //        }
+    //        catch (NullReferenceException e)
+    //        {
+    //            Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+    //            throw new ArgumentNullException("parameter is null.", e);
+    //        }
+    //        finally
+    //        {
+    //            Console.WriteLine("Результат функции- " + Level1.MaximumDiscount(N, Price));
+    //            Console.WriteLine("Реальный результат - " + "584");
+    //            Console.WriteLine("TEST {0} PASSED", number);
+    //        }
+    //    }
+    //    [TestMethod]
+    //    [TestCategory("tests")]
+    //    public void Test5()
+    //    {
+    //        int number = 5;
+
+    //        int N = 9;
+    //        int[] Price = { 1, 1, 1, 1, 5, 0, 0, 0, 10 };
+
+    //        try
+    //        {
+    //            Console.WriteLine("Кол-во {0}, массив: {1}");
+    //            Console.WriteLine();
+    //        }
+    //        catch (IndexOutOfRangeException e)
+    //        {
+    //            Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+    //            throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+    //        }
+    //        catch (NullReferenceException e)
+    //        {
+    //            Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+    //            throw new ArgumentNullException("parameter is null.", e);
+    //        }
+    //        finally
+    //        {
+    //            Console.WriteLine("Результат функции- " + Level1.MaximumDiscount(N, Price));
+    //            Console.WriteLine("Реальный результат - " + "2");
+    //            Console.WriteLine("TEST {0} PASSED", number);
+    //        }
+    //    }
+    //    [TestMethod]
+    //    [TestCategory("tests")]
+    //    public void Test6()
+    //    {
+    //        int number = 6;
+
+    //        int N = 9;
+    //        int[] Price = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+
+    //        try
+    //        {
+    //            Console.WriteLine("Кол-во {0}, массив: {1}");
+    //            Console.WriteLine();
+    //        }
+    //        catch (IndexOutOfRangeException e)
+    //        {
+    //            Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+    //            throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+    //        }
+    //        catch (NullReferenceException e)
+    //        {
+    //            Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+    //            throw new ArgumentNullException("parameter is null.", e);
+    //        }
+    //        finally
+    //        {
+    //            Console.WriteLine("Результат функции- " + Level1.MaximumDiscount(N, Price));
+    //            Console.WriteLine("Реальный результат - " + "0");
+    //            Console.WriteLine("TEST {0} PASSED", number);
+    //        }
+    //    }
+    //}
+    #endregion
+    //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    ///<summary> 
+    ///Тесты для задания №17 "Машинное распознавание паттернов"
+    /// </summary>
     public class Test_Level1
     {
         [TestMethod]
@@ -750,13 +944,11 @@ namespace Test_Level1
         public void Test1()
         {
             int number = 1;
-
-            int N = 7;
-            int[] Price = { 400, 350, 300, 250, 200, 150, 100 };
+            string line = "*..*..*..*..*..*..*";
 
             try
             {
-                Console.WriteLine("Кол-во {0}, массив: {1}");
+                Console.WriteLine(line);
                 Console.WriteLine();
             }
             catch (IndexOutOfRangeException e)
@@ -771,8 +963,8 @@ namespace Test_Level1
             }
             finally
             {
-                Console.WriteLine("Результат функции- " + Level1.MaximumDiscount(N, Price));
-                Console.WriteLine("Реальный результат - " + "450");
+                Console.WriteLine("Результат функции- " + Level1.LineAnalysis(line));
+                Console.WriteLine("Реальный результат - " + "true");
                 Console.WriteLine("TEST {0} PASSED", number);
             }
         }
@@ -781,9 +973,7 @@ namespace Test_Level1
         public void Test2()
         {
             int number = 2;
-
-            int N = 11;
-            int[] Price = { 1, 1000, 0, 33, 400, 350, 300, 250, 200, 150, 100 };
+            string line = "*..*...*..*..*..*..*";
 
             try
             {
@@ -802,8 +992,8 @@ namespace Test_Level1
             }
             finally
             {
-                Console.WriteLine("Результат функции- " + Level1.MaximumDiscount(N, Price));
-                Console.WriteLine("Реальный результат - " + "583");
+                Console.WriteLine("Результат функции- " + Level1.LineAnalysis(line));
+                Console.WriteLine("Реальный результат - " + "false");
                 Console.WriteLine("TEST {0} PASSED", number);
             }
         }
@@ -812,9 +1002,7 @@ namespace Test_Level1
         public void Test3()
         {
             int number = 3;
-
-            int N = 15;
-            int[] Price = { 1, 1, 1, 1000, 0, 33, 400, 350, 300, 250, 200, 150, 100, 0, 0 };
+            string line = "*..*..*..*..*..**..*";
 
             try
             {
@@ -833,8 +1021,8 @@ namespace Test_Level1
             }
             finally
             {
-                Console.WriteLine("Результат функции- " + Level1.MaximumDiscount(N, Price));
-                Console.WriteLine("Реальный результат - " + "584");
+                Console.WriteLine("Результат функции- " + Level1.LineAnalysis(line));
+                Console.WriteLine("Реальный результат - " + "false");
                 Console.WriteLine("TEST {0} PASSED", number);
             }
         }
@@ -843,9 +1031,7 @@ namespace Test_Level1
         public void Test4()
         {
             int number = 4;
-
-            int N = 13;
-            int[] Price = { 1, 1, 1, 1000, 0, 33, 400, 350, 300, 250, 200, 150, 100 };
+            string line = "*";
 
             try
             {
@@ -864,8 +1050,8 @@ namespace Test_Level1
             }
             finally
             {
-                Console.WriteLine("Результат функции- " + Level1.MaximumDiscount(N, Price));
-                Console.WriteLine("Реальный результат - " + "584");
+                Console.WriteLine("Результат функции- " + Level1.LineAnalysis(line));
+                Console.WriteLine("Реальный результат - " + "true");
                 Console.WriteLine("TEST {0} PASSED", number);
             }
         }
@@ -874,9 +1060,7 @@ namespace Test_Level1
         public void Test5()
         {
             int number = 5;
-
-            int N = 9;
-            int[] Price = { 1, 1, 1, 1, 5, 0, 0, 0, 10 };
+            string line = "***";
 
             try
             {
@@ -895,8 +1079,8 @@ namespace Test_Level1
             }
             finally
             {
-                Console.WriteLine("Результат функции- " + Level1.MaximumDiscount(N, Price));
-                Console.WriteLine("Реальный результат - " + "2");
+                Console.WriteLine("Результат функции- " + Level1.LineAnalysis(line));
+                Console.WriteLine("Реальный результат - " + "true");
                 Console.WriteLine("TEST {0} PASSED", number);
             }
         }
@@ -905,9 +1089,7 @@ namespace Test_Level1
         public void Test6()
         {
             int number = 6;
-
-            int N = 9;
-            int[] Price = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+            string line = "*.......*.......*";
 
             try
             {
@@ -926,11 +1108,358 @@ namespace Test_Level1
             }
             finally
             {
-                Console.WriteLine("Результат функции- " + Level1.MaximumDiscount(N, Price));
-                Console.WriteLine("Реальный результат - " + "0");
+                Console.WriteLine("Результат функции- " + Level1.LineAnalysis(line));
+                Console.WriteLine("Реальный результат - " + "true");
+                Console.WriteLine("TEST {0} PASSED", number);
+            }
+        }
+        [TestMethod]
+        [TestCategory("tests")]
+        public void Test7()
+        {
+            int number = 7;
+            string line = "**";
+
+            try
+            {
+                Console.WriteLine("Кол-во {0}, массив: {1}");
+                Console.WriteLine();
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
+                Console.WriteLine("Результат функции- " + Level1.LineAnalysis(line));
+                Console.WriteLine("Реальный результат - " + "true");
+                Console.WriteLine("TEST {0} PASSED", number);
+            }
+        }
+        [TestMethod]
+        [TestCategory("tests")]
+        public void Test8()
+        {
+            int number = 8;
+            string line = "*.*";
+
+            try
+            {
+                Console.WriteLine("Кол-во {0}, массив: {1}");
+                Console.WriteLine();
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
+                Console.WriteLine("Результат функции- " + Level1.LineAnalysis(line));
+                Console.WriteLine("Реальный результат - " + "true");
+                Console.WriteLine("TEST {0} PASSED", number);
+            }
+        }
+        [TestMethod]
+        [TestCategory("tests")]
+        public void Test9()
+        {
+            int number = 9;
+            string line = "*..*...*...*...*...*..*";
+
+            try
+            {
+                Console.WriteLine("Кол-во {0}, массив: {1}");
+                Console.WriteLine();
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
+                Console.WriteLine("Результат функции- " + Level1.LineAnalysis(line));
+                Console.WriteLine("Реальный результат - " + "false");
+                Console.WriteLine("TEST {0} PASSED", number);
+            }
+        }
+        [TestMethod]
+        [TestCategory("tests")]
+        public void Test10()
+        {
+            int number = 10;
+            string line = "*..*.*";
+
+            try
+            {
+                Console.WriteLine("Кол-во {0}, массив: {1}");
+                Console.WriteLine();
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
+                Console.WriteLine("Результат функции- " + Level1.LineAnalysis(line));
+                Console.WriteLine("Реальный результат - " + "false");
+                Console.WriteLine("TEST {0} PASSED", number);
+            }
+        }
+        [TestMethod]
+        [TestCategory("tests")]
+        public void Test11()
+        {
+            int number = 11;
+            string line = "*..*.";
+
+            try
+            {
+                Console.WriteLine("Кол-во {0}, массив: {1}");
+                Console.WriteLine();
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
+                Console.WriteLine("Результат функции- " + Level1.LineAnalysis(line));
+                Console.WriteLine("Реальный результат - " + "false");
+                Console.WriteLine("TEST {0} PASSED", number);
+            }
+        }
+        [TestMethod]
+        [TestCategory("tests")]
+        public void Test12()
+        {
+            int number = 12;
+            string line = "..*..*..*..*..*..*";
+
+            try
+            {
+                Console.WriteLine("Кол-во {0}, массив: {1}");
+                Console.WriteLine();
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
+                Console.WriteLine("Результат функции- " + Level1.LineAnalysis(line));
+                Console.WriteLine("Реальный результат - " + "false");
+                Console.WriteLine("TEST {0} PASSED", number);
+            }
+        }
+        [TestMethod]
+        [TestCategory("tests")]
+        public void Test13()
+        {
+            int number = 13;
+            string line = "*..*...*";
+
+            try
+            {
+                Console.WriteLine("Кол-во {0}, массив: {1}");
+                Console.WriteLine();
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
+                Console.WriteLine("Результат функции- " + Level1.LineAnalysis(line));
+                Console.WriteLine("Реальный результат - " + "false");
+                Console.WriteLine("TEST {0} PASSED", number);
+            }
+        }
+        [TestMethod]
+        [TestCategory("tests")]
+        public void Test14()
+        {
+            int number = 14;
+            string line = ".";
+
+            try
+            {
+                Console.WriteLine("Кол-во {0}, массив: {1}");
+                Console.WriteLine();
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
+                Console.WriteLine("Результат функции- " + Level1.LineAnalysis(line));
+                Console.WriteLine("Реальный результат - " + "false");
+                Console.WriteLine("TEST {0} PASSED", number);
+            }
+        }
+        [TestMethod]
+        [TestCategory("tests")]
+        public void Test15()
+        {
+            int number = 15;
+            string line = "..";
+
+            try
+            {
+                Console.WriteLine("Кол-во {0}, массив: {1}");
+                Console.WriteLine();
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
+                Console.WriteLine("Результат функции- " + Level1.LineAnalysis(line));
+                Console.WriteLine("Реальный результат - " + "false");
+                Console.WriteLine("TEST {0} PASSED", number);
+            }
+        }
+        [TestMethod]
+        [TestCategory("tests")]
+        public void Test16()
+        {
+            int number = 16;
+            string line = "*.";
+
+            try
+            {
+                Console.WriteLine("Кол-во {0}, массив: {1}");
+                Console.WriteLine();
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
+                Console.WriteLine("Результат функции- " + Level1.LineAnalysis(line));
+                Console.WriteLine("Реальный результат - " + "false");
+                Console.WriteLine("TEST {0} PASSED", number);
+            }
+        }
+        [TestMethod]
+        [TestCategory("tests")]
+        public void Test17()
+        {
+            int number = 17;
+            string line = "";
+
+            try
+            {
+                Console.WriteLine("Кол-во {0}, массив: {1}");
+                Console.WriteLine();
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
+                Console.WriteLine("Результат функции- " + Level1.LineAnalysis(line));
+                Console.WriteLine("Реальный результат - " + "false");
+                Console.WriteLine("TEST {0} PASSED", number);
+            }
+        }
+        [TestMethod]
+        [TestCategory("tests")]
+        public void Test18()
+        {
+            int number = 18;
+            string line = " ";
+
+            try
+            {
+                Console.WriteLine("Кол-во {0}, массив: {1}");
+                Console.WriteLine();
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
+                Console.WriteLine("Результат функции- " + Level1.LineAnalysis(line));
+                Console.WriteLine("Реальный результат - " + "false");
                 Console.WriteLine("TEST {0} PASSED", number);
             }
         }
     }
-    #endregion
 }
