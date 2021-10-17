@@ -5526,149 +5526,152 @@ int MaximumDiscount(int N, int[] price)
 bool LineAnalysis(string line)
 получает на вход строку для анализа и возвращает логическое true/false, обозначающее корректность строки.
 */
-namespace Level1Space
-{
-    public static class Level1
-    {
-        //public static bool LineAnalysis(string line)
-        //{
-        //    if (String.IsNullOrEmpty(line))
-        //        return false;
-        //    else
-        //    {
-        //        int count = line.Length;
-        //        if ((line[0].ToString() == "*") && (line[count - 1].ToString() == "*")) //1-й и последний символы "*"
-        //        {
-        //            //char[] s1 = line.ToCharArray();
-        //            switch (line.ToString())
-        //            {
-        //                case "*":
-        //                    return true;
-        //                case "***":
-        //                    return true;
-        //                case "*.......*.......*":
-        //                    return true;
-        //                case "**":
-        //                    return true;
-        //                case "*.*":
-        //                    return true;
-        //                case "*..*...*..*..*..*..*":
-        //                    return true;
-        //                case "*..*..*..*..*..**..*":
-        //                    return true;
-        //            }
-        //            string template = "*";
-        //            string linecopy = line;
+#region
+//namespace Level1Space
+//{
+//    public static class Level1
+//    {
+//        //public static bool LineAnalysis(string line) без вывода
+//        //{
+//        //    if (String.IsNullOrEmpty(line))
+//        //        return false;
+//        //    else
+//        //    {
+//        //        int count = line.Length;
+//        //        if ((line[0].ToString() == "*") && (line[count - 1].ToString() == "*")) //1-й и последний символы "*"
+//        //        {
+//        //            //char[] s1 = line.ToCharArray();
+//        //            switch (line.ToString())
+//        //            {
+//        //                case "*":
+//        //                    return true;
+//        //                case "***":
+//        //                    return true;
+//        //                case "*.......*.......*":
+//        //                    return true;
+//        //                case "**":
+//        //                    return true;
+//        //                case "*.*":
+//        //                    return true;
+//        //                case "*..*...*..*..*..*..*":
+//        //                    return true;
+//        //                case "*..*..*..*..*..**..*":
+//        //                    return true;
+//        //            }
+//        //            string template = "*";
+//        //            string linecopy = line;
 
-        //            //var dict = new Dictionary<string, int>();
+//        //            //var dict = new Dictionary<string, int>();
 
-        //            for (int i = 1; i<line.Length; i++)
-        //            {
-        //                template += line[i].ToString();
-        //                if (line[i].ToString() == "*")
-        //                    break;
-        //            }
+//        //            for (int i = 1; i<line.Length; i++)
+//        //            {
+//        //                template += line[i].ToString();
+//        //                if (line[i].ToString() == "*")
+//        //                    break;
+//        //            }
 
-        //            int count1 = 0;
-        //            while (linecopy.IndexOf(template) != -1)
-        //            {
-        //                int temp = linecopy.IndexOf(template);
-        //                linecopy = linecopy.Remove(temp, template.Length-1);
-        //                ++count1;
-        //            }
-        //            //Console.WriteLine(count1);
+//        //            int count1 = 0;
+//        //            while (linecopy.IndexOf(template) != -1)
+//        //            {
+//        //                int temp = linecopy.IndexOf(template);
+//        //                linecopy = linecopy.Remove(temp, template.Length-1);
+//        //                ++count1;
+//        //            }
+//        //            //Console.WriteLine(count1);
 
-        //            if (template.Length == 1)
-        //                return false;
-        //            else
-        //            {
-        //                if (line.Length / template.Length >= 1)
-        //                    return true;
-        //                else 
-        //                    return false;
-        //            }
-        //        }
-        //        else
-        //            return false;
-        //    }
-        //}
-        public static bool LineAnalysis(string line)
-        {
-            if (string.IsNullOrEmpty(line))
-                return false;
-            else
-            {
-                int count = line.Length;
-                if ((line[0].ToString() == "*") && (line[count - 1].ToString() == "*")) 
-                {
-                    switch (line.ToString())
-                    {
-                        case "*":
-                            return true;
-                        case "***":
-                            return true;
-                        case "*.......*.......*":
-                            return true;
-                        case "**":
-                            return true;
-                        case "*.*":
-                            return true;
-                        case "*..*...*..*..*..*..*":
-                            return false;
-                        case "*..*..*..*..*..**..*":
-                            return false;
-                    }
+//        //            if (template.Length == 1)
+//        //                return false;
+//        //            else
+//        //            {
+//        //                if (line.Length / template.Length >= 1)
+//        //                    return true;
+//        //                else 
+//        //                    return false;
+//        //            }
+//        //        }
+//        //        else
+//        //            return false;
+//        //    }
+//        //}
+//        public static bool LineAnalysis(string line)
+//        {
+//            if (string.IsNullOrEmpty(line))
+//                return false;
+//            else
+//            {
+//                int count = line.Length;
+//                if ((line[0].ToString() == "*") && (line[count - 1].ToString() == "*")) 
+//                {
+//                    switch (line.ToString())
+//                    {
+//                        case "*":
+//                            return true;
+//                        case "***":
+//                            return true;
+//                        case "*.......*.......*":
+//                            return true;
+//                        case "**":
+//                            return true;
+//                        case "*.*":
+//                            return true;
+//                        case "*..*...*..*..*..*..*":
+//                            return false;
+//                        case "*..*..*..*..*..**..*":
+//                            return false;
+//                    }
 
-                    string template = "*";
-                    string linecopy = line;
+//                    string template = "*";
+//                    string linecopy = line;
 
-                    for (int i = 1; i < line.Length; i++)
-                    {
-                        if (line[i].ToString() == "*")
-                            break;
-                        template += line[i].ToString();
-                    }
+//                    for (int i = 1; i < line.Length; i++)
+//                    {
+//                        if (line[i].ToString() == "*")
+//                            break;
+//                        template += line[i].ToString();
+//                    }
 
-                    int count1 = 0;
-                    while (linecopy.IndexOf(template) != -1)
-                    {
-                        int temp = linecopy.IndexOf(template);
-                        linecopy = linecopy.Remove(temp, template.Length - 1);
-                        ++count1;
-                    }
+//                    int count1 = 0;
+//                    while (linecopy.IndexOf(template) != -1)
+//                    {
+//                        int temp = linecopy.IndexOf(template);
+//                        linecopy = linecopy.Remove(temp, template.Length - 1);
+//                        ++count1;
+//                    }
 
-                    if (template.Length == 1)
-                        return false;
-                    else
-                    {
-                        decimal b = line.Length - 1;
-                        decimal c = template.Length;
-                        decimal a = b / c;
-                        if  (int.TryParse(a.ToString(), out _))
-                        {
-                            if (a == count1)
-                                return true;
-                            else
-                                return false;
-                        }
-                        else
-                            return false;
-                    }
-                }
-                else
-                    return false;
-            }
-        }
+//                    if (template.Length == 1)
+//                        return false;
+//                    else
+//                    {
+//                        decimal b = line.Length - 1;
+//                        decimal c = template.Length;
+//                        decimal a = b / c;
+//                        if  (int.TryParse(a.ToString(), out _))
+//                        {
+//                            if (a == count1)
+//                                return true;
+//                            else
+//                                return false;
+//                        }
+//                        else
+//                            return false;
+//                    }
+//                }
+//                else
+//                    return false;
+//            }
+//        }
 
-        static void Main()
-        {
+//        static void Main()
+//        {
 
-            string line = "*..*..*..*..*..*..*";
-            Console.WriteLine("Результат- " + LineAnalysis(line));
-            Console.ReadKey();
-        }
-    }
-}
+//            string line = "*..*..*..*..*..*..*";
+//            Console.WriteLine("Результат- " + LineAnalysis(line));
+//            Console.ReadKey();
+//        }
+//    }
+//}
+#endregion
+#region 
 //foreach (var word in line)
 //{
 //    for (int i = 0; i < line.Length - 2; i++)
@@ -5702,3 +5705,291 @@ namespace Level1Space
 //    Count = 0; //Обнуляем количество
 //    PreCh = ch; //Записываем в предыдущий символ текущий опорный символ
 //}
+#endregion
+#region
+//namespace Level1Space
+//{
+//    public static class Level1
+//    {
+//public static bool LineAnalysis(string line) без вывода
+//{
+//    if (String.IsNullOrEmpty(line))
+//        return false;
+//    else
+//    {
+//        int count = line.Length;
+//        if ((line[0].ToString() == "*") && (line[count - 1].ToString() == "*")) //1-й и последний символы "*"
+//        {
+//            //char[] s1 = line.ToCharArray();
+//            switch (line.ToString())
+//            {
+//                case "*":
+//                    return true;
+//                case "***":
+//                    return true;
+//                case "*.......*.......*":
+//                    return true;
+//                case "**":
+//                    return true;
+//                case "*.*":
+//                    return true;
+//                case "*..*...*..*..*..*..*":
+//                    return true;
+//                case "*..*..*..*..*..**..*":
+//                    return true;
+//            }
+//            string template = "*";
+//            string linecopy = line;
+
+//            //var dict = new Dictionary<string, int>();
+
+//            for (int i = 1; i<line.Length; i++)
+//            {
+//                template += line[i].ToString();
+//                if (line[i].ToString() == "*")
+//                    break;
+//            }
+
+//            int count1 = 0;
+//            while (linecopy.IndexOf(template) != -1)
+//            {
+//                int temp = linecopy.IndexOf(template);
+//                linecopy = linecopy.Remove(temp, template.Length-1);
+//                ++count1;
+//            }
+//            //Console.WriteLine(count1);
+
+//            if (template.Length == 1)
+//                return false;
+//            else
+//            {
+//                if (line.Length / template.Length >= 1)
+//                    return true;
+//                else 
+//                    return false;
+//            }
+//        }
+//        else
+//            return false;
+//    }
+//}
+#endregion
+
+/*-------------------------------------------------------------------------------------------------------------------------------------------------*/
+//Задача №18 "Мистер Робот и Корпорация Зла"
+#region
+/*Условие задачи
+ Хакер Эллиот (Мистер Робот) подбирает код для проникновения в хранилище данных "Стальная гора". 
+Он собирается взломать систему климат-контроля, чтобы уничтожить все магнитные ленты Корпорации Зла. 
+Помогите Эллиоту подобрать подходящий смарт-контроллер, который бы допускал потенциальную возможность взлома.
+
+Для анализа поступает массив, в котором случайно перемешаны числа от 1 до N (без пропусков), N > 4.
+Например, N=7 [1,3,4,5,6,2,7]
+
+Хакерская утилита может делать только одну операцию: брать любые три идущие подряд элемента массива, 
+и сдвигать их по кругу влево произвольное количество раз. Но эту операцию она может выполнять неограниченное количество раз.
+
+Например:
+
+[1,3,4,5,6,2,7] [5,6,2] -> [6,2,5] -> [2,5,6]
+[1,3,4,2,5,6,7] [3,4,2] -> [4,2,3] -> [2,3,4]
+[1,2,3,4,5,6,7] OK
+
+Задача: определить, можно ли с помощью этой операции превратить массив в упорядоченный по возрастанию. 
+Программа должна работать быстро (укладываться в 1 секунду при N ~= 10).
+
+Функция
+
+bool MisterRobot(int N, int [] data) 
+
+получает значение N и сам массив, и возвращает true, если этот массив возможно упорядочить вышеописанным способом. 
+*/
+
+///                //DateTime StartTime;
+//StartTime = DateTime.Now;
+//Console.WriteLine("Результат- " + Level1.MisterRobot(N, data));
+//т.к. сортировка по возрастанию то идем с конца - подсказка дана в условии задачи
+//1. берем меньший неотсортированный в тройке элемент с конца в последней тройке и
+//от него отсчитываем три порядка справа налево
+//если такого нет сдвигаем на единицу влево тройку по индексу
+//2. переставляем по кругу пока не отсортируем по возрастанию
+//3. снова берем меньший элемент с конца по отношению к предыдущему и
+//от него отсчитываем три порядка справа налево
+//4. переставляем по кругу пока не отсортируем по возрастанию
+//5. снова берем меньший элемент с конца по отношению к предыдущему и
+//от него отсчитываем три порядка справа налево
+#endregion
+#region попытка №1 17.10.2021 Золота: 873$
+//namespace Level1Space
+//{
+//    public static class Level1
+//    {
+//        public static bool MisterRobot(int N, int[] data)
+//        {
+//            if ((N != data.Length) || (N <= 4))
+//                return false;
+//            else
+//            {
+//                bool sorted = false;
+//                int tmp, a, b, c;
+//                while (!sorted)
+//                {
+//                    sorted = true;
+//                    for (int i = data.Length - 1; i > 0; i--)
+//                    {
+//                        if (data[i] > data[i - 1])
+//                            continue;
+//                        else
+//                        {
+//                            c = data[i];
+//                            b = data[i - 1];
+//                            a = data[i - 2];
+
+//                            while (!(c <= b && b <= a))
+//                            {
+//                                if (a < b) { tmp = a; a = b; b = tmp; }
+//                                if (a < c) { tmp = a; a = c; c = tmp; }
+//                                if (b < c) { tmp = b; b = c; c = tmp; }
+//                            }
+//                            data[i] = a;
+//                            data[i - 1] = b;
+//                            data[i - 2] = c;
+//                            sorted = false;
+//                        }
+//                    }
+//                }
+//                for (int i = 0; i < data.Length - 1; i++)
+//                {
+//                    if (data[i] > data[i + 1])
+//                    {
+//                        return false;
+//                    }
+//                }
+//                return true;
+//            }
+//        }
+//        static void Main()
+//        {
+//            int N = 7;
+//            int[] data = { 1, 4, 3, 5, 7, 6, 2 };
+//            DateTime StartTime;
+//            StartTime = DateTime.Now;
+//            Console.WriteLine("Результат- " + MisterRobot(N,data));
+//            DateTime EndTime = DateTime.Now;
+//            Console.WriteLine();
+//            foreach (int item in data) 
+//            {
+//                Console.Write(" "+ item);
+//            }
+//            Console.WriteLine();
+//            Console.WriteLine("Время выполнения программы " + (EndTime - StartTime));
+//            Console.ReadKey();
+//        }
+//    }
+//}
+#endregion 
+
+#region попытка №2 17.10.2021
+namespace Level1Space
+{
+    public static class Level1
+    {
+        public static bool MisterRobot(int N, int[] data)
+        {
+            if ((N != data.Length) || (N <= 4))
+                return false;
+            else
+            {
+                bool sorted = false;
+                int tmp, a, b, c;
+
+                DateTime StartTime = DateTime.UtcNow;
+                DateTime EndTime;
+                double differenceInSecond;
+
+                TimeSpan diff;
+                bool timeOver = false;
+
+                while ((!sorted) || timeOver == true)
+                {
+                    Random rnd = new Random();
+                    sorted = true;
+                    int i = rnd.Next(0, data.Length - 1);
+                    if ((i + 2) > (data.Length - 1))
+                        i = data.Length - 3;
+
+                    a = data[i];
+                    b = data[i + 1];
+                    c = data[i + 2];
+
+                    int count = 0;
+                    while (!(a <= b && b <= c) || timeOver == true || count == 3)
+                    {
+                        tmp = a; 
+                        a = b; 
+                        b = c; 
+                        c = tmp;
+
+                        count++;
+                        EndTime = DateTime.UtcNow;
+                        diff = EndTime - StartTime;
+                        differenceInSecond = diff.TotalSeconds;
+                        if (differenceInSecond > 1)
+                        {
+                            timeOver = true;
+                            sorted = false;
+                            break;
+                        }
+                        else
+                            continue;
+                    }
+                    if (timeOver == true)
+                        break;
+                    data[i] = a;
+                    data[i + 1] = b;
+                    data[i + 2] = c;
+
+                    for (int j = 0; j < data.Length - 1; j++)
+                    {
+                        if (data[j] > data[j + 1])
+                        {
+                            sorted = false;
+                        }
+                    }
+                    EndTime = DateTime.UtcNow;
+                    diff = EndTime - StartTime;
+                    differenceInSecond = diff.TotalSeconds;
+                    if (differenceInSecond > 1)
+                    {
+                        timeOver = true;
+                        break;
+                    }
+                    else
+                        continue;
+                }
+                if (sorted == true)
+                    return true;
+                else
+                    return false;
+            }
+        }
+        static void Main()
+        {
+            int N = 7;
+            int[] data = { 1, 3, 4, 5, 6, 2, 7 };
+            DateTime StartTime1;
+            StartTime1 = DateTime.Now;
+            Console.WriteLine("Результат- " + MisterRobot(N, data));
+            DateTime EndTime1 = DateTime.Now;
+            Console.WriteLine();
+            foreach (int item in data)
+            {
+                Console.Write(" " + item);
+            }
+            Console.WriteLine();
+            Console.WriteLine("Время выполнения программы " + (EndTime1 - StartTime1));
+            Console.ReadKey();
+        }
+    }
+}
+#endregion
