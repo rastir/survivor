@@ -245,5 +245,44 @@ namespace Test_Level1
                 Console.WriteLine("TEST {0} PASSED", number);
             }
         }
+        [TestMethod]
+        [TestCategory("tests")]
+        public void Test7()
+        {
+            int number = 7;
+            int N = 5;
+            string[] items = { "dress1 5", "handbug32 3", "dress2 1", "handbug23 2", "handbug128 4" };
+
+            try
+            {
+                Console.WriteLine($"Кол-во {N}, массив:");
+                foreach (string item in items)
+                {
+                    Console.Write(" " + item);
+                }
+                Console.WriteLine();
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
+                items = Level1.ShopOLAP(N, items);
+                Console.WriteLine("Результат функции- ");
+                foreach (string item in items)
+                {
+                    Console.WriteLine(" " + item);
+                }
+                Console.WriteLine();
+                Console.WriteLine("TEST {0} PASSED", number);
+            }
+        }
     }
 }

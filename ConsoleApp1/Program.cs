@@ -98,8 +98,8 @@ using System.Collections.Generic;
 //            }
 //            Console.WriteLine();
 //            return items;
-//            #endregion
 //        }
+#endregion
 #region c печатью2
 //namespace Level1Space
 //{
@@ -131,31 +131,31 @@ using System.Collections.Generic;
 //                        array2[x] = subs2[0];
 //                        array2[x + 1] = subs2[1];
 
-//                        if (array1[i].CompareTo(array2[x]) == 0) 
+//                        if (array1[i].CompareTo(array2[x]) == 0)
 //                        {
 //                            sum += Convert.ToInt32(array2[x + 1]);
 //                            items[i] = string.Join(" ", array1[i], sum);
-//                            for (int j = x; j < items.Length - 1; j++) 
+//                            for (int j = x; j < items.Length - 1; j++)
 //                            {
 //                                items[j] = items[j + 1];
 //                            }
 //                            x--;
 //                            Array.Resize(ref items, items.Length - 1);
-//                            //for (int y = 0; y < items.Length; y++)
-//                            //{
-//                            //    Console.WriteLine(items[y]);
-//                            //}
-//                            //Console.WriteLine();
+//                            for (int y = 0; y < items.Length; y++)
+//                            {
+//                                Console.WriteLine(items[y]);
+//                            }
+//                            Console.WriteLine();
 //                        }
 //                    }
-//                    //Console.WriteLine();
+//                    Console.WriteLine();
 //                }
 //            }
-//            //Console.WriteLine();
-//            //for (int y = 0; y < items.Length; y++)
-//            //{
-//            //    Console.WriteLine(items[y]);
-//            //}
+//            Console.WriteLine();
+//            for (int y = 0; y < items.Length; y++)
+//            {
+//                Console.WriteLine(items[y]);
+//            }
 
 //            string[] arr1 = new string[items.Length];
 //            string[] sub1; //= new string[items.Length - 1];
@@ -190,10 +190,10 @@ using System.Collections.Generic;
 //                            sort = false;
 //                        }
 //                        //items[y] = string.Join(" ", array1[y]);
-//                        //for (int j = y; j < items.Length - 1; j++)
-//                        //{
-//                        //    items[j] = items[j + 1];
-//                        //}
+//                        for (int j = y; j < items.Length - 1; j++)
+//                        {
+//                            items[j] = items[j + 1];
+//                        }
 
 //                    }
 //                    else if (Convert.ToInt32(arr1[y + 1]).CompareTo(Convert.ToInt32(arr2[y + 1])) == -1)
@@ -203,22 +203,21 @@ using System.Collections.Generic;
 //                        items[y + 1] = temp;
 //                        sort = false;
 //                    }
-//                    //Console.WriteLine();
-//                    //Array.Sort(items);
-//                    //for (int r = 0; r < items.Length; r++)
-//                    //{
-//                    //    Console.WriteLine(items[r]);
-//                    //}
+//                    Console.WriteLine();
+//                    Array.Sort(items);
+//                    for (int r = 0; r < items.Length; r++)
+//                    {
+//                        Console.WriteLine(items[r]);
+//                    }
 //                }
 //            }
-//           // Console.WriteLine();
-//            //Array.Sort(items);
-//            //for (int y = 0; y < items.Length; y++)
-//            //{
-//            //    Console.WriteLine(items[y]);
-//            //}
+//            Console.WriteLine();
+//            Array.Sort(items);
+//            for (int y = 0; y < items.Length; y++)
+//            {
+//                Console.WriteLine(items[y]);
+//            }
 //            return items;
-//            #endregion
 //        }
 #endregion
 
@@ -231,8 +230,8 @@ namespace Level1Space
     {
         public static string[] ShopOLAP(int N, string[] items)
         {
-            string[] subs1; 
-            string[] subs2; 
+            string[] subs1;
+            string[] subs2;
 
             string[] array1 = new string[items.Length];
             string[] array2 = new string[items.Length];
@@ -246,7 +245,7 @@ namespace Level1Space
                 array1[i + 1] = subs1[1];
                 sum = Convert.ToInt32(array1[i + 1]);
 
-                for (int x = 0; x < items.Length; x++)
+                for (int x = 0; x < items.Length - 1; x++)
                 {
                     if (i != x)
                     {
@@ -259,12 +258,12 @@ namespace Level1Space
                         {
                             sum += Convert.ToInt32(array2[x + 1]);
                             items[i] = string.Join(" ", array1[i], sum);
-                            
+
                             for (int j = x; j < items.Length - 1; j++)
                             {
                                 items[j] = items[j + 1];
                             }
-                            
+
                             x--;
                             Array.Resize(ref items, items.Length - 1);
                         }
@@ -273,9 +272,9 @@ namespace Level1Space
             }
 
             string[] arr1 = new string[items.Length];
-            string[] sub1; 
+            string[] sub1;
             string[] arr2 = new string[items.Length];
-            string[] sub2; 
+            string[] sub2;
             bool sort = false;
 
             while (sort == false)
@@ -316,12 +315,12 @@ namespace Level1Space
             }
             return items;
         }
-#endregion
+        #endregion
 
         static void Main()
         {
-            //int N = 11;
-            //string[] items = { "платье1 5", "сумка32 2", "платье1 1", "сумка23 2", "сумка128 4", "платье1 5", "платье1 5", "платье1 5", "сумка128 7", "сумка32 2", "сумка30 1", "сумка22 4" };
+            //int N = 5;
+            //string[] items = { "dress1 5", "handbug32 3", "dress2 1", "handbug23 2", "handbug128 4" };
             //items = ShopOLAP(N, items);
             //for (int i = 0; i < items.Length; i++)
             //{
