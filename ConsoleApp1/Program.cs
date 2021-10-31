@@ -112,10 +112,6 @@ namespace Level1Space
 
         public static string S = "";//текущая строка
         public static string comanda = "";//текущая команда
-        //public static int C = 0; //храним все действия Operation
-        //public static int D = 0;//храним все действия Undo 
-       // public static string[] Operation = new string[100000];
-        //public static string[] Undo = new string[100000];
 
         public static string BastShoe(string command)
         {
