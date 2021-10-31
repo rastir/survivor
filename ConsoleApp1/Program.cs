@@ -101,10 +101,14 @@ namespace Level1Space
     {
         public static string S = "";//текущая строка
 <<<<<<< HEAD
+<<<<<<< HEAD
         public static string lastcommand = "";//текущая команда
 =======
         public static string comanda = "";//текущая команда
 >>>>>>> 99d1c77 (Лапоть4 вернул костыли)
+=======
+        public static string lastcommand = "";//текущая команда
+>>>>>>> 4802dddbf8ce5a4252a4ba8a177db2144a856198
         public static int C = 0; //храним все действия Operation
         public static int D = 0;//храним все действия Undo 
         public static string[] Operation = new string[100000];
@@ -116,22 +120,31 @@ namespace Level1Space
             int burr = Convert.ToInt32(command.Substring(0, 1));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 4802dddbf8ce5a4252a4ba8a177db2144a856198
             //for (int i = 0; i < Operation.Length; i++)
             //{
             //    Console.WriteLine(Operation[i]);
             //}
+<<<<<<< HEAD
 =======
             for (int i = 0; i < Operation.Length; i++)
             {
                 Console.WriteLine(Operation[i]);
             }
 >>>>>>> 99d1c77 (Лапоть4 вернул костыли)
+=======
+>>>>>>> 4802dddbf8ce5a4252a4ba8a177db2144a856198
 
             switch (burr)
             {
                 case 1:
                     //проверяем предыдущую операцию        
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 4802dddbf8ce5a4252a4ba8a177db2144a856198
                     if (lastcommand != "")
                     {
                         if (lastcommand[0].ToString() == "4") //если последняя операция была Undo то чистим память операций для Undo
@@ -139,6 +152,7 @@ namespace Level1Space
                             //Array.Clear(Undo, 0, Undo.Length - 1);
                             Array.Clear(Operation, 0, Operation.Length - 1);
                             C = 0;
+<<<<<<< HEAD
 =======
                     if (comanda != "")
                     {
@@ -147,11 +161,16 @@ namespace Level1Space
                             //Array.Clear(Undo, 0, Undo.Length - 1);
                             Array.Clear(Operation, 0, Operation.Length - 1);
 >>>>>>> 99d1c77 (Лапоть4 вернул костыли)
+=======
+>>>>>>> 4802dddbf8ce5a4252a4ba8a177db2144a856198
                         }
                     }
                     C++;
                     Operation[C] = command; //запоминаем текущую операцию
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 4802dddbf8ce5a4252a4ba8a177db2144a856198
                     lastcommand = "";
 
                     for (int i = 0; i < command.Length; i++)
@@ -164,6 +183,7 @@ namespace Level1Space
                 case 2:
                     //проверяем предыдущую операцию        
                     if (lastcommand != "")
+<<<<<<< HEAD
                     {
                         if (lastcommand[0].ToString() == "4") //если последняя операция была Undo то чистим память операций для Undo
                         {
@@ -195,6 +215,18 @@ namespace Level1Space
                     }
                     C++;
 >>>>>>> 99d1c77 (Лапоть4 вернул костыли)
+=======
+                    {
+                        if (lastcommand[0].ToString() == "4") //если последняя операция была Undo то чистим память операций для Undo
+                        {
+                            //Array.Clear(Undo, 0, Undo.Length - 1);
+                            Array.Clear(Operation, 0, Operation.Length - 1);
+                            C = 0;
+                        }
+                    }
+                    C++;
+                    lastcommand = "";
+>>>>>>> 4802dddbf8ce5a4252a4ba8a177db2144a856198
                     Operation[C] = command; //запоминаем текущую операцию
 
                     string[] words2;
@@ -221,9 +253,13 @@ namespace Level1Space
                         string otmena4 = Operation[C];
                         int count_stroka2 = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
                         lastcommand = command;
 =======
 >>>>>>> 99d1c77 (Лапоть4 вернул костыли)
+=======
+                        lastcommand = command;
+>>>>>>> 4802dddbf8ce5a4252a4ba8a177db2144a856198
 
                         if (otmena4[0].ToString() == "1") //если последняяя операция была добавить то удаляем
                         {
@@ -239,6 +275,7 @@ namespace Level1Space
                             }
                             S = S.Remove(S.Length - count_stroka2);//удаляем
 <<<<<<< HEAD
+<<<<<<< HEAD
 
                             D++;
                             Undo[D] = stroka4; //запоминаем удаление
@@ -246,11 +283,21 @@ namespace Level1Space
                             C--; //т.к. мы отменили последнее действие 1 или 2 то из памчти вычищаем последнее действие 1 или 2
                         }
 
+=======
+
+                            D++;
+                            Undo[D] = stroka4; //запоминаем удаление
+                            Operation[C] = stroka4;
+                            C--; //т.к. мы отменили последнее действие 1 или 2 то из памчти вычищаем последнее действие 1 или 2
+                        }
+
+>>>>>>> 4802dddbf8ce5a4252a4ba8a177db2144a856198
                         if (otmena4[0].ToString() == "2") //если последняяя операция была удалить то добавляем
                         {
                             string stroka4_2 = "1 ";
 
                             string stroka4_3 = Operation[C - 1].Substring(2, Math.Min(2,Operation[C - 1].Length - 2));
+<<<<<<< HEAD
 =======
 
                             D++;
@@ -264,6 +311,8 @@ namespace Level1Space
                             string stroka4_2 = "1 ";
                             string stroka4_3 = Operation[C - 1].Substring(2, Operation[C - 1].Length - 2);
 >>>>>>> 99d1c77 (Лапоть4 вернул костыли)
+=======
+>>>>>>> 4802dddbf8ce5a4252a4ba8a177db2144a856198
                             S += stroka4_3;
 
                             D++;
@@ -379,10 +428,14 @@ namespace Level1Space
             s = Level1.BastShoe("1 Привет");
             Console.WriteLine(s);//текущая строка
 <<<<<<< HEAD
+<<<<<<< HEAD
             Console.WriteLine("1 Привет:  " + "А должно быть: " + "Привет");
 =======
             Console.WriteLine("1 Привет" + "А должно быть: " + "Привет");
 >>>>>>> 99d1c77 (Лапоть4 вернул костыли)
+=======
+            Console.WriteLine("1 Привет:  " + "А должно быть: " + "Привет");
+>>>>>>> 4802dddbf8ce5a4252a4ba8a177db2144a856198
             Console.WriteLine();
 
             s = Level1.BastShoe("1 , Мир!").ToString();
