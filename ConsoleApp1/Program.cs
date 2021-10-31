@@ -2,331 +2,270 @@
 using System.Collections.Generic;
 
 /// <summary>
-/// Автоматизация отчётности о продажах
+/// Делаем национальный редактор "Лапоть"
 /// </summary>
-///  Интернет-магазин "Платья и Сумки" быстро расширяется, и его создатели 
-///  заинтересованы в подробной аналитической отчётности о продажах товара. 
-///  К сожалению, первая версия магазина была сделана очень криво, 
-///  поэтому данные хранятся в системе в виде, плохо подходящем для обработки. 
-///  Так, каждая запись о продаже представляет собой строку формата
+///   В рамках проекта тотального импортозамещения решено полностью с нуля переписать весь офисный софт в стране. Вы получили подряд с бюджетом миллион рублей по созданию оригинального текстового редактора "Лапоть". Закодируйте его максимально компактно!
+#region
+//"Лапоть" поддерживает пять операций:
 
-//название - товара количество - проданных - штук
+//1.Добавить(S)-- в конец текущей строки (исходно пустая) добавляется строка S;
+//2.Удалить(N)-- удалить N символов из конца текущей строки. Если N больше длины текущей строки, удаляем из неё все символы;
+//3.Выдать(i)-- выдать i-й символ текущей строки (индексация начинается с нуля) в формате строки (строковый тип). Если индекс за пределами строки, возвращайте пустую строку;
+//4.Undo()-- отмена последней операции 1 или 2; отмена должна уметь выполняться при необходимости неограниченное число раз;
+//5.Redo()-- выполнить заново последнюю отменённую с помощью Undo операцию; Redo должна уметь выполняться при необходимости неограниченное число раз.
+//Если после Undo выполняется операция 1 или 2, то
+//-- предыдущая цепочка операций для Undo обнуляется (откатить можно только последнюю операцию 1 или 2);
+//--Redo более становится нечего откатывать.
+//На вход редактора подаётся одна строка, первый символ которой -- номер операции (1-5) и через пробел, при необходимости, параметр соответствующей операции.
+//Например:
+//1 Привет
+//В текущей строке будет "Привет"
+//1  , Мир!
+//Привет, Мир!
+//1 ++ 
+//Привет, Мир!++
+//2 2
+//Привет, Мир!
+//4
+//Привет, Мир!++
+//4
+//Привет, Мир!
+//1 *
+//Привет, Мир!*
+//4
+//Привет, Мир!
+//4 
+//Привет, Мир!
+//4
+//Привет, Мир!
+//3 6
+//,
+//2 100
 
-//например:
-
-//платье1 5
-//сумка32 2
-//платье1 1
-//сумка23 2
-//сумка128 4
-
-//Названия товаров могут повторяться.
-
-//Ваша задача: сгруппировать продажи по названиям товаров, расположив в результирующем списке товары, отсортированные по количеству продаж. Если эти количества для каких-то товаров совпадут, названия товаров должны следовать в порядке лексикографического возрастания.
-
-//Например, вышеприведённый пример преобразуется в такой результат:
-
-//платье1 6
-//сумка128 4
-//сумка23 2
-//сумка32 2
+//1 Привет 
+//Привет
+//1  , Мир!
+//Привет, Мир!
+//1 ++ 
+//Привет, Мир!++
+//4
+//Привет, Мир!
+//4
+//Привет
+//5
+//Привет, Мир!
+//4
+//Привет
+//5
+//Привет, Мир!
+//5
+//Привет, Мир!++
+//5
+//Привет, Мир!++
+//5
+//Привет, Мир!++
+//4
+//Привет, Мир!
+//4
+//Привет
+//2 2
+//Прив
+//4
+//Привет
+//5
+//Прив
+//5
+//Прив
+//5
+//Прив
 
 //Функция
 
-//string[] ShopOLAP(int N, string[] items)
+//string BastShoe(string command)          
 
-//получает на вход N >= 1 строк о товарах в вышеприведённом формате, и выдаёт массив длиной M <= N, содержащий сводку по продажам в сгруппированном виде. 
-#region пробую с печатью
-//namespace Level1Space
-//{
-//    public static class Level1
-//    {
-//        public static string[] ShopOLAP(int N, string[] items)
-//        {
-//            string[] subs1 = new string[items.Length - 1];
-//            string[] subs2 = new string[items.Length - 1];
+//получает на вход строку в формате "N параметр", где N -- код операции (1-5),
+//- и возвращает текущую строку,
+//- или символ в формате строки, если команда Выдать(),
+//- или пустую строку в случае её ошибки.
+//Например, BastShoe("1 Привет") = "Привет"
 
-//            string[] array1 = new string[items.Length];
-//            string[] array2 = new string[items.Length];
-//            int sum, a ,b;
-//            //группируем и складываем
-//            for (int i = 0; i < items.Length - 1; i++)
-//            {
-//                // for (int j = 0; j < 2; j++)
-//                //{
-//                string str1 = items[i].ToString();
-//                subs1 = str1.Split();
-//                array1[i] = subs1[0];
-//                array1[i + 1] = subs1[1];
-//                sum = Convert.ToInt32(array1[i + 1]);
-
-//                for (int x = 0; x < items.Length - 1; x++)
-//                {
-//                    if (i != x)
-//                    {
-//                        string str2 = items[x].ToString();
-//                        subs2 = str2.Split();
-//                        array2[x] = subs2[0];
-//                        array2[x + 1] = subs2[1];
-//                        ///Меньше нуля 	Первая подстрока предшествует второй подстроке в порядке сортировки.
-//                        ///Нуль Подстроки появляются в той же позиции в порядке сортировки, или параметр length равен нулю.
-//                        ///Больше нуля Первая подстрока соответствует второй подстроке в порядке сортировки.
-//                        if (array1[i].CompareTo(array2[x]) == 0) //если одинаковые названия товара
-//                        {
-//                            sum += Convert.ToInt32(array2[x + 1]);
-//                            items[i] = string.Join(" ", array1[i], sum);
-//                            for (int j = x; j < items.Length - 1; j++) //перенумеровываем массив
-//                            {
-//                                items[j] = items[j + 1];
-//                                Console.Write(items[j] + " ");
-//                            }
-//                            x--;
-
-//                            Array.Resize(ref items, items.Length - 1);
-//                            Console.WriteLine();
-//                        }
-//                        //Console.Write();
-//                    }
-//                }
-//                Console.WriteLine();
-//            }
-//            Array.Sort(items);
-//            for (int i = 0; i < items.Length; i++)
-//            {
-//                Console.Write(items[i]+" ");
-//                Console.WriteLine();
-//            }
-//            Console.WriteLine();
-//            return items;
-//        }
-#endregion
-#region c печатью2
-//namespace Level1Space
-//{
-//    public static class Level1
-//    {
-//        public static string[] ShopOLAP(int N, string[] items)
-//        {
-//            string[] subs1; //= new string[items.Length - 1];
-//            string[] subs2; //= new string[items.Length - 1];
-
-//            string[] array1 = new string[items.Length];
-//            string[] array2 = new string[items.Length];
-//            int sum;
-
-//            for (int i = 0; i < items.Length - 1; i++)
-//            {
-//                string str1 = items[i].ToString();
-//                subs1 = str1.Split();
-//                array1[i] = subs1[0];
-//                array1[i + 1] = subs1[1];
-//                sum = Convert.ToInt32(array1[i + 1]);
-
-//                for (int x = 0; x < items.Length; x++)
-//                {
-//                    if (i != x)
-//                    {
-//                        string str2 = items[x].ToString();
-//                        subs2 = str2.Split();
-//                        array2[x] = subs2[0];
-//                        array2[x + 1] = subs2[1];
-
-//                        if (array1[i].CompareTo(array2[x]) == 0)
-//                        {
-//                            sum += Convert.ToInt32(array2[x + 1]);
-//                            items[i] = string.Join(" ", array1[i], sum);
-//                            for (int j = x; j < items.Length - 1; j++)
-//                            {
-//                                items[j] = items[j + 1];
-//                            }
-//                            x--;
-//                            Array.Resize(ref items, items.Length - 1);
-//                            for (int y = 0; y < items.Length; y++)
-//                            {
-//                                Console.WriteLine(items[y]);
-//                            }
-//                            Console.WriteLine();
-//                        }
-//                    }
-//                    Console.WriteLine();
-//                }
-//            }
-//            Console.WriteLine();
-//            for (int y = 0; y < items.Length; y++)
-//            {
-//                Console.WriteLine(items[y]);
-//            }
-
-//            string[] arr1 = new string[items.Length];
-//            string[] sub1; //= new string[items.Length - 1];
-//            string[] arr2 = new string[items.Length];
-//            string[] sub2; //= new string[items.Length - 1];
-//            bool sort = false;
-
-//            while (sort == false)
-//            {
-//                sort = true;
-//                for (int y = 0; y < items.Length - 1; y++)
-//                {
-//                    string str1 = items[y].ToString();
-//                    string str2 = items[y + 1].ToString();
-
-//                    sub1 = str1.Split();
-//                    sub2 = str2.Split();
-
-//                    string word1 = sub1[0];
-//                    string word2 = sub2[0];
-
-//                    arr1[y + 1] = sub1[1];
-//                    arr2[y + 1] = sub2[1];
-
-//                    if (Convert.ToInt32(arr1[y + 1]).CompareTo(Convert.ToInt32(arr2[y + 1])) == 0)
-//                    {
-//                        if (word1.CompareTo(word2) == 1)
-//                        {
-//                            string temp = items[y + 1];
-//                            items[y + 1] = items[y];
-//                            items[y] = temp;
-//                            sort = false;
-//                        }
-//                        //items[y] = string.Join(" ", array1[y]);
-//                        for (int j = y; j < items.Length - 1; j++)
-//                        {
-//                            items[j] = items[j + 1];
-//                        }
-
-//                    }
-//                    else if (Convert.ToInt32(arr1[y + 1]).CompareTo(Convert.ToInt32(arr2[y + 1])) == -1)
-//                    {
-//                        string temp = items[y];
-//                        items[y] = items[y + 1];
-//                        items[y + 1] = temp;
-//                        sort = false;
-//                    }
-//                    Console.WriteLine();
-//                    Array.Sort(items);
-//                    for (int r = 0; r < items.Length; r++)
-//                    {
-//                        Console.WriteLine(items[r]);
-//                    }
-//                }
-//            }
-//            Console.WriteLine();
-//            Array.Sort(items);
-//            for (int y = 0; y < items.Length; y++)
-//            {
-//                Console.WriteLine(items[y]);
-//            }
-//            return items;
-//        }
+//Если команда задана некорректно, Лапоть ничего не делает (просто возвращает текущую строку без изменений). 
 #endregion
 
-#region без печати3 попытка 1
-///Золота: 1008$
-//вилка цены: 4200 - 5900 руб.
+#region c печатью попытка 1 - 31.10.2021
+///Золота: 1182$
+///вилка цены: 4300 - 5800 руб.
 namespace Level1Space
 {
     public static class Level1
     {
-        public static string[] ShopOLAP(int N, string[] items)
+        public static List<commands> rrr = new List<commands>();
+
+        public class commands {
+            public int command = 0;
+            public bool isUndo;
+            public string str = "";
+            public string Undostr = "";
+            public int Undocommand = 0;
+
+        }
+
+        public static string S = "";//текущая строка
+        public static string comanda = "";//текущая команда
+        //public static int C = 0; //храним все действия Operation
+        //public static int D = 0;//храним все действия Undo 
+       // public static string[] Operation = new string[100000];
+        //public static string[] Undo = new string[100000];
+
+        public static string BastShoe(string command)
         {
-            string[] subs1;
-            string[] subs2;
+            if (command == "") return S;
+            char[] massiv = command.ToCharArray();
+            int burr = Convert.ToInt32(command.Substring(0, 1));
 
-            string[] array1 = new string[items.Length];
-            string[] array2 = new string[items.Length];
-            int sum;
+            comanda = command.Length > 1 ? command.Substring(2) : "";
 
-            for (int i = 0; i < items.Length - 1; i++)
+            switch (burr)
             {
-                string str1 = items[i].ToString();
-                subs1 = str1.Split();
-                array1[i] = subs1[0];
-                array1[i + 1] = subs1[1];
-                sum = Convert.ToInt32(array1[i + 1]);
+                case 1:
+                    if (rrr.FindLast(t => t == t) != null && rrr.FindLast(t => t == t).command == 4) { rrr.Clear(); rrr = new List<commands>(); } //rrr = new List<commands>(); }
+                    commands op = new commands();
+                    op.command = burr;
+                    op.str = comanda;
+                    rrr.Add(op);
+                    S += comanda;
 
-                for (int x = 0; x < items.Length; x++)
-                {
-                    if (i != x)
+                    return S;
+
+                case 2:
+                    try
                     {
-                        string str2 = items[x].ToString();
-                        subs2 = str2.Split();
-                        string array2x = subs2[0];
-                        string array2x1 = subs2[1];
+                        var second2 = Convert.ToInt16(comanda.Trim());
+                        commands op2 = new commands();
+                        op2.Undostr = S.Substring(S.Length - Math.Min(S.Length, second2));
+                        S = S.Remove(S.Length - Math.Min(S.Length, second2));
+                        if (rrr.FindLast(t => t == t) != null && rrr.FindLast(t => t == t).command == 4) { rrr.Clear(); rrr = new List<commands>(); }// rrr = new List<commands>(); }
+                        op2.command = burr;
+                        op2.str = comanda;
+                        rrr.Add(op2);
+                    }
+                    catch (Exception)
+                    {
 
-                        if (array1[i].CompareTo(array2x) == 0)
+                        throw;
+                    }
+                    return S;
+
+                case 3:
+                    string[] words3 = command.Split(" ");
+                    int second3 = Convert.ToInt32(words3[1]);
+                    if (second3 > S.Length)
+                        return "";
+                    else
+                        return S[second3].ToString();
+
+                case 4:
+                    {
+                        var last4 = rrr.FindLast(t => t.isUndo == false /*&& t.str==""*/ && (t.command == 1 || t.command == 2));
+                        if (last4 != null)
                         {
-                            sum += Convert.ToInt32(array2x1);
-                            items[i] = string.Join(" ", array1[i], sum);
-
-                            for (int j = x; j < items.Length - 1; j++)
+                            commands op4 = new commands();
+                            if (last4.command == 1)
                             {
-                                items[j] = items[j + 1];
+                                if (S.EndsWith(last4.str))
+                                    S = S.Substring(0, S.Length - last4.str.Length);
                             }
+                            if (last4.command == 2)
+                            {
+                                S += last4.Undostr;
+                            }
+                            op4.Undostr = last4.str;
+                            op4.Undocommand = last4.command;
+                            last4.isUndo = true;
 
-                            x--;
-                            Array.Resize(ref items, items.Length - 1);
                         }
                     }
-                }
-            }
-
-            string[] arr1 = new string[items.Length];
-            string[] sub1;
-            string[] arr2 = new string[items.Length];
-            string[] sub2;
-            bool sort = false;
-
-            while (sort == false)
-            {
-                sort = true;
-                for (int y = 0; y < items.Length - 1; y++)
-                {
-                    string str1 = items[y].ToString();
-                    string str2 = items[y + 1].ToString();
-
-                    sub1 = str1.Split();
-                    sub2 = str2.Split();
-
-                    string word1 = sub1[0];
-                    string word2 = sub2[0];
-
-                    arr1[y + 1] = sub1[1];
-                    arr2[y + 1] = sub2[1];
-
-                    if (Convert.ToInt32(arr1[y + 1]).CompareTo(Convert.ToInt32(arr2[y + 1])) == 0)
+                    return S;       
+                case 5:
+                    var last5 = rrr.FindLast(t => t.isUndo == false && t.command == 4);
+                    if (last5 != null) 
                     {
-                        if (word1.CompareTo(word2) == 1)
-                        {
-                            string temp = items[y + 1];
-                            items[y + 1] = items[y];
-                            items[y] = temp;
-                            sort = false;
+                        if (last5.Undocommand == 1) { S += last5.Undostr; }
+                        if (last5.Undocommand == 2) {
+                            if (S.EndsWith(last5.str))
+                                S.Substring(0, S.Length - last5.str.Length);
                         }
+                        last5.isUndo = true;
                     }
-                    else if (Convert.ToInt32(arr1[y + 1]).CompareTo(Convert.ToInt32(arr2[y + 1])) == -1)
-                    {
-                        string temp = items[y];
-                        items[y] = items[y + 1];
-                        items[y + 1] = temp;
-                        sort = false;
-                    }
-                }
+                    return S;
             }
-            return items;
+            return S;
         }
         #endregion
 
         static void Main()
         {
-            int N = 8;
-            string[] items = { "123 5", "32 3", "124 5", "128 1", "32 2", "23 4", "128 4", "128 1" };
-            items = ShopOLAP(N, items);
-            for (int i = 0; i < items.Length; i++)
-            {
-                Console.WriteLine(items[i]);
-            }
+            string s;
+            s = Level1.BastShoe("1 Привет");
+            Console.WriteLine(s);//текущая строка
+            Console.WriteLine("1 Привет:   " + "А должно быть: " + "Привет");
             Console.WriteLine();
+
+            s = Level1.BastShoe("1 , Мир!").ToString();
+            Console.WriteLine(s);
+            Console.WriteLine("1 , Мир!:  " + "А должно быть: " + "Привет, Мир!");
+            Console.WriteLine();
+
+            s = Level1.BastShoe("1 ++");
+            Console.WriteLine(s);
+            Console.WriteLine("1 ++:  " + "А должно быть: " + "Привет, Мир!++");
+            Console.WriteLine();
+
+            s = Level1.BastShoe("2 2");
+            Console.WriteLine(s);
+            Console.WriteLine("2 2:  " + "А должно быть: " + "Привет, Мир!");
+            Console.WriteLine();
+
+            s = Level1.BastShoe("4");
+            Console.WriteLine(s);
+            Console.WriteLine("4:  " + "А должно быть: " + "Привет, Мир!++");
+            Console.WriteLine();
+
+            s = Level1.BastShoe("4");
+            Console.WriteLine(s);
+            Console.WriteLine("4:  " + "А должно быть: " + "Привет, Мир!");
+            Console.WriteLine();
+
+            s = Level1.BastShoe("1 *");
+            Console.WriteLine(s);
+            Console.WriteLine("1 *:  " + "А должно быть: " + "Привет, Мир!*");
+            Console.WriteLine();
+
+            s = Level1.BastShoe("4");
+            Console.WriteLine(s);
+            Console.WriteLine("4:  " + "А должно быть: " + "Привет, Мир!");
+            Console.WriteLine();
+
+            s = Level1.BastShoe("4");
+            Console.WriteLine(s);
+            Console.WriteLine("4:  " + "А должно быть: " + "Привет, Мир!");
+            Console.WriteLine();
+
+            s = Level1.BastShoe("4");
+            Console.WriteLine(s);
+            Console.WriteLine("4:  " + "А должно быть: " + "Привет, Мир!");
+            Console.WriteLine();
+
+            s = Level1.BastShoe("3 6");
+            Console.WriteLine(s);
+            Console.WriteLine("3 6:  " + "А должно быть: " + ",");
+            Console.WriteLine();
+
+            s = Level1.BastShoe("2 100");
+            Console.WriteLine(s);
+            Console.WriteLine("2 100:  " + "А должно быть: " + "");
+            Console.WriteLine();
+
             Console.ReadKey();
         }
     }

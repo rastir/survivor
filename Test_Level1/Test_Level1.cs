@@ -6,7 +6,7 @@ namespace Test_Level1
 {
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     ///<summary> 
-    ///Тесты для задания №19 "Автоматизация отчётности о продажах"
+    ///Тесты для задания №20 "Делаем национальный редактор "Лапоть""
     /// </summary>
     [TestClass]
     public class Test_Level1
@@ -16,17 +16,11 @@ namespace Test_Level1
         public void Test1()
         {
             int number = 1;
-            int N = 5;
-            string[] items = { "платье1 5", "сумка32 2", "платье1 1", "сумка23 2", "сумка128 4" };
+            string s = "";
 
             try
             {
-                Console.WriteLine($"Кол-во {N}, массив:");
-                foreach (string item in items)
-                {
-                    Console.WriteLine(" " + item);
-                }
-                Console.WriteLine();
+                Console.WriteLine($"Кол-во {s}, массив:");
             }
             catch (IndexOutOfRangeException e)
             {
@@ -40,288 +34,191 @@ namespace Test_Level1
             }
             finally
             {
-                items = Level1.ShopOLAP(N, items);
-                Console.WriteLine("Результат функции- ");
-                foreach (string item in items)
-                {
-                    Console.WriteLine(" " + item);
-                }
+
+                s = Level1.BastShoe("1 Привет");
+                Console.WriteLine(s);//текущая строка
+                Console.WriteLine("1 Привет"+"А должно быть: " + "Привет");
                 Console.WriteLine();
+
+                s = Level1.BastShoe("1 , Мир!").ToString();
+                Console.WriteLine(s);
+                Console.WriteLine("1 , Мир!:  "+"А должно быть: " + "Привет, Мир!");
+                Console.WriteLine();
+
+                s = Level1.BastShoe("1 ++");
+                Console.WriteLine(s);
+                Console.WriteLine("1 ++:  "+"А должно быть: " + "Привет, Мир!++");
+                Console.WriteLine();
+
+                s = Level1.BastShoe("2 2");
+                Console.WriteLine(s);
+                Console.WriteLine("2 2:  "+"А должно быть: " + "Привет, Мир!");
+                Console.WriteLine();
+
+                s = Level1.BastShoe("4");
+                Console.WriteLine(s);
+                Console.WriteLine("4:  "+"А должно быть: " + "Привет, Мир!++");
+                Console.WriteLine();
+
+                s = Level1.BastShoe("4");
+                Console.WriteLine(s);
+                Console.WriteLine("4:  " + "А должно быть: " + "Привет, Мир!");
+                Console.WriteLine();
+
+                s = Level1.BastShoe("1 *");
+                Console.WriteLine(s);
+                Console.WriteLine("1 *:  " + "А должно быть: " + "Привет, Мир!*");
+                Console.WriteLine();
+
+                s = Level1.BastShoe("4");
+                Console.WriteLine(s);
+                Console.WriteLine("4:  " + "А должно быть: " + "Привет, Мир!");
+                Console.WriteLine();
+
+                s = Level1.BastShoe("4");
+                Console.WriteLine(s);
+                Console.WriteLine("4:  " + "А должно быть: " + "Привет, Мир!");
+                Console.WriteLine();
+
+                s = Level1.BastShoe("4");
+                Console.WriteLine(s);
+                Console.WriteLine("4:  " + "А должно быть: " + "Привет, Мир!");
+                Console.WriteLine();
+
+                s = Level1.BastShoe("3 6");
+                Console.WriteLine(s);
+                Console.WriteLine("3 6:  " + "А должно быть: " + ",");
+                Console.WriteLine();
+
+                s = Level1.BastShoe("2 100");
+                Console.WriteLine(s);
+                Console.WriteLine("2 100:  "+"А должно быть: " + "");
+                Console.WriteLine();
+
                 Console.WriteLine("TEST {0} PASSED", number);
             }
         }
         [TestMethod]
         [TestCategory("tests")]
         public void Test2()
-        {
-            int number = 2;
-            int N = 1;
-            string[] items = { "платье1 5" };
+            {
+                int number = 2;
+                string s = "";
 
-            try
-            {
-                Console.WriteLine($"Кол-во {N}, массив:");
-                foreach (string item in items)
+                try
                 {
-                    Console.Write(" " + item);
+                    Console.WriteLine($"Кол-во {s}, массив:");
                 }
-                Console.WriteLine();
-            }
-            catch (IndexOutOfRangeException e)
-            {
-                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
-                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
-            }
-            catch (NullReferenceException e)
-            {
-                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
-                throw new ArgumentNullException("parameter is null.", e);
-            }
-            finally
-            {
-                items = Level1.ShopOLAP(N, items);
-                Console.WriteLine("Результат функции- ");
-                foreach (string item in items)
+                catch (IndexOutOfRangeException e)
                 {
-                    Console.WriteLine(" " + item);
+                    Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                    throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
                 }
-                Console.WriteLine();
+                catch (NullReferenceException e)
+                {
+                    Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                    throw new ArgumentNullException("parameter is null.", e);
+                }
+                finally
+                {
+
+                        s = Level1.BastShoe("1 Привет");
+                        Console.WriteLine(s);//текущая строка
+                        Console.WriteLine("1 Привет:  "+"А должно быть: " + "Привет");
+                    Console.WriteLine();
+
+                    s = Level1.BastShoe("1 , Мир!").ToString();
+                        Console.WriteLine(s);
+                        Console.WriteLine("1 , Мир!:  "+"А должно быть: " + "Привет, Мир!");
+                    Console.WriteLine();
+
+                    s = Level1.BastShoe("1 ++");
+                        Console.WriteLine(s);
+                        Console.WriteLine("1 ++:  "+"А должно быть: " + "Привет, Мир!++");
+                    Console.WriteLine();
+
+                    s = Level1.BastShoe("4");
+                        Console.WriteLine(s);
+                        Console.WriteLine("4:  "+"А должно быть: " + "Привет, Мир!");
+                    Console.WriteLine();
+
+                    s = Level1.BastShoe("4");
+                        Console.WriteLine(s);
+                        Console.WriteLine("4:  " + "А должно быть: " + "Привет");
+                    Console.WriteLine();
+
+                    s = Level1.BastShoe("5");
+                        Console.WriteLine(s);
+                        Console.WriteLine("5:  " + "А должно быть: " + "Привет, Мир!");
+                    Console.WriteLine();
+
+                    s = Level1.BastShoe("1 *");
+                        Console.WriteLine(s);
+                        Console.WriteLine("1 *:  "+"А должно быть: " + "Привет, Мир!");
+                    Console.WriteLine();
+
+                    s = Level1.BastShoe("4");
+                        Console.WriteLine(s);
+                        Console.WriteLine("4:  "+"А должно быть: " + "Привет");
+                    Console.WriteLine();
+
+                    s = Level1.BastShoe("5");
+                        Console.WriteLine(s);
+                        Console.WriteLine("5:  "+"А должно быть: " + "Привет, Мир!");
+                    Console.WriteLine();
+
+                    s = Level1.BastShoe("5");
+                        Console.WriteLine(s);
+                        Console.WriteLine("5:  "+"А должно быть: " + "Привет, Мир!++");
+                    Console.WriteLine();
+
+                    s = Level1.BastShoe("5");
+                        Console.WriteLine(s);
+                        Console.WriteLine("5:  "+"А должно быть: " + "Привет, Мир!++");
+                    Console.WriteLine();
+
+                    s = Level1.BastShoe("5");
+                        Console.WriteLine(s);
+                        Console.WriteLine("5:  "+"А должно быть: " + "Привет, Мир!++");
+                    Console.WriteLine();
+
+                    s = Level1.BastShoe("4");
+                        Console.WriteLine(s);
+                        Console.WriteLine("4:  "+"А должно быть: " + "Привет, Мир!");
+                    Console.WriteLine();
+
+                    s = Level1.BastShoe("4");
+                        Console.WriteLine(s);
+                        Console.WriteLine("4:  "+"А должно быть: " + "Привет");
+                    Console.WriteLine();
+
+                    s = Level1.BastShoe("2 2");
+                        Console.WriteLine(s);
+                        Console.WriteLine("2 2:  "+"А должно быть: " + "Прив");
+                    Console.WriteLine();
+
+                    s = Level1.BastShoe("4");
+                        Console.WriteLine(s);
+                        Console.WriteLine("4:  "+"А должно быть: " + "Привет");
+                    Console.WriteLine();
+
+                    s = Level1.BastShoe("5");
+                        Console.WriteLine(s);
+                        Console.WriteLine("5: "+"А должно быть: " + "Прив");
+                    Console.WriteLine();
+
+                    s = Level1.BastShoe("5");
+                        Console.WriteLine(s);
+                        Console.WriteLine("5: " + "А должно быть: " + "Прив");
+                    Console.WriteLine();
+
+                    s = Level1.BastShoe("5");
+                        Console.WriteLine(s);
+                        Console.WriteLine("5: " + "А должно быть: " + "Прив");
+                    Console.WriteLine();
+
                 Console.WriteLine("TEST {0} PASSED", number);
+                }
             }
         }
-        [TestMethod]
-        [TestCategory("tests")]
-        public void Test3()
-        {
-            int number = 3;
-            int N = 8;
-            string[] items = { "платье1 5", "сумка32 2", "платье1 1", "сумка23 2", "сумка128 4", "платье1 5", "платье1 5", "платье1 5" };
-
-            try
-            {
-                Console.WriteLine($"Кол-во {N}, массив:");
-                foreach (string item in items)
-                {
-                    Console.Write(" " + item);
-                }
-                Console.WriteLine();
-            }
-            catch (IndexOutOfRangeException e)
-            {
-                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
-                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
-            }
-            catch (NullReferenceException e)
-            {
-                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
-                throw new ArgumentNullException("parameter is null.", e);
-            }
-            finally
-            {
-                items = Level1.ShopOLAP(N, items);
-                Console.WriteLine("Результат функции- ");
-                foreach (string item in items)
-                {
-                    Console.WriteLine(" " + item);
-                }
-                Console.WriteLine();
-                Console.WriteLine("TEST {0} PASSED", number);
-            }
-        }
-        [TestMethod]
-        [TestCategory("tests")]
-        public void Test4()
-        {
-            int number = 4;
-            int N = 10;
-            string[] items = { "платье1 5", "сумка32 2", "платье1 1", "сумка23 2", "сумка128 4", "платье1 5", "платье1 5", "платье1 5", "сумка128 7", "сумка32 2", "сумка30 1" };
-
-            try
-            {
-                Console.WriteLine($"Кол-во {N}, массив:");
-                foreach (string item in items)
-                {
-                    Console.Write(" " + item);
-                }
-                Console.WriteLine();
-            }
-            catch (IndexOutOfRangeException e)
-            {
-                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
-                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
-            }
-            catch (NullReferenceException e)
-            {
-                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
-                throw new ArgumentNullException("parameter is null.", e);
-            }
-            finally
-            {
-                items = Level1.ShopOLAP(N, items);
-                Console.WriteLine("Результат функции- ");
-                foreach (string item in items)
-                {
-                    Console.WriteLine(" " + item);
-                }
-                Console.WriteLine();
-                Console.WriteLine("TEST {0} PASSED", number);
-            }
-        }
-        [TestMethod]
-        [TestCategory("tests")]
-        public void Test5()
-        {
-            int number = 5;
-            int N = 12;
-            string[] items = { "платье1 5", "сумка32 2", "платье1 1", "сумка23 2", "сумка128 4", "платье1 5", "платье1 5", "платье1 5", "сумка128 7", "сумка32 2", "сумка30 1", "сумка22 4", "сумка20 4" };
-
-            try
-            {
-                Console.WriteLine($"Кол-во {N}, массив:");
-                foreach (string item in items)
-                {
-                    Console.Write(" " + item);
-                }
-                Console.WriteLine();
-            }
-            catch (IndexOutOfRangeException e)
-            {
-                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
-                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
-            }
-            catch (NullReferenceException e)
-            {
-                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
-                throw new ArgumentNullException("parameter is null.", e);
-            }
-            finally
-            {
-                items = Level1.ShopOLAP(N, items);
-                Console.WriteLine("Результат функции- ");
-                foreach (string item in items)
-                {
-                    Console.WriteLine(" " + item);
-                }
-                Console.WriteLine();
-                Console.WriteLine("TEST {0} PASSED", number);
-            }
-        }
-        [TestMethod]
-        [TestCategory("tests")]
-        public void Test6()
-        {
-            int number = 6;
-            int N = 13;
-            string[] items = { "платье1 5", "платье1 5", "платье1 5", "платье1 5", "платье1 5", "платье1 5", "платье1 5", "платье1 5", "платье1 5", "платье1 5", "платье1 5", "платье1 5", "платье1 5" };
-
-            try
-            {
-                Console.WriteLine($"Кол-во {N}, массив:");
-                foreach (string item in items)
-                {
-                    Console.Write(" " + item);
-                }
-                Console.WriteLine();
-            }
-            catch (IndexOutOfRangeException e)
-            {
-                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
-                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
-            }
-            catch (NullReferenceException e)
-            {
-                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
-                throw new ArgumentNullException("parameter is null.", e);
-            }
-            finally
-            {
-                items = Level1.ShopOLAP(N, items);
-                Console.WriteLine("Результат функции- ");
-                foreach (string item in items)
-                {
-                    Console.WriteLine(" " + item);
-                }
-                Console.WriteLine();
-                Console.WriteLine("TEST {0} PASSED", number);
-            }
-        }
-        [TestMethod]
-        [TestCategory("tests")]
-        public void Test7()
-        {
-            int number = 7;
-            int N = 5;
-            string[] items = { "dress1 5", "handbug32 3", "dress2 1", "handbug23 2", "handbug128 4" };
-
-            try
-            {
-                Console.WriteLine($"Кол-во {N}, массив:");
-                foreach (string item in items)
-                {
-                    Console.Write(" " + item);
-                }
-                Console.WriteLine();
-            }
-            catch (IndexOutOfRangeException e)
-            {
-                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
-                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
-            }
-            catch (NullReferenceException e)
-            {
-                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
-                throw new ArgumentNullException("parameter is null.", e);
-            }
-            finally
-            {
-                items = Level1.ShopOLAP(N, items);
-                Console.WriteLine("Результат функции- ");
-                foreach (string item in items)
-                {
-                    Console.WriteLine(" " + item);
-                }
-                Console.WriteLine();
-                Console.WriteLine("TEST {0} PASSED", number);
-            }
-        }
-        [TestMethod]
-        [TestCategory("tests")]
-        public void Test8()
-        {
-            int number = 8;
-            int N = 5;
-            string[] items = { "123 5", "32 3", "124 5", "128 1", "32 2", "23 4", "128 4", "128 1" };
-
-            try
-            {
-                Console.WriteLine($"Кол-во {N}, массив:");
-                foreach (string item in items)
-                {
-                    Console.Write(" " + item);
-                }
-                Console.WriteLine();
-            }
-            catch (IndexOutOfRangeException e)
-            {
-                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
-                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
-            }
-            catch (NullReferenceException e)
-            {
-                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
-                throw new ArgumentNullException("parameter is null.", e);
-            }
-            finally
-            {
-                items = Level1.ShopOLAP(N, items);
-                Console.WriteLine("Результат функции- ");
-                foreach (string item in items)
-                {
-                    Console.WriteLine(" " + item);
-                }
-                Console.WriteLine();
-                Console.WriteLine("TEST {0} PASSED", number);
-            }
-        }
-    }
 }
