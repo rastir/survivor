@@ -100,7 +100,7 @@ namespace Level1Space
     public static class Level1
     {
         public static string S = "";//текущая строка
-        public static string comanda = "";//текущая команда
+        public static string lastcommand = "";//текущая команда
         public static int C = 0; //храним все действия Operation
         public static int D = 0;//храним все действия Undo 
         public static string[] Operation = new string[100000];
@@ -111,26 +111,28 @@ namespace Level1Space
             char[] massiv = command.ToCharArray();
             int burr = Convert.ToInt32(command.Substring(0, 1));
 
-            for (int i = 0; i < Operation.Length; i++)
-            {
-                Console.WriteLine(Operation[i]);
-            }
+            //for (int i = 0; i < Operation.Length; i++)
+            //{
+            //    Console.WriteLine(Operation[i]);
+            //}
 
             switch (burr)
             {
                 case 1:
                     //проверяем предыдущую операцию        
-                    if (comanda != "")
+                    if (lastcommand != "")
                     {
-                        if (massiv[0].ToString() == "4") //если последняя операция была Undo то чистим память операций для Undo
+                        if (lastcommand[0].ToString() == "4") //если последняя операция была Undo то чистим память операций для Undo
                         {
                             //Array.Clear(Undo, 0, Undo.Length - 1);
                             Array.Clear(Operation, 0, Operation.Length - 1);
+                            C = 0;
                         }
                     }
                     C++;
                     Operation[C] = command; //запоминаем текущую операцию
-                    
+                    lastcommand = "";
+
                     for (int i = 0; i < command.Length; i++)
                     {
                         if (i > 1)
@@ -140,15 +142,17 @@ namespace Level1Space
 
                 case 2:
                     //проверяем предыдущую операцию        
-                    if (comanda != "")
+                    if (lastcommand != "")
                     {
-                        if (massiv[0].ToString() == "4") //если последняя операция была Undo то чистим память операций для Undo
+                        if (lastcommand[0].ToString() == "4") //если последняя операция была Undo то чистим память операций для Undo
                         {
                             //Array.Clear(Undo, 0, Undo.Length - 1);
                             Array.Clear(Operation, 0, Operation.Length - 1);
+                            C = 0;
                         }
                     }
                     C++;
+                    lastcommand = "";
                     Operation[C] = command; //запоминаем текущую операцию
 
                     string[] words2;
@@ -161,6 +165,7 @@ namespace Level1Space
                     return S;
 
                 case 3:
+                    lastcommand = "";
                     string[] words3 = command.Split(" ");
                     int second3 = Convert.ToInt32(words3[1]);
                     if (second3 > S.Length)
@@ -173,6 +178,7 @@ namespace Level1Space
                     {
                         string otmena4 = Operation[C];
                         int count_stroka2 = 0;
+                        lastcommand = command;
 
                         if (otmena4[0].ToString() == "1") //если последняяя операция была добавить то удаляем
                         {
@@ -197,7 +203,8 @@ namespace Level1Space
                         if (otmena4[0].ToString() == "2") //если последняяя операция была удалить то добавляем
                         {
                             string stroka4_2 = "1 ";
-                            string stroka4_3 = Operation[C - 1].Substring(2, Operation[C - 1].Length - 2);
+
+                            string stroka4_3 = Operation[C - 1].Substring(2, Math.Min(2,Operation[C - 1].Length - 2));
                             S += stroka4_3;
 
                             D++;
@@ -240,9 +247,8 @@ namespace Level1Space
                             }
                         }
                     }
-                        return S;
+                    return S;
             }
-            comanda = command;
             return S;
         }
         #endregion
@@ -250,9 +256,69 @@ namespace Level1Space
         static void Main()
         {
             string s;
+            //s = Level1.BastShoe("1 Привет");
+            //Console.WriteLine(s);//текущая строка
+            //Console.WriteLine("1 Привет" + "А должно быть: " + "Привет");
+            //Console.WriteLine();
+
+            //s = Level1.BastShoe("1 , Мир!").ToString();
+            //Console.WriteLine(s);
+            //Console.WriteLine("1 , Мир!:  " + "А должно быть: " + "Привет, Мир!");
+            //Console.WriteLine();
+
+            //s = Level1.BastShoe("1 ++");
+            //Console.WriteLine(s);
+            //Console.WriteLine("1 ++:  " + "А должно быть: " + "Привет, Мир!++");
+            //Console.WriteLine();
+
+            //s = Level1.BastShoe("2 2");
+            //Console.WriteLine(s);
+            //Console.WriteLine("2 2:  " + "А должно быть: " + "Привет, Мир!");
+            //Console.WriteLine();
+
+            //s = Level1.BastShoe("4");
+            //Console.WriteLine(s);
+            //Console.WriteLine("4:  " + "А должно быть: " + "Привет, Мир!++");
+            //Console.WriteLine();
+
+            //s = Level1.BastShoe("4");
+            //Console.WriteLine(s);
+            //Console.WriteLine("4:  " + "А должно быть: " + "Привет, Мир!");
+            //Console.WriteLine();
+
+            //s = Level1.BastShoe("1 *");
+            //Console.WriteLine(s);
+            //Console.WriteLine("1 *:  " + "А должно быть: " + "Привет, Мир!*");
+            //Console.WriteLine();
+
+            //s = Level1.BastShoe("4");
+            //Console.WriteLine(s);
+            //Console.WriteLine("4:  " + "А должно быть: " + "Привет, Мир!");
+            //Console.WriteLine();
+
+            //s = Level1.BastShoe("4");
+            //Console.WriteLine(s);
+            //Console.WriteLine("4:  " + "А должно быть: " + "Привет, Мир!");
+            //Console.WriteLine();
+
+            //s = Level1.BastShoe("4");
+            //Console.WriteLine(s);
+            //Console.WriteLine("4:  " + "А должно быть: " + "Привет, Мир!");
+            //Console.WriteLine();
+
+            //s = Level1.BastShoe("3 6");
+            //Console.WriteLine(s);
+            //Console.WriteLine("3 6:  " + "А должно быть: " + ",");
+            //Console.WriteLine();
+
+            //s = Level1.BastShoe("2 100");
+            //Console.WriteLine(s);
+            //Console.WriteLine("2 100:  " + "А должно быть: " + "");
+            //Console.WriteLine();
+
             s = Level1.BastShoe("1 Привет");
             Console.WriteLine(s);//текущая строка
-            Console.WriteLine("1 Привет" + "А должно быть: " + "Привет");
+            Console.WriteLine("1 Привет:  " + "А должно быть: " + "Привет");
             Console.WriteLine();
 
             s = Level1.BastShoe("1 , Мир!").ToString();
@@ -265,24 +331,49 @@ namespace Level1Space
             Console.WriteLine("1 ++:  " + "А должно быть: " + "Привет, Мир!++");
             Console.WriteLine();
 
-            s = Level1.BastShoe("2 2");
-            Console.WriteLine(s);
-            Console.WriteLine("2 2:  " + "А должно быть: " + "Привет, Мир!");
-            Console.WriteLine();
-
-            s = Level1.BastShoe("4");
-            Console.WriteLine(s);
-            Console.WriteLine("4:  " + "А должно быть: " + "Привет, Мир!++");
-            Console.WriteLine();
-
             s = Level1.BastShoe("4");
             Console.WriteLine(s);
             Console.WriteLine("4:  " + "А должно быть: " + "Привет, Мир!");
+            Console.WriteLine();
+
+            s = Level1.BastShoe("4");
+            Console.WriteLine(s);
+            Console.WriteLine("4:  " + "А должно быть: " + "Привет");
+            Console.WriteLine();
+
+            s = Level1.BastShoe("5");
+            Console.WriteLine(s);
+            Console.WriteLine("5:  " + "А должно быть: " + "Привет, Мир!");
             Console.WriteLine();
 
             s = Level1.BastShoe("1 *");
             Console.WriteLine(s);
-            Console.WriteLine("1 *:  " + "А должно быть: " + "Привет, Мир!*");
+            Console.WriteLine("1 *:  " + "А должно быть: " + "Привет, Мир!");
+            Console.WriteLine();
+
+            s = Level1.BastShoe("4");
+            Console.WriteLine(s);
+            Console.WriteLine("4:  " + "А должно быть: " + "Привет");
+            Console.WriteLine();
+
+            s = Level1.BastShoe("5");
+            Console.WriteLine(s);
+            Console.WriteLine("5:  " + "А должно быть: " + "Привет, Мир!");
+            Console.WriteLine();
+
+            s = Level1.BastShoe("5");
+            Console.WriteLine(s);
+            Console.WriteLine("5:  " + "А должно быть: " + "Привет, Мир!++");
+            Console.WriteLine();
+
+            s = Level1.BastShoe("5");
+            Console.WriteLine(s);
+            Console.WriteLine("5:  " + "А должно быть: " + "Привет, Мир!++");
+            Console.WriteLine();
+
+            s = Level1.BastShoe("5");
+            Console.WriteLine(s);
+            Console.WriteLine("5:  " + "А должно быть: " + "Привет, Мир!++");
             Console.WriteLine();
 
             s = Level1.BastShoe("4");
@@ -292,22 +383,32 @@ namespace Level1Space
 
             s = Level1.BastShoe("4");
             Console.WriteLine(s);
-            Console.WriteLine("4:  " + "А должно быть: " + "Привет, Мир!");
+            Console.WriteLine("4:  " + "А должно быть: " + "Привет");
+            Console.WriteLine();
+
+            s = Level1.BastShoe("2 2");
+            Console.WriteLine(s);
+            Console.WriteLine("2 2:  " + "А должно быть: " + "Прив");
             Console.WriteLine();
 
             s = Level1.BastShoe("4");
             Console.WriteLine(s);
-            Console.WriteLine("4:  " + "А должно быть: " + "Привет, Мир!");
+            Console.WriteLine("4:  " + "А должно быть: " + "Привет");
             Console.WriteLine();
 
-            s = Level1.BastShoe("3 6");
+            s = Level1.BastShoe("5");
             Console.WriteLine(s);
-            Console.WriteLine("3 6:  " + "А должно быть: " + ",");
+            Console.WriteLine("5: " + "А должно быть: " + "Прив");
             Console.WriteLine();
 
-            s = Level1.BastShoe("2 100");
+            s = Level1.BastShoe("5");
             Console.WriteLine(s);
-            Console.WriteLine("2 100:  " + "А должно быть: " + "");
+            Console.WriteLine("5: " + "А должно быть: " + "Прив");
+            Console.WriteLine();
+
+            s = Level1.BastShoe("5");
+            Console.WriteLine(s);
+            Console.WriteLine("5: " + "А должно быть: " + "Прив");
             Console.WriteLine();
 
             Console.ReadKey();
