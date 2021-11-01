@@ -99,343 +99,206 @@ namespace Level1Space
 {
     public static class Level1
     {
-        public static string S = "";//текущая строка
-<<<<<<< HEAD
-<<<<<<< HEAD
-        public static string lastcommand = "";//текущая команда
-=======
-        public static string comanda = "";//текущая команда
->>>>>>> 99d1c77 (Лапоть4 вернул костыли)
-=======
-        public static string lastcommand = "";//текущая команда
->>>>>>> 4802dddbf8ce5a4252a4ba8a177db2144a856198
-        public static int C = 0; //храним все действия Operation
-        public static int D = 0;//храним все действия Undo 
-        public static string[] Operation = new string[100000];
-        public static string[] Undo = new string[100000];
+            public static List<Commands> rrr = new List<Commands>();
 
-        public static string BastShoe(string command)
-        {
-            char[] massiv = command.ToCharArray();
-            int burr = Convert.ToInt32(command.Substring(0, 1));
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 4802dddbf8ce5a4252a4ba8a177db2144a856198
-            //for (int i = 0; i < Operation.Length; i++)
-            //{
-            //    Console.WriteLine(Operation[i]);
-            //}
-<<<<<<< HEAD
-=======
-            for (int i = 0; i < Operation.Length; i++)
+            public class Commands
             {
-                Console.WriteLine(Operation[i]);
+                public int command = 0;
+                public bool isUndo;
+                public string str = "";
+                public string Undostr = "";
+                public int Undocommand = 0;
             }
->>>>>>> 99d1c77 (Лапоть4 вернул костыли)
-=======
->>>>>>> 4802dddbf8ce5a4252a4ba8a177db2144a856198
 
-            switch (burr)
+            public static string S = "";//текущая строка
+            public static string comanda = "";//текущая команда
+
+            public static string BastShoe(string command)
             {
-                case 1:
-                    //проверяем предыдущую операцию        
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 4802dddbf8ce5a4252a4ba8a177db2144a856198
-                    if (lastcommand != "")
-                    {
-                        if (lastcommand[0].ToString() == "4") //если последняя операция была Undo то чистим память операций для Undo
+                if (command == "") return S;
+                char[] massiv = command.ToCharArray();
+                int burr = Convert.ToInt32(command.Substring(0, 1));
+
+                comanda = command.Length > 1 ? command.Substring(2) : "";
+
+                switch (burr)
+                {
+                    case 1:
+                        if (rrr.FindLast(t => t == t) != null && rrr.FindLast(t => t == t).command == 4)
                         {
-                            //Array.Clear(Undo, 0, Undo.Length - 1);
-                            Array.Clear(Operation, 0, Operation.Length - 1);
-                            C = 0;
-<<<<<<< HEAD
-=======
-                    if (comanda != "")
-                    {
-                        if (massiv[0].ToString() == "4") //если последняя операция была Undo то чистим память операций для Undo
-                        {
-                            //Array.Clear(Undo, 0, Undo.Length - 1);
-                            Array.Clear(Operation, 0, Operation.Length - 1);
->>>>>>> 99d1c77 (Лапоть4 вернул костыли)
-=======
->>>>>>> 4802dddbf8ce5a4252a4ba8a177db2144a856198
+                            rrr.Clear();
                         }
-                    }
-                    C++;
-                    Operation[C] = command; //запоминаем текущую операцию
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 4802dddbf8ce5a4252a4ba8a177db2144a856198
-                    lastcommand = "";
+                        Commands op = new Commands();
+                        op.command = burr;
+                        op.str = comanda;
+                        rrr.Add(op);
+                        S += comanda;
 
-                    for (int i = 0; i < command.Length; i++)
-                    {
-                        if (i > 1)
-                            S += massiv[i];
-                    }
-                    return S;
-
-                case 2:
-                    //проверяем предыдущую операцию        
-                    if (lastcommand != "")
-<<<<<<< HEAD
-                    {
-                        if (lastcommand[0].ToString() == "4") //если последняя операция была Undo то чистим память операций для Undo
-                        {
-                            //Array.Clear(Undo, 0, Undo.Length - 1);
-                            Array.Clear(Operation, 0, Operation.Length - 1);
-                            C = 0;
-                        }
-                    }
-                    C++;
-                    lastcommand = "";
-=======
-                    
-                    for (int i = 0; i < command.Length; i++)
-                    {
-                        if (i > 1)
-                            S += massiv[i];
-                    }
-                    return S;
-
-                case 2:
-                    //проверяем предыдущую операцию        
-                    if (comanda != "")
-                    {
-                        if (massiv[0].ToString() == "4") //если последняя операция была Undo то чистим память операций для Undo
-                        {
-                            //Array.Clear(Undo, 0, Undo.Length - 1);
-                            Array.Clear(Operation, 0, Operation.Length - 1);
-                        }
-                    }
-                    C++;
->>>>>>> 99d1c77 (Лапоть4 вернул костыли)
-=======
-                    {
-                        if (lastcommand[0].ToString() == "4") //если последняя операция была Undo то чистим память операций для Undo
-                        {
-                            //Array.Clear(Undo, 0, Undo.Length - 1);
-                            Array.Clear(Operation, 0, Operation.Length - 1);
-                            C = 0;
-                        }
-                    }
-                    C++;
-                    lastcommand = "";
->>>>>>> 4802dddbf8ce5a4252a4ba8a177db2144a856198
-                    Operation[C] = command; //запоминаем текущую операцию
-
-                    string[] words2;
-                        words2 = command.Split(" ");
-                    int second2 = Convert.ToInt32(words2[1]);
-                    if (second2 > S.Length)
-                        second2 = S.Length;
-                    if ((S.Length - second2) > 0)
-                            S = S.Remove(S.Length - second2);
-                    return S;
-
-                case 3:
-                    lastcommand = "";
-                    string[] words3 = command.Split(" ");
-                    int second3 = Convert.ToInt32(words3[1]);
-                    if (second3 > S.Length)
-                        return "";
-                    else
-                        return S[second3].ToString();
-
-                case 4:
-                    if (C > 0)
-                    {
-                        string otmena4 = Operation[C];
-                        int count_stroka2 = 0;
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        lastcommand = command;
-=======
->>>>>>> 99d1c77 (Лапоть4 вернул костыли)
-=======
-                        lastcommand = command;
->>>>>>> 4802dddbf8ce5a4252a4ba8a177db2144a856198
-
-                        if (otmena4[0].ToString() == "1") //если последняяя операция была добавить то удаляем
-                        {
-                            string stroka4 = "2 ";
-
-                            for (int i = 0; i < Operation[C].Length; i++)
-                            {
-                                if (i > 1)
-                                {
-                                    count_stroka2++;
-                                    stroka4 += otmena4[i];
-                                }
-                            }
-                            S = S.Remove(S.Length - count_stroka2);//удаляем
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-                            D++;
-                            Undo[D] = stroka4; //запоминаем удаление
-                            Operation[C] = stroka4;
-                            C--; //т.к. мы отменили последнее действие 1 или 2 то из памчти вычищаем последнее действие 1 или 2
-                        }
-
-=======
-
-                            D++;
-                            Undo[D] = stroka4; //запоминаем удаление
-                            Operation[C] = stroka4;
-                            C--; //т.к. мы отменили последнее действие 1 или 2 то из памчти вычищаем последнее действие 1 или 2
-                        }
-
->>>>>>> 4802dddbf8ce5a4252a4ba8a177db2144a856198
-                        if (otmena4[0].ToString() == "2") //если последняяя операция была удалить то добавляем
-                        {
-                            string stroka4_2 = "1 ";
-
-                            string stroka4_3 = Operation[C - 1].Substring(2, Math.Min(2,Operation[C - 1].Length - 2));
-<<<<<<< HEAD
-=======
-
-                            D++;
-                            Undo[D] = stroka4; //запоминаем удаление
-                            Operation[C] = stroka4;
-                            C--; //т.к. мы отменили последнее действие 1 или 2 то из памчти вычищаем последнее действие 1 или 2
-                        }
-
-                        if (otmena4[0].ToString() == "2") //если последняяя операция была удалить то добавляем
-                        {
-                            string stroka4_2 = "1 ";
-                            string stroka4_3 = Operation[C - 1].Substring(2, Operation[C - 1].Length - 2);
->>>>>>> 99d1c77 (Лапоть4 вернул костыли)
-=======
->>>>>>> 4802dddbf8ce5a4252a4ba8a177db2144a856198
-                            S += stroka4_3;
-
-                            D++;
-                            Undo[D] = stroka4_2 + stroka4_3; //запоминаем добавление
-                            Operation[C] = stroka4_2 + stroka4_3;
-                            C--;
-                        }
-                    }
-                    return S;
-
-                case 5:
-                    if (Undo.Length == 0)
                         return S;
-                    else
-                    {
-                        string otmena5 = Undo[D];
-                        if (otmena5[0].ToString() == "1")
+
+                    case 2:
+                        try
                         {
-                            int count_stroka5 = 0;
-                            string stroka5_1 = "2 ";
-                            for (int i = 0; i < Undo[D].Length; i++)
+                            var second2 = Convert.ToInt16(comanda.Trim());
+                            Commands op2 = new Commands();
+                            op2.Undostr = S.Substring(S.Length - Math.Min(S.Length, second2));
+                            S = S.Remove(S.Length - Math.Min(S.Length, second2));
+                            if (rrr.FindLast(t => t == t) != null && rrr.FindLast(t => t == t).command == 4)
                             {
-                                if (i > 1)
-                                {
-                                    count_stroka5++;
-                                    stroka5_1 += otmena5[i];
-                                }
+                                rrr.Clear();
                             }
-                            S = S.Remove(S.Length - count_stroka5);//удаляем
+                            op2.command = burr;
+                            op2.str = comanda;
+                            rrr.Add(op2);
                         }
-                        if (otmena5[0].ToString() == "2")
+
+                        catch (Exception)
                         {
-                            string stroka5_1 = "1 ";
-                            for (int i = 0; i < Undo[D].Length; i++)
-                            {
-                                if (i > 1)
-                                {
-                                    stroka5_1 += otmena5[i];
-                                }
-                            }
+
+                            throw;
                         }
-                    }
                         return S;
+
+                    case 3:
+                        string[] words3 = command.Split(" ");
+                        int second3 = Convert.ToInt32(words3[1]);
+                        Commands op3 = new Commands();
+                        op3.command = burr;
+                        op3.str = comanda;
+                        rrr.Add(op3);
+                        if (second3 > S.Length)
+                            return "";
+                        else
+                            return S[second3].ToString();
+
+
+                    case 4:
+                        {
+                            var last4 = rrr.FindLast(t => t.isUndo == false && (t.command == 1 || t.command == 2));
+
+                            if (last4 != null)
+                            {
+                                Commands op4 = new Commands();
+                                if (last4.command == 1)
+                                {
+                                    if (S.EndsWith(last4.str))
+                                        S = S.Substring(0, S.Length - last4.str.Length);
+                                }
+                                if (last4.command == 2)
+                                {
+                                    S += last4.Undostr;
+                                }
+                                op4.Undostr = last4.str;
+                                op4.command = burr;
+                                op4.Undocommand = last4.command;
+                                last4.isUndo = true;
+                                rrr.Add(op4);
+                            }
+                        }
+                        return S;
+                    case 5:
+                        var last5 = rrr.FindLast(t => t.isUndo == false && t.command == 4);
+                        if (last5 != null)
+                        {
+                            Commands op5 = new Commands();
+                            if (last5.Undocommand == 1)
+                            {
+                                S += last5.Undostr;
+                                op5.Undocommand = 0;
+                                op5.Undostr = "";
+                                op5.command = 1;
+                                op5.str = last5.Undostr;
+                            }
+                            if (last5.Undocommand == 2)
+                            {
+                                if (S.EndsWith(last5.str))
+                                    S.Substring(0, S.Length - last5.str.Length);
+                                op5.Undocommand = 0;
+                                op5.Undostr = "";
+                                op5.command = 2;
+                                op5.str = last5.Undostr;
+                            }
+                            last5.isUndo = true;
+                            rrr.Add(op5);
+                        }
+                        return S;
+                }
+                return S;
             }
-            comanda = command;
-            return S;
-        }
-        #endregion
+        
 
-        static void Main()
+    #endregion
+
+    static void Main()
         {
             string s;
-            //s = Level1.BastShoe("1 Привет");
-            //Console.WriteLine(s);//текущая строка
-            //Console.WriteLine("1 Привет" + "А должно быть: " + "Привет");
-            //Console.WriteLine();
+            s = Level1.BastShoe("1 Привет");
+            Console.WriteLine(s);//текущая строка
+            Console.WriteLine("1 Привет" + "А должно быть: " + "Привет");
+            Console.WriteLine();
 
-            //s = Level1.BastShoe("1 , Мир!").ToString();
-            //Console.WriteLine(s);
-            //Console.WriteLine("1 , Мир!:  " + "А должно быть: " + "Привет, Мир!");
-            //Console.WriteLine();
+            s = Level1.BastShoe("1 , Мир!").ToString();
+            Console.WriteLine(s);
+            Console.WriteLine("1 , Мир!:  " + "А должно быть: " + "Привет, Мир!");
+            Console.WriteLine();
 
-            //s = Level1.BastShoe("1 ++");
-            //Console.WriteLine(s);
-            //Console.WriteLine("1 ++:  " + "А должно быть: " + "Привет, Мир!++");
-            //Console.WriteLine();
+            s = Level1.BastShoe("1 ++");
+            Console.WriteLine(s);
+            Console.WriteLine("1 ++:  " + "А должно быть: " + "Привет, Мир!++");
+            Console.WriteLine();
 
-            //s = Level1.BastShoe("2 2");
-            //Console.WriteLine(s);
-            //Console.WriteLine("2 2:  " + "А должно быть: " + "Привет, Мир!");
-            //Console.WriteLine();
+            s = Level1.BastShoe("2 2");
+            Console.WriteLine(s);
+            Console.WriteLine("2 2:  " + "А должно быть: " + "Привет, Мир!");
+            Console.WriteLine();
 
-            //s = Level1.BastShoe("4");
-            //Console.WriteLine(s);
-            //Console.WriteLine("4:  " + "А должно быть: " + "Привет, Мир!++");
-            //Console.WriteLine();
+            s = Level1.BastShoe("4");
+            Console.WriteLine(s);
+            Console.WriteLine("4:  " + "А должно быть: " + "Привет, Мир!++");
+            Console.WriteLine();
 
-            //s = Level1.BastShoe("4");
-            //Console.WriteLine(s);
-            //Console.WriteLine("4:  " + "А должно быть: " + "Привет, Мир!");
-            //Console.WriteLine();
+            s = Level1.BastShoe("4");
+            Console.WriteLine(s);
+            Console.WriteLine("4:  " + "А должно быть: " + "Привет, Мир!");
+            Console.WriteLine();
 
-            //s = Level1.BastShoe("1 *");
-            //Console.WriteLine(s);
-            //Console.WriteLine("1 *:  " + "А должно быть: " + "Привет, Мир!*");
-            //Console.WriteLine();
+            s = Level1.BastShoe("1 *");
+            Console.WriteLine(s);
+            Console.WriteLine("1 *:  " + "А должно быть: " + "Привет, Мир!*");
+            Console.WriteLine();
 
-            //s = Level1.BastShoe("4");
-            //Console.WriteLine(s);
-            //Console.WriteLine("4:  " + "А должно быть: " + "Привет, Мир!");
-            //Console.WriteLine();
+            s = Level1.BastShoe("4");
+            Console.WriteLine(s);
+            Console.WriteLine("4:  " + "А должно быть: " + "Привет, Мир!");
+            Console.WriteLine();
 
-            //s = Level1.BastShoe("4");
-            //Console.WriteLine(s);
-            //Console.WriteLine("4:  " + "А должно быть: " + "Привет, Мир!");
-            //Console.WriteLine();
+            s = Level1.BastShoe("4");
+            Console.WriteLine(s);
+            Console.WriteLine("4:  " + "А должно быть: " + "Привет, Мир!");
+            Console.WriteLine();
 
-            //s = Level1.BastShoe("4");
-            //Console.WriteLine(s);
-            //Console.WriteLine("4:  " + "А должно быть: " + "Привет, Мир!");
-            //Console.WriteLine();
+            s = Level1.BastShoe("4");
+            Console.WriteLine(s);
+            Console.WriteLine("4:  " + "А должно быть: " + "Привет, Мир!");
+            Console.WriteLine();
 
-            //s = Level1.BastShoe("3 6");
-            //Console.WriteLine(s);
-            //Console.WriteLine("3 6:  " + "А должно быть: " + ",");
-            //Console.WriteLine();
+            s = Level1.BastShoe("3 6");
+            Console.WriteLine(s);
+            Console.WriteLine("3 6:  " + "А должно быть: " + ",");
+            Console.WriteLine();
 
-            //s = Level1.BastShoe("2 100");
-            //Console.WriteLine(s);
-            //Console.WriteLine("2 100:  " + "А должно быть: " + "");
-            //Console.WriteLine();
+            s = Level1.BastShoe("2 100");
+            Console.WriteLine(s);
+            Console.WriteLine("2 100:  " + "А должно быть: " + "");
+            Console.WriteLine();
 
             s = Level1.BastShoe("1 Привет");
             Console.WriteLine(s);//текущая строка
-<<<<<<< HEAD
-<<<<<<< HEAD
             Console.WriteLine("1 Привет:  " + "А должно быть: " + "Привет");
-=======
+
             Console.WriteLine("1 Привет" + "А должно быть: " + "Привет");
->>>>>>> 99d1c77 (Лапоть4 вернул костыли)
-=======
             Console.WriteLine("1 Привет:  " + "А должно быть: " + "Привет");
->>>>>>> 4802dddbf8ce5a4252a4ba8a177db2144a856198
+
             Console.WriteLine();
 
             s = Level1.BastShoe("1 , Мир!").ToString();
