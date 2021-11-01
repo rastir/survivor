@@ -107,7 +107,6 @@ namespace Level1Space
             public string str = "";
             public string Undostr = "";
             public int Undocommand = 0;
-
         }
 
         public static string S = "";//текущая строка
