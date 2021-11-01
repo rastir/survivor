@@ -20,7 +20,7 @@ namespace Test_Level1
 
             try
             {
-                Console.WriteLine($"Кол-во {s}, массив:");
+                Console.WriteLine($"{s}");
             }
             catch (IndexOutOfRangeException e)
             {
@@ -36,159 +36,185 @@ namespace Test_Level1
             {
 
                 s = Level1.BastShoe("1 Привет");
-                Console.WriteLine(s);//текущая строка
-                Console.WriteLine("1 Привет" + "А должно быть: " + "Привет");
+                Console.WriteLine("1 Привет");
+                Console.WriteLine(s);
+                Console.WriteLine("Привет");
                 Console.WriteLine();
 
-                s = Level1.BastShoe("1 , Мир!").ToString();
+                s = Level1.BastShoe("1 , Мир!");
+                Console.WriteLine("1 , Мир!");
                 Console.WriteLine(s);
-                Console.WriteLine("1 , Мир!:  " + "А должно быть: " + "Привет, Мир!");
+                Console.WriteLine("Привет, Мир!");
                 Console.WriteLine();
 
                 s = Level1.BastShoe("1 ++");
+                Console.WriteLine("1 ++");
                 Console.WriteLine(s);
-                Console.WriteLine("1 ++:  " + "А должно быть: " + "Привет, Мир!++");
+                Console.WriteLine("Привет, Мир!++");
                 Console.WriteLine();
 
                 s = Level1.BastShoe("2 2");
+                Console.WriteLine("2 2");
                 Console.WriteLine(s);
-                Console.WriteLine("2 2:  " + "А должно быть: " + "Привет, Мир!");
+                Console.WriteLine("Привет, Мир!");
                 Console.WriteLine();
 
                 s = Level1.BastShoe("4");
+                Console.WriteLine("4");
                 Console.WriteLine(s);
-                Console.WriteLine("4:  " + "А должно быть: " + "Привет, Мир!++");
+                Console.WriteLine("Привет, Мир!++");
                 Console.WriteLine();
 
                 s = Level1.BastShoe("4");
+                Console.WriteLine("4");
                 Console.WriteLine(s);
-                Console.WriteLine("4:  " + "А должно быть: " + "Привет, Мир!");
+                Console.WriteLine("Привет, Мир!");
                 Console.WriteLine();
 
                 s = Level1.BastShoe("1 *");
+                Console.WriteLine("1 *");
                 Console.WriteLine(s);
-                Console.WriteLine("1 *:  " + "А должно быть: " + "Привет, Мир!*");
+                Console.WriteLine("Привет, Мир!*");
                 Console.WriteLine();
 
                 s = Level1.BastShoe("4");
+                Console.WriteLine("4");
                 Console.WriteLine(s);
-                Console.WriteLine("4:  " + "А должно быть: " + "Привет, Мир!");
+                Console.WriteLine("Привет, Мир!");
                 Console.WriteLine();
 
                 s = Level1.BastShoe("4");
+                Console.WriteLine("4");
                 Console.WriteLine(s);
-                Console.WriteLine("4:  " + "А должно быть: " + "Привет, Мир!");
+                Console.WriteLine("Привет, Мир!");
                 Console.WriteLine();
 
                 s = Level1.BastShoe("4");
+                Console.WriteLine("4");
                 Console.WriteLine(s);
-                Console.WriteLine("4:  " + "А должно быть: " + "Привет, Мир!");
+                Console.WriteLine("Привет, Мир!");
                 Console.WriteLine();
 
                 s = Level1.BastShoe("3 6");
+                Console.WriteLine("3 6");
                 Console.WriteLine(s);
-                Console.WriteLine("3 6:  " + "А должно быть: " + ",");
+                Console.WriteLine(",");
                 Console.WriteLine();
 
                 s = Level1.BastShoe("2 100");
+                Console.WriteLine("2 100");
                 Console.WriteLine(s);
-                Console.WriteLine("2 100:  " + "А должно быть: " + "");
-                Console.WriteLine();
-                s = Level1.BastShoe("1 Привет");
-                Console.WriteLine(s);//текущая строка
-                Console.WriteLine("1 Привет:  " + "А должно быть: " + "Привет");
+                Console.WriteLine("");
                 Console.WriteLine();
 
-                s = Level1.BastShoe("1 , Мир!").ToString();
+                s = Level1.BastShoe("1 Привет");
+                Console.WriteLine("1 Привет");
                 Console.WriteLine(s);
-                Console.WriteLine("1 , Мир!:  " + "А должно быть: " + "Привет, Мир!");
+                Console.WriteLine("Привет");
+                Console.WriteLine();
+
+                s = Level1.BastShoe("1 , Мир!");
+                Console.WriteLine("1 , Мир!");
+                Console.WriteLine(s);
+                Console.WriteLine("Привет, Мир!");
                 Console.WriteLine();
 
                 s = Level1.BastShoe("1 ++");
+                Console.WriteLine("1 ++");
                 Console.WriteLine(s);
-                Console.WriteLine("1 ++:  " + "А должно быть: " + "Привет, Мир!++");
+                Console.WriteLine("Привет, Мир!++");
                 Console.WriteLine();
 
                 s = Level1.BastShoe("4");
+                Console.WriteLine("4");
                 Console.WriteLine(s);
-                Console.WriteLine("4:  " + "А должно быть: " + "Привет, Мир!");
+                Console.WriteLine("4:  " + "Привет, Мир!");
                 Console.WriteLine();
 
                 s = Level1.BastShoe("4");
+                Console.WriteLine("4");
                 Console.WriteLine(s);
-                Console.WriteLine("4:  " + "А должно быть: " + "Привет");
+                Console.WriteLine("Привет");
                 Console.WriteLine();
 
                 s = Level1.BastShoe("5");
+                Console.WriteLine("5");
                 Console.WriteLine(s);
-                Console.WriteLine("5:  " + "А должно быть: " + "Привет, Мир!");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("1 *");
-                Console.WriteLine(s);
-                Console.WriteLine("1 *:  " + "А должно быть: " + "Привет, Мир!");
+                Console.WriteLine("Привет, Мир!");
                 Console.WriteLine();
 
                 s = Level1.BastShoe("4");
+                Console.WriteLine("4");
                 Console.WriteLine(s);
-                Console.WriteLine("4:  " + "А должно быть: " + "Привет");
+                Console.WriteLine("Привет");
                 Console.WriteLine();
 
                 s = Level1.BastShoe("5");
+                Console.WriteLine("5");
                 Console.WriteLine(s);
-                Console.WriteLine("5:  " + "А должно быть: " + "Привет, Мир!");
+                Console.WriteLine("Привет, Мир!");
                 Console.WriteLine();
 
                 s = Level1.BastShoe("5");
+                Console.WriteLine("5");
                 Console.WriteLine(s);
-                Console.WriteLine("5:  " + "А должно быть: " + "Привет, Мир!++");
+                Console.WriteLine("Привет, Мир!++");
                 Console.WriteLine();
 
                 s = Level1.BastShoe("5");
+                Console.WriteLine("5");
                 Console.WriteLine(s);
-                Console.WriteLine("5:  " + "А должно быть: " + "Привет, Мир!++");
+                Console.WriteLine("Привет, Мир!++");
                 Console.WriteLine();
 
                 s = Level1.BastShoe("5");
+                Console.WriteLine("5");
                 Console.WriteLine(s);
-                Console.WriteLine("5:  " + "А должно быть: " + "Привет, Мир!++");
+                Console.WriteLine("Привет, Мир!++");
                 Console.WriteLine();
 
                 s = Level1.BastShoe("4");
+                Console.WriteLine("4");
                 Console.WriteLine(s);
-                Console.WriteLine("4:  " + "А должно быть: " + "Привет, Мир!");
+                Console.WriteLine("Привет, Мир!");
                 Console.WriteLine();
 
                 s = Level1.BastShoe("4");
+                Console.WriteLine("4");
                 Console.WriteLine(s);
-                Console.WriteLine("4:  " + "А должно быть: " + "Привет");
+                Console.WriteLine("Привет");
                 Console.WriteLine();
 
                 s = Level1.BastShoe("2 2");
+                Console.WriteLine("2 2");
                 Console.WriteLine(s);
-                Console.WriteLine("2 2:  " + "А должно быть: " + "Прив");
+                Console.WriteLine("Прив");
                 Console.WriteLine();
 
                 s = Level1.BastShoe("4");
+                Console.WriteLine("4");
                 Console.WriteLine(s);
-                Console.WriteLine("4:  " + "А должно быть: " + "Привет");
+                Console.WriteLine("Привет");
                 Console.WriteLine();
 
                 s = Level1.BastShoe("5");
+                Console.WriteLine("5");
                 Console.WriteLine(s);
-                Console.WriteLine("5: " + "А должно быть: " + "Прив");
+                Console.WriteLine("Прив");
                 Console.WriteLine();
 
                 s = Level1.BastShoe("5");
+                Console.WriteLine("5");
                 Console.WriteLine(s);
-                Console.WriteLine("5: " + "А должно быть: " + "Прив");
+                Console.WriteLine("Прив");
                 Console.WriteLine();
 
                 s = Level1.BastShoe("5");
+                Console.WriteLine("5");
                 Console.WriteLine(s);
-                Console.WriteLine("5: " + "А должно быть: " + "Прив");
+                Console.WriteLine("Прив");
                 Console.WriteLine();
-                
+
                 Console.WriteLine("TEST {0} PASSED", number);
             }
         }
@@ -197,11 +223,11 @@ namespace Test_Level1
         public void Test2()
         {
             int number = 2;
-            string s = "";
+            string s2 = "";
 
             try
             {
-                Console.WriteLine($"Кол-во {s}, массив:");
+                Console.WriteLine($"{s2}");
             }
             catch (IndexOutOfRangeException e)
             {
@@ -216,99 +242,28 @@ namespace Test_Level1
             finally
             {
 
-                s = Level1.BastShoe("1 Привет");
-                Console.WriteLine(s);//текущая строка
-                Console.WriteLine("1 Привет:  " + "А должно быть: " + "Привет");
+                s2 = Level1.BastShoe("1 Привет");
+                Console.WriteLine("1 Привет");
+                Console.WriteLine(s2);
+                Console.WriteLine("Привет");
                 Console.WriteLine();
 
-                s = Level1.BastShoe("1 , Мир!").ToString();
-                Console.WriteLine(s);
-                Console.WriteLine("1 , Мир!:  " + "А должно быть: " + "Привет, Мир!");
+                s2 = Level1.BastShoe("5 , Мир!");
+                Console.WriteLine("5 , Мир!");
+                Console.WriteLine(s2);
+                Console.WriteLine("Привет");
                 Console.WriteLine();
 
-                s = Level1.BastShoe("1 ++");
-                Console.WriteLine(s);
-                Console.WriteLine("1 ++:  " + "А должно быть: " + "Привет, Мир!++");
+                s2 = Level1.BastShoe("4 ++");
+                Console.WriteLine("4 ++");
+                Console.WriteLine(s2);
+                Console.WriteLine("Привет");
                 Console.WriteLine();
 
-                s = Level1.BastShoe("4");
-                Console.WriteLine(s);
-                Console.WriteLine("4:  " + "А должно быть: " + "Привет, Мир!");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("4");
-                Console.WriteLine(s);
-                Console.WriteLine("4:  " + "А должно быть: " + "Привет");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("5");
-                Console.WriteLine(s);
-                Console.WriteLine("5:  " + "А должно быть: " + "Привет, Мир!");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("1 *");
-                Console.WriteLine(s);
-                Console.WriteLine("1 *:  " + "А должно быть: " + "Привет, Мир!");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("4");
-                Console.WriteLine(s);
-                Console.WriteLine("4:  " + "А должно быть: " + "Привет");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("5");
-                Console.WriteLine(s);
-                Console.WriteLine("5:  " + "А должно быть: " + "Привет, Мир!");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("5");
-                Console.WriteLine(s);
-                Console.WriteLine("5:  " + "А должно быть: " + "Привет, Мир!++");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("5");
-                Console.WriteLine(s);
-                Console.WriteLine("5:  " + "А должно быть: " + "Привет, Мир!++");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("5");
-                Console.WriteLine(s);
-                Console.WriteLine("5:  " + "А должно быть: " + "Привет, Мир!++");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("4");
-                Console.WriteLine(s);
-                Console.WriteLine("4:  " + "А должно быть: " + "Привет, Мир!");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("4");
-                Console.WriteLine(s);
-                Console.WriteLine("4:  " + "А должно быть: " + "Привет");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("2 2");
-                Console.WriteLine(s);
-                Console.WriteLine("2 2:  " + "А должно быть: " + "Прив");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("4");
-                Console.WriteLine(s);
-                Console.WriteLine("4:  " + "А должно быть: " + "Привет");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("5");
-                Console.WriteLine(s);
-                Console.WriteLine("5: " + "А должно быть: " + "Прив");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("5");
-                Console.WriteLine(s);
-                Console.WriteLine("5: " + "А должно быть: " + "Прив");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("5");
-                Console.WriteLine(s);
-                Console.WriteLine("5: " + "А должно быть: " + "Прив");
+                s2 = Level1.BastShoe("3");
+                Console.WriteLine("3");
+                Console.WriteLine(s2);
+                Console.WriteLine("Привет");
                 Console.WriteLine();
 
                 Console.WriteLine("TEST {0} PASSED", number);
