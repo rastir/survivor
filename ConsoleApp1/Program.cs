@@ -197,6 +197,7 @@ namespace Level1Space
                             {
                                 S += last4.Undostr;
                             }
+                            op4.str = last4.Undostr;
                             op4.Undostr = last4.str;
                             op4.command = burr;
                             op4.Undocommand = last4.command;
@@ -221,7 +222,7 @@ namespace Level1Space
                         if (last5.Undocommand == 2)
                         {
                             if (S.EndsWith(last5.str))
-                                S.Substring(0, S.Length - last5.str.Length);
+                                S = S.Substring(0, S.Length - last5.str.Length);
                             op5.Undocommand = 0;
                             op5.Undostr = "";
                             op5.command = 2;
@@ -238,188 +239,188 @@ namespace Level1Space
 
     static void Main()
         {
-            string s;
-            s = Level1.BastShoe("1 Привет");
-            Console.WriteLine("1 Привет");
-            Console.WriteLine(s);
-            Console.WriteLine("Привет");
-            Console.WriteLine();
+            //string s;
+            //s = Level1.BastShoe("1 Привет");
+            //Console.WriteLine("1 Привет");
+            //Console.WriteLine(s);
+            //Console.WriteLine("Привет");
+            //Console.WriteLine();
 
-            s = Level1.BastShoe("1 , Мир!");
-            Console.WriteLine("1 , Мир!");
-            Console.WriteLine(s);
-            Console.WriteLine("Привет, Мир!");
-            Console.WriteLine();
+            //s = Level1.BastShoe("1 , Мир!");
+            //Console.WriteLine("1 , Мир!");
+            //Console.WriteLine(s);
+            //Console.WriteLine("Привет, Мир!");
+            //Console.WriteLine();
 
-            s = Level1.BastShoe("1 ++");
-            Console.WriteLine("1 ++");
-            Console.WriteLine(s);
-            Console.WriteLine("Привет, Мир!++");
-            Console.WriteLine();
+            //s = Level1.BastShoe("1 ++");
+            //Console.WriteLine("1 ++");
+            //Console.WriteLine(s);
+            //Console.WriteLine("Привет, Мир!++");
+            //Console.WriteLine();
 
-            s = Level1.BastShoe("2 2");
-            Console.WriteLine("2 2");
-            Console.WriteLine(s);
-            Console.WriteLine("Привет, Мир!");
-            Console.WriteLine();
+            //s = Level1.BastShoe("2 2");
+            //Console.WriteLine("2 2");
+            //Console.WriteLine(s);
+            //Console.WriteLine("Привет, Мир!");
+            //Console.WriteLine();
 
-            s = Level1.BastShoe("4");
-            Console.WriteLine("4");
-            Console.WriteLine(s);
-            Console.WriteLine("Привет, Мир!++");
-            Console.WriteLine();
+            //s = Level1.BastShoe("4");
+            //Console.WriteLine("4");
+            //Console.WriteLine(s);
+            //Console.WriteLine("Привет, Мир!++");
+            //Console.WriteLine();
 
-            s = Level1.BastShoe("4");
-            Console.WriteLine("4");
-            Console.WriteLine(s);
-            Console.WriteLine("Привет, Мир!");
-            Console.WriteLine();
+            //s = Level1.BastShoe("4");
+            //Console.WriteLine("4");
+            //Console.WriteLine(s);
+            //Console.WriteLine("Привет, Мир!");
+            //Console.WriteLine();
 
-            s = Level1.BastShoe("1 *");
-            Console.WriteLine("1 *");
-            Console.WriteLine(s);
-            Console.WriteLine("Привет, Мир!*");
-            Console.WriteLine();
+            //s = Level1.BastShoe("1 *");
+            //Console.WriteLine("1 *");
+            //Console.WriteLine(s);
+            //Console.WriteLine("Привет, Мир!*");
+            //Console.WriteLine();
 
-            s = Level1.BastShoe("4");
-            Console.WriteLine("4");
-            Console.WriteLine(s);
-            Console.WriteLine("Привет, Мир!");
-            Console.WriteLine();
+            //s = Level1.BastShoe("4");
+            //Console.WriteLine("4");
+            //Console.WriteLine(s);
+            //Console.WriteLine("Привет, Мир!");
+            //Console.WriteLine();
 
-            s = Level1.BastShoe("4");
-            Console.WriteLine("4");
-            Console.WriteLine(s);
-            Console.WriteLine("Привет, Мир!");
-            Console.WriteLine();
+            //s = Level1.BastShoe("4");
+            //Console.WriteLine("4");
+            //Console.WriteLine(s);
+            //Console.WriteLine("Привет, Мир!");
+            //Console.WriteLine();
 
-            s = Level1.BastShoe("4");
-            Console.WriteLine("4");
-            Console.WriteLine(s);
-            Console.WriteLine("Привет, Мир!");
-            Console.WriteLine();
+            //s = Level1.BastShoe("4");
+            //Console.WriteLine("4");
+            //Console.WriteLine(s);
+            //Console.WriteLine("Привет, Мир!");
+            //Console.WriteLine();
 
-            s = Level1.BastShoe("3 6");
-            Console.WriteLine("3 6");
-            Console.WriteLine(s);
-            Console.WriteLine(",");
-            Console.WriteLine();
+            //s = Level1.BastShoe("3 6");
+            //Console.WriteLine("3 6");
+            //Console.WriteLine(s);
+            //Console.WriteLine(",");
+            //Console.WriteLine();
 
-            s = Level1.BastShoe("2 100");
-            Console.WriteLine("2 100");
-            Console.WriteLine(s);
-            Console.WriteLine("");
-            Console.WriteLine();
+            //s = Level1.BastShoe("2 100");
+            //Console.WriteLine("2 100");
+            //Console.WriteLine(s);
+            //Console.WriteLine("");
+            //Console.WriteLine();
 
-            s = Level1.BastShoe("1 Привет");
-            Console.WriteLine("1 Привет");
-            Console.WriteLine(s);
-            Console.WriteLine("Привет");
-            Console.WriteLine();
+            //s = Level1.BastShoe("1 Привет");
+            //Console.WriteLine("1 Привет");
+            //Console.WriteLine(s);
+            //Console.WriteLine("Привет");
+            //Console.WriteLine();
 
-            s = Level1.BastShoe("1 , Мир!");
-            Console.WriteLine("1 , Мир!");
-            Console.WriteLine(s);
-            Console.WriteLine("Привет, Мир!");
-            Console.WriteLine();
+            //s = Level1.BastShoe("1 , Мир!");
+            //Console.WriteLine("1 , Мир!");
+            //Console.WriteLine(s);
+            //Console.WriteLine("Привет, Мир!");
+            //Console.WriteLine();
 
-            s = Level1.BastShoe("1 ++");
-            Console.WriteLine("1 ++");
-            Console.WriteLine(s);
-            Console.WriteLine( "Привет, Мир!++");
-            Console.WriteLine();
+            //s = Level1.BastShoe("1 ++");
+            //Console.WriteLine("1 ++");
+            //Console.WriteLine(s);
+            //Console.WriteLine( "Привет, Мир!++");
+            //Console.WriteLine();
 
-            s = Level1.BastShoe("4");
-            Console.WriteLine("4");
-            Console.WriteLine(s);
-            Console.WriteLine("4:  " + "Привет, Мир!");
-            Console.WriteLine();
+            //s = Level1.BastShoe("4");
+            //Console.WriteLine("4");
+            //Console.WriteLine(s);
+            //Console.WriteLine("4:  " + "Привет, Мир!");
+            //Console.WriteLine();
 
-            s = Level1.BastShoe("4");
-            Console.WriteLine("4");
-            Console.WriteLine(s);
-            Console.WriteLine( "Привет");
-            Console.WriteLine();
+            //s = Level1.BastShoe("4");
+            //Console.WriteLine("4");
+            //Console.WriteLine(s);
+            //Console.WriteLine( "Привет");
+            //Console.WriteLine();
 
-            s = Level1.BastShoe("5");
-            Console.WriteLine("5");
-            Console.WriteLine(s);
-            Console.WriteLine("Привет, Мир!");
-            Console.WriteLine();
+            //s = Level1.BastShoe("5");
+            //Console.WriteLine("5");
+            //Console.WriteLine(s);
+            //Console.WriteLine("Привет, Мир!");
+            //Console.WriteLine();
 
-            s = Level1.BastShoe("4");
-            Console.WriteLine("4");
-            Console.WriteLine(s);
-            Console.WriteLine("Привет");
-            Console.WriteLine();
+            //s = Level1.BastShoe("4");
+            //Console.WriteLine("4");
+            //Console.WriteLine(s);
+            //Console.WriteLine("Привет");
+            //Console.WriteLine();
 
-            s = Level1.BastShoe("5");
-            Console.WriteLine("5");
-            Console.WriteLine(s);
-            Console.WriteLine("Привет, Мир!");
-            Console.WriteLine();
+            //s = Level1.BastShoe("5");
+            //Console.WriteLine("5");
+            //Console.WriteLine(s);
+            //Console.WriteLine("Привет, Мир!");
+            //Console.WriteLine();
 
-            s = Level1.BastShoe("5");
-            Console.WriteLine("5");
-            Console.WriteLine(s);
-            Console.WriteLine("Привет, Мир!++");
-            Console.WriteLine();
+            //s = Level1.BastShoe("5");
+            //Console.WriteLine("5");
+            //Console.WriteLine(s);
+            //Console.WriteLine("Привет, Мир!++");
+            //Console.WriteLine();
 
-            s = Level1.BastShoe("5");
-            Console.WriteLine("5");
-            Console.WriteLine(s);
-            Console.WriteLine("Привет, Мир!++");
-            Console.WriteLine();
+            //s = Level1.BastShoe("5");
+            //Console.WriteLine("5");
+            //Console.WriteLine(s);
+            //Console.WriteLine("Привет, Мир!++");
+            //Console.WriteLine();
 
-            s = Level1.BastShoe("5");
-            Console.WriteLine("5");
-            Console.WriteLine(s);
-            Console.WriteLine("Привет, Мир!++");
-            Console.WriteLine();
+            //s = Level1.BastShoe("5");
+            //Console.WriteLine("5");
+            //Console.WriteLine(s);
+            //Console.WriteLine("Привет, Мир!++");
+            //Console.WriteLine();
 
-            s = Level1.BastShoe("4");
-            Console.WriteLine("4");
-            Console.WriteLine(s);
-            Console.WriteLine("Привет, Мир!");
-            Console.WriteLine();
+            //s = Level1.BastShoe("4");
+            //Console.WriteLine("4");
+            //Console.WriteLine(s);
+            //Console.WriteLine("Привет, Мир!");
+            //Console.WriteLine();
 
-            s = Level1.BastShoe("4");
-            Console.WriteLine("4");
-            Console.WriteLine(s);
-            Console.WriteLine("Привет");
-            Console.WriteLine();
+            //s = Level1.BastShoe("4");
+            //Console.WriteLine("4");
+            //Console.WriteLine(s);
+            //Console.WriteLine("Привет");
+            //Console.WriteLine();
 
-            s = Level1.BastShoe("2 2");
-            Console.WriteLine("2 2");
-            Console.WriteLine(s);
-            Console.WriteLine("Прив");
-            Console.WriteLine();
+            //s = Level1.BastShoe("2 2");
+            //Console.WriteLine("2 2");
+            //Console.WriteLine(s);
+            //Console.WriteLine("Прив");
+            //Console.WriteLine();
 
-            s = Level1.BastShoe("4");
-            Console.WriteLine("4");
-            Console.WriteLine(s);
-            Console.WriteLine("Привет");
-            Console.WriteLine();
+            //s = Level1.BastShoe("4");
+            //Console.WriteLine("4");
+            //Console.WriteLine(s);
+            //Console.WriteLine("Привет");
+            //Console.WriteLine();
 
-            s = Level1.BastShoe("5");
-            Console.WriteLine("5");
-            Console.WriteLine(s);
-            Console.WriteLine("Прив");
-            Console.WriteLine();
+            //s = Level1.BastShoe("5");
+            //Console.WriteLine("5");
+            //Console.WriteLine(s);
+            //Console.WriteLine("Прив");
+            //Console.WriteLine();
 
-            s = Level1.BastShoe("5");
-            Console.WriteLine("5");
-            Console.WriteLine(s);
-            Console.WriteLine("Прив");
-            Console.WriteLine();
+            //s = Level1.BastShoe("5");
+            //Console.WriteLine("5");
+            //Console.WriteLine(s);
+            //Console.WriteLine("Прив");
+            //Console.WriteLine();
 
-            s = Level1.BastShoe("5");
-            Console.WriteLine("5");
-            Console.WriteLine(s);
-            Console.WriteLine("Прив");
-            Console.WriteLine();
+            //s = Level1.BastShoe("5");
+            //Console.WriteLine("5");
+            //Console.WriteLine(s);
+            //Console.WriteLine("Прив");
+            //Console.WriteLine();
 
-            Console.ReadKey();
+            //Console.ReadKey();
         }
     }
 }

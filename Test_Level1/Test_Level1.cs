@@ -269,5 +269,139 @@ namespace Test_Level1
                 Console.WriteLine("TEST {0} PASSED", number);
             }
         }
+        [TestMethod]
+        [TestCategory("tests")]
+        public void Test3()
+        {
+            int number = 3;
+            string s3 = "";
+
+            try
+            {
+                Console.WriteLine($"{s3}");
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
+                s3= Level1.BastShoe("1 Привет");
+                Console.WriteLine("1 Привет");
+                Console.WriteLine(s3);
+                Console.WriteLine("Привет");
+                Console.WriteLine();
+
+                s3= Level1.BastShoe("1 , Мир!");
+                Console.WriteLine("1 , Мир!");
+                Console.WriteLine(s3);
+                Console.WriteLine("Привет, Мир!");
+                Console.WriteLine();
+
+                s3= Level1.BastShoe("1 ++");
+                Console.WriteLine("1 ++");
+                Console.WriteLine(s3);
+                Console.WriteLine("Привет, Мир!++");
+                Console.WriteLine();
+
+                s3= Level1.BastShoe("4");
+                Console.WriteLine("4");
+                Console.WriteLine(s3);
+                Console.WriteLine("4:  " + "Привет, Мир!");
+                Console.WriteLine();
+
+                s3= Level1.BastShoe("4");
+                Console.WriteLine("4");
+                Console.WriteLine(s3);
+                Console.WriteLine("Привет");
+                Console.WriteLine();
+
+                s3= Level1.BastShoe("5");
+                Console.WriteLine("5");
+                Console.WriteLine(s3);
+                Console.WriteLine("Привет, Мир!");
+                Console.WriteLine();
+
+                s3= Level1.BastShoe("4");
+                Console.WriteLine("4");
+                Console.WriteLine(s3);
+                Console.WriteLine("Привет");
+                Console.WriteLine();
+
+                s3= Level1.BastShoe("5");
+                Console.WriteLine("5");
+                Console.WriteLine(s3);
+                Console.WriteLine("Привет, Мир!");
+                Console.WriteLine();
+
+                s3= Level1.BastShoe("5");
+                Console.WriteLine("5");
+                Console.WriteLine(s3);
+                Console.WriteLine("Привет, Мир!++");
+                Console.WriteLine();
+
+                s3= Level1.BastShoe("5");
+                Console.WriteLine("5");
+                Console.WriteLine(s3);
+                Console.WriteLine("Привет, Мир!++");
+                Console.WriteLine();
+
+                s3= Level1.BastShoe("5");
+                Console.WriteLine("5");
+                Console.WriteLine(s3);
+                Console.WriteLine("Привет, Мир!++");
+                Console.WriteLine();
+
+                s3= Level1.BastShoe("4");
+                Console.WriteLine("4");
+                Console.WriteLine(s3);
+                Console.WriteLine("Привет, Мир!");
+                Console.WriteLine();
+
+                s3= Level1.BastShoe("4");
+                Console.WriteLine("4");
+                Console.WriteLine(s3);
+                Console.WriteLine("Привет");
+                Console.WriteLine();
+
+                s3= Level1.BastShoe("2 2");
+                Console.WriteLine("2 2");
+                Console.WriteLine(s3);
+                Console.WriteLine("Прив");
+                Console.WriteLine();
+
+                s3= Level1.BastShoe("4");
+                Console.WriteLine("4");
+                Console.WriteLine(s3);
+                Console.WriteLine("Привет");
+                Console.WriteLine();
+
+                s3= Level1.BastShoe("5");
+                Console.WriteLine("5");
+                Console.WriteLine(s3);
+                Console.WriteLine("Прив");
+                Console.WriteLine();
+
+                s3= Level1.BastShoe("5");
+                Console.WriteLine("5");
+                Console.WriteLine(s3);
+                Console.WriteLine("Прив");
+                Console.WriteLine();
+
+                s3= Level1.BastShoe("5");
+                Console.WriteLine("5");
+                Console.WriteLine(s3);
+                Console.WriteLine("Прив");
+                Console.WriteLine();
+
+                Console.WriteLine("TEST {0} PASSED", number);
+            }
+        }
     }
 }
