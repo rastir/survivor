@@ -98,6 +98,7 @@ namespace Level1Space
 {
     public static class Level1
     {
+<<<<<<< HEAD
         public static List<Commands> rrr = new List<Commands>();
 
         public class Commands
@@ -107,23 +108,33 @@ namespace Level1Space
             public string str = "";
             public string Undostr = "";
             public int Undocommand = 0;
-
         }
 
         public static string S = "";//текущая строка
         public static string comanda = "";//текущая команда
+=======
+        public static string S = "";//текущая строка
+        public static string comanda = "";//текущая команда
+        public static int C = 0; //храним все действия Operation
+        public static int D = 0;//храним все действия Undo 
+        public static string[] Operation = new string[100000];
+        public static string[] Undo = new string[100000];
+>>>>>>> master
 
         public static string BastShoe(string command)
         {
-            if (command == "") return S;
             char[] massiv = command.ToCharArray();
             int burr = Convert.ToInt32(command.Substring(0, 1));
 
-            comanda = command.Length > 1 ? command.Substring(2) : "";
+            for (int i = 0; i < Operation.Length; i++)
+            {
+                Console.WriteLine(Operation[i]);
+            }
 
             switch (burr)
             {
                 case 1:
+<<<<<<< HEAD
                     if (rrr.FindLast(t => t == t) != null && rrr.FindLast(t => t == t).command == 4) 
                     { 
                         rrr.Clear(); 
@@ -153,10 +164,47 @@ namespace Level1Space
                     }
 
                     catch (Exception)
+=======
+                    //проверяем предыдущую операцию        
+                    if (comanda != "")
                     {
-
-                        throw;
+                        if (massiv[0].ToString() == "4") //если последняя операция была Undo то чистим память операций для Undo
+                        {
+                            //Array.Clear(Undo, 0, Undo.Length - 1);
+                            Array.Clear(Operation, 0, Operation.Length - 1);
+                        }
                     }
+                    C++;
+                    Operation[C] = command; //запоминаем текущую операцию
+                    
+                    for (int i = 0; i < command.Length; i++)
+>>>>>>> master
+                    {
+                        if (i > 1)
+                            S += massiv[i];
+                    }
+                    return S;
+
+                case 2:
+                    //проверяем предыдущую операцию        
+                    if (comanda != "")
+                    {
+                        if (massiv[0].ToString() == "4") //если последняя операция была Undo то чистим память операций для Undo
+                        {
+                            //Array.Clear(Undo, 0, Undo.Length - 1);
+                            Array.Clear(Operation, 0, Operation.Length - 1);
+                        }
+                    }
+                    C++;
+                    Operation[C] = command; //запоминаем текущую операцию
+
+                    string[] words2;
+                        words2 = command.Split(" ");
+                    int second2 = Convert.ToInt32(words2[1]);
+                    if (second2 > S.Length)
+                        second2 = S.Length;
+                    if ((S.Length - second2) > 0)
+                            S = S.Remove(S.Length - second2);
                     return S;
 
                 case 3:
@@ -173,7 +221,9 @@ namespace Level1Space
 
 
                 case 4:
+                    if (C > 0)
                     {
+<<<<<<< HEAD
                         var last4 = rrr.FindLast(t => t.isUndo == false && (t.command == 1 || t.command == 2));
 
                         if (last4 != null)
@@ -185,9 +235,24 @@ namespace Level1Space
                                     S = S.Substring(0, S.Length - last4.str.Length);
                             }
                             if (last4.command == 2)
+=======
+                        string otmena4 = Operation[C];
+                        int count_stroka2 = 0;
+
+                        if (otmena4[0].ToString() == "1") //если последняяя операция была добавить то удаляем
+                        {
+                            string stroka4 = "2 ";
+
+                            for (int i = 0; i < Operation[C].Length; i++)
+>>>>>>> master
                             {
-                                S += last4.Undostr;
+                                if (i > 1)
+                                {
+                                    count_stroka2++;
+                                    stroka4 += otmena4[i];
+                                }
                             }
+<<<<<<< HEAD
                             op4.Undostr = last4.str;
                             op4.command = burr;
                             op4.Undocommand = last4.command;
@@ -220,9 +285,65 @@ namespace Level1Space
                         }
                         last5.isUndo = true;
                         rrr.Add(op5);
+=======
+                            S = S.Remove(S.Length - count_stroka2);//удаляем
+
+                            D++;
+                            Undo[D] = stroka4; //запоминаем удаление
+                            Operation[C] = stroka4;
+                            C--; //т.к. мы отменили последнее действие 1 или 2 то из памчти вычищаем последнее действие 1 или 2
+                        }
+
+                        if (otmena4[0].ToString() == "2") //если последняяя операция была удалить то добавляем
+                        {
+                            string stroka4_2 = "1 ";
+                            string stroka4_3 = Operation[C - 1].Substring(2, Operation[C - 1].Length - 2);
+                            S += stroka4_3;
+
+                            D++;
+                            Undo[D] = stroka4_2 + stroka4_3; //запоминаем добавление
+                            Operation[C] = stroka4_2 + stroka4_3;
+                            C--;
+                        }
                     }
                     return S;
+
+                case 5:
+                    if (Undo.Length == 0)
+                        return S;
+                    else
+                    {
+                        string otmena5 = Undo[D];
+                        if (otmena5[0].ToString() == "1")
+                        {
+                            int count_stroka5 = 0;
+                            string stroka5_1 = "2 ";
+                            for (int i = 0; i < Undo[D].Length; i++)
+                            {
+                                if (i > 1)
+                                {
+                                    count_stroka5++;
+                                    stroka5_1 += otmena5[i];
+                                }
+                            }
+                            S = S.Remove(S.Length - count_stroka5);//удаляем
+                        }
+                        if (otmena5[0].ToString() == "2")
+                        {
+                            string stroka5_1 = "1 ";
+                            for (int i = 0; i < Undo[D].Length; i++)
+                            {
+                                if (i > 1)
+                                {
+                                    stroka5_1 += otmena5[i];
+                                }
+                            }
+                        }
+>>>>>>> master
+                    }
+                        return S;
             }
+            comanda = command;
             return S;
         }
         #endregion
@@ -234,7 +355,11 @@ namespace Level1Space
             s = Level1.BastShoe("1 Привет");
             Console.WriteLine("1 Привет");
             Console.WriteLine(s);//текущая строка
+<<<<<<< HEAD
             Console.WriteLine("Привет");
+=======
+            Console.WriteLine("1 Привет" + "А должно быть: " + "Привет");
+>>>>>>> master
             Console.WriteLine();
 
             s = Level1.BastShoe("1 , Мир!").ToString();
