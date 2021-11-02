@@ -118,13 +118,18 @@ namespace Level1Space
 
         public static string BastShoe(string command)
         {
-            if (command == "")
-                return S;
+            if (String.IsNullOrEmpty(command))
+                    return S;
 
             char[] massiv = command.ToCharArray();
             int burr = Convert.ToInt32(command.Substring(0, 1));
 
             comanda = command.Length > 1 ? command.Substring(2) : "";
+
+            string space = command.Length > 1 ? command[1].ToString() : "";
+
+            if (space != " ")
+                return S;
 
             if (burr != 1 && burr != 2 && burr != 3 && burr != 4 && burr != 5)
                 return S;
@@ -162,7 +167,8 @@ namespace Level1Space
                     var second2 = Convert.ToInt16(comanda.Trim());
                     Commands op2 = new Commands();
                     op2.Undostr = S.Substring(S.Length - Math.Min(S.Length, second2));
-                    S = S.Remove(S.Length - Math.Min(S.Length, second2));
+                    if (!String.IsNullOrEmpty(S))
+                        S = S.Remove(S.Length - Math.Min(S.Length, second2));
                     op2.str2 = S;                   
                     op2.command = burr;
                     op2.str = comanda;
