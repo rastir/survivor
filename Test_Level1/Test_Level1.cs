@@ -493,6 +493,18 @@ namespace Test_Level1
                 Console.WriteLine("");
                 Console.WriteLine();
 
+                s2 = Level1.BastShoe("3 4");
+                Console.WriteLine("3 4");
+                Console.WriteLine(s2);
+                Console.WriteLine("");
+                Console.WriteLine();
+
+                s2 = Level1.BastShoe("3 0");
+                Console.WriteLine("3 0");
+                Console.WriteLine(s2);
+                Console.WriteLine("0");
+                Console.WriteLine();
+
                 Console.WriteLine("TEST {0} PASSED", number);
             }
         }
