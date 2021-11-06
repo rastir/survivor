@@ -26,34 +26,16 @@ namespace Level1Space
 {
     public static class Level1
     {
-        public static List<Passwords> pwd_list = new List<Passwords>();
-        public class Passwords
-        {
-            public string key = "";
-            public int value = 0;
-        }
         public static bool SherlockValidString(string s)
         {
-        
-        Dictionary<string, int > pwd = new Dictionary<string, int>();
+            Dictionary<string, int > pwd = new Dictionary<string, int>();
 
             for (int i = 0; i < s.Length; i++)
             {
-                //if (rrr.FindLast(t => t == t) != null && rrr.FindLast(t => t == t).command == 4) { rrr.Clear(); rrr = new List<commands>(); } //rrr = new List<commands>(); }
-                if (pwd_list.FindLast(t => t == t) != null && pwd_list.FindLast(t => t == t).key == s[i].ToString()) //(pwd.Keys.Equals(s[i]))
-                {
-                    //pwd_list.FindLastIndex(t => t == t). .key == s[i].ToString()
-                    //Level1Space.Level1.Passwords[]
-                    //pwd[s[i].ToString()]++;
-                }
+                if (pwd.Keys.Equals(s[i]))
+                    pwd[s[i].ToString()]++;
                 else
-                {
-                    Passwords list1 = new Passwords();
-                    list1.key = s[i].ToString();
-                    list1.value = 1;
-                    pwd_list.Add(list1);
-                }
-
+                    pwd.Add(s[i].ToString(), 1);
             }
 
             int firstElement = pwd[s[0].ToString()];
