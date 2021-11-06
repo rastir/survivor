@@ -32,6 +32,19 @@ using System.Collections.Generic;
 #region c печатью попытка 1 - 05.11.2021
 ///Золота: 1217$
 ///вилка цены: 4400 - 5700 руб.
+///Здравствуйте, Сергей Игоревич!
+//Мой ник: "Rastir".Курс "Выживший - 28 задач".
+//Задача "Гарри Поттер идёт в первый класс Хогвартса"
+//Необходима микроконсультация.
+
+//Ссылка на решение:
+//https://raw.githubusercontent.com/rastir/rastir/main/BiggerGreater.cs
+
+//Ссылка на тесты (строка 44 тест №2):
+//https://raw.githubusercontent.com/rastir/survivor/master/Test_Level1/Test_Level1.cs
+
+//Сервер выдаёт ошибку:
+//[Тест закончился ошибкой: BiggerGreater('fff') = '' ]
 namespace Level1Space
 {
     public static class Level1
