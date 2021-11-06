@@ -2,159 +2,97 @@
 using System.Collections.Generic;
 
 /// <summary>
-/// Гарри Поттер идёт в первый класс Хогвартса
+/// Шерлок Холмс и механическая шкатулка
 /// </summary>
 ///
 
-// Казалось бы, чего тут сложного -- выучил несколько колдовских слов, произнёс, и... никакого эффекта. Именно поэтому в специальных учебных заведениях наподобие Хогвартса вербальную магию изучают годами. Дело в том, что в волшебных учебниках написаны слова заклинания, которые сами по себе не работают. Их надо уметь преобразовывать в действующую магию с помощью специальных алгоритмов. Давайте познакомимся с одним из них.
-//У нас имеется не-магическое слово -- стандартная последовательность русских и английских букв (строковый тип). Такие слова в любом языке программирования можно сравнивать, используя обычный лексикографический порядок, когда "а" меньше чем "я", "a" меньше чем "z" и т. д.
-//Задача: преобразовать такое слово в магическое с помощью любого числа перестановок двух любых букв в слове, либо убедиться, что получить магическое слово невозможно.
-//Итоговое слово должно отвечать двум требованиям:
-//1) оно лексикографически больше, чем исходное слово;
-//2) оно наименьшее из всех лексикографически больших слов, которые можно получить перестановкой пары букв.
+/// Cама суть этой загадки и то возбужденное состояние, в котором пребывал клиент Холмса, придавали этому делу необычный характер. Да и, кроме предстоящего расследования, 
+/// мастерство моего друга, его умение удивительно быстро овладевать ситуацией и на основании тщательных наблюдений и простой логики делать поразительные по своей точности 
+/// выводы зачаровывали меня. Изучать систему его работы и приемы, с помощью которых он в два счета распутывал сложнейшие загадки, для меня было настоящим удовольствием.
+///Шерлок Холмс в свободное время упражняется в проверке валидных паролей к его новой механической шкатулке. Пароли строятся из латинских букв и считаются валидными, если 
+///в соответствующей строке пароля все буквы встречаются одинаковое количество раз. Кроме того, разрешается удалить одну любую букву, чтобы выполнилось условие равенства частоты всех букв.
+///Например, строка xyz будет валидна, и строка xyzaa будет валидна (можно удалить одну a), и строка xxyyz будет валидна (можно удалить z). А строка xyzzz, или строка xxyyza или строка xxyyzabc невалидны.
+///Напишите функцию, проверяющую строку на валидность.
 
-//Тестовые примеры:
-//"ая" преобразовываем в "яа"
-//"fff" - невозможно преобразовать
-//"нклм" в "нкмл"
-//"вибк" в "викб"
-//"вкиб" в "ибвк"
-
-//Функция
-//string BiggerGreater(string input)
-
-//получает на вход исходную строку длиной 2 или более русских или английских строковых (маленьких) букв, и возвращает итоговое магическое слово. Если получить его невозможно, возвращается пустая строка.
-//Например, BiggerGreater("вибк") = "викб"; BiggerGreater("fff") = "".
-#region
-
-#endregion
+///Функция
+///boolean SherlockValidString(string s)
+///получает на вход исходную строку длиной 2 или более английских букв, и возвращает true, если строка валидна. 
 
 #region c печатью попытка 1 - 05.11.2021
-///Золота: 1217$
-///вилка цены: 4400 - 5700 руб.
-///Здравствуйте, Сергей Игоревич!
-//Мой ник: "Rastir".Курс "Выживший - 28 задач".
-//Задача "Гарри Поттер идёт в первый класс Хогвартса"
-//Необходима микроконсультация.
+///Золота: 1567$
+//вилка цены: 4400 - 5600 руб.
 
-//Ссылка на решение:
-//https://raw.githubusercontent.com/rastir/rastir/main/BiggerGreater.cs
-
-//Ссылка на тесты (строка 44 тест №2):
-//https://raw.githubusercontent.com/rastir/survivor/master/Test_Level1/Test_Level1.cs
-
-//Сервер выдаёт ошибку:
-//[Тест закончился ошибкой: BiggerGreater('fff') = '' ]
 namespace Level1Space
 {
     public static class Level1
     {
-        public static string BiggerGreater(string input)
+        public static List<Passwords> pwd_list = new List<Passwords>();
+        public class Passwords
         {
-            List<string> arr = new List<string>();
-            if (String.IsNullOrEmpty(input)) 
-                return "";
+            public string key = "";
+            public int value = 0;
+        }
+        public static bool SherlockValidString(string s)
+        {
+        
+        Dictionary<string, int > pwd = new Dictionary<string, int>();
 
-            for (int i = 0; i < input.Length - 1; i++)
+            for (int i = 0; i < s.Length; i++)
             {
-                if (input[i].ToString() == " ")
-                    return "";
-                if ((i + 1) >= input.Length)
-                    break;
-                
-                for (int a = 1; a < input.Length; a++)
+                //if (rrr.FindLast(t => t == t) != null && rrr.FindLast(t => t == t).command == 4) { rrr.Clear(); rrr = new List<commands>(); } //rrr = new List<commands>(); }
+                if (pwd_list.FindLast(t => t == t) != null && pwd_list.FindLast(t => t == t).key == s[i].ToString()) //(pwd.Keys.Equals(s[i]))
                 {
-                    if (input[i].ToString() == " ")
-                        return "";
-                    if ((i + a) >= input.Length)
-                        break;
-
-                    char[] word = input.ToCharArray();
-                    char temp = word[i];
-
-                    word[i] = word[i + a];
-                    word[i + a] = temp;
-
-                    string str1 = input.Substring(0, i + a);
-                    string str2 = "";
-
-                    for (int c = 0; c < str1.Length; c++)
-                    {
-                        str2 += word[c];
-                    }
-
-                    if (str1.CompareTo(str2) == -1)
-                    {
-                        string worrd = "";
-                        for (int j = 0; j < word.Length; j++)
-                        {
-                            worrd += word[j];
-                        }
-
-                        if (!arr.Contains(worrd))
-                            arr.Add(worrd);
-
-                        int b;
-                        string word_copy = worrd;
-                        char[] array;
-                        char[] array2 = word_copy.ToCharArray();
-
-                        for (b = i + 1; b < word_copy.Length; b++)
-                        {
-                            if (word_copy[b].ToString() == " ")
-                                return "";
-
-                            for (int f = b; f < word_copy.Length; f++)
-                            {
-                                if (word_copy[f].ToString() == " ")
-                                    return "";
-                                if ((f + 1) >= word_copy.Length)
-                                    break;
-                                
-                                array = word_copy.ToCharArray();
-
-                                char temp2 = array[b];
-                                array[b] = array[f + 1];
-                                array[f + 1] = temp2;
-
-                                worrd = "";
-                                for (int x = 0; x < array.Length; x++)
-                                {
-                                    worrd += array[x];
-                                }
-                                if (!arr.Contains(worrd))
-                                    arr.Add(worrd.ToString());
-                            }
-                        }
-                    }
+                    //pwd_list.FindLastIndex(t => t == t). .key == s[i].ToString()
+                    //Level1Space.Level1.Passwords[]
+                    //pwd[s[i].ToString()]++;
                 }
+                else
+                {
+                    Passwords list1 = new Passwords();
+                    list1.key = s[i].ToString();
+                    list1.value = 1;
+                    pwd_list.Add(list1);
+                }
+
             }
-            if (arr.Count > 0)
+
+            int firstElement = pwd[s[0].ToString()];
+            int number_of_meet = 0;
+
+            foreach (var recordOfDictionary in pwd)
             {
-                arr.Sort();
-                return arr[0];
+                if (firstElement != recordOfDictionary.Value)
+                    number_of_meet++;
             }
+
+            if (number_of_meet == 0)
+                return true;
+            else if (number_of_meet > 1)
+                return false;
             else
-                return "";
+            {
+                bool result = false;
+                foreach (var recordOfDictionary in pwd)
+                {
+                    if (firstElement != recordOfDictionary.Value)
+                    {
+                        if (Math.Abs(number_of_meet - recordOfDictionary.Value) > 1)
+                            return false;
+                        else
+                            result = true;
+                    }
+                    else
+                        result = true;
+                }
+                return result;
+            }
         }
     #endregion
 
     static void Main()
         {
-            //Console.WriteLine(Level1.BiggerGreater("ая"));
-            //Console.WriteLine();
-
-            Console.WriteLine(Level1.BiggerGreater("fff"));
+            Console.WriteLine(Level1.SherlockValidString("xxyyzabc"));
             Console.WriteLine();
-
-            //Console.WriteLine(Level1.BiggerGreater("нклм"));
-            //Console.WriteLine();
-
-            //Console.WriteLine(Level1.BiggerGreater("вибк"));
-            //Console.WriteLine();
-
-            //Console.WriteLine(Level1.BiggerGreater("вкиб"));
-            //Console.WriteLine();
 
             Console.ReadKey();
         }
