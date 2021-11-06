@@ -16,11 +16,10 @@ namespace Test_Level1
         public void Test1()
         {
             int number = 1;
-            string s = "";
 
             try
             {
-                Console.WriteLine($"{s}");
+                Console.WriteLine($"ая");
             }
             catch (IndexOutOfRangeException e)
             {
@@ -34,186 +33,8 @@ namespace Test_Level1
             }
             finally
             {
-
-                s = Level1.BastShoe("1 Привет");
-                Console.WriteLine("1 Привет");
-                Console.WriteLine(s);
-                Console.WriteLine("Привет");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("1 , Мир!");
-                Console.WriteLine("1 , Мир!");
-                Console.WriteLine(s);
-                Console.WriteLine("Привет, Мир!");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("1 ++");
-                Console.WriteLine("1 ++");
-                Console.WriteLine(s);
-                Console.WriteLine("Привет, Мир!++");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("2 2");
-                Console.WriteLine("2 2");
-                Console.WriteLine(s);
-                Console.WriteLine("Привет, Мир!");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("4");
-                Console.WriteLine("4");
-                Console.WriteLine(s);
-                Console.WriteLine("Привет, Мир!++");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("4");
-                Console.WriteLine("4");
-                Console.WriteLine(s);
-                Console.WriteLine("Привет, Мир!");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("1 *");
-                Console.WriteLine("1 *");
-                Console.WriteLine(s);
-                Console.WriteLine("Привет, Мир!*");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("4");
-                Console.WriteLine("4");
-                Console.WriteLine(s);
-                Console.WriteLine("Привет, Мир!");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("4");
-                Console.WriteLine("4");
-                Console.WriteLine(s);
-                Console.WriteLine("Привет, Мир!");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("4");
-                Console.WriteLine("4");
-                Console.WriteLine(s);
-                Console.WriteLine("Привет, Мир!");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("3 6");
-                Console.WriteLine("3 6");
-                Console.WriteLine(s);
-                Console.WriteLine(",");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("2 100");
-                Console.WriteLine("2 100");
-                Console.WriteLine(s);
-                Console.WriteLine("");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("1 Привет");
-                Console.WriteLine("1 Привет");
-                Console.WriteLine(s);
-                Console.WriteLine("Привет");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("1 , Мир!");
-                Console.WriteLine("1 , Мир!");
-                Console.WriteLine(s);
-                Console.WriteLine("Привет, Мир!");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("1 ++");
-                Console.WriteLine("1 ++");
-                Console.WriteLine(s);
-                Console.WriteLine("Привет, Мир!++");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("4");
-                Console.WriteLine("4");
-                Console.WriteLine(s);
-                Console.WriteLine("4:  " + "Привет, Мир!");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("4");
-                Console.WriteLine("4");
-                Console.WriteLine(s);
-                Console.WriteLine("Привет");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("5");
-                Console.WriteLine("5");
-                Console.WriteLine(s);
-                Console.WriteLine("Привет, Мир!");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("4");
-                Console.WriteLine("4");
-                Console.WriteLine(s);
-                Console.WriteLine("Привет");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("5");
-                Console.WriteLine("5");
-                Console.WriteLine(s);
-                Console.WriteLine("Привет, Мир!");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("5");
-                Console.WriteLine("5");
-                Console.WriteLine(s);
-                Console.WriteLine("Привет, Мир!++");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("5");
-                Console.WriteLine("5");
-                Console.WriteLine(s);
-                Console.WriteLine("Привет, Мир!++");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("5");
-                Console.WriteLine("5");
-                Console.WriteLine(s);
-                Console.WriteLine("Привет, Мир!++");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("4");
-                Console.WriteLine("4");
-                Console.WriteLine(s);
-                Console.WriteLine("Привет, Мир!");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("4");
-                Console.WriteLine("4");
-                Console.WriteLine(s);
-                Console.WriteLine("Привет");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("2 2");
-                Console.WriteLine("2 2");
-                Console.WriteLine(s);
-                Console.WriteLine("Прив");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("4");
-                Console.WriteLine("4");
-                Console.WriteLine(s);
-                Console.WriteLine("Привет");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("5");
-                Console.WriteLine("5");
-                Console.WriteLine(s);
-                Console.WriteLine("Прив");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("5");
-                Console.WriteLine("5");
-                Console.WriteLine(s);
-                Console.WriteLine("Прив");
-                Console.WriteLine();
-
-                s = Level1.BastShoe("5");
-                Console.WriteLine("5");
-                Console.WriteLine(s);
-                Console.WriteLine("Прив");
-                Console.WriteLine();
+                 Console.WriteLine(Level1.BiggerGreater("ая"));
+                 Console.WriteLine();
 
                 Console.WriteLine("TEST {0} PASSED", number);
             }
@@ -223,11 +44,10 @@ namespace Test_Level1
         public void Test2()
         {
             int number = 2;
-            string s2 = "";
 
             try
             {
-                Console.WriteLine($"{s2}");
+                Console.WriteLine($"fff");
             }
             catch (IndexOutOfRangeException e)
             {
@@ -242,28 +62,7 @@ namespace Test_Level1
             finally
             {
 
-                s2 = Level1.BastShoe("1 Привет");
-                Console.WriteLine("1 Привет");
-                Console.WriteLine(s2);
-                Console.WriteLine("Привет");
-                Console.WriteLine();
-
-                s2 = Level1.BastShoe("5 , Мир!");
-                Console.WriteLine("5 , Мир!");
-                Console.WriteLine(s2);
-                Console.WriteLine("Привет");
-                Console.WriteLine();
-
-                s2 = Level1.BastShoe("4 ++");
-                Console.WriteLine("4 ++");
-                Console.WriteLine(s2);
-                Console.WriteLine("Привет");
-                Console.WriteLine();
-
-                s2 = Level1.BastShoe("3");
-                Console.WriteLine("3");
-                Console.WriteLine(s2);
-                Console.WriteLine("Привет");
+                Console.WriteLine(Level1.BiggerGreater("fff"));
                 Console.WriteLine();
 
                 Console.WriteLine("TEST {0} PASSED", number);
@@ -274,11 +73,10 @@ namespace Test_Level1
         public void Test3()
         {
             int number = 3;
-            string s3 = "";
 
             try
             {
-                Console.WriteLine($"{s3}");
+                Console.WriteLine($"нклм");
             }
             catch (IndexOutOfRangeException e)
             {
@@ -292,112 +90,8 @@ namespace Test_Level1
             }
             finally
             {
-                s3= Level1.BastShoe("1 Привет");
-                Console.WriteLine("1 Привет");
-                Console.WriteLine(s3);
-                Console.WriteLine("Привет");
-                Console.WriteLine();
 
-                s3= Level1.BastShoe("1 , Мир!");
-                Console.WriteLine("1 , Мир!");
-                Console.WriteLine(s3);
-                Console.WriteLine("Привет, Мир!");
-                Console.WriteLine();
-
-                s3= Level1.BastShoe("1 ++");
-                Console.WriteLine("1 ++");
-                Console.WriteLine(s3);
-                Console.WriteLine("Привет, Мир!++");
-                Console.WriteLine();
-
-                s3= Level1.BastShoe("4");
-                Console.WriteLine("4");
-                Console.WriteLine(s3);
-                Console.WriteLine("4:  " + "Привет, Мир!");
-                Console.WriteLine();
-
-                s3= Level1.BastShoe("4");
-                Console.WriteLine("4");
-                Console.WriteLine(s3);
-                Console.WriteLine("Привет");
-                Console.WriteLine();
-
-                s3= Level1.BastShoe("5");
-                Console.WriteLine("5");
-                Console.WriteLine(s3);
-                Console.WriteLine("Привет, Мир!");
-                Console.WriteLine();
-
-                s3= Level1.BastShoe("4");
-                Console.WriteLine("4");
-                Console.WriteLine(s3);
-                Console.WriteLine("Привет");
-                Console.WriteLine();
-
-                s3= Level1.BastShoe("5");
-                Console.WriteLine("5");
-                Console.WriteLine(s3);
-                Console.WriteLine("Привет, Мир!");
-                Console.WriteLine();
-
-                s3= Level1.BastShoe("5");
-                Console.WriteLine("5");
-                Console.WriteLine(s3);
-                Console.WriteLine("Привет, Мир!++");
-                Console.WriteLine();
-
-                s3= Level1.BastShoe("5");
-                Console.WriteLine("5");
-                Console.WriteLine(s3);
-                Console.WriteLine("Привет, Мир!++");
-                Console.WriteLine();
-
-                s3= Level1.BastShoe("5");
-                Console.WriteLine("5");
-                Console.WriteLine(s3);
-                Console.WriteLine("Привет, Мир!++");
-                Console.WriteLine();
-
-                s3= Level1.BastShoe("4");
-                Console.WriteLine("4");
-                Console.WriteLine(s3);
-                Console.WriteLine("Привет, Мир!");
-                Console.WriteLine();
-
-                s3= Level1.BastShoe("4");
-                Console.WriteLine("4");
-                Console.WriteLine(s3);
-                Console.WriteLine("Привет");
-                Console.WriteLine();
-
-                s3= Level1.BastShoe("2 2");
-                Console.WriteLine("2 2");
-                Console.WriteLine(s3);
-                Console.WriteLine("Прив");
-                Console.WriteLine();
-
-                s3= Level1.BastShoe("4");
-                Console.WriteLine("4");
-                Console.WriteLine(s3);
-                Console.WriteLine("Привет");
-                Console.WriteLine();
-
-                s3= Level1.BastShoe("5");
-                Console.WriteLine("5");
-                Console.WriteLine(s3);
-                Console.WriteLine("Прив");
-                Console.WriteLine();
-
-                s3= Level1.BastShoe("5");
-                Console.WriteLine("5");
-                Console.WriteLine(s3);
-                Console.WriteLine("Прив");
-                Console.WriteLine();
-
-                s3= Level1.BastShoe("5");
-                Console.WriteLine("5");
-                Console.WriteLine(s3);
-                Console.WriteLine("Прив");
+                Console.WriteLine(Level1.BiggerGreater("нклм"));
                 Console.WriteLine();
 
                 Console.WriteLine("TEST {0} PASSED", number);
@@ -408,11 +102,10 @@ namespace Test_Level1
         public void Test4()
         {
             int number = 4;
-            string s2 = "";
 
             try
             {
-                Console.WriteLine($"{s2}");
+                Console.WriteLine($"вибк");
             }
             catch (IndexOutOfRangeException e)
             {
@@ -427,82 +120,7 @@ namespace Test_Level1
             finally
             {
 
-                s2 = Level1.BastShoe("1 Привет");
-                Console.WriteLine("1 Привет");
-                Console.WriteLine(s2);
-                Console.WriteLine("Привет");
-                Console.WriteLine();
-
-                s2 = Level1.BastShoe("5 , Мир!");
-                Console.WriteLine("5 , Мир!");
-                Console.WriteLine(s2);
-                Console.WriteLine("Привет");
-                Console.WriteLine();
-
-                s2 = Level1.BastShoe("4 ++");
-                Console.WriteLine("4 ++");
-                Console.WriteLine(s2);
-                Console.WriteLine("Привет");
-                Console.WriteLine();
-
-                s2 = Level1.BastShoe("3");
-                Console.WriteLine("3");
-                Console.WriteLine(s2);
-                Console.WriteLine("Привет");
-                Console.WriteLine();
-
-                s2 = Level1.BastShoe("2 2");
-                Console.WriteLine("2 2");
-                Console.WriteLine(s2);
-                Console.WriteLine("Прив");
-                Console.WriteLine();
-
-                s2 = Level1.BastShoe("2 2");
-                Console.WriteLine("2 2");
-                Console.WriteLine(s2);
-                Console.WriteLine("Пр");
-                Console.WriteLine();
-
-                s2 = Level1.BastShoe("2 2");
-                Console.WriteLine("2 2");
-                Console.WriteLine(s2);
-                Console.WriteLine("");
-                Console.WriteLine();
-
-                s2 = Level1.BastShoe("2 2");
-                Console.WriteLine("2 2");
-                Console.WriteLine(s2);
-                Console.WriteLine("");
-                Console.WriteLine();
-
-                s2 = Level1.BastShoe("3 0");
-                Console.WriteLine("3 0");
-                Console.WriteLine(s2);
-                Console.WriteLine("");
-                Console.WriteLine();
-
-                s2 = Level1.BastShoe("1 0000");
-                Console.WriteLine("1 0000");
-                Console.WriteLine(s2);
-                Console.WriteLine("0000");
-                Console.WriteLine();
-
-                s2 = Level1.BastShoe("3 -1");
-                Console.WriteLine("3 -1");
-                Console.WriteLine(s2);
-                Console.WriteLine("");
-                Console.WriteLine();
-
-                s2 = Level1.BastShoe("3 4");
-                Console.WriteLine("3 4");
-                Console.WriteLine(s2);
-                Console.WriteLine("");
-                Console.WriteLine();
-
-                s2 = Level1.BastShoe("3 0");
-                Console.WriteLine("3 0");
-                Console.WriteLine(s2);
-                Console.WriteLine("0");
+                Console.WriteLine(Level1.BiggerGreater("вибк"));
                 Console.WriteLine();
 
                 Console.WriteLine("TEST {0} PASSED", number);
@@ -513,11 +131,10 @@ namespace Test_Level1
         public void Test5()
         {
             int number = 5;
-            string s2 = "";
 
             try
             {
-                Console.WriteLine($"{s2}");
+                Console.WriteLine($"вкиб");
             }
             catch (IndexOutOfRangeException e)
             {
@@ -532,82 +149,94 @@ namespace Test_Level1
             finally
             {
 
-                s2 = Level1.BastShoe("0");
-                Console.WriteLine("0");
-                Console.WriteLine(s2);
-                Console.WriteLine("");
+                Console.WriteLine(Level1.BiggerGreater("вкиб"));
                 Console.WriteLine();
 
-                s2 = Level1.BastShoe("5 , Мир!");
-                Console.WriteLine("5 , Мир!");
-                Console.WriteLine(s2);
-                Console.WriteLine("Привет");
+                Console.WriteLine("TEST {0} PASSED", number);
+            }
+        }
+        [TestMethod]
+        [TestCategory("tests")]
+        public void Test6()
+        {
+            int number = 6;
+
+            try
+            {
+                Console.WriteLine($"");
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
+
+                Console.WriteLine(Level1.BiggerGreater(""));
                 Console.WriteLine();
 
-                s2 = Level1.BastShoe("4 ++");
-                Console.WriteLine("4 ++");
-                Console.WriteLine(s2);
-                Console.WriteLine("Привет");
+                Console.WriteLine("TEST {0} PASSED", number);
+            }
+        }
+        [TestMethod]
+        [TestCategory("tests")]
+        public void Test7()
+        {
+            int number = 7;
+
+            try
+            {
+                Console.WriteLine($"вкибууууfffffio");
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
+
+                Console.WriteLine(Level1.BiggerGreater("вкибууууfffffio"));
                 Console.WriteLine();
 
-                s2 = Level1.BastShoe("3");
-                Console.WriteLine("3");
-                Console.WriteLine(s2);
-                Console.WriteLine("Привет");
-                Console.WriteLine();
+                Console.WriteLine("TEST {0} PASSED", number);
+            }
+        }
+        [TestMethod]
+        [TestCategory("tests")]
+        public void Test8()
+        {
+            int number = 8;
 
-                s2 = Level1.BastShoe("2 2");
-                Console.WriteLine("2 2");
-                Console.WriteLine(s2);
-                Console.WriteLine("Прив");
-                Console.WriteLine();
+            try
+            {
+                Console.WriteLine($"в");
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
 
-                s2 = Level1.BastShoe("2 2");
-                Console.WriteLine("2 2");
-                Console.WriteLine(s2);
-                Console.WriteLine("Пр");
-                Console.WriteLine();
-
-                s2 = Level1.BastShoe("2 2");
-                Console.WriteLine("2 2");
-                Console.WriteLine(s2);
-                Console.WriteLine("");
-                Console.WriteLine();
-
-                s2 = Level1.BastShoe("2 2");
-                Console.WriteLine("2 2");
-                Console.WriteLine(s2);
-                Console.WriteLine("");
-                Console.WriteLine();
-
-                s2 = Level1.BastShoe("3 666");
-                Console.WriteLine("3 666");
-                Console.WriteLine(s2);
-                Console.WriteLine("");
-                Console.WriteLine();
-
-                s2 = Level1.BastShoe("4");
-                Console.WriteLine("4");
-                Console.WriteLine(s2);
-                Console.WriteLine("");
-                Console.WriteLine();
-
-                s2 = Level1.BastShoe("2 2000");
-                Console.WriteLine("2 2000");
-                Console.WriteLine(s2);
-                Console.WriteLine("");
-                Console.WriteLine();
-
-                s2 = Level1.BastShoe("1 , Мир!");
-                Console.WriteLine("1 , Мир!");
-                Console.WriteLine(s2);
-                Console.WriteLine(", Мир!");
-                Console.WriteLine();
-
-                s2 = Level1.BastShoe("1, Мир!");
-                Console.WriteLine("1, Мир!");
-                Console.WriteLine(s2);
-                Console.WriteLine(", Мир!");
+                Console.WriteLine(Level1.BiggerGreater("в"));
                 Console.WriteLine();
 
                 Console.WriteLine("TEST {0} PASSED", number);

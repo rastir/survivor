@@ -45,74 +45,102 @@ namespace Level1Space
 
             for (int i = 0; i < input.Length - 1; i++)
             {
-                if (((i + 1) >= input.Length) || (input[i].ToString() == " "))
+                if (input[i].ToString() == " ")
                     return "";
+                if ((i + 1) >= input.Length)
+                    break;
                 
-                char[] word = input.ToCharArray();
-                char temp = word[i];
-
-                word[i] = word[i + 1];  
-                word[i + 1] = temp;
-
-                string str1 = input.Substring(0, i + 2);
-                string str2 = "";
-
-                int y = i + 1;
-                for (int c = 0; c <= y; c++) 
+                for (int a = 1; a < input.Length; a++)
                 {
-                    str2 += word[c];
-                }
+                    if (input[i].ToString() == " ")
+                        return "";
+                    if ((i + a) >= input.Length)
+                        break;
 
-                if (str1.CompareTo(str2) == -1)
-                {
-                    string worrd = "";
-                    for (int j = 0; j < word.Length; j++)
+                    char[] word = input.ToCharArray();
+                    char temp = word[i];
+
+                    word[i] = word[i + a];
+                    word[i + a] = temp;
+
+                    string str1 = input.Substring(0, i + a);
+                    string str2 = "";
+
+                    //int y = a + 1;
+                    for (int c = 0; c < str1.Length; c++)
                     {
-                        worrd += word[j];
+                        str2 += word[c];
                     }
-                    
-                    arr.Add(worrd);
-                    char[] word2 = word;
 
-                    int b;
-                    for (b = i + 1; b < worrd.Length; b++)
+                    if (str1.CompareTo(str2) == -1)
                     {
-                        string word_copy = worrd;
-
-                        if ((b + 1) >= word_copy.Length)
-                            break;
-                        char[] array = word_copy.ToCharArray();
-                        char temp2 = array[b];
-                        array[b] = array[b + 1];
-                        array[b + 1] = temp2;
-
-                        worrd = "";
-                        for (int x = 0; x < array.Length; x++)
+                        string worrd = "";
+                        for (int j = 0; j < word.Length; j++)
                         {
-                            worrd += array[x];
+                            worrd += word[j];
                         }
-                        arr.Add(worrd.ToString());
+
+                        if (!arr.Contains(worrd))
+                            arr.Add(worrd);
+
+                        int b;
+                        string word_copy = worrd;
+                        char[] array;// = word_copy.ToCharArray();
+                        char[] array2 = word_copy.ToCharArray();
+
+                        for (b = i + 1; b < word_copy.Length; b++)
+                        {
+                            if (word_copy[b].ToString() == " ")
+                                return "";
+
+                            for (int f = b; f < word_copy.Length; f++)
+                            {
+                                if (word_copy[f].ToString() == " ")
+                                    return "";
+                                if ((f + 1) >= word_copy.Length)
+                                    break;
+                                
+                                array = word_copy.ToCharArray();
+
+                                char temp2 = array[b];
+                                array[b] = array[f + 1];
+                                array[f + 1] = temp2;
+
+                                worrd = "";
+                                for (int x = 0; x < array.Length; x++)
+                                {
+                                    worrd += array[x];
+                                }
+                                if (!arr.Contains(worrd))
+                                    arr.Add(worrd.ToString());
+                            }
+                        }
                     }
                 }
             }
-            arr.Sort();
-            return arr[0];
+            if (arr.Count > 0)
+            {
+                arr.Sort();
+                return arr[0];
+            }
+            else
+                return "";
         }
     #endregion
 
     static void Main()
         {
-            Console.WriteLine(Level1.BiggerGreater("ая"));
-            Console.WriteLine();
+            //Console.WriteLine(Level1.BiggerGreater("ая"));
+            //Console.WriteLine();
 
-            Console.WriteLine(Level1.BiggerGreater("fff"));
-            Console.WriteLine();
+            //Console.WriteLine(Level1.BiggerGreater("fff"));
+            //Console.WriteLine();
 
-            Console.WriteLine(Level1.BiggerGreater("нклм"));
-            Console.WriteLine();
+            //Console.WriteLine(Level1.BiggerGreater("нклм"));
+            //Console.WriteLine();
 
-            Console.WriteLine(Level1.BiggerGreater("вибк"));
-            Console.WriteLine();
+            //Console.WriteLine(Level1.BiggerGreater("вибк"));
+            //Console.WriteLine();
 
             Console.WriteLine(Level1.BiggerGreater("вкиб"));
             Console.WriteLine();
