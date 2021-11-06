@@ -6,7 +6,7 @@ namespace Test_Level1
 {
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     ///<summary> 
-    ///Тесты для задания №20 "Делаем национальный редактор "Лапоть""
+    ///Тесты для задания №21 "Шерлок Холмс и механическая шкатулка"
     /// </summary>
     [TestClass]
     public class Test_Level1
@@ -19,7 +19,7 @@ namespace Test_Level1
 
             try
             {
-                Console.WriteLine($"ая");
+                Console.WriteLine($"xxyy");
             }
             catch (IndexOutOfRangeException e)
             {
@@ -33,8 +33,8 @@ namespace Test_Level1
             }
             finally
             {
-                 Console.WriteLine(Level1.BiggerGreater("ая"));
-                 Console.WriteLine();
+                Console.WriteLine(Level1.SherlockValidString("xxyy"));
+                Console.WriteLine();
 
                 Console.WriteLine("TEST {0} PASSED", number);
             }
@@ -62,7 +62,7 @@ namespace Test_Level1
             finally
             {
 
-                Console.WriteLine(Level1.BiggerGreater("fff"));
+                Console.WriteLine(Level1.SherlockValidString("fff"));
                 Console.WriteLine();
 
                 Console.WriteLine("TEST {0} PASSED", number);
@@ -76,7 +76,7 @@ namespace Test_Level1
 
             try
             {
-                Console.WriteLine($"нклм");
+                Console.WriteLine($"xyz");
             }
             catch (IndexOutOfRangeException e)
             {
@@ -91,7 +91,7 @@ namespace Test_Level1
             finally
             {
 
-                Console.WriteLine(Level1.BiggerGreater("нклм"));
+                Console.WriteLine(Level1.SherlockValidString("xyz"));
                 Console.WriteLine();
 
                 Console.WriteLine("TEST {0} PASSED", number);
@@ -105,7 +105,7 @@ namespace Test_Level1
 
             try
             {
-                Console.WriteLine($"вибк");
+                Console.WriteLine($"xyzaa");
             }
             catch (IndexOutOfRangeException e)
             {
@@ -120,7 +120,7 @@ namespace Test_Level1
             finally
             {
 
-                Console.WriteLine(Level1.BiggerGreater("вибк"));
+                Console.WriteLine(Level1.SherlockValidString("xyzaa"));
                 Console.WriteLine();
 
                 Console.WriteLine("TEST {0} PASSED", number);
@@ -134,7 +134,7 @@ namespace Test_Level1
 
             try
             {
-                Console.WriteLine($"вкиб");
+                Console.WriteLine($"xxyyz");
             }
             catch (IndexOutOfRangeException e)
             {
@@ -149,7 +149,7 @@ namespace Test_Level1
             finally
             {
 
-                Console.WriteLine(Level1.BiggerGreater("вкиб"));
+                Console.WriteLine(Level1.SherlockValidString("xxyyz"));
                 Console.WriteLine();
 
                 Console.WriteLine("TEST {0} PASSED", number);
@@ -163,7 +163,7 @@ namespace Test_Level1
 
             try
             {
-                Console.WriteLine($"");
+                Console.WriteLine($"xyzzz");
             }
             catch (IndexOutOfRangeException e)
             {
@@ -178,7 +178,7 @@ namespace Test_Level1
             finally
             {
 
-                Console.WriteLine(Level1.BiggerGreater(""));
+                Console.WriteLine(Level1.SherlockValidString("xyzzz"));
                 Console.WriteLine();
 
                 Console.WriteLine("TEST {0} PASSED", number);
@@ -192,7 +192,7 @@ namespace Test_Level1
 
             try
             {
-                Console.WriteLine($"вкибууууfffffio");
+                Console.WriteLine($"xxyyza");
             }
             catch (IndexOutOfRangeException e)
             {
@@ -207,7 +207,7 @@ namespace Test_Level1
             finally
             {
 
-                Console.WriteLine(Level1.BiggerGreater("вкибууууfffffio"));
+                Console.WriteLine(Level1.SherlockValidString("xxyyza"));
                 Console.WriteLine();
 
                 Console.WriteLine("TEST {0} PASSED", number);
@@ -221,7 +221,7 @@ namespace Test_Level1
 
             try
             {
-                Console.WriteLine($"в");
+                Console.WriteLine($"xxyyzabc");
             }
             catch (IndexOutOfRangeException e)
             {
@@ -236,7 +236,94 @@ namespace Test_Level1
             finally
             {
 
-                Console.WriteLine(Level1.BiggerGreater("в"));
+                Console.WriteLine(Level1.SherlockValidString("xxyyzabc"));
+                Console.WriteLine();
+
+                Console.WriteLine("TEST {0} PASSED", number);
+            }
+        }
+        [TestMethod]
+        [TestCategory("tests")]
+        public void Test9()
+        {
+            int number = 9;
+
+            try
+            {
+                Console.WriteLine($"пусто");
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
+
+                Console.WriteLine(Level1.SherlockValidString(""));
+                Console.WriteLine();
+
+                Console.WriteLine("TEST {0} PASSED", number);
+            }
+        }
+        [TestMethod]
+        [TestCategory("tests")]
+        public void Test10()
+        {
+            int number = 10;
+
+            try
+            {
+                Console.WriteLine($"x");
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
+
+                Console.WriteLine(Level1.SherlockValidString("x"));
+                Console.WriteLine();
+
+                Console.WriteLine("TEST {0} PASSED", number);
+            }
+        }
+        [TestMethod]
+        [TestCategory("tests")]
+        public void Test11()
+        {
+            int number = 11;
+
+            try
+            {
+                Console.WriteLine($"aaxyz");
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
+
+                Console.WriteLine(Level1.SherlockValidString("aaxyz"));
                 Console.WriteLine();
 
                 Console.WriteLine("TEST {0} PASSED", number);

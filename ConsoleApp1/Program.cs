@@ -18,7 +18,7 @@ using System.Collections.Generic;
 ///boolean SherlockValidString(string s)
 ///получает на вход исходную строку длиной 2 или более английских букв, и возвращает true, если строка валидна. 
 
-#region c печатью попытка 1 - 05.11.2021
+#region 
 ///Золота: 1567$
 //вилка цены: 4400 - 5600 руб.
 
@@ -28,17 +28,22 @@ namespace Level1Space
     {
         public static bool SherlockValidString(string s)
         {
-            Dictionary<string, int > pwd = new Dictionary<string, int>();
+            if (String.IsNullOrEmpty(s))
+                return false;
+
+            Dictionary<char, int > pwd = new Dictionary<char, int>();
 
             for (int i = 0; i < s.Length; i++)
             {
-                if (pwd.Keys.Equals(s[i]))
-                    pwd[s[i].ToString()]++;
+                if (pwd.TryGetValue(s[i], out _))
+                    pwd[s[i]]++;
                 else
-                    pwd.Add(s[i].ToString(), 1);
+                {
+                    pwd.Add(s[i], 1);
+                }
             }
 
-            int firstElement = pwd[s[0].ToString()];
+            int firstElement = pwd[s[0]];
             int number_of_meet = 0;
 
             foreach (var recordOfDictionary in pwd)
@@ -73,7 +78,7 @@ namespace Level1Space
 
     static void Main()
         {
-            Console.WriteLine(Level1.SherlockValidString("xxyyzabc"));
+            Console.WriteLine(Level1.SherlockValidString("xxyy"));
             Console.WriteLine();
 
             Console.ReadKey();
