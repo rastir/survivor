@@ -36,10 +36,9 @@ namespace Level1Space
 {
     public static class Level1
     {
-        public static List<string> arr = new List<string>();
-
         public static string BiggerGreater(string input)
         {
+            List<string> arr = new List<string>();
             if (String.IsNullOrEmpty(input)) 
                 return "";
 
