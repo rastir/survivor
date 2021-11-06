@@ -40,7 +40,7 @@ namespace Level1Space
 
         public static string BiggerGreater(string input)
         {
-            if (String.IsNullOrEmpty(input)) //строка непустая
+            if (String.IsNullOrEmpty(input)) 
                 return "";
 
             for (int i = 0; i < input.Length - 1; i++)
@@ -66,7 +66,6 @@ namespace Level1Space
                     string str1 = input.Substring(0, i + a);
                     string str2 = "";
 
-                    //int y = a + 1;
                     for (int c = 0; c < str1.Length; c++)
                     {
                         str2 += word[c];
@@ -85,7 +84,7 @@ namespace Level1Space
 
                         int b;
                         string word_copy = worrd;
-                        char[] array;// = word_copy.ToCharArray();
+                        char[] array;
                         char[] array2 = word_copy.ToCharArray();
 
                         for (b = i + 1; b < word_copy.Length; b++)
@@ -133,8 +132,8 @@ namespace Level1Space
             //Console.WriteLine(Level1.BiggerGreater("ая"));
             //Console.WriteLine();
 
-            //Console.WriteLine(Level1.BiggerGreater("fff"));
-            //Console.WriteLine();
+            Console.WriteLine(Level1.BiggerGreater("fff"));
+            Console.WriteLine();
 
             //Console.WriteLine(Level1.BiggerGreater("нклм"));
             //Console.WriteLine();
@@ -142,8 +141,8 @@ namespace Level1Space
             //Console.WriteLine(Level1.BiggerGreater("вибк"));
             //Console.WriteLine();
 
-            Console.WriteLine(Level1.BiggerGreater("вкиб"));
-            Console.WriteLine();
+            //Console.WriteLine(Level1.BiggerGreater("вкиб"));
+            //Console.WriteLine();
 
             Console.ReadKey();
         }
