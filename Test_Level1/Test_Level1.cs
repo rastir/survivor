@@ -329,5 +329,92 @@ namespace Test_Level1
                 Console.WriteLine("TEST {0} PASSED", number);
             }
         }
+        [TestMethod]
+        [TestCategory("tests")]
+        public void Test12()
+        {
+            int number = 12;
+
+            try
+            {
+                Console.WriteLine($"xaxaxzyzyyzabccc");
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
+
+                Console.WriteLine(Level1.SherlockValidString("xaxaxzyzyyzabccc"));
+                Console.WriteLine();
+
+                Console.WriteLine("TEST {0} PASSED", number);
+            }
+        }
+        [TestMethod]
+        [TestCategory("tests")]
+        public void Test13()
+        {
+            int number = 13;
+
+            try
+            {
+                Console.WriteLine($"xa");
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
+
+                Console.WriteLine(Level1.SherlockValidString("xa"));
+                Console.WriteLine();
+
+                Console.WriteLine("TEST {0} PASSED", number);
+            }
+        }
+        [TestMethod]
+        [TestCategory("tests")]
+        public void Test14()
+        {
+            int number = 14;
+
+            try
+            {
+                Console.WriteLine($"xxxxxyyyyyy");
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
+
+                Console.WriteLine(Level1.SherlockValidString("xxxxxyyyyyy"));
+                Console.WriteLine();
+
+                Console.WriteLine("TEST {0} PASSED", number);
+            }
+        }
     }
 }
