@@ -80,26 +80,206 @@ namespace Level1Space
 {
     public static class Level1
     {
+        #region
+        //public static string[] TreeOfLife(int H, int W, int N, string[] tree)
+        //{
+        //    int[,] Array_tree = new int[H, W];
+        //    int number = 1;
+        //    for (int i = 0; i < H; i++) //переводим в двумерный массив
+        //    {
+        //        string word = tree[i];
+        //        word.ToCharArray();
+
+        //        for (int j = 0; j < W; j++)
+        //        {
+        //            if (word[j].ToString() == ".")
+        //                Array_tree[i, j] = 0;
+        //            if (word[j].ToString() == "+")
+        //                Array_tree[i, j] = 1;
+        //        }
+        //    }
+
+        //    for (int i = 0; i < H; i++)
+        //    {
+        //        for (int j = 0; j < W; j++)
+        //        {
+        //            Console.Write(Array_tree[i, j] + " ");
+        //        }
+        //        Console.WriteLine();
+        //    }
+
+        //    while (number <= N)
+        //    {
+        //        number++;
+
+        //        for (int i = 0; i < H; i++)
+        //        {
+        //            for (int j = 0; j < W; j++)
+        //            {
+        //                Array_tree[i, j]++;
+        //            }
+        //        }
+
+        //        Console.WriteLine();
+        //        for (int x = 0; x < H; x++)
+        //        {
+        //            for (int y = 0; y < W; y++)
+        //            {
+        //                Console.Write(Array_tree[x, y] + " ");
+        //            }
+        //            Console.WriteLine();
+        //        }
+
+        //        if (number % 2 != 0) //нечетный год уничтожение
+        //        {
+        //            for (int i = 0; i < H; i++)
+        //            {
+        //                for (int j = 0; j < W; j++)
+        //                {
+        //                    if (Array_tree[i, j] >= 3)
+        //                    {
+        //                        Array_tree[i, j] = 0;
+        //                        if (i > 0 && Array_tree[i - 1, j] < 3)
+        //                            Array_tree[i - 1, j] = 0; ;
+        //                        if (i < H - 1 && Array_tree[i + 1, j] < 3)
+        //                            Array_tree[i + 1, j] = 0;
+        //                        if (j > 0 && Array_tree[i, j - 1] < 3)
+        //                            Array_tree[i, j - 1] = 0;
+        //                        if (j < W - 1 && Array_tree[i, j + 1] < 3)
+        //                            Array_tree[i, j + 1] = 0;
+        //                    }
+        //                }
+        //            }
+
+        //            Console.WriteLine();
+        //            for (int i = 0; i < H; i++)
+        //            {
+        //                for (int j = 0; j < W; j++)
+        //                {
+        //                    Console.Write(Array_tree[i, j] + " ");
+        //                }
+        //                Console.WriteLine();
+        //            }
+        //        }
+        //    }
+
+        //    Console.WriteLine();
+        //    for (int i = 0; i < H; i++) 
+        //    {
+        //        for (int j = 0; j < W; j++)
+        //        {
+        //            Console.Write(Array_tree[i, j] + " ");
+        //        }
+        //        Console.WriteLine();
+        //    }
+
+        //    string[] tree_result = new string[H];
+
+        //    for (int i = 0; i < H; i++) //переводим в одномерный массив строк
+        //    {
+        //        for (int j = 0; j < W; j++)
+        //        {
+        //            if (Array_tree[i, j] == 0)
+        //                tree_result[i] += ".";
+        //            if (Array_tree[i, j] > 0)
+        //                tree_result[i] += "+";
+        //        }
+        //    }
+
+        //    Console.WriteLine();
+        //    for (int i = 0; i < H; i++) //печатаем
+        //    {
+        //        Console.WriteLine(tree_result[i] + " ");
+        //    }
+
+        //    return tree_result;
+        //}
+        #endregion
+
         public static string[] TreeOfLife(int H, int W, int N, string[] tree)
         {
-           return false;
-        }
-    #endregion
-
-    static void Main()
-        {
-            string[] array = [".+..", "..+.", ".+.."];
-            int H = 3;
-            int W = 4;
-            int N = 12;
-            array = Level1.TreeOfLife(H,W,N,array);
-
-            Console.WriteLine("результат:");
-            for (int i = 0; i < array.Length; i++)
+            int[,] Array_tree = new int[H, W];
+            int number = 1;
+            for (int i = 0; i < H; i++) 
             {
-                Console.WriteLine("" + array[i]);
+                string word = tree[i];
+                word.ToCharArray();
+
+                for (int j = 0; j < W; j++)
+                {
+                    if (word[j].ToString() == ".")
+                        Array_tree[i, j] = 0;
+                    if (word[j].ToString() == "+")
+                        Array_tree[i, j] = 1;
+                }
             }
-            Console.ReadKey();
+
+            while (number <= N)
+            {
+                number++;
+
+                for (int i = 0; i < H; i++)
+                {
+                    for (int j = 0; j < W; j++)
+                    {
+                        Array_tree[i, j]++;
+                    }
+                }
+
+                if (number % 2 != 0)
+                {
+                    for (int i = 0; i < H; i++)
+                    {
+                        for (int j = 0; j < W; j++)
+                        {
+                            if (Array_tree[i, j] >= 3)
+                            {
+                                Array_tree[i, j] = 0;
+                                if (i > 0 && Array_tree[i - 1, j] < 3)
+                                    Array_tree[i - 1, j] = 0; ;
+                                if (i < H - 1 && Array_tree[i + 1, j] < 3)
+                                    Array_tree[i + 1, j] = 0;
+                                if (j > 0 && Array_tree[i, j - 1] < 3)
+                                    Array_tree[i, j - 1] = 0;
+                                if (j < W - 1 && Array_tree[i, j + 1] < 3)
+                                    Array_tree[i, j + 1] = 0;
+                            }
+                        }
+                    }
+                }
+            }
+
+            string[] tree_result = new string[H];
+
+            for (int i = 0; i < H; i++) 
+            {
+                for (int j = 0; j < W; j++)
+                {
+                    if (Array_tree[i, j] == 0)
+                        tree_result[i] += ".";
+                    if (Array_tree[i, j] > 0)
+                        tree_result[i] += "+";
+                }
+            }
+
+            return tree_result;
+        }
+
+        static void Main()
+        {
+            //string[] array = { ".+..", "..+.", ".+.." };
+            //int H = 3;
+            //int W = 4;
+            //int N = 12;
+            //array = Level1.TreeOfLife(H,W,N,array);
+
+            //Console.WriteLine("результат:");
+            //for (int i = 0; i < array.Length; i++)
+            //{
+            //    Console.WriteLine(" " + array[i]);
+            //}
+            //Console.ReadKey();
         }
     }
 }
+#endregion
