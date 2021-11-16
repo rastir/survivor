@@ -2,75 +2,42 @@
 using System.Collections.Generic;
 
 /// <summary>
-/// Древо Жизни Андрассил
+/// Матрица: Вращение
 /// </summary>
 ///
-
-///  Только в Изумрудном Сне существует Древо Жизни Андрассил. Племена фурболгов, живущие в гигантском пне Нордскола, из поколения в поколение передают легенду об этом дереве, которое когда-нибудь вернётся в реальность и очистит мирные земли от порчи Древних Богов.
-///Главный шаман фурболгов хранит манускрипт, описывающий схему развития Андрассила. Смоделируйте её на компьютере, чтобы всегда можно было узнать, на каком году в каком состоянии оно будет находиться.
-///Дерево описывается массивом размером HxW. Каждый элемент массива принимает значение либо 0 (пусто), либо 1(ветка дерева).При этом у каждого элемента-ветки имеется дополнительная характеристика, равная сроку её жизни в годах.
-///Исходные данные: размер массива, количество лет для моделирования, и начальная структура дерева в виде текстового изображения (списка текстовых строк).
 /*
-Например, размер 3x4, моделируем 12 лет, каждый пустой элемент задаётся символом ".", каждая ветка -- символом "+" (её возраст считается равным 1 году):
+К сожалению, никто не может объяснить, что такое Матрица.
+Ты должен сам увидеть это.
 
-3 4 12
+На вход поступает Матрица размером MxN:
 
-.+ ....+.
-.+ ..Каждый год дерево перерождается по следующему алгоритму:
--в "первый"(чётный) год все ветки стареют на один год, и все пустые клетки заполняются новыми корнями с возрастом 1 год (визуально всё заполнено символами "+");
--во "второй"(нечётный) год все ветки стареют на один год; ветки, возраст которых три или более лет, погибают, уничтожая также четыре окружающие ветки (если они существуют) --по горизонтали и вертикали.
+1 2 3 4 5 6
+2 3 4 5 6 7
+3 4 5 6 7 8
+4 5 6 7 8 9
 
-Процесс гибели веток с соседями происходит одновременно, т.е. надо учитывать, что каждая ветка с возрастом 3+ лет обязательно уничтожает окружающие ветки (нельзя удалять ветки-соседи простым перебором, потому что соседи тоже в свою очередь могут удалять своих соседей).
-В примере для наглядности заменим ветки на числа с возрастом веток.
-Исходное дерево:
+Ты должен научиться вращать Матрицу относительно её центра по часовой стрелке.
 
-.1....1.
-.1..Прошёл 1 - й "чётный" год:
+Например, вращение на один шаг:
 
-1211
-1121
-1211
-
-2 - й "нечётный" год:
-
-2322
-2232
-2322
-
-Уничтожение:
-
-...2
-2...
-...2
-
-3 - й "чётный" год(по чётным годам старые ветки не уничтожаются):
-
-1113
-3111
-1113
-
-4 - й "нечётный" год:
-
-2224
-4222
-2224
-
-Уничтожение:
-
-.2....2.
-.2..и т.д.
-
-    Напишите программу, которая моделирует N лет развития дерева, и выводит его результирующую форму -- список/массив строк (используются только символы "." и "+").
+2 1 2 3 4 5
+3 4 3 4 5 6
+4 5 6 7 6 7
+5 6 7 8 9 8
 
 Функция
 
-string[] TreeOfLife(int H, int W, int N, string[] tree)
+void MatrixTurn(string Matrix[], int M, int N, int T)
 
-получает высоту H (количество строк) и ширину W (длина строк) дерева, количество лет моделирования N и сам список строк, задающий начальное дерево с помощью "." и "+".
+получает на вход (по ссылке) массив строк(M строк, каждая длиной N; M >= 2, N >= 2), и вращает его относительно центра по часовой стрелке на T шагов (T >= 1), как описано выше.
+То есть результат поворота (повёрнутая матрица) оказывается в исходном массиве Matrix, переданном в функцию по ссылке как аргумент.
 
-Например, исходный пример:
+Минимальное значение из чисел M, N обязательно чётно.
 
-TreeOfLife(3, 4, 12, [".+..", "..+.", ".+.."])
+Пример вызова:
+
+MatrixTurn(["123456", "234567", "345678", "456789"], 4,6, 3)
+
 */
 #region 
 ///Золота: 1567$ +
@@ -80,205 +47,107 @@ namespace Level1Space
 {
     public static class Level1
     {
-        #region
-        //public static string[] TreeOfLife(int H, int W, int N, string[] tree)
-        //{
-        //    int[,] Array_tree = new int[H, W];
-        //    int number = 1;
-        //    for (int i = 0; i < H; i++) //переводим в двумерный массив
-        //    {
-        //        string word = tree[i];
-        //        word.ToCharArray();
-
-        //        for (int j = 0; j < W; j++)
-        //        {
-        //            if (word[j].ToString() == ".")
-        //                Array_tree[i, j] = 0;
-        //            if (word[j].ToString() == "+")
-        //                Array_tree[i, j] = 1;
-        //        }
-        //    }
-
-        //    for (int i = 0; i < H; i++)
-        //    {
-        //        for (int j = 0; j < W; j++)
-        //        {
-        //            Console.Write(Array_tree[i, j] + " ");
-        //        }
-        //        Console.WriteLine();
-        //    }
-
-        //    while (number <= N)
-        //    {
-        //        number++;
-
-        //        for (int i = 0; i < H; i++)
-        //        {
-        //            for (int j = 0; j < W; j++)
-        //            {
-        //                Array_tree[i, j]++;
-        //            }
-        //        }
-
-        //        Console.WriteLine();
-        //        for (int x = 0; x < H; x++)
-        //        {
-        //            for (int y = 0; y < W; y++)
-        //            {
-        //                Console.Write(Array_tree[x, y] + " ");
-        //            }
-        //            Console.WriteLine();
-        //        }
-
-        //        if (number % 2 != 0) //нечетный год уничтожение
-        //        {
-        //            for (int i = 0; i < H; i++)
-        //            {
-        //                for (int j = 0; j < W; j++)
-        //                {
-        //                    if (Array_tree[i, j] >= 3)
-        //                    {
-        //                        Array_tree[i, j] = 0;
-        //                        if (i > 0 && Array_tree[i - 1, j] < 3)
-        //                            Array_tree[i - 1, j] = 0; ;
-        //                        if (i < H - 1 && Array_tree[i + 1, j] < 3)
-        //                            Array_tree[i + 1, j] = 0;
-        //                        if (j > 0 && Array_tree[i, j - 1] < 3)
-        //                            Array_tree[i, j - 1] = 0;
-        //                        if (j < W - 1 && Array_tree[i, j + 1] < 3)
-        //                            Array_tree[i, j + 1] = 0;
-        //                    }
-        //                }
-        //            }
-
-        //            Console.WriteLine();
-        //            for (int i = 0; i < H; i++)
-        //            {
-        //                for (int j = 0; j < W; j++)
-        //                {
-        //                    Console.Write(Array_tree[i, j] + " ");
-        //                }
-        //                Console.WriteLine();
-        //            }
-        //        }
-        //    }
-
-        //    Console.WriteLine();
-        //    for (int i = 0; i < H; i++) 
-        //    {
-        //        for (int j = 0; j < W; j++)
-        //        {
-        //            Console.Write(Array_tree[i, j] + " ");
-        //        }
-        //        Console.WriteLine();
-        //    }
-
-        //    string[] tree_result = new string[H];
-
-        //    for (int i = 0; i < H; i++) //переводим в одномерный массив строк
-        //    {
-        //        for (int j = 0; j < W; j++)
-        //        {
-        //            if (Array_tree[i, j] == 0)
-        //                tree_result[i] += ".";
-        //            if (Array_tree[i, j] > 0)
-        //                tree_result[i] += "+";
-        //        }
-        //    }
-
-        //    Console.WriteLine();
-        //    for (int i = 0; i < H; i++) //печатаем
-        //    {
-        //        Console.WriteLine(tree_result[i] + " ");
-        //    }
-
-        //    return tree_result;
-        //}
-        #endregion
-
-        public static string[] TreeOfLife(int H, int W, int N, string[] tree)
+        public static void MatrixTurn(string[] Matrix, int M, int N, int T)
         {
-            int[,] Array_tree = new int[H, W];
+            int[,] Array_Matrix = new int[M, N];
+            int[,] Array_Matrix_Copy = new int[M, N];
+
             int number = 1;
-            for (int i = 0; i < H; i++) 
+            for (int i = 0; i < M; i++)
             {
-                string word = tree[i];
+                string word = Matrix[i];
                 word.ToCharArray();
 
-                for (int j = 0; j < W; j++)
+                for (int j = 0; j < N; j++)
                 {
-                    if (word[j].ToString() == ".")
-                        Array_tree[i, j] = 0;
-                    if (word[j].ToString() == "+")
-                        Array_tree[i, j] = 1;
+                    Array_Matrix[i, j] = Convert.ToInt32(word[j].ToString());
                 }
             }
 
-            while (number <= N)
+            Console.WriteLine();
+            for (int i = 0; i < M; i++)
             {
-                number++;
-
-                for (int i = 0; i < H; i++)
+                for (int j = 0; j < N; j++)
                 {
-                    for (int j = 0; j < W; j++)
-                    {
-                        Array_tree[i, j]++;
-                    }
+                    Console.Write(Array_Matrix[i, j] + " ");
                 }
+                Console.WriteLine();
+            }
 
-                if (number % 2 != 0)
+            for (int j = 0; j < Array_Matrix.GetLength(1); j++)
+            {
+                for (int i = Array_Matrix.GetLength(0) - 1; i >= 0; i--)
                 {
-                    for (int i = 0; i < H; i++)
+                    Console.Write("{0}\t", Array_Matrix[i, j]);
+                }
+                Console.WriteLine();
+            }
+
+            for (int i = 0; i < M; i++) 
+            {
+                for (int j = 0; j < N; j++)
+                {
+                    //if ((N % 2 != 0) && (M % 2 == 0))
+                    //Matrix[i] += Array_Matrix[i, j];
+                    if (i == 0 && j == 0)
+                        Array_Matrix_Copy[i, j] = Array_Matrix[i + 1, j];
+                    else if (i == 0 && j != 0)
+                        Array_Matrix_Copy[i, j] = Array_Matrix[i, j - 1];
+
+                    else if (i == M - 1 && j == N - 1)
+                        Array_Matrix_Copy[i, j] = Array_Matrix[i - 1, j];
+                    else if (i == M - 1 && j != N - 1)
+                        Array_Matrix_Copy[i, j] = Array_Matrix[i, j + 1];
+
+                    else if (j == 0 && i != M - 1)
+                        Array_Matrix_Copy[i, j] = Array_Matrix[i + 1, j];
+                    else if (j == N - 1 && i != 0)
+                        Array_Matrix_Copy[i, j] = Array_Matrix[i - 1, j];
+
+                    else if ((j <= Math.Floor((decimal)(Array_Matrix.GetLength(1) / 2))) && (i <= Math.Ceiling((decimal)(Array_Matrix.GetLength(0) / 2))))
+                        Array_Matrix_Copy[i, j] = Array_Matrix[i + 1, j];
+                    else if ((j <= Math.Floor((decimal)Array_Matrix.GetLength(1) / 2)) && (i > Math.Ceiling((decimal)Array_Matrix.GetLength(0) / 2)))
+                        Array_Matrix_Copy[i, j] = Array_Matrix[i, j + 1];
+
+                    else if ((j > Math.Floor((decimal)Array_Matrix.GetLength(1) / 2)) && (i <= Math.Ceiling((decimal)Array_Matrix.GetLength(0) / 2)))
+                        Array_Matrix_Copy[i, j] = Array_Matrix[i, j - 1];
+                    else if ((j > Math.Floor((decimal)Array_Matrix.GetLength(1) / 2)) && (i > Math.Ceiling((decimal)Array_Matrix.GetLength(0) / 2)))
+                        Array_Matrix_Copy[i, j] = Array_Matrix[i - 1, j];
+
+                    for (int x = 0; x < M; x++)
                     {
-                        for (int j = 0; j < W; j++)
+                        for (int y = 0; y < N; y++)
                         {
-                            if (Array_tree[i, j] >= 3)
-                            {
-                                Array_tree[i, j] = 0;
-                                if (i > 0 && Array_tree[i - 1, j] < 3)
-                                    Array_tree[i - 1, j] = 0; ;
-                                if (i < H - 1 && Array_tree[i + 1, j] < 3)
-                                    Array_tree[i + 1, j] = 0;
-                                if (j > 0 && Array_tree[i, j - 1] < 3)
-                                    Array_tree[i, j - 1] = 0;
-                                if (j < W - 1 && Array_tree[i, j + 1] < 3)
-                                    Array_tree[i, j + 1] = 0;
-                            }
+                            Console.Write("{0}\t", Array_Matrix_Copy[x, y]);
                         }
+                        Console.WriteLine();
                     }
                 }
             }
 
-            string[] tree_result = new string[H];
-
-            for (int i = 0; i < H; i++) 
+            for (int i = 0; i < M; i++)
             {
-                for (int j = 0; j < W; j++)
-                {
-                    if (Array_tree[i, j] == 0)
-                        tree_result[i] += ".";
-                    if (Array_tree[i, j] > 0)
-                        tree_result[i] += "+";
+                for (int j = 0; j < N; j++)
+                    {
+                    Console.Write("{0}\t", Array_Matrix_Copy[i, j]);
                 }
+                Console.WriteLine();
             }
-
-            return tree_result;
         }
-
         static void Main()
         {
-            //string[] array = { ".+..", "..+.", ".+.." };
-            //int H = 3;
-            //int W = 4;
-            //int N = 12;
-            //array = Level1.TreeOfLife(H,W,N,array);
+            string[] Matrix = { "123456", "234567", "345678", "456789" };
+            int M = 4;
+            int N = 6;
+            int T = 3;
+            Level1.MatrixTurn(Matrix, M, N, T);
 
-            //Console.WriteLine("результат:");
-            //for (int i = 0; i < array.Length; i++)
-            //{
-            //    Console.WriteLine(" " + array[i]);
-            //}
-            //Console.ReadKey();
+            Console.WriteLine("результат:");
+            for (int i = 0; i < Matrix.Length; i++)
+            {
+                Console.WriteLine(" " + Matrix[i]);
+            }
+            Console.ReadKey();
         }
     }
 }
