@@ -2,264 +2,131 @@
 using System.Collections.Generic;
 
 /// <summary>
-/// Матрица: Вращение
+/// Чубакка и гравитационные колодцы
 /// </summary>
 ///
 /*
-К сожалению, никто не может объяснить, что такое Матрица.
-Ты должен сам увидеть это.
+ На входе одномерный массив A (индексация начинается с нуля) случайных положительных целых чисел (возможно, повторяющихся).
 
-На вход поступает Матрица размером MxN:
+Трансформирующая трансформация S массива A происходит так:
 
-1 2 3 4 5 6
-2 3 4 5 6 7
-3 4 5 6 7 8
-4 5 6 7 8 9
+0. Выходной массив/список B исходно пуст.
 
-Ты должен научиться вращать Матрицу относительно её центра по часовой стрелке.
+1. Организуем первый цикл для i, начиная с 0 и до длины массива A минус 1.
 
-Например, вращение на один шаг:
+2. Организуем внутри первого цикла второй цикл для j, начиная с 0 и до длины массива A минус i минус 1.
 
-2 1 2 3 4 5
-3 4 3 4 5 6
-4 5 6 7 6 7
-5 6 7 8 9 8
+3. Рассчитываем значение k = i + j.
+
+4. Из поддиапазона A[ j..k ] выбираем максимальное значение и записываем в конец списка B.
+
+По завершении всех циклов список B считаем трансформирующей трансформацией, которую назовём S(A).
+Говоря программистским языком, есть функция S(A), которая возвращает список B.
+
+5. Ключевой ключ находится суммированием всех элементов списка, получаемого двойной трансформацией S(S(A)) (результат первой трансформации подаётся на вход второй трансформации).
+
+Реализуйте алгоритм поиска ключевого ключа и выводите true, если он чётный.
 
 Функция
 
-void MatrixTurn(string Matrix[], int M, int N, int T)
+boolean TransformTransform(int A[], int N)
 
-получает на вход (по ссылке) массив строк(M строк, каждая длиной N; M >= 2, N >= 2), и вращает его относительно центра по часовой стрелке на T шагов (T >= 1), как описано выше.
-То есть результат поворота (повёрнутая матрица) оказывается в исходном массиве Matrix, переданном в функцию по ссылке как аргумент.
-
-Минимальное значение из чисел M, N обязательно чётно.
-
-Пример вызова:
-
-MatrixTurn(["123456", "234567", "345678", "456789"], 4,6, 3)
+получает на вход массив из N (N >= 1) целых положительных чисел и возвращает true, если сумма всех значений результата двойной трансформации A чётная. 
 
 */
 #region 
-///Золота: 1567$ +
-//вилка цены: 4400 - 5600 руб.
+///Золота: 2662$ +
+//вилка цены: 4500 - 5300 руб.
 
 namespace Level1Space
 {
     public static class Level1
     {
-        public static void MatrixTurn(string[] Matrix, int M, int N, int T)
+        public static bool TransformTransform(int[] A, int N)
         {
-            int[,] Array_Matrix = new int[M, N];
-            int[,] Array_Matrix_Copy = new int[M, N];
+            List<int> B = new List<int>();
+            int k;
+            int maxValue;
 
-            decimal number = 1;
-            for (int i = 0; i < M; i++)
+            for (int i = 0; i < A.Length - 1; i++)
             {
-                string word = Matrix[i];
-                word.ToCharArray();
 
-                for (int j = 0; j < N; j++)
+                for (int j = 0; j < A.Length - i - 1; j++)
                 {
-                    Array_Matrix[i, j] = Convert.ToInt32(word[j].ToString());
+                    k = i + j;
+                    maxValue = 0;
+                    //Console.WriteLine();
+
+                    for (int x = j; x <= k; x++)
+                    {
+                        if (A[x] > maxValue)
+                        {
+                            // найден больший элемент
+                            maxValue  = A[x];
+                        }
+                    }
+                    //for (int a = j; a <= k; a++)
+                    //{
+                    //    Console.Write(A[a] + " ");
+                    //}
+                   // if (maxValue > 0)
+                        B.Add(maxValue);
                 }
             }
 
             Console.WriteLine();
-            for (int i = 0; i < M; i++)
+            foreach (int p in B)
             {
-                for (int j = 0; j < N; j++)
-                {
-                    Console.Write(Array_Matrix[i, j] + " ");
-                }
-                Console.WriteLine();
+                Console.Write(p + " ");
             }
+            Console.WriteLine();
 
-            while (number <= T)
+            List<int> C = new List<int>();
+
+            for (int i = 0; i < B.Count - 1; i++)
             {
-                int a = 0, b = 0, ind1 = M, ind2 = N;
-
-                while (a <= Math.Floor((decimal)M / 2) - 1 && b <= Math.Floor((decimal)N / 2) - 1)
+                for (int j = 0; j < B.Count - i - 1; j++)
                 {
-                    ind1--;
-                    ind2--;
-                    //1 строка кольца
-                    for (int y = b + 1; y < N; y++)
+                    k = i + j;
+                    maxValue = 0;
+                    for (int x = j; x <= k; x++)
                     {
-                        if (number % 2 != 0)
-                            Array_Matrix_Copy[a, y] = Array_Matrix[a, y - 1];
-                        else
-                            Array_Matrix[a, y] = Array_Matrix_Copy[a, y - 1];
-                    }
-                    //Console.WriteLine();
-                    //for (int x = 0; x < M; x++)
-                    //{
-                    //    for (int y = 0; y < N; y++)
-                    //    {
-                    //        Console.Write("{0}\t", Array_Matrix_Copy[x, y]);
-                    //    }
-                    //    Console.WriteLine();
-                    //}
-                    //посл столбец кольца
-                    int temp1 = a;
-                    for (int x = a + 1; x <= ind1; x++)
-                    {
-                        if (number % 2 != 0)
+                        if (B[x] > maxValue)
                         {
-                            Array_Matrix_Copy[x, ind2] = Array_Matrix[temp1, ind2];
-                            if (temp1 < ind1 - 1)
-                                temp1++;
-                        }
-                        else
-                        {
-                            Array_Matrix[x, ind2] = Array_Matrix_Copy[temp1, ind2];
-                            if (temp1 < ind1 - 1)
-                                temp1++;
+                            // найден больший элемент
+                            maxValue = B[x];
                         }
                     }
-
-
-                    //if (number % 2 != 0)
-                    //{
-                    //    Console.WriteLine();
-                    //    for (int x = 0; x < M; x++)
-                    //    {
-                    //        for (int y = 0; y < N; y++)
-                    //        {
-                    //            Console.Write("{0}\t", Array_Matrix_Copy[x, y]);
-                    //        }
-                    //        Console.WriteLine();
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    Console.WriteLine();
-                    //    for (int x = 0; x < M; x++)
-                    //    {
-                    //        for (int y = 0; y < N; y++)
-                    //        {
-                    //            Console.Write("{0}\t", Array_Matrix[x, y]);
-                    //        }
-                    //        Console.WriteLine();
-                    //    }
-                    //}
-
-
-
-
-                    //посл строка кольца
-                    int temp2 = ind2;
-                    for (int y = ind2 - 1; y >= 0; y--)
-                    {
-                        if (number % 2 != 0)
-                        {
-                            Array_Matrix_Copy[ind1, y] = Array_Matrix[ind1, temp2];
-                            if (temp2 > 0)
-                                temp2--;
-                        }
-                        else
-                        {
-                            Array_Matrix[ind1, y] = Array_Matrix_Copy[ind1, temp2];
-                            if (temp2 > 0)
-                                temp2--;
-                        }
-                    }
-                    //Console.WriteLine();
-                    //for (int x = 0; x < M; x++)
-                    //{
-                    //    for (int y = 0; y < N; y++)
-                    //    {
-                    //        Console.Write("{0}\t", Array_Matrix_Copy[x, y]);
-                    //    }
-                    //    Console.WriteLine();
-                    //}
-                    //1 столбец кольца
-                    int temp3 = M - 1;
-                    for (int x = M - 2; x >= a; x--)
-                    {
-                        if (number % 2 != 0)
-                        {
-                            Array_Matrix_Copy[x, a] = Array_Matrix[temp3, a];
-                            if (temp3 > 0)
-                                temp3--;
-                        }
-                        else
-                        {
-                            Array_Matrix[x, a] = Array_Matrix_Copy[temp3, a];
-                            if (temp3 > 0)
-                                temp3--;
-                        }
-                    }
-                    //Console.WriteLine();
-                    //for (int x = 0; x < M; x++)
-                    //{
-                    //    for (int y = 0; y < N; y++)
-                    //    {
-                    //        Console.Write("{0}\t", Array_Matrix_Copy[x, y]);
-                    //    }
-                    //    Console.WriteLine();
-                    //}
-
-
-                    a++; b++;
-                }
-
-                if (number % 2 != 0)
-                {
-                    Console.WriteLine();
-                    for (int x = 0; x < M; x++)
-                    {
-                        for (int y = 0; y < N; y++)
-                        {
-                            Console.Write("{0}\t", Array_Matrix_Copy[x, y]);
-                        }
-                        Console.WriteLine();
-                    }
-                }
-                else
-                {
-                    Console.WriteLine();
-                    for (int x = 0; x < M; x++)
-                    {
-                        for (int y = 0; y < N; y++)
-                        {
-                            Console.Write("{0}\t", Array_Matrix[x, y]);
-                        }
-                        Console.WriteLine();
-                    }
-                }
-                number++;
-            }
-
-            Array.Clear(Matrix,0,Matrix.Length);
-            for (int x = 0; x < M; x++)
-            {
-                for (int y = 0; y < N; y++)
-                {
-                    if (T % 2 != 0)
-                        Matrix[x] += Array_Matrix_Copy[x, y];
-                    else
-                        Matrix[x] += Array_Matrix[x, y];
+                    //if (maxValue > 0)
+                        C.Add(maxValue);
                 }
             }
 
-            for (int i = 0; i < M; i++)
+            Console.WriteLine();
+            foreach (int p in C)
             {
-                Console.WriteLine(" ", Matrix[i]);
+                Console.Write(p + " ");
             }
+            Console.WriteLine();
+
+            int summ = 0;
+            for (int x = 0; x < C.Count; x++)
+            {
+                summ += C[x];
+            }
+
+
+            if (summ % 2 == 0)
+                return true;
+            else
+                return false;
         }
         static void Main()
         {
-            string[] Matrix = { "123456", "234567", "345678", "456789" };
-            int M = 4;
-            int N = 6;
-            int T = 9;
-            Level1.MatrixTurn(Matrix, M, N, T);
+            int[] A = { 1, 2, 1, 7, 2, 4, 3, 1, 5, 1, 2, 1, 6, 1, 2 }; //50233
+            int N = 15;
 
-            Console.WriteLine("результат:");
-            for (int i = 0; i < Matrix.Length; i++)
-            {
-                Console.WriteLine(" " + Matrix[i]);
-            }
+            Console.WriteLine("результат: "+ Level1.TransformTransform(A, N));
             Console.ReadKey();
         }
     }
