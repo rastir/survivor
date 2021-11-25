@@ -22,10 +22,9 @@ namespace Test_Level1
             try
             {
                 Level1.TransformTransform(A, N);
-                //Level1.TransformTransform(A, N);
-                Assert.IsTrue(Level1.summ == 50233);
+                Assert.Equals(Level1.TransformTransform(A, N), 50233);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Assert.Fail("Не равно 50233 ");
             }

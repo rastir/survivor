@@ -89,7 +89,7 @@ namespace Level1Space
                 }
             }
 
-            summ = 0;
+            int summ = 0;
             for (int x = 0; x < C.Count; x++)
             {
                 summ += C[x];
@@ -101,8 +101,6 @@ namespace Level1Space
                 return false;
         }
         
-        public static int summ;
-
         static void Main()
         {
             //int[] A = { 1, 2, 1, 7, 2, 4, 3, 1, 5, 1, 2, 1, 6, 1, 2 }; //50233
