@@ -68,13 +68,6 @@ namespace Level1Space
                 }
             }
 
-            Console.WriteLine();
-            foreach (int p in B)
-            {
-                Console.Write(p + " ");
-            }
-            Console.WriteLine();
-
             List<int> C = new List<int>();
 
             for (int i = 0; i < B.Count - 1; i++)
@@ -95,13 +88,6 @@ namespace Level1Space
                         C.Add(maxValue);
                 }
             }
-
-            Console.WriteLine();
-            foreach (int p in C)
-            {
-                Console.Write(p + " ");
-            }
-            Console.WriteLine();
 
             int summ = 0;
             for (int x = 0; x < C.Count; x++)
@@ -141,13 +127,6 @@ namespace Level1Space
                 }
             }
 
-            Console.WriteLine();
-            foreach (int p in B)
-            {
-                Console.Write(p + " ");
-            }
-            Console.WriteLine();
-
             List<int> C = new List<int>();
 
             for (int i = 0; i < B.Count - 1; i++)
@@ -168,13 +147,6 @@ namespace Level1Space
                     C.Add(maxValue);
                 }
             }
-
-            Console.WriteLine();
-            foreach (int p in C)
-            {
-                Console.Write(p + " ");
-            }
-            Console.WriteLine();
 
             int summ = 0;
             for (int x = 0; x < C.Count; x++)

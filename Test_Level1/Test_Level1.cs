@@ -9,7 +9,7 @@ namespace Test_Level1
     ///Тесты для задания №22 "Чубакка и гравитационные колодцы"
     /// </summary>
     [TestClass]
-    public class Test_Level1
+    public class Chubakka
     {
         [TestMethod]
         [TestCategory("tests")]
