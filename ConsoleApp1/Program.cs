@@ -109,14 +109,14 @@ namespace Level1Space
         
         static void Main()
         {
-            int[] A = { 1, 2, 1, 7, 2, 4, 3, 1, 5, 1, 2, 1, 6, 1, 2 }; //50233
-            int N = 15;
+            //int[] A = { 1, 2, 1, 7, 2, 4, 3, 1, 5, 1, 2, 1, 6, 1, 2 }; //50233
+            //int N = 15;
 
-            //int[] A = { 3, 2, 1}; //50233
-            //int N = 3;
+            ////int[] A = { 3, 2, 1}; //50233
+            ////int N = 3;
 
-            Console.WriteLine("результат: " + Level1.TransformTransform(A, N));
-            Console.ReadKey();
+            //Console.WriteLine("результат: " + Level1.TransformTransform(A, N));
+            //Console.ReadKey();
         }
     }
 }
