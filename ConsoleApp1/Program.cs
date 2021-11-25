@@ -102,6 +102,11 @@ namespace Level1Space
         }
         
         public static int summ;
+        
+        static void Main()
+        {
+
+        }
     }
 }
 #endregion
