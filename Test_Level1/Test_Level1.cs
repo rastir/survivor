@@ -21,8 +21,9 @@ namespace Test_Level1
 
             try
             {
+                Level1.TransformTransform(A, N);
                 //Level1.TransformTransform(A, N);
-                Assert.IsTrue(Level1.TransformTransform2(A, N) == 50233);
+                Assert.IsTrue(Level1.summ == 50233);
             }
             catch (Exception e)
             {
