@@ -101,8 +101,6 @@ namespace Level1Space
                 return false;
         }
         
-        public static int summ;
-
         static void Main()
         {
 
