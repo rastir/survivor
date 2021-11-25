@@ -48,10 +48,10 @@ namespace Level1Space
             int k;
             int maxValue;
 
-            for (int i = 0; i < A.Length - 1; i++)
+            for (int i = 0; i <= A.Length - 1; i++)
             {
 
-                for (int j = 0; j < A.Length - i - 1; j++)
+                for (int j = 0; j <= A.Length - i - 1; j++)
                 {
                     k = i + j;
                     maxValue = 0;
@@ -67,6 +67,12 @@ namespace Level1Space
                         B.Add(maxValue);
                 }
             }
+
+            //foreach (int p in B)
+            //{
+            //    Console.Write(p + " ");
+            //}
+            //Console.WriteLine();
 
             List<int> C = new List<int>();
 
@@ -103,7 +109,14 @@ namespace Level1Space
         
         static void Main()
         {
+            //int[] A = { 1, 2, 1, 7, 2, 4, 3, 1, 5, 1, 2, 1, 6, 1, 2 }; //50233
+            //int N = 15;
 
+            int[] A = { 3, 2, 1}; //50233
+            int N = 3;
+
+            Console.WriteLine("результат: " + Level1.TransformTransform(A, N));
+            Console.ReadKey();
         }
     }
 }
