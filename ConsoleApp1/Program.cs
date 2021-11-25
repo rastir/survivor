@@ -114,6 +114,76 @@ namespace Level1Space
             else
                 return false;
         }
+
+        public static int TransformTransform2(int[] A, int N)
+        {
+            List<int> B = new List<int>();
+            int k;
+            int maxValue;
+
+            for (int i = 0; i < A.Length - 1; i++)
+            {
+
+                for (int j = 0; j < A.Length - i - 1; j++)
+                {
+                    k = i + j;
+                    maxValue = 0;
+
+                    for (int x = j; x <= k; x++)
+                    {
+                        if (A[x] > maxValue)
+                        {
+                            // найден больший элемент
+                            maxValue = A[x];
+                        }
+                    }
+                    B.Add(maxValue);
+                }
+            }
+
+            Console.WriteLine();
+            foreach (int p in B)
+            {
+                Console.Write(p + " ");
+            }
+            Console.WriteLine();
+
+            List<int> C = new List<int>();
+
+            for (int i = 0; i < B.Count - 1; i++)
+            {
+                for (int j = 0; j < B.Count - i - 1; j++)
+                {
+                    k = i + j;
+                    maxValue = 0;
+                    for (int x = j; x <= k; x++)
+                    {
+                        if (B[x] > maxValue)
+                        {
+                            // найден больший элемент
+                            maxValue = B[x];
+                        }
+                    }
+                    //if (maxValue > 0)
+                    C.Add(maxValue);
+                }
+            }
+
+            Console.WriteLine();
+            foreach (int p in C)
+            {
+                Console.Write(p + " ");
+            }
+            Console.WriteLine();
+
+            int summ = 0;
+            for (int x = 0; x < C.Count; x++)
+            {
+                summ += C[x];
+            }
+
+            return summ;
+        }
         static void Main()
         {
             //int[] A = { 1, 2, 1, 7, 2, 4, 3, 1, 5, 1, 2, 1, 6, 1, 2 }; //50233

@@ -15,24 +15,17 @@ namespace Test_Level1
         [TestCategory("tests")]
         public void Test1()
         {
-            int number = 1;
-
             int[] A = { 1, 2, 1, 7, 2, 4, 3, 1, 5, 1, 2, 1, 6, 1, 2 }; //50233
             int N = 15;
 
             try
             {
-                Level1.TransformTransform(A, N);
+                //Level1.TransformTransform(A, N);
+                Assert.IsTrue(Level1.TransformTransform2(A, N) == 50233);
             }
-            catch (IndexOutOfRangeException e)
+            catch (Exception e)
             {
-                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
-                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
-            }
-            catch (NullReferenceException e)
-            {
-                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
-                throw new ArgumentNullException("parameter is null.", e);
+                Assert.Fail("Не равно 50233 ");
             }
             finally
             {
