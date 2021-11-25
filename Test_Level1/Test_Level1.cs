@@ -12,7 +12,8 @@ namespace Test_Level1
     public class Chubakka
     {
         [TestMethod]
-        [TestCategory("tests")]
+        [TestCategory("28 задач")]
+        
         public void Test1()
         {
             int[] A = { 1, 2, 1, 7, 2, 4, 3, 1, 5, 1, 2, 1, 6, 1, 2 }; //50233
