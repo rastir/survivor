@@ -14,7 +14,7 @@ namespace Test_Level1
         [TestMethod]
         [TestCategory("28 задач")]
         
-        public void Test1()
+        public void Chubakka1()
         {
             int[] A = { 1, 2, 1, 7, 2, 4, 3, 1, 5, 1, 2, 1, 6, 1, 2 }; //50233
             int N = 15;
@@ -36,7 +36,7 @@ namespace Test_Level1
         }
         [TestMethod]
         [TestCategory("tests")]
-        public void Test2()
+        public void Chubakka2()
         {
             int number = 2;
 
@@ -65,7 +65,7 @@ namespace Test_Level1
         }
         [TestMethod]
         [TestCategory("tests")]
-        public void Test3()
+        public void Chubakka3()
         {
             int number = 3;
 
@@ -94,7 +94,7 @@ namespace Test_Level1
         }
         [TestMethod]
         [TestCategory("tests")]
-        public void Test4()
+        public void Chubakka4()
         {
             int number = 4;
 
