@@ -55,7 +55,6 @@ namespace Level1Space
                 {
                     k = i + j;
                     maxValue = 0;
-                    //Console.WriteLine();
 
                     for (int x = j; x <= k; x++)
                     {
@@ -65,11 +64,6 @@ namespace Level1Space
                             maxValue  = A[x];
                         }
                     }
-                    //for (int a = j; a <= k; a++)
-                    //{
-                    //    Console.Write(A[a] + " ");
-                    //}
-                   // if (maxValue > 0)
                         B.Add(maxValue);
                 }
             }
@@ -115,7 +109,6 @@ namespace Level1Space
                 summ += C[x];
             }
 
-
             if (summ % 2 == 0)
                 return true;
             else
@@ -123,11 +116,11 @@ namespace Level1Space
         }
         static void Main()
         {
-            int[] A = { 1, 2, 1, 7, 2, 4, 3, 1, 5, 1, 2, 1, 6, 1, 2 }; //50233
-            int N = 15;
+            //int[] A = { 1, 2, 1, 7, 2, 4, 3, 1, 5, 1, 2, 1, 6, 1, 2 }; //50233
+            //int N = 15;
 
-            Console.WriteLine("результат: "+ Level1.TransformTransform(A, N));
-            Console.ReadKey();
+            //Console.WriteLine("результат: "+ Level1.TransformTransform(A, N));
+            //Console.ReadKey();
         }
     }
 }

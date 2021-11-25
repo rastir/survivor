@@ -6,7 +6,7 @@ namespace Test_Level1
 {
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     ///<summary> 
-    ///Тесты для задания №22 "Древо Жизни Андрассил"
+    ///Тесты для задания №22 "Чубакка и гравитационные колодцы"
     /// </summary>
     [TestClass]
     public class Test_Level1
@@ -17,14 +17,12 @@ namespace Test_Level1
         {
             int number = 1;
 
-            string[] Matrix = { "123456", "234567", "345678", "456789" };
-            int M = 4;
-            int N = 6;
-            int T = 3;
+            int[] A = { 1, 2, 1, 7, 2, 4, 3, 1, 5, 1, 2, 1, 6, 1, 2 }; //50233
+            int N = 15;
 
             try
             {
-                Level1.MatrixTurn(Matrix, M, N, T);
+                Level1.TransformTransform(A, N);
             }
             catch (IndexOutOfRangeException e)
             {
@@ -39,12 +37,7 @@ namespace Test_Level1
             finally
             {
                 Console.WriteLine("результат:");
-                for (int i = 0; i < Matrix.Length; i++)
-                {
-                    Console.WriteLine(" " + Matrix[i]);
-                }
-
-                Console.WriteLine("TEST {0} PASSED", number);
+                Console.WriteLine(" " + Level1.TransformTransform(A, N));
             }
         }
         [TestMethod]
@@ -53,14 +46,12 @@ namespace Test_Level1
         {
             int number = 2;
 
-            string[] Matrix = { "123456", "234567", "345678", "456789" };
-            int M = 4;
-            int N = 6;
-            int T = 9;
+            int[] A = { 1 }; 
+            int N = 1;
 
             try
             {
-                Level1.MatrixTurn(Matrix, M, N, T);
+                Level1.TransformTransform(A, N);
             }
             catch (IndexOutOfRangeException e)
             {
@@ -75,12 +66,65 @@ namespace Test_Level1
             finally
             {
                 Console.WriteLine("результат:");
-                for (int i = 0; i < Matrix.Length; i++)
-                {
-                    Console.WriteLine(" " + Matrix[i]);
-                }
+                Console.WriteLine(" " + Level1.TransformTransform(A, N));
+            }
+        }
+        [TestMethod]
+        [TestCategory("tests")]
+        public void Test3()
+        {
+            int number = 3;
 
-                Console.WriteLine("TEST {0} PASSED", number);
+            int[] A = { 1, 1, 1, 1, 1, 1, 1 };
+            int N = 7;
+
+            try
+            {
+                Level1.TransformTransform(A, N);
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
+                Console.WriteLine("результат:");
+                Console.WriteLine(" " + Level1.TransformTransform(A, N));
+            }
+        }
+        [TestMethod]
+        [TestCategory("tests")]
+        public void Test4()
+        {
+            int number = 4;
+
+            int[] A = { 1, 5, 9, 9, 1, 1, 1, 3, 1, 5, 9, 9, 1, 1, 1, 3 };
+            int N = 16;
+
+            try
+            {
+                Level1.TransformTransform(A, N);
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
+                throw new ArgumentNullException("parameter is null.", e);
+            }
+            finally
+            {
+                Console.WriteLine("результат:");
+                Console.WriteLine(" " + Level1.TransformTransform(A, N));
             }
         }
     }
