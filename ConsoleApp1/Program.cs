@@ -42,9 +42,51 @@ namespace Level1Space
                 return false;
             else
             {
+                bool walkersAvailable = false;
+                int countNumbersOfEqual = 0;
+
+                List<int> numbers = new List<int>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
                 ///подряд несколько цифр не могут следовать
                 ///найти пары сумма равная 10
-                return false;
+                /// пока не встретили цифру - пока не встертили вторую цифру
+                int firstNumber = 0;
+                int secondNumber = 0;
+                int firstIndex = 0;
+                int indexNext = 0;
+
+                //char[] Array = village.ToCharArray();
+                for(int i = 0; i < village.Length; i++)
+                {
+                    if (numbers.Contains((int)char.GetNumericValue(village[i])))
+                    {
+                        if (firstNumber != 0)
+                        {
+                            firstNumber = Convert.ToInt16(village[i]);
+                            firstIndex = i;
+                        }
+                        int j;
+                        for (j = i; j < village.Length; j++)
+                        {
+                            if (village[j] == '=')
+                                countNumbersOfEqual++;
+                            if (numbers.Contains((int)char.GetNumericValue(village[i])) && (firstNumber + village[j] == 10))
+                            {
+                                secondNumber = village[j];
+                                indexNext = j;
+                                break;
+                            }
+                        }
+                        if (countNumbersOfEqual == 3)
+                            walkersAvailable = true;
+                        else
+                            walkersAvailable = false;
+                        i = j - firstIndex;
+                    }
+                }
+                if (walkersAvailable == true)
+                    return true;
+                else
+                    return false;
             }
         }
         
