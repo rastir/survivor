@@ -9,116 +9,111 @@ namespace Test_Level1
     ///Тесты для задания №22 "Чубакка и гравитационные колодцы"
     /// </summary>
     [TestClass]
-    public class Chubakka
+    public class Hodoki
     {
         [TestMethod]
         [TestCategory("28 задач")]
         
-        public void Chubakka1()
+        public void Hodoki1()
         {
-            int[] A = { 1, 2, 1, 7, 2, 4, 3, 1, 5, 1, 2, 1, 6, 1, 2 }; //50233
-            int N = 15;
+            string village = "axxb6===4xaf5===eee5";
 
             try
             {
-                Level1.TransformTransform(A, N);
-                Assert.Equals(Level1.TransformTransform(A, N), 50233);
+                Level1.white_walkers(village);
+                Assert.Equals(Level1.white_walkers(village), true);
             }
             catch (Exception)
             {
-                Assert.Fail("Не равно 50233 ");
+                Assert.Fail("TRUE");
             }
             finally
             {
-                Console.WriteLine("результат:");
-                Console.WriteLine(" " + Level1.TransformTransform(A, N));
+                Console.WriteLine("результат: " + Level1.white_walkers(village));
             }
         }
         [TestMethod]
-        [TestCategory("tests")]
-        public void Chubakka2()
-        {
-            int number = 2;
+        [TestCategory("28 задач")]
 
-            int[] A = { 1 }; 
-            int N = 1;
+        public void Hodoki2()
+        {
+            string village = "5==ooooooo=5=5";
 
             try
             {
-                Level1.TransformTransform(A, N);
+                Level1.white_walkers(village);
+                Assert.Equals(Level1.white_walkers(village), false);
             }
-            catch (IndexOutOfRangeException e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
-                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
-            }
-            catch (NullReferenceException e)
-            {
-                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
-                throw new ArgumentNullException("parameter is null.", e);
+                Assert.Fail("FALSE");
             }
             finally
             {
-                Console.WriteLine("результат:");
-                Console.WriteLine(" " + Level1.TransformTransform(A, N));
+                Console.WriteLine("результат: " + Level1.white_walkers(village));
             }
         }
         [TestMethod]
-        [TestCategory("tests")]
-        public void Chubakka3()
-        {
-            int number = 3;
+        [TestCategory("28 задач")]
 
-            int[] A = { 1, 1, 1, 1, 1, 1, 1 };
-            int N = 7;
+        public void Hodoki3()
+        {
+            string village = "abc=7==hdjs=3gg1=======5";
 
             try
             {
-                Level1.TransformTransform(A, N);
+                Level1.white_walkers(village);
+                Assert.Equals(Level1.white_walkers(village), true);
             }
-            catch (IndexOutOfRangeException e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
-                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
-            }
-            catch (NullReferenceException e)
-            {
-                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
-                throw new ArgumentNullException("parameter is null.", e);
+                Assert.Fail("TRUE");
             }
             finally
             {
-                Console.WriteLine("результат:");
-                Console.WriteLine(" " + Level1.TransformTransform(A, N));
+                Console.WriteLine("результат: " + Level1.white_walkers(village));
             }
         }
         [TestMethod]
-        [TestCategory("tests")]
-        public void Chubakka4()
-        {
-            int number = 4;
+        [TestCategory("28 задач")]
 
-            int[] A = { 1, 5, 9, 9, 1, 1, 1, 3, 1, 5, 9, 9, 1, 1, 1, 3 };
-            int N = 16;
+        public void Hodoki4()
+        {
+            string village = "aaS=8";
 
             try
             {
-                Level1.TransformTransform(A, N);
+                Level1.white_walkers(village);
+                Assert.Equals(Level1.white_walkers(village), false);
             }
-            catch (IndexOutOfRangeException e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
-                throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
-            }
-            catch (NullReferenceException e)
-            {
-                Console.WriteLine(e.Message + "TEST {0} ERROR", number);
-                throw new ArgumentNullException("parameter is null.", e);
+                Assert.Fail("FALSE");
             }
             finally
             {
-                Console.WriteLine("результат:");
-                Console.WriteLine(" " + Level1.TransformTransform(A, N));
+                Console.WriteLine("результат: " + Level1.white_walkers(village));
+            }
+        }
+        [TestMethod]
+        [TestCategory("28 задач")]
+
+        public void Hodoki5()
+        {
+            string village = "9===1===9===1===9";
+
+            try
+            {
+                Level1.white_walkers(village);
+                Assert.Equals(Level1.white_walkers(village), true);
+            }
+            catch (Exception)
+            {
+                Assert.Fail("TRUE");
+            }
+            finally
+            {
+                Console.WriteLine("результат: " + Level1.white_walkers(village));
             }
         }
     }
