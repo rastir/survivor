@@ -21,7 +21,7 @@ namespace Test_Level1
             try
             {
                 Level1.white_walkers(village);
-                Assert.Equals(Level1.white_walkers(village), true);
+                Assert.IsTrue(Level1.white_walkers(village));
             }
             catch (Exception)
             {
@@ -42,7 +42,7 @@ namespace Test_Level1
             try
             {
                 Level1.white_walkers(village);
-                Assert.Equals(Level1.white_walkers(village), false);
+                Assert.IsTrue(!Level1.white_walkers(village));
             }
             catch (Exception)
             {
@@ -63,7 +63,7 @@ namespace Test_Level1
             try
             {
                 Level1.white_walkers(village);
-                Assert.Equals(Level1.white_walkers(village), true);
+                Assert.IsTrue(Level1.white_walkers(village));
             }
             catch (Exception)
             {
@@ -84,7 +84,7 @@ namespace Test_Level1
             try
             {
                 Level1.white_walkers(village);
-                Assert.Equals(Level1.white_walkers(village), false);
+                Assert.IsFalse(Level1.white_walkers(village));
             }
             catch (Exception)
             {
@@ -105,11 +105,32 @@ namespace Test_Level1
             try
             {
                 Level1.white_walkers(village);
-                Assert.Equals(Level1.white_walkers(village), true);
+                Assert.IsTrue(Level1.white_walkers(village));
             }
             catch (Exception)
             {
                 Assert.Fail("TRUE");
+            }
+            finally
+            {
+                Console.WriteLine("результат: " + Level1.white_walkers(village));
+            }
+        }
+        [TestMethod]
+        [TestCategory("28 задач")]
+
+        public void Hodoki6()
+        {
+            string village = "9191919191";
+
+            try
+            {
+                Level1.white_walkers(village);
+                Assert.IsFalse(Level1.white_walkers(village));
+            }
+            catch (Exception)
+            {
+                Assert.Fail("False");
             }
             finally
             {

@@ -43,44 +43,41 @@ namespace Level1Space
             else
             {
                 bool walkersAvailable = false;
-                int countNumbersOfEqual = 0;
-
                 List<int> numbers = new List<int>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-                ///подряд несколько цифр не могут следовать
-                ///найти пары сумма равная 10
-                /// пока не встретили цифру - пока не встертили вторую цифру
-                int firstNumber = 0;
-                int secondNumber = 0;
-                int firstIndex = 0;
-                int indexNext = 0;
 
-                //char[] Array = village.ToCharArray();
-                for(int i = 0; i < village.Length; i++)
+                int firstNumber = 0;
+                int firstIndex = 0;
+
+                for (int i = 0; i < village.Length - 1; i++)
                 {
                     if (numbers.Contains((int)char.GetNumericValue(village[i])))
                     {
-                        if (firstNumber != 0)
+                        if (firstNumber == 0)
                         {
-                            firstNumber = Convert.ToInt16(village[i]);
+                            firstNumber = Convert.ToInt16(char.GetNumericValue(village[i]));
                             firstIndex = i;
                         }
                         int j;
-                        for (j = i; j < village.Length; j++)
+                        int countNumbersOfEqual = 0;
+                        for (j = i + 1; j < village.Length; j++)
                         {
                             if (village[j] == '=')
                                 countNumbersOfEqual++;
-                            if (numbers.Contains((int)char.GetNumericValue(village[i])) && (firstNumber + village[j] == 10))
+                            if (numbers.Contains((int)char.GetNumericValue(village[j])))
                             {
-                                secondNumber = village[j];
-                                indexNext = j;
+                                if (firstNumber + (int)char.GetNumericValue(village[j]) == 10)
+                                {
+                                    if (countNumbersOfEqual == 3)
+                                        walkersAvailable = true;
+                                    else
+                                        walkersAvailable = false;
+                                }
                                 break;
                             }
                         }
-                        if (countNumbersOfEqual == 3)
-                            walkersAvailable = true;
-                        else
-                            walkersAvailable = false;
-                        i = j - firstIndex;
+
+                        i += (j - firstIndex - 1);
+                        firstNumber = 0;
                     }
                 }
                 if (walkersAvailable == true)
