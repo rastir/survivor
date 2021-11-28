@@ -9,19 +9,20 @@ namespace Test_Level1
     ///Тесты для задания №22 "Чубакка и гравитационные колодцы"
     /// </summary>
     [TestClass]
-    public class Hodoki
+    public class Football
     {
         [TestMethod]
         [TestCategory("28 задач")]
         
-        public void Hodoki1()
+        public void Football1()
         {
-            string village = "axxb6===4xaf5===eee5";
+            int[] F = { 1, 3, 2 };
+            int N = 3;
 
             try
             {
-                Level1.white_walkers(village);
-                Assert.IsTrue(Level1.white_walkers(village));
+                Level1.Football(F, N);
+                Assert.IsTrue(Level1.Football(F, N));
             }
             catch (Exception)
             {
@@ -29,41 +30,21 @@ namespace Test_Level1
             }
             finally
             {
-                Console.WriteLine("результат: " + Level1.white_walkers(village));
+                Console.WriteLine("результат: " + Level1.Football(F, N));
             }
         }
         [TestMethod]
         [TestCategory("28 задач")]
 
-        public void Hodoki2()
+        public void Football2()
         {
-            string village = "5==ooooooo=5=5";
+            int[] F = { 1, 3, 2 };
+            int N = 3;
 
             try
             {
-                Level1.white_walkers(village);
-                Assert.IsTrue(!Level1.white_walkers(village));
-            }
-            catch (Exception)
-            {
-                Assert.Fail("FALSE");
-            }
-            finally
-            {
-                Console.WriteLine("результат: " + Level1.white_walkers(village));
-            }
-        }
-        [TestMethod]
-        [TestCategory("28 задач")]
-
-        public void Hodoki3()
-        {
-            string village = "abc=7==hdjs=3gg1=======5";
-
-            try
-            {
-                Level1.white_walkers(village);
-                Assert.IsTrue(Level1.white_walkers(village));
+                Level1.Football(F, N);
+                Assert.IsTrue(Level1.Football(F, N));
             }
             catch (Exception)
             {
@@ -71,70 +52,7 @@ namespace Test_Level1
             }
             finally
             {
-                Console.WriteLine("результат: " + Level1.white_walkers(village));
-            }
-        }
-        [TestMethod]
-        [TestCategory("28 задач")]
-
-        public void Hodoki4()
-        {
-            string village = "aaS=8";
-
-            try
-            {
-                Level1.white_walkers(village);
-                Assert.IsFalse(Level1.white_walkers(village));
-            }
-            catch (Exception)
-            {
-                Assert.Fail("FALSE");
-            }
-            finally
-            {
-                Console.WriteLine("результат: " + Level1.white_walkers(village));
-            }
-        }
-        [TestMethod]
-        [TestCategory("28 задач")]
-
-        public void Hodoki5()
-        {
-            string village = "9===1===9===1===9";
-
-            try
-            {
-                Level1.white_walkers(village);
-                Assert.IsTrue(Level1.white_walkers(village));
-            }
-            catch (Exception)
-            {
-                Assert.Fail("TRUE");
-            }
-            finally
-            {
-                Console.WriteLine("результат: " + Level1.white_walkers(village));
-            }
-        }
-        [TestMethod]
-        [TestCategory("28 задач")]
-
-        public void Hodoki6()
-        {
-            string village = "9191919191";
-
-            try
-            {
-                Level1.white_walkers(village);
-                Assert.IsFalse(Level1.white_walkers(village));
-            }
-            catch (Exception)
-            {
-                Assert.Fail("False");
-            }
-            finally
-            {
-                Console.WriteLine("результат: " + Level1.white_walkers(village));
+                Console.WriteLine("результат: " + Level1.Football(F, N));
             }
         }
     }
