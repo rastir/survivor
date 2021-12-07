@@ -29,6 +29,15 @@ using System.Collections.Generic;
 3. Попробуйте объяснить эту закономерность математически.
 
 Пункты 2 и 3 расскажите преподавателю в чате (бонус до +1000 золотых).
+Задание "Мастер ключей".
+1. Напишите программу, которая моделирует работу Мастера ключей.
+Ответ: программу составил - решение на сервере принято.
+
+2. Поэкспериментируйте с разными значениями k, постарайтесь выявить закономерность, от чего зависят номера открытых дверей.
+Ответ: поэкспериментировал. номера открытых дверей - это квадраты чисел.
+
+3. Попробуйте объяснить эту закономерность математически.
+Ответ: полный квадрат? возведение в квадрат ?
 
 Функция
 string Keymaker(int k)
@@ -49,11 +58,11 @@ namespace Level1Space
             {
                 Array_Logic[i] = 1;//сразу открываем все двери
             }
-            Console.WriteLine();
-            foreach (int a in Array_Logic)
-            {
-                Console.Write(Array_Logic[a] + " ");
-            }
+            //Console.WriteLine();
+            //foreach (int a in Array_Logic)
+            //{
+            //    Console.Write(Array_Logic[a] + " ");
+            //}
 
             for (int i = 1; i < Array_Logic.Length; i++)
             {
@@ -66,29 +75,36 @@ namespace Level1Space
                         else
                             Array_Logic[j] = 0;
                     }
-                    Console.WriteLine();
-                    foreach (int a in Array_Logic)
-                    {
-                        Console.Write(a + " ");
-                    }
+                    //Console.WriteLine();
+                    //foreach (int a in Array_Logic)
+                    //{
+                    //    Console.Write(a + " ");
+                    //}
                 }
-                Console.WriteLine();
-                foreach (int a in Array_Logic)
-                {
-                    Console.Write(a + " ");
-                }
+                //Console.WriteLine();
+                //foreach (int a in Array_Logic)
+                //{
+                //    Console.Write(a + " ");
+                //}
             }
             string s = "";
             foreach (int i in Array_Logic)
             {
-                s += i;
+                s += i + " ";
+            }
+            int b;
+            for (int i = 0; i < Array_Logic.Length; i++)
+            {
+                b = i + 1;
+                if (Array_Logic[i] == 1)
+                    Console.Write(b + " ");
             }
             return s;
         }
         
         static void Main()
         {
-            int k = 5;
+            int k = 109;
 
             Console.WriteLine("результат: " + Level1.Keymaker(k));
             Console.ReadKey();
